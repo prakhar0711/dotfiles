@@ -76,6 +76,6 @@ background_blur 64
 
 
 # BEGIN_KITTY_THEME
-# Ayu
+# Kaolin Galaxy
 include current-theme.conf
 # END_KITTY_THEME
