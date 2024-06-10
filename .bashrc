@@ -144,12 +144,23 @@ source "$OSH"/oh-my-bash.sh
 # alias ohmybash="mate ~/.oh-my-bash"
 export PATH="$PATH:/opt/nvim-linux64/bin"
 export PATH="$PATH:/home/prakhar/.local/bin"
+export PATH="$PATH:/usr/local/go/bin"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 . "$HOME/.cargo/env"
+run() {
+	if [ -z "$1" ]; then
+		echo "Usage: run <filename>"
+		return 1
+	fi
+	make "$1" && ./"$1"
+}
 
+alias la='ls -a'
 alias python=python3
 alias tmux='tmux -u'
 eval "$(zoxide init bash)"
+
+export PATH=$PATH:/home/prakhar/.spicetify
