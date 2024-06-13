@@ -1,6 +1,8 @@
 {
     "diagnostics.globals": [
         "vim",
-        "buf_number"
+        "buf_number",
+        "nvim_bufferline",
+        "LazyVim"
     ]
 }

@@ -1,4 +1,3 @@
-
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
@@ -35,9 +34,11 @@ vim.keymap.set("n", "<Leader>h", ":noh<CR>", { silent = true })
 -- Fixes pasting after visual selection.
 vim.keymap.set("v", "p", '"_dP')
 -- Save on Ctrl+S in insert mode
-vim.keymap.set('i', '<C-s>', '<esc>:w<cr><esc>')
+vim.keymap.set("i", "<C-s>", "<esc>:w<cr><esc>")
 -- Save on Ctrl+S
-vim.keymap.set('n', '<C-s>', '<cmd>w<cr>')
+vim.keymap.set("n", "<C-s>", "<cmd>w<cr>")
 
+vim.keymap.set({ "n", "v", "i" }, "<leader>q", "<cmd>q<cr>")
+vim.keymap.set({ "n", "v", "i" }, "<leader>qq", "<cmd>qall<cr>")
 
-
+vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})

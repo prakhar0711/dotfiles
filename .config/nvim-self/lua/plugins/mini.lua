@@ -8,11 +8,17 @@ return {
 		end,
 	},
 	{
-		"echasnovski/mini.surround",
+		"echasnovski/mini.move",
 		version = "*",
-
 		config = function()
-			require("mini.surround").setup()
+			require("mini.move").setup()
+		end,
+	},
+	{
+		"echasnovski/mini.indentscope",
+		version = "*",
+		config = function()
+			require("mini.indentscope").setup()
 		end,
 	},
 }
