@@ -10,6 +10,12 @@ return {
 		},
 	},
 	{
+		"hrsh7th/vim-vsnip",
+	},
+	{
+		"hrsh7th/vim-vsnip-integ",
+	},
+	{
 		"hrsh7th/nvim-cmp",
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
@@ -65,6 +71,7 @@ return {
 					{ name = "codeium" },
 					{ name = "copilot" },
 					{ name = "luasnip" }, -- For luasnip users.
+					{ name = "vsnip" }, -- For luasnip users.
 				}, {
 					{ name = "buffer" },
 				}),
