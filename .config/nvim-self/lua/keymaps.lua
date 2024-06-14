@@ -42,3 +42,5 @@ vim.keymap.set({ "n", "v", "i" }, "<leader>q", "<cmd>q<cr>")
 vim.keymap.set({ "n", "v", "i" }, "<leader>qq", "<cmd>qall<cr>")
 
 vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
+
+
