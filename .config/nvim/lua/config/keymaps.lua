@@ -1,10 +1,13 @@
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
+
+-- Keymaps are automatically loaded on the VeryLazy event
+-- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
+-- Add any additional keymaps here
 -- Move normally between wrapped lines
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-
 -- Shift + q - Quit
 vim.keymap.set("n", "Q", "<C-W>q")
 
@@ -34,4 +37,8 @@ vim.keymap.set("n", "<Leader>h", ":noh<CR>", { silent = true })
 -- Fixes pasting after visual selection.
 vim.keymap.set("v", "p", '"_dP')
 
+vim.keymap.set("n", "<leader>m", "<cmd>Mason<cr>")
+
+vim.keymap.set("n", "<leader>fw", "<cmd>HopWord<cr>")
+vim.keymap.set("n", "<leader>fe", "<cmd>HopLine<cr>")
 

@@ -1,69 +1,51 @@
 return {
-  { "tiagovla/tokyodark.nvim" },
   {
-    "Tsuzat/NeoSolarized.nvim",
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
-    priority = 1000, -- make sure to load this before all the other start plugins
-    config = function()
-      require("NeoSolarized").setup({
-        -- your custom config
-        style = "dark", -- "dark" or "light"
-        transparent = true, -- true/false; Enable this to disable setting the background color
-        terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
-        enable_italics = true, -- Italics for different hightlight groups (eg. Statement, Condition, Comment, Include, etc.)
-        styles = {
-          -- Style to be applied to different syntax groups
-          comments = { italic = true },
-          keywords = { italic = true },
-          functions = { bold = true },
-          variables = {},
-          string = { italic = true },
-          underline = true, -- true/false; for global underline
-          undercurl = true, -- true/false; for global undercurl
+    "rebelot/kanagawa.nvim",
+    opts = {
+      theme = "wave",
+      functionStyle = { italic = true },
+      colors = {
+        theme = {
+          all = {
+            ui = {
+              bg_gutter = "none",
+            },
+          },
         },
-      })
+      },
+      overrides = function(colors)
+        local theme = colors.theme
+        return {
+          Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 }, -- add `blend = vim.o.pumblend` to enable transparency
+          PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
+          PmenuSbar = { bg = theme.ui.bg_m1 },
+          PmenuThumb = { bg = theme.ui.bg_p2 },
+          NormalFloat = { bg = "none" },
+          FloatBorder = { bg = "none" },
+          FloatTitle = { bg = "none" },
+
+          -- Save an hlgroup with dark background and dimmed foreground
+          -- so that you can use it where your still want darker windows.
+          -- E.g.: autocmd TermOpen * setlocal winhighlight=Normal:NormalDark
+          NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
+
+          -- Popular plugins that open floats will link to NormalFloat by default;
+          -- set their background accordingly if you wish to keep them dark and borderless
+          LazyNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
+          MasonNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
+          TelescopeTitle = { fg = theme.ui.special, bold = true },
+          TelescopePromptNormal = { bg = theme.ui.bg_p1 },
+          TelescopePromptBorder = { fg = theme.ui.bg_p1, bg = theme.ui.bg_p1 },
+          TelescopeResultsNormal = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m1 },
+          TelescopeResultsBorder = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m1 },
+          TelescopePreviewNormal = { bg = theme.ui.bg_dim },
+          TelescopePreviewBorder = { bg = theme.ui.bg_dim, fg = theme.ui.bg_dim },
+        }
+      end,
+    },
+    config = function(_, opts)
+      require("kanagawa").setup(opts) -- calling setup is optional
+      vim.cmd([[colorscheme kanagawa]])
     end,
   },
-  {
-    "craftzdog/solarized-osaka.nvim",
-    lazy = false,
-    priority = 1000,
-    opts = {
-      transparent = true,
-      terminal_colors = true,
-      styles = {
-        -- Style to be applied to different syntax groups
-        -- Value is any valid attr-list value for `:help nvim_set_hl`
-        comments = { italic = true },
-        keywords = { italic = true },
-        functions = { italic = true },
-        variables = {},
-        -- Background styles. Can be "dark", "transparent" or "normal"
-        sidebars = "transparent", -- style for sidebars, see below
-        floats = "transparent", -- style for floating windows
-      },
-    },
-  },
-  {
-    "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
-    opts = {
-      style = "night",
-      transparent = true,
-      terminal_colors = true,
-      styles = {
-        -- Style to be applied to different syntax groups
-        -- Value is any valid attr-list value for `:help nvim_set_hl`
-        comments = { italic = true },
-        keywords = { italic = true },
-        functions = { italic = true },
-        variables = {},
-        -- Background styles. Can be "dark", "transparent" or "normal"
-        sidebars = "transparent", -- style for sidebars, see below
-        floats = "dark", -- style for floating windows
-      },
-    },
-  },
-  { "LazyVim/LazyVim", opts = { colorscheme = "tokyodark" } },
 }

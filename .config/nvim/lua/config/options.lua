@@ -1,7 +1,12 @@
 -- Options are automatically loaded before lazy.nvim startup
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
-vim.opt.relativenumber = false
+--vim.cmd("set expandtab")
+--vim.cmd("set tabstop=2")
+--vim.cmd("set softtabstop=2")
+--vim.cmd("set shiftwidth=2")
+vim.g.mapleader=" "
+vim.opt.relativenumber=false
 
 -- Set highlight on search
 vim.o.hlsearch = true
@@ -33,6 +38,9 @@ vim.o.timeoutlen = 300
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = "menuone,noselect"
+
+vim.opt.guicursor = ""
+
 
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
@@ -67,4 +75,4 @@ vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 15
 vim.opt.sidescroll = 5
 
-vim.opt.guicursor = ""
+

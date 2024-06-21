@@ -4,7 +4,6 @@
 -- Move normally between wrapped lines
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-
 -- Shift + q - Quit
 vim.keymap.set("n", "Q", "<C-W>q")
 
@@ -38,9 +37,13 @@ vim.keymap.set("i", "<C-s>", "<esc>:w<cr><esc>")
 -- Save on Ctrl+S
 vim.keymap.set("n", "<C-s>", "<cmd>w<cr>")
 
-vim.keymap.set({ "n", "v", "i" }, "<leader>q", "<cmd>q<cr>")
-vim.keymap.set({ "n", "v", "i" }, "<leader>qq", "<cmd>qall<cr>")
+vim.keymap.set({ "n", "v" }, "<leader>q", "<cmd>q<cr>")
+vim.keymap.set({ "n", "v" }, "<leader>qq", "<cmd>qall<cr>")
+
+vim.keymap.set("n", "<leader>l", "<cmd>Lazy<cr>")
+vim.keymap.set("n", "<leader>m", "<cmd>Mason<cr>")
+
+vim.keymap.set("n", "<leader>fw", "<cmd>HopWord<cr>")
+vim.keymap.set("n", "<leader>fe", "<cmd>HopLine<cr>")
 
 vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
-
-
