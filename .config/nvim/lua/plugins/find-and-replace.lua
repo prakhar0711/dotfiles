@@ -1,3 +1,3 @@
 return {
-	"dmytruek/find-and-replace",
+  "dmytruek/find-and-replace",
 }

@@ -9,7 +9,6 @@
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 -- Shift + q - Quit
-vim.keymap.set("n", "Q", "<C-W>q")
 
 -- vv - Makes vertical split
 vim.keymap.set("n", "vv", "<C-W>v")
@@ -40,5 +39,9 @@ vim.keymap.set("v", "p", '"_dP')
 vim.keymap.set("n", "<leader>m", "<cmd>Mason<cr>")
 
 vim.keymap.set("n", "<leader>fw", "<cmd>HopWord<cr>")
-vim.keymap.set("n", "<leader>fe", "<cmd>HopLine<cr>")
+vim.keymap.set("n", "<leader>fz", "<cmd>HopLine<cr>")
 
+vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
+vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
+vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
+vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})

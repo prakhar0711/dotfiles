@@ -145,6 +145,8 @@ source "$OSH"/oh-my-bash.sh
 export PATH="$PATH:/opt/nvim-linux64/bin"
 export PATH="$PATH:/home/prakhar/.local/bin"
 export PATH="$PATH:/usr/local/go/bin"
+export PATH="$PATH:~/.cargo/bin"
+export PATH=$HOME/.cargo/bin:$PATH
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
@@ -161,6 +163,6 @@ run() {
 alias la='ls -a'
 alias python=python3
 alias tmux='tmux -u'
+alias nv='nvim'
+alias nd='neovide'
 eval "$(zoxide init bash)"
-
-export PATH=$PATH:/home/prakhar/.spicetify

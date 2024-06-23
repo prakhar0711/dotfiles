@@ -7,11 +7,6 @@ return {
     local null_ls = require("null-ls")
     local sources = {
       require("none-ls.formatting.rustfmt"),
-      null_ls.builtins.formatting.prettier,
-      null_ls.builtins.formatting.prettierd,
-      null_ls.builtins.formatting.clang_format,
-      null_ls.builtins.formatting.gofumpt,
-      null_ls.builtins.formatting.stylua,
 
       null_ls.builtins.formatting.stylua.with({
         filetypes = { "lua" },
