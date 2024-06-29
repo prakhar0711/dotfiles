@@ -4,10 +4,6 @@ return {
     opts = {
       transparent = true,
       theme = "wave",
-      functionStyle = { italic = true },
-      commentStyle = { italic = true },
-      keywordStyle = { italic = true },
-      statementStyle = { bold = true },
       colors = {
         palette = {
           peachRed = "#CE2C66",
@@ -34,24 +30,35 @@ return {
       },
       overrides = function(colors)
         local theme = colors.theme
-        local blend_value = 50 -- You can adjust this value as needed
+        local blend_value = 0 -- You can adjust this value as needed
         return {
           Normal = { italic = true },
-          Keyword = { italic = true },
-          Function = { italic = true },
-          String = { italic = true },
+          NormalNC = { italic = true }, -- Non-current windows
           Comment = { italic = true },
+          Constant = { italic = true },
+          String = { italic = true, bold = true },
+          Identifier = { italic = true },
+          Function = { italic = true },
+          Statement = { italic = true },
+          PreProc = { italic = true, bold = true },
+          Type = { italic = true },
+          Special = { italic = true, bold = true },
+          Operator = { italic = true, bold = true },
+          Keyword = { italic = true },
+          Macro = { link = "Function" },
+          Folded = { link = "Comment" },
+          Conditional = { link = "Operator" },
+          Repeat = { link = "Conditional" },
+          TSKeywordFunction = { link = "Keyword" },
           TSProperty = { link = "TSField" },
           TSNamespace = { link = "TSType" },
           TSField = { link = "Constant" },
           TSPunctSpecial = { link = "TSPunctDelimiter" },
+          TSPunctDelimiter = { italic = true },
           TSLabel = { link = "Type" },
           TSFuncMacro = { link = "Macro" },
           TSConstant = { link = "Constant" },
           TSKeyword = { link = "Keyword" },
-          Folded = { link = "Comment" },
-          Macro = { link = "Function" },
-          Conditional = { link = "Operator", italic = true },
           TSTagDelimiter = { link = "Type" },
           TSFunction = { link = "Function" },
           TSParameterReference = { link = "TSParameter" },
@@ -59,14 +66,12 @@ return {
           TSTag = { link = "MyTag" },
           TSRepeat = { link = "Repeat" },
           TSNumber = { link = "Number" },
-          Repeat = { link = "Conditional" },
           TSType = { link = "Type" },
           TSConstBuiltin = { link = "TSVariableBuiltin" },
           TSParameter = { link = "Constant" },
           TSOperator = { link = "Operator" },
           TSString = { link = "String" },
           TSFloat = { link = "Number" },
-
           NormalFloat = { bg = "none", blend = blend_value },
           FloatBorder = { bg = "none", fg = "#187fc7", blend = blend_value },
           FloatTitle = { bg = "none", blend = blend_value },
