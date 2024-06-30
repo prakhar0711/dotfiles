@@ -8,6 +8,7 @@ return {
   },
   opts = {
     options = {
+      themeable = true,
       separator_style = "slant",
       left_mouse_command = "buffer %d",
       close_command = "bdelete! %d",

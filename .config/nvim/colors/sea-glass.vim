@@ -11,7 +11,6 @@ function s:highlight(group, bg, fg, style)
   exec 'hi ' . a:group . ' ' . bg . ' ' . fg . ' ' . gui
 endfunction
 
-
 " Define colors
 let s:Color0 = '#ebdbb0'
 let s:Color1 = '#f92672'
@@ -30,20 +29,19 @@ let s:Color12 = '#4a191a'
 let s:Color13 = '#3d3e38'
 let s:Color14 = '#6f6b5b'
 
-
-
 " Apply highlights using the defined function
-call s:highlight('Normal', s:Color10, s:Color8, '')
-call s:highlight('Operator', '', s:Color0, '')
-call s:highlight('Keyword', '', s:Color1, '')
+call s:highlight('Normal', s:Color10,s:Color8 , 'italic')
+call s:highlight('Operator', '', s:Color1, '')
+call s:highlight('Keyword', '', s:Color1, 'italic')
 call s:highlight('TSNamespace', '', s:Color0, '')
 call s:highlight('Identifier', '', s:Color2, '')
 call s:highlight('Function', '', s:Color3, 'italic')
-call s:highlight('Type', '', s:Color4, '')
-call s:highlight('Conditional', '', s:Color1, '')
-call s:highlight('Repeat', '', s:Color1, '')
-call s:highlight('Structure', '', s:Color6, '')
-call s:highlight('String', '', s:Color5, '')
+call s:highlight('Type', '', s:Color5, '')
+call s:highlight('StorageClass', '', s:Color0, '')
+call s:highlight('Conditional', '', s:Color0, 'italic')
+call s:highlight('Repeat', '', s:Color0, '')
+call s:highlight('Structure', '', s:Color2, '')
+call s:highlight('String', '', s:Color5, 'italic')
 call s:highlight('Number', '', s:Color7, '')
 call s:highlight('Constant', '', s:Color8, '')
 call s:highlight('Comment', '', '', 'italic')
@@ -51,14 +49,15 @@ call s:highlight('Comment', '', '', 'italic')
 " lualine colours
 call s:highlight('StatusLine', s:Color9, s:Color1, '')
 call s:highlight('WildMenu', s:Color10, s:Color0, '')
-
-" popupmenu colours
-call s:highlight('Pmenu', s:Color10, s:Color0, '')
+"
+" " popupmenu colours
+call s:highlight('Pmenu', s:Color1, s:Color0, '')
+" call s:highlight('NoiceCmdlinePopup', s:Color1, s:Color0, '')
 call s:highlight('PmenuSel', s:Color0, s:Color10, '')
 call s:highlight('PmenuThumb', s:Color10, s:Color0, '')
 call s:highlight('DiffAdd', s:Color11, '', '')
 call s:highlight('DiffDelete', s:Color12, '', '')
-
+call s:highlight('NoicePopupmenuBorder', s:Color3, s:Color0, '')
 " visual mode colours
 call s:highlight('Visual', s:Color13, '', '')
 
@@ -80,8 +79,6 @@ call s:highlight('TabLineSel', s:Color1, s:Color10, 'bold')
 call s:highlight('TabLineFill', s:Color9, s:Color14, '')
 call s:highlight('TSPunctDelimiter', '', s:Color0, '')
 
-
-
 " Additional highlight groups
 call s:highlight('Conceal', '', s:Color7, 'bold')
 
@@ -89,7 +86,7 @@ call s:highlight('Conceal', '', s:Color7, 'bold')
 call s:highlight('CurSearch', s:Color0, s:Color1, 'bold')
 
 " cursor itself
-call s:highlight('Cursor', s:Color0, s:Color10, '')
+" call s:highlight('Cursor', s:Color0, s:Color10, '')
 call s:highlight('CursorColumn', '', s:Color13, '')
 call s:highlight('Directory', '', s:Color3, '')
 call s:highlight('DiffChange', s:Color12, '', '')
@@ -122,8 +119,7 @@ call s:highlight('MatchParen', s:Color1, s:Color13, 'bold')
 " mode indicator msg in the status line
 call s:highlight('ModeMsg', s:Color1, s:Color13, 'bold')
 
-
-call s:highlight('MsgArea', '', s:Color10, '')
+call s:highlight('MsgArea', '', s:Color1, '')
 call s:highlight('MsgSeparator', '', s:Color13, '')
 call s:highlight('MoreMsg', '', s:Color3, '')
 call s:highlight('NonText', '', s:Color13, '')
@@ -133,8 +129,8 @@ call s:highlight('NormalFloat', s:Color10, s:Color0, '')
 call s:highlight('FloatBorder', s:Color10, s:Color1, '')
 call s:highlight('FloatTitle', s:Color13, s:Color9, 'bold')
 call s:highlight('FloatFooter', s:Color13, s:Color10, '')
-call s:highlight('NormalNC', s:Color10, s:Color0, '')
-call s:highlight('PmenuKind', s:Color14, s:Color10, '')
+call s:highlight('NormalNC', s:Color10, s:Color0, 'none')
+call s:highlight('PmenuKind', s:Color11, s:Color10, '')
 call s:highlight('PmenuKindSel', s:Color14, s:Color0, '')
 call s:highlight('PmenuExtra', s:Color7, s:Color10, '')
 call s:highlight('PmenuExtraSel', s:Color7, s:Color0, '')
@@ -187,7 +183,6 @@ highlight! link TSParameterReference TSParameter
 highlight! link TSConditional Conditional
 highlight! link TSTag MyTag
 highlight! link TSRepeat Repeat
-highlight! link Operator Keyword
 highlight! link TSNumber Number
 highlight! link CursorLineNr Identifier
 highlight! link Repeat Conditional
@@ -201,7 +196,6 @@ highlight! link TSString String
 highlight! link TSFloat Number
 
 " Add these highlight links to your existing color scheme
-
 
 " Git and VCS related highlights
 call s:highlight('GitSignsAdd', s:Color5, s:Color10, '')
@@ -218,7 +212,6 @@ call s:highlight('NeogitDiffDeleteHighlight', '', s:Color12, '')
 " TreeSitter highlights
 highlight! link TreesitterContext Folded
 call s:highlight('TreesitterContextLineNumber', s:Color6, s:Color10, '')
-
 
 " Notify highlights
 call s:highlight('NotifyBackground', '', s:Color10, '')
@@ -340,7 +333,6 @@ highlight! link AerialEventIcon Structure
 highlight! link AerialOperatorIcon Operator
 highlight! link AerialTypeParameterIcon Type
 
-
 highlight! link TelescopeResultsField @field
 highlight! link TelescopeResultsVariable @variable
 
@@ -364,14 +356,11 @@ call s:highlight('TelescopeResultsField', s:Color10, s:Color8, 'none')
 call s:highlight('TelescopeResultsMethod', s:Color10, s:Color3, 'italic')
 call s:highlight('TelescopeResultsVariable', s:Color10, s:Color8, 'none')
 
-
-
 " Text within the completion menu items
 call s:highlight('CmpItemAbbr', '', s:Color2, '')        
 call s:highlight('CmpItemAbbrDeprecated', '', s:Color1, '') 
 call s:highlight('CmpItemAbbrMatch', '', s:Color1, '')    
 call s:highlight('CmpItemAbbrMatchFuzzy', '', s:Color8, '') 
-
 call s:highlight('CmpItemKindDefault', '', s:Color14, '')   
 call s:highlight('CmpItemMenu', '', s:Color2, '')      
 call s:highlight('CmpItemKindText', '', s:Color2, '')    
@@ -401,9 +390,9 @@ call s:highlight('CmpItemKindOperator', '', s:Color5, '')
 call s:highlight('CmpItemKindTypeParameter', '', s:Color6, '')  
 call s:highlight('CmpItemKindCopilot', '', s:Color7, '')  
 call s:highlight('CmpItemKindCodeium', '', s:Color8, '')  
+" call s:highlight('CmpCompletionBorder', s:Color5, '', '')
+" call s:highlight('CmpCompletionThumb', s:Color6, s:Color3, '') 
+" call s:highlight('CmpCompletionSbar', s:Color8, s:Color7, '') 
 
-call s:highlight('CmpCompletionBorder', s:Color5, '', '')
-call s:highlight('CmpCompletionThumb', s:Color6, s:Color3, '') 
-call s:highlight('CmpCompletionSbar', s:Color8, s:Color7, '') 
 
 
