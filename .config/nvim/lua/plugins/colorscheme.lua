@@ -2,7 +2,7 @@ return {
   {
     "rebelot/kanagawa.nvim",
     opts = {
-      transparent = true,
+      -- transparent = true,
       theme = "wave",
       colors = {
         palette = {
@@ -18,7 +18,7 @@ return {
           fujiWhite = "#02B4A8",
           waveAqua2 = "#ebdbb0",
           -- sumiInk0 = "#1d2021", --lazy and mason background
-          sumiInk3 = "#1d2021", --background
+          sumiInk3 = "#10161C", --background
         },
         theme = {
           all = {
@@ -32,8 +32,9 @@ return {
         local theme = colors.theme
         local blend_value = 0 -- You can adjust this value as needed
         return {
+          WinSeparator = { fg = "#0d4e7a" },
           Normal = { italic = true },
-          NormalNC = { italic = true }, -- Non-current windows
+          NormalNC = { italic = false }, -- Non-current windows
           Comment = { italic = true },
           Constant = { italic = true },
           String = { italic = true, bold = true },
@@ -104,13 +105,6 @@ return {
           -- Popular plugins that open floats
           LazyNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
           MasonNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
-          BufferLineFill = { bg = "none", blend = blend_value },
-          BufferLineBackground = { bg = "none", fg = theme.ui.fg_dim },
-          BufferLineBufferSelected = { bg = "none", fg = theme.ui.fg, bold = true, italic = true },
-          BufferLineBufferVisible = { bg = "none", fg = theme.ui.fg_dim },
-          BufferLineSeparator = { fg = theme.ui.bg, bg = "none" },
-          BufferLineSeparatorVisible = { fg = theme.ui.bg, bg = "none", blend = blend_value },
-          BufferLineSeparatorSelected = { fg = theme.ui.bg, bg = "none", blend = blend_value },
         }
       end,
     },

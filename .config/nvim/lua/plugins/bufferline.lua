@@ -9,7 +9,7 @@ return {
   opts = {
     options = {
       themeable = true,
-      separator_style = "slant",
+      separator_style = "slope",
       left_mouse_command = "buffer %d",
       close_command = "bdelete! %d",
       right_mouse_command = "bdelete! %d",
@@ -22,6 +22,7 @@ return {
 
       always_show_bufferline = false,
       indicator = {
+        -- icon = "|",
         style = "underline",
       },
 
