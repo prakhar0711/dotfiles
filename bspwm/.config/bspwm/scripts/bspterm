@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+## Copyright (C) 2020-2024 Aditya Shakya <adi1090x@gmail.com>
+##
+## launch kitty with bspwm config and background opacity
+
+# bspwm directory
+DIR="$HOME/.config/bspwm"
+CONFIG="$DIR/kitty/kitty.conf"
+
+# Desired background opacity (0.0 - fully transparent, 1.0 - fully opaque)
+BACKGROUND_OPACITY=0.8 # Adjust this value as needed
+
+# Function to add background opacity setting to the config file
+set_background_opacity() {
+  if [ ! -f "$CONFIG" ]; then
+    touch "$CONFIG" # Create the config file if it doesn't exist
+  fi
+  echo "background_opacity $BACKGROUND_OPACITY" >>"$CONFIG"
+}
+
+# Check if config file exists and add background opacity setting if needed
+set_background_opacity
+
+if [ "$1" == "--float" ]; then
+  kitty --class kitty-float --config "$CONFIG"
+elif [ "$1" == "--full" ]; then
+  kitty --class kitty-fullscreen --config "$CONFIG" --start-as fullscreen
+else
+  kitty --config "$CONFIG" ${@}
+fi
