@@ -10,6 +10,6 @@ CONFIG="$DIR/kitty/kitty.conf"
 
 kitty --class Music --config "$CONFIG" \
   --override font_size=12 \
-  --override initial_window_width=105c \
-  --override initial_window_height=22c \
+  --override initial_window_width=135c \
+  --override initial_window_height=30c \
   bash -c "~/.ncmpcpp/scripts/ncmpcpp-art"
