@@ -1,14 +1,15 @@
 #!/usr/bin/env bash
-
-## Copyright (C) 2020-2024 Aditya Shakya <adi1090x@gmail.com>
+## Copyright (C) 2020-2024 Aditya Shakya
 ##
-## Run ncmpcpp with alternate config
+
+# Run ncmpcpp with alternate config in kitty terminal
 
 # bspwm directory
 DIR="$HOME/.config/bspwm"
+CONFIG="$DIR/kitty/kitty.conf"
 
-CONFIG="$DIR/alacritty/alacritty.toml"
-
-alacritty --class 'Music,Music' --config-file "$CONFIG" \
-		  -o window.dimensions.columns=105 window.dimensions.lines=22 \
-		  -e ~/.ncmpcpp/scripts/ncmpcpp-art
+kitty --class Music --config "$CONFIG" \
+  --override font_size=12 \
+  --override initial_window_width=105c \
+  --override initial_window_height=22c \
+  bash -c "~/.ncmpcpp/scripts/ncmpcpp-art"
