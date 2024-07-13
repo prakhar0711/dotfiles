@@ -3,5 +3,5 @@
 /* Text Font */
 
 * {
-    font: "Cascadia Code Regular 10";
+    font: "Cascadia Mono";
 }

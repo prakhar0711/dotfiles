@@ -34,7 +34,7 @@ super + shift + {b,m,n,r,s,t,w,x}
 
 # Launch Apps
 super + {f,b,e,s,d}
-	{thunar,thorium-browser,geany,spotify,code}
+	{thunar,firefox,geany,spotify,code}
 
 # # Launch Spotify
 # super + shift + s
