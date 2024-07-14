@@ -20,7 +20,7 @@ CONFIG="$DIR/kitty/kitty.conf"
 # }
 #
 # Check if config file exists and add background opacity setting if needed
-set_background_opacity
+# set_background_opacity
 
 if [ "$1" == "--float" ]; then
   kitty --class kitty-float --config "$CONFIG"
