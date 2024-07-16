@@ -30,37 +30,37 @@
     <keepBorder>no</keepBorder>
     <animateIconify>yes</animateIconify>
     <font place="ActiveWindow">
-      <name>Cascadia Code</name>
+      <name>Zed Mono</name>
       <size>10</size>
       <weight>Bold</weight>
       <slant>Normal</slant>
     </font>
     <font place="InactiveWindow">
-      <name>Cascadia Code</name>
+      <name>Zed Mono</name>
       <size>10</size>
       <weight>Normal</weight>
       <slant>Normal</slant>
     </font>
     <font place="MenuHeader">
-      <name>Cascadia Code</name>
+      <name>Zed Mono</name>
       <size>10</size>
       <weight>Bold</weight>
       <slant>Normal</slant>
     </font>
     <font place="MenuItem">
-      <name>Cascadia Code</name>
+      <name>Zed Mono</name>
       <size>10</size>
       <weight>Normal</weight>
       <slant>Normal</slant>
     </font>
     <font place="ActiveOnScreenDisplay">
-      <name>Cascadia Code</name>
+      <name>Zed Mono</name>
       <size>10</size>
       <weight>Bold</weight>
       <slant>Normal</slant>
     </font>
     <font place="InactiveOnScreenDisplay">
-      <name>Cascadia Code</name>
+      <name>Zed Mono</name>
       <size>10</size>
       <weight>Normal</weight>
       <slant>Normal</slant>
