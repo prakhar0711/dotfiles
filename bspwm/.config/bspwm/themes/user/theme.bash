@@ -36,19 +36,19 @@ wallpaper="$wdir/wallpaper"
 polybar_font='Cascadia Code NF:size=10;3'
 
 # Rofi
-rofi_font='Zed Mono Extended'
+rofi_font='Zed Plex Mono'
 rofi_icon='Win11-Dark'
 
 # Terminal
-terminal_font_name='Cascadia Mono NF'
+terminal_font_name='Zed Plex Mono'
 terminal_font_size='10'
 
 # Geany
 geany_colors='adapta.conf'
-geany_font='Zed Mono Extended 10'
+geany_font='Zed Plex Mono 10'
 
 # Appearance
-gtk_font='Zed Mono Extended 10'
+gtk_font='Zed Plex Mono 10'
 gtk_theme='Catppuccin-Mocha'
 icon_theme='Win11-Dark'
 cursor_theme='Qogirr'
@@ -58,7 +58,7 @@ dunst_width='300'
 dunst_height='80'
 dunst_offset='20x40'
 dunst_origin='top-right'
-dunst_font='Zed Mono Extended 10'
+dunst_font='Zed Plex Mono 10'
 dunst_border='2'
 dunst_separator='2'
 

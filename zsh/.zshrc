@@ -73,7 +73,7 @@ setopt hist_find_no_dups
 setopt AUTOCD              # change directory just by typing its name
 setopt PROMPT_SUBST        # enable command substitution in prompt
 setopt MENU_COMPLETE       # Automatically highlight first element of completion menu
-setopt LIST_PACKED		   # The completion menu takes less space.
+setopt LIST_PACKED         # The completion menu takes less space.
 setopt AUTO_LIST           # Automatically list choices on ambiguous completion.
 setopt COMPLETE_IN_WORD    # Complete from both ends of a word.
 
@@ -181,6 +181,10 @@ run() {
 	fi
 	make "$1" && ./"$1"
 }
+function runc() {
+    rustc "$1" && ./$(basename "$1" .rs)
+}
+
 
 # Load nvm
 export NVM_DIR="${HOME}/.nvm"
@@ -190,6 +194,7 @@ export NVM_DIR="${HOME}/.nvm"
 alias ls='eza --icons=always --color=always -a'
 alias ll='command eza --icons=always --color=always -la'
 alias tree='eza --tree --level=2'
+alias zed='zeditor'
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)

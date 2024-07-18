@@ -9,6 +9,10 @@ return {
     "folke/ts-comments.nvim",
     enabled = false,
   },
+  {
+    "nvimtools/none-ls.nvim",
+    enabled = false,
+  },
   { "catppuccin/nvim", name = "catppuccin", enabled = false },
   { "nvim-pack/nvim-spectre", enabled = false },
 }
