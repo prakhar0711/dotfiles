@@ -27,7 +27,7 @@ BSPWM_PFC='#61c766'
 
 ## Bspwm appearance
 BSPWM_BORDER='1'
-BSPWM_GAP='10'
+BSPWM_GAP='5'
 BSPWM_SRATIO='0.50'
 
 ## Configurations --------------------------------------------#
@@ -70,8 +70,6 @@ three_monitors_workspaces() {
 
 ## Uncomment only one function according to your needs
 default_workspaces
-#two_monitors_workspaces
-#three_monitors_workspaces
 
 ## Apply bspwm configurations
 bspc config border_width "$BSPWM_BORDER"
@@ -115,7 +113,7 @@ for i in ${files[@]}; do
 done
 
 ## 4 > code (always open editors on workspace-4)
-declare -a code=(Geany code-oss code Code Visual Studio Code)
+declare -a code=(Geany code-oss code)
 for i in ${code[@]}; do
   bspc rule -a $i desktop='^4' follow=on focus=on
 done
