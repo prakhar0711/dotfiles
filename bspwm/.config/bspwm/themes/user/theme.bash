@@ -5,7 +5,7 @@
 # ------------------------------------------------------------------------------
 
 # Colors
-background='#222d32'
+background='#151521'
 foreground='#c4c7c5'
 color0='#263640'
 color1='#ec7875'
@@ -36,7 +36,7 @@ wallpaper="$wdir/wallpaper"
 polybar_font='Cascadia Code NF:size=10;3'
 
 # Rofi
-rofi_font='Zed Plex Mono'
+rofi_font='Cascadia Code'
 rofi_icon='Win11-Dark'
 
 # Terminal
