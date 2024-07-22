@@ -29,28 +29,28 @@ light_value='0.05'
 dark_value='0.30'
 
 # Wallpaper
-wdir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+wdir="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
 wallpaper="$wdir/wallpaper"
 
 # Polybar
-polybar_font='Iosevka Nerd Font:size=10;3'
+polybar_font='Cascadia Code NF:size=10;3'
 
 # Rofi
 rofi_font='Iosevka 10'
-rofi_icon='Arc-Circle'
+rofi_icon='Win11-Dark'
 
 # Terminal
-terminal_font_name='JetBrainsMono Nerd Font'
+terminal_font_name='Zed Plex Mono'
 terminal_font_size='10'
 
 # Geany
 geany_colors='arc.conf'
-geany_font='JetBrains Mono 10'
+geany_font='Zed Plex Mono 10'
 
 # Appearance
 gtk_font='Noto Sans 9'
-gtk_theme='Arc-Dark'
-icon_theme='Arc-Circle'
+gtk_theme='Everforest'
+icon_theme='Nordic-Folders'
 cursor_theme='Qogirr'
 
 # Dunst
@@ -65,12 +65,12 @@ dunst_separator='1'
 # Picom
 picom_backend='glx'
 picom_corner='0'
-picom_shadow_r='14'
-picom_shadow_o='0.30'
-picom_shadow_x='-12'
-picom_shadow_y='-12'
-picom_blur_method='none'
-picom_blur_strength='0'
+picom_shadow_r='0'
+picom_shadow_o='0'
+picom_shadow_x='0'
+picom_shadow_y='0'
+picom_blur_method='dual_kawase'
+picom_blur_strength='7'
 
 # Bspwm
 bspwm_fbc="$accent"
@@ -78,5 +78,5 @@ bspwm_nbc="$background"
 bspwm_abc="$color5"
 bspwm_pfc="$color2"
 bspwm_border='1'
-bspwm_gap='10'
+bspwm_gap='5'
 bspwm_sratio='0.50'

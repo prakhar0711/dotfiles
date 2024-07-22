@@ -1,7 +1,7 @@
 ## Copyright (C) 2020-2024 Aditya Shakya <adi1090x@gmail.com>
 
-Net/ThemeName "Catppuccin-Mocha"
-Net/IconThemeName "Win11-Dark"
+Net/ThemeName "Everforest"
+Net/IconThemeName "Nordic-Folders"
 Net/EnableEventSounds "0"
 Net/EnableInputFeedbackSounds "0"
 Xft/DPI "-1"

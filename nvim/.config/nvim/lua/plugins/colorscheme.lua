@@ -2,24 +2,24 @@ return {
   {
     "rebelot/kanagawa.nvim",
     opts = {
-      transparent = true,
+      transparent = false,
       theme = "wave",
       colors = {
-        -- palette = {
-        --   peachRed = "#CE2C66",
-        --   boatYellow2 = "#CE2C66",
-        --   springGreen = "#7BCE81",
-        --   oniViolet = "#CE2C66",
-        --   springBlue = "#0D625B",
-        --   crystalBlue = "#009489",
-        --   waveRed = "#CE2C66",
-        --   springViolet1 = "#F4CE02",
-        --   springViolet2 = "#187FC7",
-        --   fujiWhite = "#02B4A8",
-        --   waveAqua2 = "#ebdbb0",
-        --   -- sumiInk0 = "#1d2021", --lazy and mason background
-        --   sumiInk3 = "#10161C", --background
-        -- },
+        palette = {
+          --   peachRed = "#CE2C66",
+          --   boatYellow2 = "#CE2C66",
+          --   springGreen = "#7BCE81",
+          --   oniViolet = "#CE2C66",
+          --   springBlue = "#0D625B",
+          --   crystalBlue = "#009489",
+          --   waveRed = "#CE2C66",
+          --   springViolet1 = "#F4CE02",
+          --   springViolet2 = "#187FC7",
+          --   fujiWhite = "#02B4A8",
+          --   waveAqua2 = "#ebdbb0",
+          --   -- sumiInk0 = "#1d2021", --lazy and mason background
+          sumiInk3 = "#151521", --background
+        },
         theme = {
           all = {
             ui = {
