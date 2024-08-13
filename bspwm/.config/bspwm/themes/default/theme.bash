@@ -58,7 +58,7 @@ dunst_width='300'
 dunst_height='80'
 dunst_offset='10x42'
 dunst_origin='top-right'
-dunst_font='Iosevka Custom 9'
+dunst_font='Zed Plex Mono 9'
 dunst_border='1'
 dunst_separator='1'
 

@@ -136,7 +136,7 @@ alias ohmyzsh="thunar ~/.oh-my-zsh"
 # update aliases
 alias pacman-update='sudo pacman -Syu'
 alias yay-update='yay -Syu'
-# alias paru-update='paru -Syu'
+alias paru-update='paru -Syu'
 
 # git
 alias gcl='git clone --depth 1'
@@ -187,9 +187,9 @@ function runc() {
 
 
 # Load nvm
-export NVM_DIR="${HOME}/.nvm"
-[ -s "${NVM_DIR}/nvm.sh" ] && . "${NVM_DIR}/nvm.sh"
-[ -s "${NVM_DIR}/bash_completion" ] && . "${NVM_DIR}/bash_completion"
+# export NVM_DIR="${HOME}/.nvm"
+# [ -s "${NVM_DIR}/nvm.sh" ] && . "${NVM_DIR}/nvm.sh"
+# [ -s "${NVM_DIR}/bash_completion" ] && . "${NVM_DIR}/bash_completion"
 
 alias ls='eza --icons=always --color=always -a'
 alias ll='command eza --icons=always --color=always -la'
@@ -202,3 +202,12 @@ eval "$(zoxide init zsh)"
 . "$HOME/.atuin/bin/env"
 eval "$(atuin init zsh)"
 export FPATH="${HOME}/eza/completions/zsh:$FPATH"
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+
+# fnm
+FNM_PATH="/home/prakhar/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/home/prakhar/.local/share/fnm:$PATH"
+  eval "`fnm env`"
+fi
