@@ -26,5 +26,5 @@ vim.keymap.set("v", "p", '"_dP')
 
 vim.keymap.set("n", "<leader>m", "<cmd>Mason<cr>")
 
-vim.keymap.set("n", "<leader>fw", "<cmd>HopWord<cr>")
-vim.keymap.set("n", "<leader>fz", "<cmd>HopLine<cr>")
+-- vim.keymap.set("n", "<leader>fw", "<cmd>HopWord<cr>")
+-- vim.keymap.set("n", "<leader>fz", "<cmd>HopLine<cr>")

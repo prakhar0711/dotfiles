@@ -33,22 +33,22 @@ wdir="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
 wallpaper="$wdir/wallpaper"
 
 # Polybar
-polybar_font='Cascadia Code NF:size=10;3'
+polybar_font='DankMono Nerd Font:size=10;3'
 
 # Rofi
-rofi_font='Iosevka 10'
+rofi_font='DankMono Nerd Font'
 rofi_icon='Win11-Dark'
 
 # Terminal
-terminal_font_name='Zed Plex Mono'
-terminal_font_size='10'
+terminal_font_name='DankMono Nerd Font'
+terminal_font_size='12'
 
 # Geany
 geany_colors='arc.conf'
-geany_font='Zed Plex Mono 10'
+geany_font='DankMono Nerd Font 14'
 
 # Appearance
-gtk_font='Noto Sans 9'
+gtk_font='DankMono Nerd Font 10'
 gtk_theme='Everforest'
 icon_theme='Nordic-Folders'
 cursor_theme='Qogirr'
@@ -58,7 +58,7 @@ dunst_width='300'
 dunst_height='80'
 dunst_offset='10x42'
 dunst_origin='top-right'
-dunst_font='Zed Plex Mono 9'
+dunst_font='DankMono Nerd Font 11'
 dunst_border='1'
 dunst_separator='1'
 
