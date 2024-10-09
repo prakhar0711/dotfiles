@@ -86,7 +86,8 @@ function dir_icon {
   fi
 }
 
-PS1='%B%F{blue}%f%b  %B%F{magenta}%n%f%b $(dir_icon)  %B%F{red}%~%f%b${vcs_info_msg_0_} %(?.%B%F{green}.%F{red})%f%b '
+# PS1='%B%F{blue}%f%b  %B%F{magenta}%n%f%b $(dir_icon)  %B%F{red}%~%f%b${vcs_info_msg_0_} %(?.%B%F{green}.%F{red})%f%b '
+PS1='%B%F{magenta}%n%f%b $(dir_icon)  %B%F{red}%~%f%b${vcs_info_msg_0_} %(?.%B%F{green}.%F{red})%f%b '
 
 # command not found
 command_not_found_handler() {
@@ -124,7 +125,8 @@ fi
 # ALIAS
 alias mirrors="sudo reflector --verbose --latest 5 --country 'India' --age 6 --sort rate --save /etc/pacman.d/mirrorlist"
 alias grub-update="sudo grub-mkconfig -o /boot/grub/grub.cfg"
-alias maintenance="yay -Sc && sudo pacman -Scc"
+alias maintenance1="yay -Sc && sudo pacman -Scc"
+alias maintenance="sudo pacman -Scc"
 # alias purga="sudo pacman -Rns $(pacman -Qtdq) ; sudo fstrim -av"
 alias update="paru -Syu --nocombinedupgrade"
 alias music="ncmpcpp"
