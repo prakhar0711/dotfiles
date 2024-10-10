@@ -100,7 +100,8 @@ command_not_found_handler() {
 # source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 # source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
-plugins=(git zsh-interactive-cd zsh-syntax-highlighting zsh-autosuggestions zsh-completions)
+# plugins=(git zsh-interactive-cd zsh-syntax-highlighting zsh-autosuggestions zsh-completions)
+plugins=(git sudo zsh-256color zsh-interactive-cd zsh-syntax-highlighting zsh-autosuggestions zsh-completions)
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
@@ -158,9 +159,13 @@ alias n="nvim"
 export PATH="${HOME}/bin:${HOME}/.local/bin:/usr/local/bin:$PATH"
 
 # Path to your Oh My Zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+# export ZSH=$HOME/.oh-my-zsh
+# source $ZSH/oh-my-zsh.sh
+export ZSH=/usr/share/oh-my-zsh
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 source $ZSH/oh-my-zsh.sh
-
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+pokemon-colorscripts --no-title -r 1,3,6
 # On-demand rehash
 zshcache_time="$(date +%s%N)"
 
@@ -201,7 +206,7 @@ alias zed='zeditor'
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 eval "$(zoxide init zsh)"
-. "$HOME/.atuin/bin/env"
+# . "$HOME/.atuin/bin/env"
 eval "$(atuin init zsh)"
 export FPATH="${HOME}/eza/completions/zsh:$FPATH"
 export GOPATH=$HOME/go
@@ -213,3 +218,4 @@ if [ -d "$FNM_PATH" ]; then
   export PATH="/home/prakhar/.local/share/fnm:$PATH"
   eval "`fnm env`"
 fi
+eval "$(fnm env --use-on-cd --shell zsh)"
