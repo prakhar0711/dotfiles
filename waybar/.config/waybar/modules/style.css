@@ -1,8 +1,8 @@
 * {
     border: none;
     border-radius: 0px;
-    font-family: "DankMono Nerd Font";
-    font-weight: bold;
+    font-family: "CaskaydiaCove Nerd Font Mono";
+    font-weight: normal ;
     font-size: ${s_fontpx}px;
     min-height: 10px;
 }
