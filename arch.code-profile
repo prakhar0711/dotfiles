@@ -1,7 +1,5 @@
 {
-  // Font settings
-  "window.newWindowProfile": "arch",
-  "editor.fontFamily": "'Dank Mono'",
+  "editor.fontFamily": "'CaskaydiaCove Nerd Font Mono'",
   "editor.fontSize": 19,
   "editor.fontLigatures": "'calt', 'ss02', 'ss03', 'ss19', 'ss20'",
   "editor.hideCursorInOverviewRuler": true,
@@ -9,7 +7,6 @@
   "editor.cursorBlinking": "solid",
   "editor.cursorStyle": "block",
   "editor.cursorSmoothCaretAnimation": "on",
-
   // Editor settings
   "editor.smoothScrolling": true,
   "editor.tabSize": 2,
@@ -19,24 +16,20 @@
   "editor.formatOnSave": true,
   "workbench.sideBar.location": "right",
   "workbench.layoutControl.enabled": false,
-  "workbench.colorTheme": "Aura Dark",
-  "workbench.iconTheme": "moxer-icons",
   "window.commandCenter": true,
-  "window.customTitleBarVisibility": "auto",
-  "window.titleBarStyle": "custom",
+  "window.customTitleBarVisibility": "never",
+  "window.titleBarStyle": "native",
   "window.menuBarVisibility": "toggle",
   "window.density.editorTabHeight": "compact",
   "explorer.compactFolders": false,
-
   // Auto save settings
   "files.autoSave": "onWindowChange",
-
   // Settings application
-  "workbench.settings.applyToAllProfiles": ["editor.fontFamily"],
-
+  "workbench.settings.applyToAllProfiles": [
+    "editor.fontFamily"
+  ],
   // Code Runner settings
   "code-runner.runInTerminal": true,
-
   // Formatter settings
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -56,32 +49,30 @@
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-
   /* Token color customizations
-  "editor.tokenColorCustomizations": {
-    "textMateRules": [
-      {
-        "scope": [
-          "entity.name.function", // Function names
-          "variable.declarator", // Variable declarations
-          //"storage.type", // Data types
-          //"keyword",
-          "punctuation.definition.string.begin",
-          "punctuation.definition.string.end",
-          "variable.parameter",
-          "meta.preprocessor",
-          "keyword.control"
-        ],
-        "settings": {
-          "fontStyle": "italic"
+    "editor.tokenColorCustomizations": {
+      "textMateRules": [
+        {
+          "scope": [
+            "entity.name.function", // Function names
+            "variable.declarator", // Variable declarations
+            //"storage.type", // Data types
+            //"keyword",
+            "punctuation.definition.string.begin",
+            "punctuation.definition.string.end",
+            "variable.parameter",
+            "meta.preprocessor",
+            "keyword.control"
+          ],
+          "settings": {
+            "fontStyle": "italic"
+          }
         }
-      }
-    ]
-  },
-  */
+      ]
+    },
+    */
   "workbench.editor.showTabs": "none",
   "workbench.startupEditor": "none",
-  "workbench.statusBar.visible": true,
-  "jdk.jdkhome": "c:\\Program Files\\Java\\jdk-22",
-  
+  "workbench.statusBar.visible": false,
+  "workbench.colorTheme": "Monokai Vibrant"
 }

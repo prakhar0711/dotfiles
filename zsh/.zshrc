@@ -268,5 +268,4 @@ function in {
 alias ls='eza --icons=always --color=always -a'
 alias ll='command eza --icons=always --color=always -la'
 alias tree='eza --tree --level=2'
-alias zed='zeditor'
 
