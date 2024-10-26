@@ -1,10 +1,12 @@
 vim.opt.pumblend = 0
 vim.opt.winblend = 0
---[[ vim.opt.relativenumber = false ]]
+vim.opt.nu = true
+vim.opt.relativenumber = true
 
 vim.wo.cursorline = false
 -- Set highlight on search
-vim.o.hlsearch = true
+vim.opt.hlsearch = true
+vim.opt.incsearch = true
 
 -- Make line numbers default
 vim.wo.number = true
@@ -28,7 +30,7 @@ vim.o.smartcase = true
 vim.wo.signcolumn = "yes"
 
 -- Decrease update time
-vim.o.updatetime = 250
+vim.o.updatetime = 50
 vim.o.timeoutlen = 300
 
 -- Set completeopt to have a better completion experience
@@ -54,7 +56,7 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 
 -- " Always use spaces insted of tabs
-vim.opt.expandtab = false
+vim.opt.expandtab = true
 
 -- " Don't wrap lines
 vim.opt.wrap = true
@@ -64,6 +66,7 @@ vim.opt.linebreak = true
 vim.opt.showbreak = "↳"
 
 -- " Start scrolling when we'are 8 lines aways from borders
-vim.opt.scrolloff = 8
+vim.opt.scrolloff = 10
 vim.opt.sidescrolloff = 15
 vim.opt.sidescroll = 5
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
