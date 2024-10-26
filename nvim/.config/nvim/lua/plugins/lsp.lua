@@ -11,11 +11,14 @@ return {
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
         "j-hui/fidget.nvim",
+        "rafamadriz/friendly-snippets",
     },
 
     config = function()
+        require('luasnip.loaders.from_vscode').lazy_load()
         local cmp = require('cmp')
         local cmp_lsp = require("cmp_nvim_lsp")
+        -- local lsp_capabilities=require('cmp_nvim_lsp').default_capabilities()
         local capabilities = vim.tbl_deep_extend(
             "force",
             {},
@@ -39,12 +42,6 @@ return {
                 "clangd",
             },
             handlers = {
-                function(server_name) -- default handler (optional)
-                    require("lspconfig")[server_name].setup {
-                        capabilities = capabilities
-                    }
-                end,
-
                 zls = function()
                     local lspconfig = require("lspconfig")
                     lspconfig.zls.setup({
@@ -74,6 +71,24 @@ return {
                         }
                     }
                 end,
+                ["clangd"] = function()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.clangd.setup {
+                        capabilities = capabilities
+                    }
+                end,
+                ["vtsls"] = function()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.vtsls.setup {
+                        capabilities = capabilities
+                    }
+                end,
+                ["rust_analyzer"] = function()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.rust_analyzer.setup {
+                        capabilities = capabilities
+                    }
+                end,
             }
         })
 
@@ -85,6 +100,10 @@ return {
                     require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
                 end,
             },
+            -- window = {
+            --     completion = cmp.config.window.bordered(),
+            --     documentation = cmp.config.window.bordered(),
+            -- },
             mapping = cmp.mapping.preset.insert({
                 ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
                 ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
