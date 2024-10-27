@@ -49,6 +49,19 @@ vim.keymap.set(
 	{ desc = "Replace current word" }
 )
 
+vim.keymap.set("n", "<leader>sdf", function()
+	-- Get the word under the cursor
+	local current_word = vim.fn.expand("<cword>")
+	-- Prompt for the replacement word
+	local replacement_word = vim.fn.input("Replace with: ", current_word)
+	-- Use the count for line range, default to 1 if no count is provided
+	local count = vim.v.count1
+	-- Construct the substitution command with confirmation
+	local cmd = string.format(".,.+%ds/\\<%s\\>/%s/gcI", count - 1, current_word, replacement_word)
+	-- Execute the command
+	vim.cmd(cmd)
+end, { desc = "Replace current word in specified number of lines" })
+
 vim.keymap.set({ "n", "i", "v" }, "<C-s>", function()
 	vim.lsp.buf.format({ async = false }) -- Format the file
 	vim.cmd("write") -- Save the file
