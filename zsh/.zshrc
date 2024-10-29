@@ -1,3 +1,14 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+source ~/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
+# Powerlevel10k configuration
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
 # ====================================================================
 #  Shell Configuration and Environment Setup
 # ====================================================================
@@ -23,14 +34,6 @@ export HISTFILE="${HOME}/.config/zsh/zhistory"
 export GOPATH=$HOME/go
 export PATH="${HOME}/bin:${HOME}/.local/bin:/usr/local/bin:$PATH:$GOPATH/bin"
 export FPATH="${HOME}/eza/completions/zsh:$FPATH"
-
-# FNM (Fast Node Manager) setup
-FNM_PATH="/home/prakhar/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="/home/prakhar/.local/share/fnm:$PATH"
-  eval "`fnm env`"
-fi
-eval "$(fnm env --use-on-cd --shell zsh)"
 
 # ====================================================================
 #  ZSH Configuration & Plugins
@@ -97,15 +100,7 @@ alias .3='cd ../../..'
 alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
 
-# Compiling C and Rust Programs
-run() {
-  if [ -z "$1" ]; then
-    echo "Usage: run <filename>"
-    return 1
-  fi
-  make "$1" && ./"$1"
-}
-
+# Rust run shortcut
 runc() {
   rustc "$1" && ./$(basename "$1" .rs)
 }
@@ -155,24 +150,13 @@ rehash_precmd() {
 }
 add-zsh-hook -Uz precmd rehash_precmd
 
-# ====================================================================
-#  Prompt Setup and VCS Information
-# ====================================================================
-
-function dir_icon {
-  if [[ "$PWD" == "$HOME" ]]; then
-    echo "%B%F{cyan}%f%b"
-  else
-    echo "%B%F{cyan}%f%b"
-  fi
-}
-
-PS1='%B%F{magenta}%n%f%b $(dir_icon)  %B%F{red}%~%f%b${vcs_info_msg_0_} %(?.%B%F{green}.%F{red})%f%b '
-
 # Initialize VCS Info
-precmd () { vcs_info }
+precmd() { vcs_info }
 
-# Zsh Completion and Styles
+# ====================================================================
+#  Completion and Styles
+# ====================================================================
+
 zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:*:*:*' menu select
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS} 'ma=48;5;197;1'
@@ -197,75 +181,35 @@ bindkey "^I" expand-or-complete-with-dots
 #  Miscellaneous Setup
 # ====================================================================
 
-# Change terminal titles for supported terminals
-# Loaded during interactive sessions
-pokemon-colorscripts --no-title -r 1,3,6
+# Console Output Commands (move below Powerlevel10k setup)
+if [[ $- == *i* ]]; then
+  pokemon-colorscripts --no-title -r 1,3,6
+fi
 
-# Source Oh-My-Zsh and Powerlevel10k
-ZSH=/usr/share/oh-my-zsh
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+
+# ====================================================================
+#  Oh My Zsh Initialization
+# ====================================================================
+
+# Path to Oh My Zsh
+export ZSH="$HOME/.oh-my-zsh"
 source $ZSH/oh-my-zsh.sh
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 # Load fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 
-# Load Zoxide and Atuin
-eval "$(zoxide init zsh)"
-eval "$(atuin init zsh)"
-
-# Miscellaneous
-
-# In case a command is not found, try to find the package that has it
-function command_not_found_handler {
-    local purple='\e[1;35m' bright='\e[0;1m' green='\e[1;32m' reset='\e[0m'
-    printf 'zsh: command not found: %s\n' "$1"
-    local entries=( ${(f)"$(/usr/bin/pacman -F --machinereadable -- "/usr/bin/$1")"} )
-    if (( ${#entries[@]} )) ; then
-        printf "${bright}$1${reset} may be found in the following packages:\n"
-        local pkg
-        for entry in "${entries[@]}" ; do
-            local fields=( ${(0)entry} )
-            if [[ "$pkg" != "${fields[2]}" ]]; then
-                printf "${purple}%s/${bright}%s ${green}%s${reset}\n" "${fields[1]}" "${fields[2]}" "${fields[3]}"
-            fi
-            printf '    /%s\n' "${fields[4]}"
-            pkg="${fields[2]}"
-        done
-    fi
-    return 127
-}
-
-# Detect AUR wrapper
-if pacman -Qi yay &>/dev/null; then
-   aurhelper="yay"
-elif pacman -Qi paru &>/dev/null; then
-   aurhelper="paru"
-fi
-
-function in {
-    local -a inPkg=("$@")
-    local -a arch=()
-    local -a aur=()
-
-    for pkg in "${inPkg[@]}"; do
-        if pacman -Si "${pkg}" &>/dev/null; then
-            arch+=("${pkg}")
-        else
-            aur+=("${pkg}")
-        fi
-    done
-
-    if [[ ${#arch[@]} -gt 0 ]]; then
-        sudo pacman -S "${arch[@]}"
-    fi
-
-    if [[ ${#aur[@]} -gt 0 ]]; then
-        ${aurhelper} -S "${aur[@]}"
-    fi
-}
 # Filesystem Aliases
 alias ls='eza --icons=always --color=always -a'
 alias ll='command eza --icons=always --color=always -la'
 alias tree='eza --tree --level=2'
+# FNM (Fast Node Manager) setup
+FNM_PATH="/home/prakhar/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/home/prakhar/.local/share/fnm:$PATH"
+  eval "`fnm env`"
+fi
+eval "$(fnm env --use-on-cd --shell zsh)"
+# Load Zoxide and Atuin
+eval "$(zoxide init zsh)"
+eval "$(atuin init zsh)"
+
 
