@@ -59,7 +59,7 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
 -- " Don't wrap lines
-vim.opt.wrap = true
+vim.opt.wrap = false
 -- " Wrap lines at convenient points
 vim.opt.linebreak = true
 -- " Show line breaks
