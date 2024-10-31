@@ -153,6 +153,7 @@ set $ws10 "10"
 assign [class="kitty"] 3
 assign [class="firefox"] 2
 assign [class="dolphin"] 4
+assign [class="Nautilus"] 4
 
 
 # switch to workspace
