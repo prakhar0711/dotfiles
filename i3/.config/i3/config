@@ -25,6 +25,8 @@ exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id picom --config ~/.config/picom/picom.conf
 exec --no-startup-id dunst
+# Start battery notification daemon
+exec --no-startup-id ~/.config/dunst/scripts/battery.sh
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -39,16 +41,24 @@ exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+# bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+# bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+#
+#
+# # Sreen brightness controls
+# bindsym XF86MonBrightnessUp exec brightnessctl set +10% # increase screen brightness
+# bindsym XF86MonBrightnessDown exec brightnessctl set 10%- # decrease screen brightness
+#
+# Volume controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.config/dunst/scripts/volume.sh volume up
+bindsym XF86AudioLowerVolume exec --no-startup-id ~/.config/dunst/scripts/volume.sh volume down
+bindsym XF86AudioMute exec --no-startup-id ~/.config/dunst/scripts/volume.sh volume mute
 
-
-# Sreen brightness controls
-bindsym XF86MonBrightnessUp exec brightnessctl set +10% # increase screen brightness
-bindsym XF86MonBrightnessDown exec brightnessctl set 10%- # decrease screen brightness
-
+# Brightness controls
+bindsym XF86MonBrightnessUp exec --no-startup-id ~/.config/dunst/scripts/volume.sh brightness up
+bindsym XF86MonBrightnessDown exec --no-startup-id ~/.config/dunst/scripts/volume.sh brightness down
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play
 bindsym XF86AudioPause exec playerctl pause
