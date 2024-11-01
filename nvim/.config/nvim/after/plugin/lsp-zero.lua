@@ -127,8 +127,8 @@ cmp.setup({
 		fields = { "menu", "abbr" },
 		format = function(entry, item)
 			local menu_icon = {
-				nvim_lsp = "", -- LSP (alternative icons: , )
-				luasnip = "", -- Snippet (alternative: )
+				nvim_lsp = "", -- LSP (alternative icons: , ,)
+				luasnip = "", -- Snippet (alternative: ,)
 				buffer = "", -- Buffer (alternative: , )
 				path = "", -- Path (alternative: ﱮ, )
 				nvim_lua = "",

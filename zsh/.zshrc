@@ -104,6 +104,9 @@ alias .5='cd ../../../../..'
 runc() {
   rustc "$1" && ./$(basename "$1" .rs)
 }
+runj() {
+  javac "$1" && java $(basename "$1" .java)
+}
 
 # ZSH Plugins
 plugins=(git sudo zsh-256color zsh-interactive-cd zsh-syntax-highlighting zsh-autosuggestions zsh-completions)
