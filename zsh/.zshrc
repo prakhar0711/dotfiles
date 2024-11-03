@@ -186,7 +186,8 @@ bindkey "^I" expand-or-complete-with-dots
 
 # Console Output Commands (move below Powerlevel10k setup)
 if [[ $- == *i* ]]; then
-  pokemon-colorscripts --no-title -r 1,3,6
+  # pokemon-colorscripts --no-title -r 
+  krabby random
 fi
 
 

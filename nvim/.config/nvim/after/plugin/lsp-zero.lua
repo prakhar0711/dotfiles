@@ -83,10 +83,10 @@ local cmp_action = require("lsp-zero").cmp_action()
 local cmp_format = require("lsp-zero").cmp_format({ details = true })
 require("luasnip.loaders.from_vscode").lazy_load()
 cmp.setup({
-	completion = {
-		max_item_count = 10,
-	},
 	window = {
+		completion = cmp.config.window.bordered({
+			scrollbar = true,
+		}),
 		-- completion = cmp.config.window.bordered(),
 		-- documentation = cmp.config.window.bordered(),
 	},
@@ -98,11 +98,11 @@ cmp.setup({
 	-- 	{ name = "path", keyword_length = 5 },
 	-- },
 	sources = cmp.config.sources({
-		{ name = "nvim_lsp" },
-		{ name = "luasnip" }, -- For luasnip users.
-		{ name = "path", keyword_length = 5 },
+		{ name = "nvim_lsp", max_item_count = 4 },
+		{ name = "luasnip", max_item_count = 4 }, -- For luasnip users.
+		{ name = "path", keyword_length = 5, max_item_count = 4 },
 	}, {
-		{ name = "buffer" },
+		{ name = "buffer", max_item_count = 4 },
 	}),
 	mapping = cmp.mapping.preset.insert({
 		["<C-x>"] = cmp.mapping.confirm({ select = false }),
