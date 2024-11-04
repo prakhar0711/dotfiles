@@ -216,4 +216,3 @@ eval "$(fnm env --use-on-cd --shell zsh)"
 eval "$(zoxide init zsh)"
 eval "$(atuin init zsh)"
 
-
