@@ -77,6 +77,9 @@ tiling_drag modifier titlebar
 # start a terminal
 # bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Return exec wezterm 
+bindsym $mod+Shift+f exec prime-run firefox 
+bindsym $mod+Shift+i exec prime-run idea 
+bindsym $mod+Shift+d exec prime-run dolphin 
 
 # kill focused window
 bindsym $mod+q kill

@@ -8,9 +8,18 @@ return {
 
 			require("rose-pine").setup({
 				styles = {
-					bold = false,
+					bold = true,
 					italic = false,
 					transparency = true,
+				},
+				palette = {
+					moon = {
+						rose = "#eb6f92",
+						pine = "#509fbf",
+						iris = "#ac77ed",
+						foam = "#4be0fa",
+						base = "#000000",
+					},
 				},
 			})
 			vim.cmd.colorscheme("rose-pine-moon")

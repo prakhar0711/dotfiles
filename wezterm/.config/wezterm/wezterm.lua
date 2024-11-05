@@ -13,7 +13,7 @@ config = {
 	background = {
 		{
 			source = {
-				File = "/home/pp/wallpapers/lakeside_sunset.png",
+				File = "/home/pp/wallpapers/burning_cherry.jpeg",
 			},
 			hsb = { hue = 1, saturation = 0.8, brightness = 0.03 },
 			width = "100%",
@@ -33,6 +33,16 @@ config = {
 		top = 2,
 		bottom = 2,
 	},
+	webgpu_preferred_adapter = {
+		backend = "Vulkan",
+		device = 7446,
+		device_type = "DiscreteGpu",
+		driver = "NVIDIA",
+		driver_info = "565.57.01",
+		name = "NVIDIA GeForce MX330",
+		vendor = 4318,
+	},
+	front_end = "WebGpu",
 }
 
 return config
