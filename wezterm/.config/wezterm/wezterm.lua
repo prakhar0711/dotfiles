@@ -33,16 +33,16 @@ config = {
 		top = 2,
 		bottom = 2,
 	},
-	webgpu_preferred_adapter = {
-		backend = "Vulkan",
-		device = 7446,
-		device_type = "DiscreteGpu",
-		driver = "NVIDIA",
-		driver_info = "565.57.01",
-		name = "NVIDIA GeForce MX330",
-		vendor = 4318,
-	},
-	front_end = "WebGpu",
+	-- webgpu_preferred_adapter = {
+	-- 	backend = "Vulkan",
+	-- 	device = 7446,
+	-- 	device_type = "DiscreteGpu",
+	-- 	driver = "NVIDIA",
+	-- 	driver_info = "565.57.01",
+	-- 	name = "NVIDIA GeForce MX330",
+	-- 	vendor = 4318,
+	-- },
+	-- front_end = "WebGpu",
 }
 
 return config
