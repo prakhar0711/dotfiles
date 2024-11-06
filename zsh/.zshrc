@@ -70,7 +70,8 @@ fi
 # General Aliases
 alias mirrors="sudo reflector --verbose --latest 5 --country 'India' --age 6 --sort rate --save /etc/pacman.d/mirrorlist"
 alias grub-update="sudo grub-mkconfig -o /boot/grub/grub.cfg"
-alias maintenance="sudo pacman -Scc"
+alias pacman-maintenance="sudo pacman -Scc"
+alias paru-maintenance="sudo paru -Scc"
 alias update="paru -Syu --nocombinedupgrade"
 alias music="ncmpcpp"
 alias cat="bat --theme=base16"
@@ -81,18 +82,10 @@ alias pacman-update='sudo pacman -Syu'
 alias yay-update='yay -Syu'
 alias paru-update='paru -Syu'
 
-# Git Aliases
-alias gcl='git clone --depth 1'
-alias gi='git init'
-alias ga='git add'
-alias gc='git commit -m'
-alias gp='git push origin master'
-
 # Power Profile Aliases
 alias power-saver='powerprofilesctl set power-saver'
 alias power-performance='powerprofilesctl set performance'
 alias power-balanced='powerprofilesctl set balanced'
-
 
 # Directory navigation shortcuts
 alias ..='cd ..'
