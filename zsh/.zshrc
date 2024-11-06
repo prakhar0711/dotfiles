@@ -1,52 +1,68 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-# fi
-
-# source ~/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
-# # Powerlevel10k configuration
-# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-# eval "$(oh-my-posh init zsh)"
 # ====================================================================
-#  Shell Configuration and Environment Setup
+#  Core ZSH Configuration
 # ====================================================================
 
-# If not running interactively, don't do anything
+# Exit if not running interactively
 [[ $- != *i* ]] && return
+
+# Initialize Oh My Zsh
+export ZSH="$HOME/.oh-my-zsh"
 
 # ====================================================================
 #  Environment Variables
 # ====================================================================
-export VISUAL="${EDITOR}"
+
 export EDITOR='geany'
+export VISUAL="${EDITOR}"
 export BROWSER='firefox'
 export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
 export SUDO_PROMPT="Deploying root access for %u. Enter Password : "
 
-# Add local bin to PATH
-if [ -d "$HOME/.local/bin" ]; then
-  PATH="$HOME/.local/bin:$PATH"
-fi
-
-export HISTFILE="${HOME}/.config/zsh/zhistory"
+# Path Configuration
 export GOPATH=$HOME/go
 export PATH="${HOME}/bin:${HOME}/.local/bin:/usr/local/bin:$PATH:$GOPATH/bin"
 export FPATH="${HOME}/eza/completions/zsh:$FPATH"
 
+# History Configuration
+export HISTFILE="${HOME}/.config/zsh/zhistory"
+HISTSIZE=5000
+SAVEHIST=5000
+HISTDUP=erase
+
 # ====================================================================
-#  ZSH Configuration & Plugins
+#  History Options
 # ====================================================================
 
-# Initialize Zsh completion
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+
+# ====================================================================
+#  ZSH Options and Features
+# ====================================================================
+
+setopt AUTOCD
+setopt PROMPT_SUBST
+setopt MENU_COMPLETE
+setopt LIST_PACKED
+setopt AUTO_LIST
+setopt COMPLETE_IN_WORD
+
+# Initialize Completion System
 autoload -Uz compinit add-zsh-hook vcs_info
 for dump in ~/.config/zsh/zcompdump(N.mh+24); do
   compinit -d ~/.config/zsh/zcompdump
 done
 compinit -C -d "${HOME}/.config/zsh/zcompdump"
 
-# Hooks for title changing in terminals
+# ====================================================================
+#  Terminal Title Functions
+# ====================================================================
+
 function xterm_title_precmd() {
   print -Pn -- '\e]2;%n@%m %~\a'
   [[ "$TERM" == 'screen'* ]] && print -Pn -- '\e_\005{g}%n\005{-}@\005{m}%m\005{-} \005{B}%~\005{-}\e\\'
@@ -63,77 +79,61 @@ if [[ "$TERM" == (kitty*|alacritty*|tmux*|screen*|xterm*) ]]; then
 fi
 
 # ====================================================================
-#  Aliases and Shortcuts
+#  Completion Styles
 # ====================================================================
 
-# General Aliases
+zstyle ':completion:*' verbose true
+zstyle ':completion:*:*:*:*:*' menu select
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS} 'ma=48;5;197;1'
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' '+r:|[._-]=* r:|=*' '+l:|=*'
+zstyle ':completion:*:warnings' format "%B%F{red}No matches for:%f %F{magenta}%d%b"
+zstyle ':completion:*:descriptions' format '%F{yellow}[-- %d --]%f'
+zstyle ':vcs_info:*' formats ' %B%s-[%F{magenta}%f %F{yellow}%b%f]-'
+
+# ====================================================================
+#  Aliases
+# ====================================================================
+
+# System Maintenance
 alias mirrors="sudo reflector --verbose --latest 5 --country 'India' --age 6 --sort rate --save /etc/pacman.d/mirrorlist"
 alias grub-update="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 alias pacman-maintenance="sudo pacman -Scc"
 alias paru-maintenance="sudo paru -Scc"
 alias update="paru -Syu --nocombinedupgrade"
-alias music="ncmpcpp"
-alias cat="bat --theme=base16"
-alias n="nvim"
-
-# System Update Aliases
 alias pacman-update='sudo pacman -Syu'
 alias yay-update='yay -Syu'
 alias paru-update='paru -Syu'
 
-# Power Profile Aliases
-alias power-saver='powerprofilesctl set power-saver'
-alias power-performance='powerprofilesctl set performance'
-alias power-balanced='powerprofilesctl set balanced'
-
-# Directory navigation shortcuts
+# Navigation
 alias ..='cd ..'
 alias ...='cd ../..'
 alias .3='cd ../../..'
 alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
 
-# Rust run shortcut
+# Power Management
+alias power-saver='powerprofilesctl set power-saver'
+alias power-performance='powerprofilesctl set performance'
+alias power-balanced='powerprofilesctl set balanced'
+
+# Applications
+alias music="ncmpcpp"
+
+# ====================================================================
+#  Custom Functions
+# ====================================================================
+
+# Rust compilation and execution
 runc() {
   rustc "$1" && ./$(basename "$1" .rs)
 }
+
+# Java compilation and execution
 runj() {
   javac "$1" && java $(basename "$1" .java)
 }
 
-# ZSH Plugins
-plugins=(git sudo zsh-256color zsh-interactive-cd zsh-syntax-highlighting zsh-autosuggestions zsh-completions)
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-bindkey '^[[3~' delete-char
-
-# ====================================================================
-#  Zsh History Settings
-# ====================================================================
-
-HISTSIZE=5000
-SAVEHIST=5000
-HISTDUP=erase
-setopt appendhistory
-setopt sharehistory
-setopt hist_ignore_space
-setopt hist_ignore_all_dups
-setopt hist_save_no_dups
-setopt hist_ignore_dups
-setopt hist_find_no_dups
-
-# ====================================================================
-#  ZSH Options
-# ====================================================================
-
-setopt AUTOCD
-setopt PROMPT_SUBST
-setopt MENU_COMPLETE
-setopt LIST_PACKED
-setopt AUTO_LIST
-setopt COMPLETE_IN_WORD
-
-# On-demand rehash
+# Package cache handling
 zshcache_time="$(date +%s%N)"
 rehash_precmd() {
   if [[ -a /var/cache/zsh/pacman ]]; then
@@ -146,67 +146,47 @@ rehash_precmd() {
 }
 add-zsh-hook -Uz precmd rehash_precmd
 
-# Initialize VCS Info
-precmd() { vcs_info }
-
 # ====================================================================
-#  Completion and Styles
+#  Plugin Configuration
 # ====================================================================
 
-zstyle ':completion:*' verbose true
-zstyle ':completion:*:*:*:*:*' menu select
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS} 'ma=48;5;197;1'
-zstyle ':completion:*' matcher-list \
-  'm:{a-zA-Z}={A-Za-z}' \
-  '+r:|[._-]=* r:|=*' \
-  '+l:|=*'
-zstyle ':completion:*:warnings' format "%B%F{red}No matches for:%f %F{magenta}%d%b"
-zstyle ':completion:*:descriptions' format '%F{yellow}[-- %d --]%f'
-zstyle ':vcs_info:*' formats ' %B%s-[%F{magenta}%f %F{yellow}%b%f]-'
+plugins=(git sudo zsh-256color zsh-interactive-cd zsh-syntax-highlighting zsh-autosuggestions zsh-completions)
 
-# Completion with dots
-expand-or-complete-with-dots() {
-  echo -n "\e[31m…\e[0m"
-  zle expand-or-complete
-  zle redisplay
-}
-zle -N expand-or-complete-with-dots
-bindkey "^I" expand-or-complete-with-dots
-
-# ====================================================================
-#  Miscellaneous Setup
-# ====================================================================
-
-# Console Output Commands (move below Powerlevel10k setup)
-if [[ $- == *i* ]]; then
-  # pokemon-colorscripts --no-title -r 
-  krabby random
-fi
+# Key Bindings
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+bindkey '^[[3~' delete-char
 
 
 # ====================================================================
-#  Oh My Zsh Initialization
+#  External Tools Integration
 # ====================================================================
-# Path to Oh My Zsh
-export ZSH="$HOME/.oh-my-zsh"
-source $ZSH/oh-my-zsh.sh
-# Load fzf key bindings and fuzzy completion
-source <(fzf --zsh)
 
-# Filesystem Aliases
-alias ls='eza --icons=always --color=always -a'
-alias ll='command eza --icons=always --color=always -la'
-alias tree='eza --tree --level=2'
-# FNM (Fast Node Manager) setup
+# FNM (Fast Node Manager)
 FNM_PATH="/home/prakhar/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
   export PATH="/home/prakhar/.local/share/fnm:$PATH"
   eval "`fnm env`"
 fi
+
+# Various Tool Initializations
+source $ZSH/oh-my-zsh.sh
+source <(fzf --zsh)
 eval "$(fnm env --use-on-cd --shell zsh)"
-# Load Zoxide and Atuin
 eval "$(zoxide init zsh)"
 eval "$(atuin init zsh)"
-eval $(keychain --eval ~/.ssh/id_ed25519 2>/dev/null) > /dev/null
 eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
+
+# Console Output (if interactive)
+if [[ $- == *i* ]]; then
+  krabby random
+fi
+
+# File Management
+alias ls='eza --icons=always --color=always -a'
+alias ll='command eza --icons=always --color=always -la'
+alias tree='eza --tree --level=2'
+alias cat="bat --theme=base16"
+alias n="nvim"
+
 

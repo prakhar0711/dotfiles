@@ -8,19 +8,18 @@ config = {
 	enable_tab_bar = false,
 	window_close_confirmation = "NeverPrompt",
 	window_decorations = "RESIZE",
-	-- color_scheme = "Monokai Remastered",
 	color_scheme = "Rosé Pine (base16)",
 	background = {
 		{
 			source = {
 				File = "/home/pp/wallpapers/burning_cherry.jpeg",
 			},
-			hsb = { hue = 1, saturation = 0.8, brightness = 0.03 },
+			hsb = { hue = 1, saturation = 0.8, brightness = 0.08 },
 			width = "100%",
 			height = "100%",
 		},
 		{
-			source = { Color = "#282c35" },
+			source = { Color = "#000000" },
 
 			width = "100%",
 			height = "100%",
@@ -33,16 +32,9 @@ config = {
 		top = 2,
 		bottom = 2,
 	},
-	-- webgpu_preferred_adapter = {
-	-- 	backend = "Vulkan",
-	-- 	device = 7446,
-	-- 	device_type = "DiscreteGpu",
-	-- 	driver = "NVIDIA",
-	-- 	driver_info = "565.57.01",
-	-- 	name = "NVIDIA GeForce MX330",
-	-- 	vendor = 4318,
-	-- },
-	-- front_end = "WebGpu",
+	colors = {
+		cursor_bg = "#2b3f5e",
+	},
 }
 
 return config
