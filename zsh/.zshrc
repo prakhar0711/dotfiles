@@ -15,6 +15,18 @@
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
+# Check for existing SSH agent
+if [ -z "$SSH_AUTH_SOCK" ]; then
+    # Attempt to find an existing agent
+    if [ -r ~/.ssh/agent ]; then
+        source ~/.ssh/agent > /dev/null
+    fi
+
+    # If no agent found, start a new one
+    if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+        eval "$(ssh-agent -s)" > ~/.ssh/agent
+    fi
+fi
 
 # ====================================================================
 #  Environment Variables
@@ -207,6 +219,6 @@ eval "$(fnm env --use-on-cd --shell zsh)"
 # Load Zoxide and Atuin
 eval "$(zoxide init zsh)"
 eval "$(atuin init zsh)"
-
+eval $(keychain --eval ~/.ssh/id_ed25519)
 eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
 
