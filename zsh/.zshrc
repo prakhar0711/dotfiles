@@ -188,5 +188,5 @@ alias ll='command eza --icons=always --color=always -la'
 alias tree='eza --tree --level=2'
 alias cat="bat --theme=base16"
 alias n="nvim"
-
+alias ds="yazi"
 
