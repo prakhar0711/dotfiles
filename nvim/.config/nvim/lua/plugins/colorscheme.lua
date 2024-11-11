@@ -12,14 +12,13 @@ return {
 				palette = {
 					moon = {
 						rose = "#eb6f92",
-						pine = "#509fbf",
+						-- pine = "#509fbf",
 						iris = "#ac77ed",
 						-- foam = "#4be0fa",
-						base = "#000000",
+						-- base = "#000000",
 					},
 				},
 			})
-			-- vim.cmd.colorscheme("rose-pine-moon")
 		end,
 	},
 	{

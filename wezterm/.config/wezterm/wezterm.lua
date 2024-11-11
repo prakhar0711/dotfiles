@@ -33,7 +33,7 @@ config = {
 		bottom = 2,
 	},
 	colors = {
-		cursor_bg = "#2b3f5e",
+		cursor_bg = "#2b8f61",
 	},
 }
 

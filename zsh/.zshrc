@@ -12,7 +12,7 @@ export ZSH="$HOME/.oh-my-zsh"
 #  Environment Variables
 # ====================================================================
 
-export EDITOR='geany'
+export EDITOR='nvim'
 export VISUAL="${EDITOR}"
 export BROWSER='firefox'
 export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
@@ -150,7 +150,7 @@ add-zsh-hook -Uz precmd rehash_precmd
 #  Plugin Configuration
 # ====================================================================
 
-plugins=(git sudo zsh-256color zsh-interactive-cd zsh-syntax-highlighting zsh-autosuggestions zsh-completions)
+plugins=(git sudo zsh-256color zsh-interactive-cd zsh-syntax-highlighting zsh-autosuggestions zsh-completions zsh-vi-mode)
 
 # Key Bindings
 bindkey '^[[A' history-substring-search-up
@@ -190,3 +190,7 @@ alias cat="bat --theme=base16"
 alias n="nvim"
 alias ds="yazi"
 
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
