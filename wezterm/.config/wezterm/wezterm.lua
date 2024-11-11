@@ -10,20 +10,20 @@ config = {
 	window_decorations = "RESIZE",
 	color_scheme = "Rosé Pine (base16)",
 	background = {
+		-- {
+		-- 	source = {
+		-- 		File = "/home/pp/wallpapers/burning_cherry.jpeg",
+		-- 	},
+		-- 	hsb = { hue = 1, saturation = 0.8, brightness = 0.08 },
+		-- 	width = "100%",
+		-- 	height = "100%",
+		-- },
 		{
-			source = {
-				File = "/home/pp/wallpapers/burning_cherry.jpeg",
-			},
-			hsb = { hue = 1, saturation = 0.8, brightness = 0.08 },
-			width = "100%",
-			height = "100%",
-		},
-		{
-			source = { Color = "#000000" },
+			source = { Color = "#001B26" },
 
 			width = "100%",
 			height = "100%",
-			opacity = 0.55,
+			-- opacity = 1,
 		},
 	},
 	window_padding = {
@@ -34,6 +34,7 @@ config = {
 	},
 	colors = {
 		cursor_bg = "#2b8f61",
+		-- background = "#000000",
 	},
 }
 
