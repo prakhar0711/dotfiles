@@ -2,7 +2,7 @@ local wezterm = require("wezterm")
 
 config = wezterm.config_builder()
 config = {
-	font = wezterm.font("Drafting* Mono"),
+	font = wezterm.font("Drafting* Mono Nerd Font"),
 	font_size = 16,
 	automatically_reload_config = true,
 	enable_tab_bar = false,
@@ -19,7 +19,7 @@ config = {
 		-- 	height = "100%",
 		-- },
 		{
-			source = { Color = "#001B26" },
+			source = { Color = "#01121a" },
 
 			width = "100%",
 			height = "100%",
