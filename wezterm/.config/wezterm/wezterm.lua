@@ -1,5 +1,5 @@
 local wezterm = require("wezterm")
-
+local act = wezterm.action
 config = wezterm.config_builder()
 config = {
 	font = wezterm.font("Drafting* Mono Nerd Font"),
@@ -35,6 +35,35 @@ config = {
 	colors = {
 		cursor_bg = "#2b8f61",
 		-- background = "#000000",
+	},
+	keys = {
+
+		{
+			key = "h",
+			mods = "CTRL|SHIFT",
+			action = act.ActivatePaneDirection("Left"),
+		},
+
+		-- Ctrl+Shift+l to activate pane to the right
+		{
+			key = "l",
+			mods = "CTRL|SHIFT",
+			action = act.ActivatePaneDirection("Right"),
+		},
+
+		-- Ctrl+Shift+k to activate pane above
+		{
+			key = "k",
+			mods = "CTRL|SHIFT",
+			action = act.ActivatePaneDirection("Up"),
+		},
+
+		-- Ctrl+Shift+j to activate pane below
+		{
+			key = "j",
+			mods = "CTRL|SHIFT",
+			action = act.ActivatePaneDirection("Down"),
+		},
 	},
 }
 

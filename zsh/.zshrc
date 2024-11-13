@@ -189,6 +189,7 @@ alias tree='eza --tree --level=2'
 alias cat="bat --theme=base16"
 alias n="nvim"
 alias ds="yazi"
+alias slock="i3lock-fancy"
 
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!

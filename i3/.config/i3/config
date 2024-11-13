@@ -67,6 +67,10 @@ bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
+bindsym Print exec maim "/home/$USER/Pictures/$(date).jpg"
+bindsym $mod+Print exec maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/$(date).jpg"
+bindsym Shift+Print exec maim --select "/home/$USER/Pictures/$(date).jpg"
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
