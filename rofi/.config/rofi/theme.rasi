@@ -7,7 +7,7 @@
     fg-col: #cdd6f4;
     fg-col2: #f38ba8;
     grey: #6c7086;
-    font: "Drafting* Mono Nerd Font 11";
+    font: "Drafting* Mono 11";
 }
 
 element-text, element-icon , mode-switcher {
