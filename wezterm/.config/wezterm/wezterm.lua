@@ -67,6 +67,16 @@ config = {
 			mods = "CTRL|SHIFT",
 			action = act.ActivatePaneDirection("Down"),
 		},
+		{
+			key = '"',
+			mods = "CTRL|SHIFT|ALT",
+			action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
+		},
+		{
+			key = "|",
+			mods = "CTRL|SHIFT|ALT",
+			action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
+		},
 	},
 }
 
