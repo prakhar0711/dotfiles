@@ -1,3 +1,4 @@
+"$schema" = "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json"
 console_title_template = '{{ .Shell }} in {{ .Folder }}'
 version = 3
 final_space = true
@@ -18,15 +19,25 @@ final_space = true
             style='full'
 
     [[blocks.segments]]
-        type = 'git'
-        style = 'plain'
-        template = ' {{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }} <cyan>{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}</>'
-        foreground = '#6c6c6c'
-        background = 'transparent'
+        # type = 'git'
+        # style = 'plain'
+        # template = ' {{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }} <cyan>{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}</>'
+        # foreground = '#6c6c6c'
+        # background = 'transparent'
+        foreground = "#D0666F"
+        style = "plain"
+        template = "<#5FAAE8> git:(</>{{ .HEAD }}<#5FAAE8>)</>"
+        type = "git"
         [blocks.segments.properties]
             branch_icon=''
             commit_icon = '@'
             fetch_status=true
+
+      [[blocks.segments]]
+         foreground = "#BF616A"
+         style = "plain"
+         template = " ✗"
+         type = "status"
 
 [[blocks]]
     type='prompt'
@@ -39,13 +50,14 @@ final_space = true
         foreground_templates = ['{{if gt .Code 0}}red{{end}}', '{{if eq .Code 0}}#C574DD{{end}}']
         background='transparent'
         # foreground='#C574DD'
-        template="❯" 
-
+        template = "➜"
 [transient_prompt]
     # foreground="#C574DD"
     foreground_templates = ['{{if gt .Code 0}}red{{end}}', '{{if eq .Code 0}}#C574DD{{end}}']
     background='transparent'
-    template="❯ " 
+    # template="❯ " 
+    template = "➜ "
+
 
 [secondary_prompt]
   template = '❯❯ '
