@@ -2,6 +2,7 @@ local wezterm = require("wezterm")
 local act = wezterm.action
 config = wezterm.config_builder()
 config = {
+	freetype_load_flags = "NO_HINTING",
 	font = wezterm.font("Drafting* Mono Nerd Font"),
 	font_size = 16,
 	automatically_reload_config = true,
@@ -19,7 +20,8 @@ config = {
 		-- 	height = "100%",
 		-- },
 		{
-			source = { Color = "#01121a" },
+			-- source = { Color = "#01121a" },
+			source = { Color = "#000000" },
 
 			width = "100%",
 			height = "100%",
@@ -33,7 +35,8 @@ config = {
 		bottom = 2,
 	},
 	colors = {
-		cursor_bg = "#2b8f61",
+		-- cursor_bg = "#2b8f61",
+		cursor_bg = "#FF4971",
 		-- background = "#000000",
 	},
 	keys = {
