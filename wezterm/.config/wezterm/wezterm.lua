@@ -3,7 +3,10 @@ local act = wezterm.action
 config = wezterm.config_builder()
 config = {
 	freetype_load_flags = "NO_HINTING",
-	font = wezterm.font("Drafting* Mono"),
+	-- Disable bold fonts
+	bold_brightens_ansi_colors = false,
+	font = wezterm.font_with_fallback({ "ColonMonoW01 Nerd Font", "Drafting* Mono", "OverpassM Nerd Font" }),
+	line_height = 1.11,
 	font_size = 16,
 	automatically_reload_config = true,
 	enable_tab_bar = false,
