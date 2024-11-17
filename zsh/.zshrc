@@ -124,7 +124,7 @@ alias music="ncmpcpp"
 # ====================================================================
 
 # Rust compilation and execution
-runc() {
+runr() {
   rustc "$1" && ./$(basename "$1" .rs)
 }
 
@@ -153,9 +153,20 @@ add-zsh-hook -Uz precmd rehash_precmd
 plugins=(git sudo zsh-256color zsh-interactive-cd zsh-syntax-highlighting zsh-autosuggestions zsh-completions zsh-vi-mode)
 
 # Key Bindings
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-bindkey '^[[3~' delete-char
+bindkey '\e[A' history-substring-search-up
+bindkey '\e[B' history-substring-search-down
+bindkey '\e[3~' delete-char
+
+# The prompt cursor in normal mode
+# Disable the cursor style feature
+ZVM_CURSOR_STYLE_ENABLED=false
+ZVM_NORMAL_MODE_CURSOR=ZVM_CURSOR_BLOCK
+# The prompt cursor in insert mode=ZVM_CURSOR_BLOCK
+ZVM_INSERT_MODE_CURSOR=ZVM_CURSOR_BLOCK
+# The prompt cursor in visual mode=ZVM_CURSOR_BLOCK
+ZVM_VISUAL_MODE_CURSOR=ZVM_CURSOR_BLOCK
+# The prompt cursor in visual line mode=ZVM_CURSOR_BLOCK
+ZVM_VISUAL_LINE_MODE_CURSOR=ZVM_CURSOR_BLOCK
 
 
 # ====================================================================

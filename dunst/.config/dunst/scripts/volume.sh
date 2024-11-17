@@ -1,23 +1,24 @@
 #!/bin/bash
-
 # System notifications script for brightness and volume using dunst
-
 # Notification configuration
 NOTIFY_EXPIRES=2000
 PROGRESS_WIDTH=50
 VOLUME_STEP=5
 BRIGHTNESS_STEP=5
+MAX_VOLUME=150  # Maximum allowed volume with boost
+VOLUME_WARNING_THRESHOLD=100  # Threshold for showing warning
 
 # Icons (you can replace these with custom icons)
 VOLUME_MUTED="audio-volume-muted"
 VOLUME_LOW="audio-volume-low"
 VOLUME_MEDIUM="audio-volume-medium"
 VOLUME_HIGH="audio-volume-high"
+VOLUME_BOOST="audio-volume-high"  # You might want a specific icon for boosted volume
 BRIGHTNESS_ICON="display-brightness"
 
 # Volume Control
 get_volume() {
-    pamixer --get-volume
+    pamixer --get-volume --allow-boost
 }
 
 is_muted() {
@@ -26,13 +27,75 @@ is_muted() {
 
 set_volume() {
     local volume=$1
+    local current_volume=$(get_volume)
+    
     if [ "$volume" -lt 0 ]; then
-        pamixer --set-volume 0
-    elif [ "$volume" -gt 100 ]; then
-        pamixer --set-volume 100
+        pamixer --set-volume 0 --allow-boost
+    elif [ "$volume" -gt "$MAX_VOLUME" ]; then
+        pamixer --set-volume "$MAX_VOLUME" --allow-boost
     else
-        pamixer --set-volume "$volume"
+        pamixer --set-volume "$volume" --allow-boost
+        # Show warning notification if crossing the normal threshold
+        if [ "$current_volume" -le 100 ] && [ "$volume" -gt 100 ]; then
+            show_volume_warning
+        fi
     fi
+}
+
+# Show warning when enabling volume boost
+show_volume_warning() {
+    dunstify -a "volume" -i "dialog-warning" -t 3000 \
+        -h string:x-dunst-stack-tag:volume_warning \
+        "Volume Boost Enabled" \
+        "Warning: High volume can damage your hearing"
+}
+
+# Create progress bar with boost indication
+make_progress_bar() {
+    local percent=$1
+    local width=$2
+    local normal_width=100
+    local boost_width=$(( width * (percent - 100) / (MAX_VOLUME - 100) ))
+    local normal_filled
+    local boost_filled
+    
+    if [ "$percent" -le 100 ]; then
+        normal_filled=$(( width * percent / 100 ))
+        printf '█%.0s' $(seq 1 $normal_filled)
+        printf '░%.0s' $(seq 1 $(( width - normal_filled )))
+    else
+        normal_filled=$width
+        boost_filled=$(( width * (percent - 100) / (MAX_VOLUME - 100) ))
+        printf '█%.0s' $(seq 1 $width)
+        printf '░%.0s' $(seq 1 $boost_filled)
+    fi
+}
+
+# Show volume notification
+show_volume_notification() {
+    local volume=$(get_volume)
+    local progress=$(make_progress_bar "$volume" "$PROGRESS_WIDTH")
+    local icon
+    local volume_text="Volume: ${volume}%"
+    
+    if [ "$(is_muted)" = "true" ]; then
+        icon=$VOLUME_MUTED
+        progress="MUTED"
+    elif [ "$volume" -gt 100 ]; then
+        icon=$VOLUME_BOOST
+        volume_text="Boosted Volume: ${volume}%"
+    elif [ "$volume" -lt 33 ]; then
+        icon=$VOLUME_LOW
+    elif [ "$volume" -lt 66 ]; then
+        icon=$VOLUME_MEDIUM
+    else
+        icon=$VOLUME_HIGH
+    fi
+    
+    dunstify -a "volume" -i "$icon" -t "$NOTIFY_EXPIRES" \
+        -h string:x-dunst-stack-tag:volume \
+        "$volume_text" \
+        "$progress"
 }
 
 # Brightness Control using brightnessctl
@@ -49,45 +112,10 @@ set_brightness() {
     fi
 }
 
-# Create progress bar
-make_progress_bar() {
-    local percent=$1
-    local width=$2
-    local filled=$(( width * percent / 100 ))
-    local empty=$(( width - filled ))
-    
-    printf '█%.0s' $(seq 1 $filled)
-    printf '░%.0s' $(seq 1 $empty)
-}
-
-# Show volume notification
-show_volume_notification() {
-    local volume=$(get_volume)
-    local progress=$(make_progress_bar "$volume" "$PROGRESS_WIDTH")
-    local icon
-
-    if [ "$(is_muted)" = "true" ]; then
-        icon=$VOLUME_MUTED
-        progress="MUTED"
-    elif [ "$volume" -lt 33 ]; then
-        icon=$VOLUME_LOW
-    elif [ "$volume" -lt 66 ]; then
-        icon=$VOLUME_MEDIUM
-    else
-        icon=$VOLUME_HIGH
-    fi
-
-    dunstify -a "volume" -i "$icon" -t "$NOTIFY_EXPIRES" \
-        -h string:x-dunst-stack-tag:volume \
-        "Volume: ${volume}%" \
-        "$progress"
-}
-
 # Show brightness notification
 show_brightness_notification() {
     local brightness=$(get_brightness)
     local progress=$(make_progress_bar "$brightness" "$PROGRESS_WIDTH")
-
     dunstify -a "brightness" -i "$BRIGHTNESS_ICON" -t "$NOTIFY_EXPIRES" \
         -h string:x-dunst-stack-tag:brightness \
         "Brightness: ${brightness}%" \
