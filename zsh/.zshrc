@@ -7,7 +7,6 @@
 
 # Initialize Oh My Zsh
 export ZSH="$HOME/.oh-my-zsh"
-
 # ====================================================================
 #  Environment Variables
 # ====================================================================
@@ -168,7 +167,6 @@ ZVM_VISUAL_MODE_CURSOR=ZVM_CURSOR_BLOCK
 # The prompt cursor in visual line mode=ZVM_CURSOR_BLOCK
 ZVM_VISUAL_LINE_MODE_CURSOR=ZVM_CURSOR_BLOCK
 
-
 # ====================================================================
 #  External Tools Integration
 # ====================================================================
@@ -201,7 +199,6 @@ alias cat="bat --theme=base16"
 alias n="nvim"
 alias ds="yazi"
 alias slock="i3lock-fancy"
-
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
