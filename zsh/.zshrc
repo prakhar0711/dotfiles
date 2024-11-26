@@ -201,6 +201,9 @@ alias ds="yazi"
 alias slock="i3lock-fancy"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+
+export PATH="/usr/lib/jvm/java-23-openjdk/bin:$PATH"
+export java="/usr/lib/jvm/java-23-openjdk/bin:$PATH"
 export MANPAGER='nvim +Man!'
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
