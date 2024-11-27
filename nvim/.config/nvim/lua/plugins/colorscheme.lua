@@ -11,11 +11,15 @@ return {
 				},
 				palette = {
 					moon = {
-						rose = "#eb6f92",
-						-- pine = "#509fbf",
+						rose = "#e84d78",
 						iris = "#ac77ed",
-						-- foam = "#4be0fa",
-						-- base = "#000000",
+						base = "#191724",
+						surface = "#1f1d2e",
+						overlay = "#26233a",
+						-- gold = "#ea9d34",
+						-- text = "#ffffff",
+						-- pine = "#203fbf",
+						-- foam = "#f6c177",
 					},
 				},
 			})
