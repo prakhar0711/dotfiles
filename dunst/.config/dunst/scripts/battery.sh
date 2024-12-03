@@ -13,7 +13,7 @@ SOUND_CRITICAL="/usr/share/sounds/freedesktop/stereo/suspend-error.oga"
 SOUND_LOW="/usr/share/sounds/freedesktop/stereo/suspend-error.oga"
 
 # Path to battery - modify if needed
-BATTERY_PATH="/sys/class/power_supply/BAT0"
+BATTERY_PATH="/sys/class/power_supply/BAT1"
 
 while true; do
     # Get battery percentage
