@@ -207,3 +207,10 @@ export java="/usr/lib/jvm/java-23-openjdk/bin:$PATH"
 export MANPAGER='nvim +Man!'
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# fnm
+FNM_PATH="/home/prakhar/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/home/prakhar/.local/share/fnm:$PATH"
+  eval "`fnm env`"
+fi

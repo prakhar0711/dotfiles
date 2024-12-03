@@ -1,0 +1,44 @@
+2024-12-03 13:41:24.010 [info] Started local extension host with pid 35616.
+2024-12-03 13:41:24.031 [info] Started initializing default profile extensions in extensions installation folder. file:///home/prakhar/.vscode/extensions
+2024-12-03 13:41:24.087 [info] Completed initializing default profile extensions in extensions installation folder. file:///home/prakhar/.vscode/extensions
+2024-12-03 13:41:24.238 [info] Settings Sync: Updating due to initialize
+2024-12-03 13:41:24.238 [info] Settings Sync: Updating authentication providers. Authentication Providers from store: [{"id":"github","scopes":["user:email"]},{"id":"microsoft","scopes":["openid","profile","email","offline_access"]}]
+2024-12-03 13:41:24.238 [info] Settings Sync: Authentication providers updated []
+2024-12-03 13:41:24.419 [info] Settings Sync: Updating authentication providers. Authentication Providers from store: [{"id":"github","scopes":["user:email"]},{"id":"microsoft","scopes":["openid","profile","email","offline_access"]}]
+2024-12-03 13:41:24.419 [info] Settings Sync: Authentication providers updated ["github"]
+2024-12-03 13:41:24.419 [info] Settings Sync: Updating authentication providers. Authentication Providers from store: [{"id":"github","scopes":["user:email"]},{"id":"microsoft","scopes":["openid","profile","email","offline_access"]}]
+2024-12-03 13:41:24.419 [info] Settings Sync: Authentication providers updated ["github"]
+2024-12-03 13:41:24.419 [info] Settings Sync: Updating authentication providers. Authentication Providers from store: [{"id":"github","scopes":["user:email"]},{"id":"microsoft","scopes":["openid","profile","email","offline_access"]}]
+2024-12-03 13:41:24.419 [info] Settings Sync: Authentication providers updated ["github","microsoft"]
+2024-12-03 13:41:24.420 [info] Settings Sync: Updating authentication providers. Authentication Providers from store: [{"id":"github","scopes":["user:email"]},{"id":"microsoft","scopes":["openid","profile","email","offline_access"]}]
+2024-12-03 13:41:24.420 [info] Settings Sync: Authentication providers updated ["github","microsoft"]
+2024-12-03 13:41:24.428 [info] Settings Sync: Updating due to declared authentication providers changed
+2024-12-03 13:41:24.429 [info] Settings Sync: Updating authentication providers. Authentication Providers from store: [{"id":"github","scopes":["user:email"]},{"id":"microsoft","scopes":["openid","profile","email","offline_access"]}]
+2024-12-03 13:41:24.429 [info] Settings Sync: Authentication providers updated ["github","microsoft"]
+2024-12-03 13:41:24.429 [info] Settings Sync: Updating due to declared authentication providers changed
+2024-12-03 13:41:24.429 [info] Settings Sync: Updating authentication providers. Authentication Providers from store: [{"id":"github","scopes":["user:email"]},{"id":"microsoft","scopes":["openid","profile","email","offline_access"]}]
+2024-12-03 13:41:24.429 [info] Settings Sync: Authentication providers updated ["github","microsoft"]
+2024-12-03 13:41:26.867 [info] [perf] Render performance baseline is 19ms
+2024-12-03 13:42:36.028 [error] ENOENT: no such file or directory, open '/home/prakhar/.config/Code/User/globalStorage/vscodevim.vim/.registers': Error: ENOENT: no such file or directory, open '/home/prakhar/.config/Code/User/globalStorage/vscodevim.vim/.registers'
+2024-12-03 13:42:43.259 [error] [network] #19: https://marketplace.visualstudio.com/_apis/public/gallery/extensionquery - error POST Canceled
+2024-12-03 13:43:16.625 [info] Started local extension host with pid 36238.
+2024-12-03 13:43:16.847 [info] Settings Sync: Updating due to initialize
+2024-12-03 13:43:16.847 [info] Settings Sync: Updating authentication providers. Authentication Providers from store: [{"id":"github","scopes":["user:email"]},{"id":"microsoft","scopes":["openid","profile","email","offline_access"]}]
+2024-12-03 13:43:16.847 [info] Settings Sync: Authentication providers updated []
+2024-12-03 13:43:16.947 [info] Settings Sync: Updating authentication providers. Authentication Providers from store: [{"id":"github","scopes":["user:email"]},{"id":"microsoft","scopes":["openid","profile","email","offline_access"]}]
+2024-12-03 13:43:16.954 [info] Settings Sync: Authentication providers updated ["github"]
+2024-12-03 13:43:16.954 [info] Settings Sync: Updating authentication providers. Authentication Providers from store: [{"id":"github","scopes":["user:email"]},{"id":"microsoft","scopes":["openid","profile","email","offline_access"]}]
+2024-12-03 13:43:16.954 [info] Settings Sync: Authentication providers updated ["github"]
+2024-12-03 13:43:16.954 [info] Settings Sync: Updating authentication providers. Authentication Providers from store: [{"id":"github","scopes":["user:email"]},{"id":"microsoft","scopes":["openid","profile","email","offline_access"]}]
+2024-12-03 13:43:16.954 [info] Settings Sync: Authentication providers updated ["github","microsoft"]
+2024-12-03 13:43:16.954 [info] Settings Sync: Updating authentication providers. Authentication Providers from store: [{"id":"github","scopes":["user:email"]},{"id":"microsoft","scopes":["openid","profile","email","offline_access"]}]
+2024-12-03 13:43:16.954 [info] Settings Sync: Authentication providers updated ["github","microsoft"]
+2024-12-03 13:43:16.954 [info] Settings Sync: Updating due to declared authentication providers changed
+2024-12-03 13:43:16.955 [info] Settings Sync: Updating authentication providers. Authentication Providers from store: [{"id":"github","scopes":["user:email"]},{"id":"microsoft","scopes":["openid","profile","email","offline_access"]}]
+2024-12-03 13:43:16.955 [info] Settings Sync: Authentication providers updated ["github","microsoft"]
+2024-12-03 13:43:16.955 [info] Settings Sync: Updating due to declared authentication providers changed
+2024-12-03 13:43:16.955 [info] Settings Sync: Updating authentication providers. Authentication Providers from store: [{"id":"github","scopes":["user:email"]},{"id":"microsoft","scopes":["openid","profile","email","offline_access"]}]
+2024-12-03 13:43:16.955 [info] Settings Sync: Authentication providers updated ["github","microsoft"]
+2024-12-03 13:43:18.132 [error] ENOENT: no such file or directory, open '/home/prakhar/.config/Code/User/globalStorage/vscodevim.vim/.registers': Error: ENOENT: no such file or directory, open '/home/prakhar/.config/Code/User/globalStorage/vscodevim.vim/.registers'
+2024-12-03 13:43:19.255 [info] [perf] Render performance baseline is 20ms
+2024-12-03 13:45:02.447 [warning] [backup tracker] suspended, ignoring dirty change event file:///home/prakhar/development/hello.c 

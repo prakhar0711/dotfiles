@@ -1,0 +1,70 @@
+{
+    "telemetry.sqmId": "",
+    "telemetry.machineId": "397873a7026baaaa5b30370e33fda66c251194b50bb3266f918ab2007b5f45ff",
+    "telemetry.devDeviceId": "77d0a377-0774-4725-aad8-f198751a5c72",
+    "backupWorkspaces": {
+        "workspaces": [],
+        "folders": [
+            {
+                "folderUri": "file:///home/prakhar/development"
+            }
+        ],
+        "emptyWindows": [
+            {
+                "backupFolder": "1733213483445"
+            }
+        ]
+    },
+    "windowControlHeight": 35,
+    "profileAssociations": {
+        "workspaces": {
+            "file:///home/prakhar/development": "__default__profile__"
+        },
+        "emptyWindows": {
+            "1733213483445": "__default__profile__"
+        }
+    },
+    "theme": "vs-dark",
+    "themeBackground": "#1f1f1f",
+    "windowSplash": {
+        "zoomLevel": 0,
+        "baseTheme": "vs-dark",
+        "colorInfo": {
+            "foreground": "#dddddd",
+            "background": "#1f1f1f",
+            "editorBackground": "#1f1f1f",
+            "titleBarBackground": "#161616",
+            "titleBarBorder": "#000000",
+            "activityBarBackground": "#0f0f0f",
+            "activityBarBorder": "#000000",
+            "sideBarBackground": "#161616",
+            "sideBarBorder": "#000000",
+            "statusBarBackground": "#161616",
+            "statusBarBorder": "#000000",
+            "statusBarNoFolderBackground": "#000000"
+        },
+        "layoutInfo": {
+            "sideBarSide": "right",
+            "editorPartMinWidth": 220,
+            "titleBarHeight": 35,
+            "activityBarWidth": 48,
+            "sideBarWidth": 232,
+            "statusBarHeight": 22,
+            "windowBorder": false
+        }
+    },
+    "windowsState": {
+        "lastActiveWindow": {
+            "folder": "file:///home/prakhar/development",
+            "backupPath": "/home/prakhar/.config/Code/Backups/68a3ba1ee2cbb378215a08482127c56f",
+            "uiState": {
+                "mode": 1,
+                "x": 1707,
+                "y": 26,
+                "width": 853,
+                "height": 1574
+            }
+        },
+        "openedWindows": []
+    }
+}
