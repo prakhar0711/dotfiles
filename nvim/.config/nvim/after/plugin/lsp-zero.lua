@@ -58,25 +58,31 @@ require("mason-lspconfig").setup({
 			vim.g.zig_fmt_parse_errors = 0
 			vim.g.zig_fmt_autosave = 0
 		end,
-		-- jdtls = function()
-		-- 	local lspconfig = require("lspconfig")
-		-- 	lspconfig.jdtls.setup({
-		-- 		settings = {
-		-- 			java = {
-		-- 				configuration = {
-		-- 					runtimes = {
-		-- 						{
-		-- 							name = "JavaSE-23",
-		-- 							path = "/usr/lib/jvm/java-23-openjdk/",
-		-- 							sources = "/usr/lib/jvm/java-23-openjdk/src", -- Path to source files
-		-- 						},
-		-- 					},
-		-- 				},
-		-- 				signatureHelp = { enabled = true },
-		-- 			},
-		-- 		},
-		-- 	})
-		-- end,
+		jdtls = function()
+			local lspconfig = require("lspconfig")
+			lspconfig.jdtls.setup({
+				settings = {
+					java = {
+						errors = {
+							inlayHints = false, -- Disable frequent inlay hint refreshes
+						},
+						validation = {
+							enabled = false, -- Disable validation entirely
+						},
+						configuration = {
+							runtimes = {
+								{
+									name = "JavaSE-23",
+									path = "/usr/lib/jvm/java-23-openjdk/",
+									sources = "/usr/lib/jvm/java-23-openjdk/src", -- Path to source files
+								},
+							},
+						},
+						signatureHelp = { enabled = true },
+					},
+				},
+			})
+		end,
 		["lua_ls"] = function()
 			local lspconfig = require("lspconfig")
 			lspconfig.lua_ls.setup({
