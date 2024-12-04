@@ -110,19 +110,19 @@ cmp.setup({
 		documentation = cmp.config.window.bordered(),
 	},
 
-	-- sources = {
+	sources = {
+		{ name = "nvim_lsp" },
+		{ name = "buffer" },
+		{ name = "luasnip" },
+		{ name = "path", keyword_length = 5 },
+	},
+	-- sources = cmp.config.sources({
 	-- 	{ name = "nvim_lsp" },
-	-- 	{ name = "buffer" },
-	-- 	{ name = "luasnip" },
+	-- 	{ name = "luasnip" }, -- For luasnip users.
 	-- 	{ name = "path", keyword_length = 5 },
-	-- },
-	sources = cmp.config.sources({
-		{ name = "nvim_lsp", max_item_count = 4 },
-		{ name = "luasnip", max_item_count = 4 }, -- For luasnip users.
-		{ name = "path", keyword_length = 5, max_item_count = 4 },
-	}, {
-		{ name = "buffer", max_item_count = 4 },
-	}),
+	-- }, {
+	-- 	{ name = "buffer" },
+	-- }),
 	mapping = cmp.mapping.preset.insert({
 		["<C-x>"] = cmp.mapping.confirm({ select = false }),
 

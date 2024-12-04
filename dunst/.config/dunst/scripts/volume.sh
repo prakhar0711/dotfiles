@@ -4,7 +4,6 @@
 NOTIFY_EXPIRES=2000
 PROGRESS_WIDTH=50
 VOLUME_STEP=5
-BRIGHTNESS_STEP=5
 MAX_VOLUME=150  # Maximum allowed volume with boost
 VOLUME_WARNING_THRESHOLD=100  # Threshold for showing warning
 
@@ -14,6 +13,11 @@ VOLUME_LOW="audio-volume-low"
 VOLUME_MEDIUM="audio-volume-medium"
 VOLUME_HIGH="audio-volume-high"
 VOLUME_BOOST="audio-volume-high"  # You might want a specific icon for boosted volume
+BRIGHTNESS_DEVICE="intel_backlight" # Set the default brightness device
+BRIGHTNESS_STEP=5                  # Percentage step for brightness adjustment
+PROGRESS_WIDTH=10                   # Progress bar width
+BRIGHTNESS_ICON="display-brightness" # Icon for brightness notification
+NOTIFY_EXPIRES=2000                 # Notification duration (ms)
 BRIGHTNESS_ICON="display-brightness"
 
 # Volume Control
@@ -98,19 +102,29 @@ show_volume_notification() {
         "$progress"
 }
 
-# Brightness Control using brightnessctl
+# Get current brightness
 get_brightness() {
-    brightnessctl -m | cut -d',' -f4 | tr -d '%'
+    brightnessctl -d "$BRIGHTNESS_DEVICE" -m | cut -d',' -f4 | tr -d '%'
 }
 
+# Set brightness
 set_brightness() {
     local direction=$1
     if [ "$direction" = "up" ]; then
-        brightnessctl set "${BRIGHTNESS_STEP}%+" -q
+        brightnessctl -d "$BRIGHTNESS_DEVICE" set "${BRIGHTNESS_STEP}%+" -q
     else
-        brightnessctl set "${BRIGHTNESS_STEP}%-" -q
+        brightnessctl -d "$BRIGHTNESS_DEVICE" set "${BRIGHTNESS_STEP}%-" -q
     fi
 }
+
+# # Make progress bar
+# make_progress_bar() {
+#     local value=$1
+#     local max_width=$2
+#     local filled=$((value * max_width / 100))
+#     local empty=$((max_width - filled))
+#     printf "%s%s" "$(printf '█%.0s' $(seq 1 $filled))" "$(printf '░%.0s' $(seq 1 $empty))"
+# }
 
 # Show brightness notification
 show_brightness_notification() {
