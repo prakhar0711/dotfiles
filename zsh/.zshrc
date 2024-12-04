@@ -180,7 +180,20 @@ fi
 
 # Various Tool Initializations
 source $ZSH/oh-my-zsh.sh
-source <(fzf --zsh)
+eval "$(fzf --zsh)"
+
+export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git "
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+
+export FZF_DEFAULT_OPTS="--height 50% --layout=default --border --color=hl:#2dd4bf"
+
+# Setup fzf previews
+export FZF_CTRL_T_OPTS="--preview 'bat --color=always -n --line-range :500 {}'"
+export FZF_ALT_C_OPTS="--preview 'eza --icons=always --tree --color=always {} | head -200'"
+
+# fzf preview for tmux
+export FZF_TMUX_OPTS=" -p90%,70% "  
 eval "$(fnm env --use-on-cd --shell zsh)"
 eval "$(zoxide init zsh)"
 eval "$(atuin init zsh)"
@@ -199,6 +212,7 @@ alias cat="bat --theme=base16"
 alias n="nvim"
 alias ds="yazi"
 alias slock="i3lock-fancy"
+alias fman="compgen -c | fzf | xargs man"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 
