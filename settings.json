@@ -1,0 +1,82 @@
+{
+  "editor.fontFamily": "'ColonMonoW01 Nerd Font'",
+  "editor.fontSize": 19,
+  "editor.fontLigatures": "'calt', 'ss02', 'ss03', 'ss19', 'ss20'",
+  "editor.hideCursorInOverviewRuler": true,
+  // Cursor settings
+  "editor.cursorBlinking": "solid",
+  "editor.cursorStyle": "block",
+  "editor.cursorSmoothCaretAnimation": "on",
+  // Editor settings
+  "editor.smoothScrolling": true,
+  "editor.tabSize": 2,
+  "editor.renderLineHighlight": "none",
+  "editor.renderWhitespace": "none",
+  "editor.minimap.enabled": false,
+  "editor.formatOnSave": true,
+  "workbench.sideBar.location": "right",
+  "workbench.layoutControl.enabled": false,
+  "window.commandCenter": true,
+  "window.customTitleBarVisibility": "auto",
+  "window.titleBarStyle": "custom",
+  "window.menuBarVisibility": "toggle",
+  "window.density.editorTabHeight": "compact",
+  "explorer.compactFolders": false,
+  // Auto save settings
+  "files.autoSave": "onWindowChange",
+  // Settings application
+  "workbench.settings.applyToAllProfiles": [
+    "editor.fontFamily"
+  ],
+  // Code Runner settings
+  "code-runner.runInTerminal": true,
+  // Formatter settings
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  /* Token color customizations
+  */
+  // "editor.tokenColorCustomizations": {
+  //   "textMateRules": [
+  //     {
+  //       "scope": [
+  //         "entity.name.function", // Function names
+  //         "variable.declarator", // Variable declarations
+  //         //"storage.type", // Data types
+  //         //"keyword",
+  //         "punctuation.definition.string.begin",
+  //         "punctuation.definition.string.end",
+  //         "variable.parameter",
+  //         "meta.preprocessor",
+  //         "keyword.control"
+  //       ],
+  //       "settings": {
+  //         "fontStyle": "bold",
+  //       }
+  //     }
+  //   ]
+  // },
+  "workbench.editor.showTabs": "none",
+  "workbench.startupEditor": "none",
+  "workbench.statusBar.visible": true,
+  "jdk.jdkhome": "/usr/lib/jvm/java-23-openjdk",
+  "java.jdt.ls.java.home": "/usr/lib/jvm/java-23-openjdk",
+  "workbench.colorTheme": "Monokai Night",
+  "workbench.iconTheme": "moxer-icons",
+  "redhat.telemetry.enabled": false
+}

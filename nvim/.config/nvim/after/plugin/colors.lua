@@ -1,0 +1,20 @@
+-- function Pencils(color)
+-- 	color = color or "monokai"
+-- 	require("monokai").setup({
+-- 		vim.api.nvim_set_hl(0, "Normal", { bg = "none" }),
+-- 		vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" }),
+--
+-- 		palette = {
+-- 			base2 = "#000000",
+-- 			base1 = "#000000",
+-- 		},
+-- 		italics = false,
+-- 	})
+--
+-- 	vim.cmd.colorscheme(color)
+--
+-- 	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+-- 	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+-- end
+--
+-- Pencils()
