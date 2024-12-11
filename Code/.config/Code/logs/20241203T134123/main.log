@@ -1,6 +1,0 @@
-2024-12-03 13:41:23.266 [info] update#setState idle
-2024-12-03 13:41:53.267 [info] update#setState checking for updates
-2024-12-03 13:41:53.487 [info] update#setState idle
-2024-12-03 13:43:16.317 [info] Extension host with pid 35616 exited with code: 0, signal: unknown.
-2024-12-03 13:43:16.326 [error] [UtilityProcessWorker]: terminated unexpectedly with code 82, signal: unknown
-2024-12-03 13:45:02.475 [info] Extension host with pid 36238 exited with code: 0, signal: unknown.
