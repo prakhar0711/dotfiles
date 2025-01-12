@@ -13,7 +13,7 @@ export ZSH="$HOME/.oh-my-zsh"
 
 export EDITOR='nvim'
 export VISUAL="${EDITOR}"
-export BROWSER='firefox'
+export BROWSER='thorium'
 export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
 export SUDO_PROMPT="Deploying root access for %u. Enter Password : "
 
