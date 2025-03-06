@@ -4,9 +4,9 @@ background-blur-radius=20
 cursor-style=block
 cursor-style-blink=false
 cursor-color=#FF4971
-font-size=16
+font-size=18
 shell-integration-features = no-cursor
-font-family=ColonMonoW01 Nerd Font
+font-family=JetBrains Mono Nerd Font
 window-decoration=false
 confirm-close-surface=false
-
+theme=Everforest Dark - Hard 

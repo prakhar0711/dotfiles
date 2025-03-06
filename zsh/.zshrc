@@ -210,7 +210,7 @@ alias ll='command eza --icons=always --color=always -la'
 alias tree='eza --tree --level=2'
 alias cat="bat --theme=base16"
 alias n="nvim"
-alias ds="yazi"
+alias ds="spf"
 alias slock="i3lock-fancy"
 alias fman="compgen -c | fzf | xargs man"
 
