@@ -26,7 +26,7 @@ export FPATH="${HOME}/eza/completions/zsh:$FPATH"
 export HISTFILE="${HOME}/.config/zsh/zhistory"
 HISTSIZE=5000
 SAVEHIST=5000
-HISTDUP=erase
+# HISTDUP=erase
 
 # ====================================================================
 #  History Options
@@ -53,9 +53,9 @@ setopt COMPLETE_IN_WORD
 
 # Initialize Completion System
 autoload -Uz compinit add-zsh-hook vcs_info
-for dump in ~/.config/zsh/zcompdump(N.mh+24); do
-  compinit -d ~/.config/zsh/zcompdump
-done
+# for dump in ~/.config/zsh/zcompdump(N.mh+24); do
+#   compinit -d ~/.config/zsh/zcompdump
+# done
 compinit -C -d "${HOME}/.config/zsh/zcompdump"
 
 # ====================================================================
@@ -217,14 +217,11 @@ alias fman="compgen -c | fzf | xargs man"
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 
 export PATH="/usr/lib/jvm/java-23-openjdk/bin:$PATH"
-export java="/usr/lib/jvm/java-23-openjdk/bin:$PATH"
 export MANPAGER='nvim +Man!'
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
-# fnm
-FNM_PATH="/home/prakhar/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="/home/prakhar/.local/share/fnm:$PATH"
-  eval "`fnm env`"
-fi
+# # fnm
+# FNM_PATH="/home/prakhar/.local/share/fnm"
+# if [ -d "$FNM_PATH" ]; then
+#   export PATH="/home/prakhar/.local/share/fnm:$PATH"
+#   eval "`fnm env`"
+# fi
