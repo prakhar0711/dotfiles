@@ -1,7 +1,7 @@
 # Example customization in dunstrc
 
 # Set the font and size
-font = ColonMonoW01 Nerd Font 10
+font = CartographCF 10
 
 # Notification appearance
 background = "#282a36"

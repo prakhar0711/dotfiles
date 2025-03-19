@@ -72,7 +72,7 @@ function xterm_title_preexec() {
   [[ "$TERM" == 'screen'* ]] && { print -Pn -- '\e_\005{g}%n\005{-}@\005{m}%m\005{-} \005{B}%~\005{-} %# ' && print -n -- "${(q)1}\e\\"; }
 }
 
-if [[ "$TERM" == (kitty*|alacritty*|tmux*|screen*|xterm*) ]]; then
+if [[ "$TERM" == (ghostty*|kitty*|alacritty*|tmux*|screen*|xterm*) ]]; then
   add-zsh-hook -Uz precmd xterm_title_precmd
   add-zsh-hook -Uz preexec xterm_title_preexec
 fi
@@ -149,7 +149,7 @@ add-zsh-hook -Uz precmd rehash_precmd
 #  Plugin Configuration
 # ====================================================================
 
-plugins=(git sudo zsh-256color zsh-interactive-cd zsh-syntax-highlighting zsh-autosuggestions zsh-completions zsh-vi-mode)
+plugins=(git sudo zsh-256color zsh-interactive-cd zsh-syntax-highlighting zsh-autosuggestions zsh-completions)
 
 # Key Bindings
 bindkey '\e[A' history-substring-search-up

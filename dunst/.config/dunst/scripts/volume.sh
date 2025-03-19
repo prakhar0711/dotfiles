@@ -84,7 +84,7 @@ show_volume_notification() {
     
     if [ "$(is_muted)" = "true" ]; then
         icon=$VOLUME_MUTED
-        progress="MUTED"
+       progress="MUTED"
     elif [ "$volume" -gt 100 ]; then
         icon=$VOLUME_BOOST
         volume_text="Boosted Volume: ${volume}%"

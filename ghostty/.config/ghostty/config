@@ -1,4 +1,4 @@
-background=#000000
+background=#262626
 background-opacity=0.5
 background-blur-radius=20
 cursor-style=block
@@ -9,4 +9,6 @@ shell-integration-features = no-cursor
 font-family=CartographCF
 window-decoration=false
 confirm-close-surface=false
-theme=Everforest Dark - Hard 
+window-padding-x=20
+window-padding-y=20
+theme=rose-pine-moon

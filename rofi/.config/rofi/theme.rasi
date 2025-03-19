@@ -7,7 +7,7 @@
     fg-col: #cdd6f4;
     fg-col2: #f38ba8;
     grey: #6c7086;
-    font: "ColonMonoW01 Nerd Font 12";
+    font: "CartographCF 12";
 }
 
 element-text, element-icon , mode-switcher {

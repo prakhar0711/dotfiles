@@ -2,7 +2,7 @@ configuration{
     modi: "run,window,combi";
     icon-theme: "Papirus";
     show-icons: true;
-    terminal: "WezTerm";
+    terminal: "ghostty";
     drun-display-format: "{icon} {name}";
     location: 0;
     disable-history: false;
