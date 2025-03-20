@@ -84,7 +84,7 @@ tiling_drag modifier titlebar
 bindsym $mod+Return exec ghostty 
 bindsym $mod+Shift+f exec thorium-browser
 bindsym $mod+Shift+i exec code 
-bindsym $mod+Shift+b exec dolphin 
+bindsym $mod+Shift+b exec thunar 
 
 # kill focused window
 bindsym $mod+q kill
@@ -170,7 +170,7 @@ assign [class="kitty"] 3
 assign [class="ghostty"] 1
 assign [class="firefox"] 2
 assign [class="Thorium-browser"] 2
-assign [class="dolphin"] 4
+assign [class="Thunar"] 4
 
 
 # switch to workspace
