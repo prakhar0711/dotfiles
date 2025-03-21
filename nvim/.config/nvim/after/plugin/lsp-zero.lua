@@ -33,7 +33,7 @@ require("mason").setup({
 		icons = {
 			package_installed = "✓",
 			package_pending = "➜",
-			package_uninstalled = "✗",
+			package_uninstalled = "✘",
 		},
 	},
 })
@@ -43,46 +43,46 @@ require("mason-lspconfig").setup({
 		function(server_name)
 			require("lspconfig")[server_name].setup({})
 		end,
-		zls = function()
-			local lspconfig = require("lspconfig")
-			lspconfig.zls.setup({
-				root_dir = lspconfig.util.root_pattern(".git", "build.zig", "zls.json"),
-				settings = {
-					zls = {
-						enable_inlay_hints = true,
-						enable_snippets = true,
-						warn_style = true,
-					},
-				},
-			})
-			vim.g.zig_fmt_parse_errors = 0
-			vim.g.zig_fmt_autosave = 0
-		end,
-		jdtls = function()
-			local lspconfig = require("lspconfig")
-			lspconfig.jdtls.setup({
-				settings = {
-					java = {
-						errors = {
-							inlayHints = false, -- Disable frequent inlay hint refreshes
-						},
-						validation = {
-							enabled = false, -- Disable validation entirely
-						},
-						configuration = {
-							runtimes = {
-								{
-									name = "JavaSE-23",
-									path = "/usr/lib/jvm/java-23-openjdk/",
-									sources = "/usr/lib/jvm/java-23-openjdk/src", -- Path to source files
-								},
-							},
-						},
-						signatureHelp = { enabled = true },
-					},
-				},
-			})
-		end,
+		-- zls = function()
+		-- 	local lspconfig = require("lspconfig")
+		-- 	lspconfig.zls.setup({
+		-- 		root_dir = lspconfig.util.root_pattern(".git", "build.zig", "zls.json"),
+		-- 		settings = {
+		-- 			zls = {
+		-- 				enable_inlay_hints = true,
+		-- 				enable_snippets = true,
+		-- 				warn_style = true,
+		-- 			},
+		-- 		},
+		-- 	})
+		-- 	vim.g.zig_fmt_parse_errors = 0
+		-- 	vim.g.zig_fmt_autosave = 0
+		-- end,
+		-- jdtls = function()
+		-- 	local lspconfig = require("lspconfig")
+		-- 	lspconfig.jdtls.setup({
+		-- 		settings = {
+		-- 			java = {
+		-- 				errors = {
+		-- 					inlayHints = false, -- Disable frequent inlay hint refreshes
+		-- 				},
+		-- 				validation = {
+		-- 					enabled = false, -- Disable validation entirely
+		-- 				},
+		-- 				configuration = {
+		-- 					runtimes = {
+		-- 						{
+		-- 							name = "JavaSE-23",
+		-- 							path = "/usr/lib/jvm/java-23-openjdk/",
+		-- 							sources = "/usr/lib/jvm/java-23-openjdk/src", -- Path to source files
+		-- 						},
+		-- 					},
+		-- 				},
+		-- 				signatureHelp = { enabled = true },
+		-- 			},
+		-- 		},
+		-- 	})
+		-- end,
 		["lua_ls"] = function()
 			local lspconfig = require("lspconfig")
 			lspconfig.lua_ls.setup({
