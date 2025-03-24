@@ -82,7 +82,7 @@ tiling_drag modifier titlebar
 
 # start a terminal
 # bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec ghostty 
+bindsym $mod+Return exec kitty 
 bindsym $mod+Shift+f exec thorium-browser
 bindsym $mod+Shift+i exec code 
 bindsym $mod+Shift+b exec thunar 
@@ -167,9 +167,8 @@ set $ws9 "9"
 set $ws10 "10"
 
 # Assign kitty to workspace 1
-assign [class="kitty"] 3
-assign [class="ghostty"] 1
-assign [class="firefox"] 2
+assign [class="kitty"] 1
+assign [class="ghostty"] 3
 assign [class="Thorium-browser"] 2
 assign [class="Thunar"] 4
 
