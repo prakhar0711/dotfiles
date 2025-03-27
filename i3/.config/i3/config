@@ -241,3 +241,24 @@ bar {
 for_window [class="Thorium"] border none
 for_window [class="zen"] border none
 
+
+# Rosé Pine colors (base16)
+set $rose_pine_base     #191724
+set $rose_pine_surface  #1f1d2e
+set $rose_pine_text     #e0def4
+set $rose_pine_subtle   #908caa
+set $rose_pine_overlay  #26233a
+set $rose_pine_primary  #eb6f92
+set $rose_pine_accent   #9ccfd8
+
+# Window border styles
+# Adjusted focused window color to be softer
+client.focused $rose_pine_subtle $rose_pine_subtle $rose_pine_text $rose_pine_subtle
+client.focused_inactive $rose_pine_overlay $rose_pine_overlay $rose_pine_subtle $rose_pine_overlay
+client.unfocused        $rose_pine_surface $rose_pine_surface $rose_pine_subtle $rose_pine_surface
+client.urgent           $rose_pine_accent $rose_pine_accent $rose_pine_text $rose_pine_accent
+client.placeholder      $rose_pine_base $rose_pine_base $rose_pine_text $rose_pine_base
+
+# Adjust border width (optional)
+for_window [class=".*"] border pixel 1
+
