@@ -1,5 +1,5 @@
 function ColorMyPencils(color)
-	color = color or "rose-pine-moon"
+	color = color or "rose-pine"
 	vim.cmd.colorscheme(color)
 
 	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
@@ -12,12 +12,16 @@ return {
 		name = "rose-pine",
 		config = function()
 			require("rose-pine").setup({
+				variant = "moon",
+				dark_variant = "moon",
 				disable_background = true,
+				dim_inactive_windows = true,
 				styles = {
-					bold = false,
+					bold = true,
 					italic = false,
 					-- transparency = true,
 				},
+				enable = { terminal = true },
 				palette = {
 					moon = {
 						rose = "#e84d78",
@@ -32,37 +36,34 @@ return {
 					},
 				},
 			})
-			-- vim.cmd("colorscheme rose-pine")
-
-			-- ColorMyPencils()
 		end,
 	},
 
-	{
-		"tanvirtin/monokai.nvim",
-		name = "monokai",
-	},
-	{
-		"craftzdog/solarized-osaka.nvim",
-		lazy = true,
-		priority = 1000,
-		opts = function()
-			return {
-				transparent = true,
-				terminal_colors = true, -- Configure the colors used when opening a `:terminal` in [Neovim](https://github.com/neovim/neovim)
-				styles = {
-					-- Style to be applied to different syntax groups
-					-- Value is any valid attr-list value for `:help nvim_set_hl`
-					comments = { italic = false },
-					keywords = { italic = false },
-					-- Background styles. Can be "dark", "transparent" or "normal"
-					sidebars = "transparent", -- style for sidebars, see below
-					floats = "transparent", -- style for
-				},
-			}
-		end,
-	},
-
+	-- {
+	-- 	"tanvirtin/monokai.nvim",
+	-- 	name = "monokai",
+	-- },
+	-- {
+	-- 	"craftzdog/solarized-osaka.nvim",
+	-- 	lazy = true,
+	-- 	priority = 1000,
+	-- 	opts = function()
+	-- 		return {
+	-- 			transparent = true,
+	-- 			terminal_colors = true, -- Configure the colors used when opening a `:terminal` in [Neovim](https://github.com/neovim/neovim)
+	-- 			styles = {
+	-- 				-- Style to be applied to different syntax groups
+	-- 				-- Value is any valid attr-list value for `:help nvim_set_hl`
+	-- 				comments = { italic = false },
+	-- 				keywords = { italic = false },
+	-- 				-- Background styles. Can be "dark", "transparent" or "normal"
+	-- 				sidebars = "transparent", -- style for sidebars, see below
+	-- 				floats = "transparent", -- style for
+	-- 			},
+	-- 		}
+	-- 	end,
+	-- },
+	--
 	{
 		"sainnhe/gruvbox-material",
 		lazy = false,
@@ -73,10 +74,6 @@ return {
 			vim.g.gruvbox_material_enable_italic = false
 			vim.g.gruvbox_material_transparent_background = 2
 			vim.g.gruvbox_material_background = "hard"
-
-			vim.cmd("colorscheme gruvbox-material")
-
-			-- ColorMyPencils()
 		end,
 	},
 }
