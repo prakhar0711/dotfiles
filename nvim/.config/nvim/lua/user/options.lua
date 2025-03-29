@@ -59,11 +59,12 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
 -- " Don't wrap lines
-vim.opt.wrap = false
+vim.opt.wrap = true
 -- " Wrap lines at convenient points
 vim.opt.linebreak = true
 -- " Show line breaks
 vim.opt.showbreak = "↳"
+vim.opt.breakindent = true
 
 -- " Start scrolling when we'are 8 lines aways from borders
 vim.opt.scrolloff = 10
