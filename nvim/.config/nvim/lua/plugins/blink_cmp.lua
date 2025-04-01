@@ -39,6 +39,7 @@ return {
 			-- C-k: Toggle signature help (if signature.enabled = true)
 			--
 			-- See :h blink-cmp-config-keymap for defining your own keymap
+			cmdline = { completion = { menu = { auto_show = true } } },
 			keymap = {
 				preset = "default",
 				["<C-x>"] = { "accept", "fallback" },
@@ -58,7 +59,7 @@ return {
 				-- 	border = "rounded",
 				-- },
 				ghost_text = {
-					enabled = true,
+					enabled = false,
 				},
 			},
 			signature = { enabled = true },
