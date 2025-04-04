@@ -91,6 +91,7 @@ bindsym $mod+Return exec kitty
 bindsym $mod+Shift+f exec thorium-browser
 bindsym $mod+Shift+i exec code 
 bindsym $mod+Shift+b exec thunar 
+bindsym $mod+Shift+p exec ~/.config/rofi/powermenu.sh
 
 # kill focused window
 bindsym $mod+q kill
