@@ -287,6 +287,6 @@ focus_follows_mouse no
 focus_wrapping no
 # for_window [class=".*"] focus
 
-focus_on_window_activation focus
+# focus_on_window_activation focus
 workspace_layout default
 # hide_edge_borders both

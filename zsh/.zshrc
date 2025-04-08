@@ -213,6 +213,7 @@ alias n="nvim"
 alias ds="spf"
 alias slock="i3lock-fancy"
 alias fman="compgen -c | fzf | xargs man"
+alias cheat="cheat -e"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 

@@ -7,4 +7,4 @@ vim.cmd("let &fillchars='eob: '")
 -- vim.cmd.colorscheme("gruvbox-material")
 -- vim.cmd.colorscheme("solarized-osaka-night")
 
-ColorMyPencils("rose-pine-moon")
+-- ColorMyPencils("rose-pine-moon")
