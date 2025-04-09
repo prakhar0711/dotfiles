@@ -4,8 +4,8 @@
     "source": "~/.config/fastfetch/ascii.txt",
     "padding": {
       "top": 9,
-      "right": 25,
-      "left": 25
+      "right": 7,
+      "left": 7
                 }
   },  "display": {
     "separator": "  "
