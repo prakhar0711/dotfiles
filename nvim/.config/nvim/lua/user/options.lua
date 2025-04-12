@@ -68,8 +68,8 @@ vim.opt.showbreak = "↳"
 vim.opt.breakindent = true
 
 -- " Start scrolling when we'are 8 lines aways from borders
-vim.opt.scrolloff = 10
-vim.opt.sidescrolloff = 15
+vim.opt.scrolloff = 3
+vim.opt.sidescrolloff = 10
 vim.opt.sidescroll = 5
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.colorcolumn = "100"
