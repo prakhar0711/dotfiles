@@ -30,7 +30,7 @@ highlight:   underline bold #b4637a;
     border-color:@yellow;
     background-color:@transparent;
 
-    font:"JetBrainsMonoNL Nerd Font 14";
+    font:"JetBrainsMono Nerd Font 14";
 }
 
 configuration {

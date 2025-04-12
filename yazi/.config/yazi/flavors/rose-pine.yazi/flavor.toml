@@ -28,7 +28,7 @@ border_symbol = "│"
 border_style = { fg = "#524f67" }
 
 # Highlighting
-syntect_theme = "~/.config/yazi/rose-pine.tmTheme"
+syntect_theme = "~/.config/yazi/flavors/rose-pine.yazi/rose-pine.tmTheme"
 
 # : }}}
 

@@ -15,7 +15,7 @@ set $mod Mod1
 # is used in the bar {} block below.
 # font pango:FreeMono 11
 # font pango:Drafting* Mono 11
-font pango:JetBrainsMonoNL Nerd Font 14
+font pango:JetBrainsMono Nerd Font 14
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -188,11 +188,13 @@ assign [class="(?i).*brave.*"] $ws2
 assign [class="(?i).*firefox.*"] $ws2
 # (W-4)
 # ========== File Manager ===========
-assign [class="(?i).*pcmanfm.*"] $ws4
-assign [class="(?i).*mpv.*"] $ws4
-assign [class="(?i).*feh.*"] $ws4
-assign [class="(?i).*thunar.*"] $ws4
-assign [class="(?i).*Thunar.*"] $ws4
+assign [class="(?i).*pcmanfm.*"] $ws3
+assign [class="(?i).*mpv.*"] $ws3
+assign [class="(?i).*feh.*"] $ws3
+assign [class="(?i).*thunar.*"] $ws3
+assign [class="(?i).*Thunar.*"] $ws3
+assign [class="(?i).*spotify.*"] $ws3
+assign [class="(?i).*Spotify.*"] $ws3
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1

@@ -210,11 +210,19 @@ alias ll='command eza --icons=always --color=always -la'
 alias tree='eza --tree --level=2'
 alias cat="bat --theme=base16"
 alias n="nvim"
-alias ds="spf"
+alias ds="yazi"
 alias slock="i3lock-fancy"
 alias fman="compgen -c | fzf | xargs man"
 alias cheat="cheat -e"
 
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 
 export PATH="/usr/lib/jvm/java-23-openjdk/bin:$PATH"
