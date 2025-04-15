@@ -4,11 +4,11 @@
 # background=               #191724
 # background=              #0c0b12 
 # background=              #01121a
-# background=              #000000
+background=              #000000
 # background=#262626
-#
-background=#01121a
-background-opacity=0.5
+
+# background=#01121a
+background-opacity=1
 # background-blur=false
 # background-blur-radius=30
 cursor-style=block
@@ -22,3 +22,7 @@ confirm-close-surface=false
 window-padding-x=10
 window-padding-y=10
 theme=rose-pine-moon
+
+keybind=ctrl+shift+l=next_tab
+keybind=ctrl+shift+h=previous_tab
+keybind=ctrl+shift+p=new_tab
