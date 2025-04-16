@@ -4,7 +4,7 @@
 # background=               #191724
 # background=              #0c0b12 
 # background=              #01121a
-background=              #000000
+background=              #181818
 # background=#262626
 
 # background=#01121a
@@ -13,7 +13,7 @@ background-opacity=1
 # background-blur-radius=30
 cursor-style=block
 cursor-style-blink=false
-cursor-color=#FF4971
+# cursor-color=#FF4971
 font-size=18
 shell-integration-features = no-cursor
 font-family=JetBrainsMono Nerd Font 
@@ -24,5 +24,5 @@ window-padding-y=10
 keybind=ctrl+shift+l=next_tab
 keybind=ctrl+shift+h=previous_tab
 keybind=ctrl+shift+p=new_tab
-theme=rose-pine-moon
+# theme=rose-pine-moon
 

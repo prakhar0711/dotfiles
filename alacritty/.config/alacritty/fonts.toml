@@ -4,27 +4,16 @@
 
 [font]
 ## Font size in points.
-size = 10
+size = 18
 
 ## When true, Alacritty will use a custom built-in font for box drawing characters and powerline symbols.
 builtin_box_drawing = false
 
 ## Normal font family.
 [font.normal]
-family = "Zed Mono"
+family = "JetBrainsMono Nerd Font"
 
 ## If the family is not specified, it will fall back to the value specified for the normal font.
-[font.bold]
-family = "Zed Mono"
-
-## If the family is not specified, it will fall back to the value specified for the normal font.
-[font.italic]
-family = "Zed Mono"
-
-## If the family is not specified, it will fall back to the value specified for the normal font.
-[font.bold_italic]
-family = "Zed Mono"
-
 ## Offset is the extra space around each character.
 ## 'y' can be thought of as modifying the line spacing, and 'x' as modifying the letter spacing.
 [font.offset]
