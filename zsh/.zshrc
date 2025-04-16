@@ -2,35 +2,36 @@
 #  Core ZSH Configuration
 # ====================================================================
 
-# Exit if not running interactively
-[[ $- != *i* ]] && return
+[[ $- != *i* ]] && return  # Exit if not running interactively
 
-# Initialize Oh My Zsh
+# Set theme and plugin list before sourcing Oh My Zsh
 export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME="robbyrussell"
+plugins=(git sudo zsh-256color zsh-interactive-cd zsh-syntax-highlighting zsh-autosuggestions zsh-completions)
+
 # ====================================================================
 #  Environment Variables
 # ====================================================================
 
 export EDITOR='nvim'
-export VISUAL="${EDITOR}"
+export VISUAL="$EDITOR"
 export BROWSER='thorium'
-export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
 export SUDO_PROMPT="Deploying root access for %u. Enter Password : "
 
-# Path Configuration
-export GOPATH=$HOME/go
-export PATH="${HOME}/bin:${HOME}/.local/bin:/usr/local/bin:$PATH:$GOPATH/bin"
-export FPATH="${HOME}/eza/completions/zsh:$FPATH"
+export GOPATH="$HOME/go"
+export PATH="$HOME/.local/bin:$HOME/bin:/usr/local/bin:$GOPATH/bin:$PATH"
+export FPATH="$HOME/eza/completions/zsh:$FPATH"
 
-# History Configuration
-export HISTFILE="${HOME}/.config/zsh/zhistory"
+export MANPAGER='nvim +Man!'
+export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
+
+# ====================================================================
+#  History Configuration
+# ====================================================================
+
+export HISTFILE="$HOME/.config/zsh/zhistory"
 HISTSIZE=5000
 SAVEHIST=5000
-# HISTDUP=erase
-
-# ====================================================================
-#  History Options
-# ====================================================================
 
 setopt appendhistory
 setopt sharehistory
@@ -44,22 +45,26 @@ setopt hist_find_no_dups
 #  ZSH Options and Features
 # ====================================================================
 
-setopt AUTOCD
-setopt PROMPT_SUBST
-setopt MENU_COMPLETE
-setopt LIST_PACKED
-setopt AUTO_LIST
-setopt COMPLETE_IN_WORD
-
-# Initialize Completion System
-autoload -Uz compinit add-zsh-hook vcs_info
-# for dump in ~/.config/zsh/zcompdump(N.mh+24); do
-#   compinit -d ~/.config/zsh/zcompdump
-# done
-compinit -C -d "${HOME}/.config/zsh/zcompdump"
+setopt AUTOCD PROMPT_SUBST MENU_COMPLETE LIST_PACKED AUTO_LIST COMPLETE_IN_WORD
 
 # ====================================================================
-#  Terminal Title Functions
+#  Completion System
+# ====================================================================
+
+autoload -Uz compinit add-zsh-hook vcs_info
+compinit -C -d "$HOME/.config/zsh/zcompdump"
+
+# Completion styles
+zstyle ':completion:*' verbose true
+zstyle ':completion:*:*:*:*:*' menu select
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS} 'ma=48;5;197;1'
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' '+r:|[._-]=* r:|=*' '+l:|=*'
+zstyle ':completion:*:warnings' format "%B%F{red}No matches for:%f %F{magenta}%d%b"
+zstyle ':completion:*:descriptions' format '%F{yellow}[-- %d --]%f'
+zstyle ':vcs_info:*' formats ' %B%s-[%F{magenta}%f %F{yellow}%b%f]-'
+
+# ====================================================================
+#  Terminal Title
 # ====================================================================
 
 function xterm_title_precmd() {
@@ -78,61 +83,23 @@ if [[ "$TERM" == (ghostty*|kitty*|alacritty*|tmux*|screen*|xterm*) ]]; then
 fi
 
 # ====================================================================
-#  Completion Styles
-# ====================================================================
-
-zstyle ':completion:*' verbose true
-zstyle ':completion:*:*:*:*:*' menu select
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS} 'ma=48;5;197;1'
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' '+r:|[._-]=* r:|=*' '+l:|=*'
-zstyle ':completion:*:warnings' format "%B%F{red}No matches for:%f %F{magenta}%d%b"
-zstyle ':completion:*:descriptions' format '%F{yellow}[-- %d --]%f'
-zstyle ':vcs_info:*' formats ' %B%s-[%F{magenta}%f %F{yellow}%b%f]-'
-
-# ====================================================================
-#  Aliases
-# ====================================================================
-
-# System Maintenance
-alias mirrors="sudo reflector --verbose --latest 5 --country 'India' --age 6 --sort rate --save /etc/pacman.d/mirrorlist"
-alias grub-update="sudo grub-mkconfig -o /boot/grub/grub.cfg"
-alias pacman-maintenance="sudo pacman -Scc"
-alias paru-maintenance="sudo paru -Scc"
-alias update="paru -Syu --nocombinedupgrade"
-alias pacman-update='sudo pacman -Syu'
-alias yay-update='yay -Syu'
-alias paru-update='paru -Syu'
-
-# Navigation
-alias ..='cd ..'
-alias ...='cd ../..'
-alias .3='cd ../../..'
-alias .4='cd ../../../..'
-alias .5='cd ../../../../..'
-
-# Power Management
-alias power-saver='powerprofilesctl set power-saver'
-alias power-performance='powerprofilesctl set performance'
-alias power-balanced='powerprofilesctl set balanced'
-
-# Applications
-alias music="ncmpcpp"
-
-# ====================================================================
 #  Custom Functions
 # ====================================================================
 
-# Rust compilation and execution
-runr() {
-  rustc "$1" && ./$(basename "$1" .rs)
+runr() { rustc "$1" && ./$(basename "$1" .rs); }
+runj() { javac "$1" && java $(basename "$1" .java); }
+
+# Yazi + directory sync
+y() {
+	local tmp="$(mktemp -t yazi-cwd.XXXXXX)" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(<"$tmp")" && [[ -n "$cwd" && "$cwd" != "$PWD" ]]; then
+		cd "$cwd"
+	fi
+	rm -f -- "$tmp"
 }
 
-# Java compilation and execution
-runj() {
-  javac "$1" && java $(basename "$1" .java)
-}
-
-# Package cache handling
+# Auto-rehash if pacman cache updates
 zshcache_time="$(date +%s%N)"
 rehash_precmd() {
   if [[ -a /var/cache/zsh/pacman ]]; then
@@ -146,91 +113,94 @@ rehash_precmd() {
 add-zsh-hook -Uz precmd rehash_precmd
 
 # ====================================================================
-#  Plugin Configuration
+#  Key Bindings
 # ====================================================================
 
-plugins=(git sudo zsh-256color zsh-interactive-cd zsh-syntax-highlighting zsh-autosuggestions zsh-completions)
-
-# Key Bindings
 bindkey '\e[A' history-substring-search-up
 bindkey '\e[B' history-substring-search-down
 bindkey '\e[3~' delete-char
 
-# The prompt cursor in normal mode
-# Disable the cursor style feature
+# zsh-vi-mode cursor behavior
 ZVM_CURSOR_STYLE_ENABLED=false
 ZVM_NORMAL_MODE_CURSOR=ZVM_CURSOR_BLOCK
-# The prompt cursor in insert mode=ZVM_CURSOR_BLOCK
 ZVM_INSERT_MODE_CURSOR=ZVM_CURSOR_BLOCK
-# The prompt cursor in visual mode=ZVM_CURSOR_BLOCK
 ZVM_VISUAL_MODE_CURSOR=ZVM_CURSOR_BLOCK
-# The prompt cursor in visual line mode=ZVM_CURSOR_BLOCK
 ZVM_VISUAL_LINE_MODE_CURSOR=ZVM_CURSOR_BLOCK
 
 # ====================================================================
-#  External Tools Integration
+#  Tooling Initialization (Deferred When Possible)
 # ====================================================================
 
-# FNM (Fast Node Manager)
-FNM_PATH="/home/prakhar/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="/home/prakhar/.local/share/fnm:$PATH"
-  eval "`fnm env`"
+# Oh My Zsh (after plugin/theme setup)
+source "$ZSH/oh-my-zsh.sh"
+
+# fnm (Fast Node Manager)
+FNM_PATH="$HOME/.local/share/fnm"
+if [[ -d "$FNM_PATH" ]] && command -v fnm >/dev/null; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "$(fnm env --use-on-cd --shell zsh)"
 fi
 
-# Various Tool Initializations
-source $ZSH/oh-my-zsh.sh
-eval "$(fzf --zsh)"
-
-export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git "
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
-
-export FZF_DEFAULT_OPTS="--height 50% --layout=default --border --color=hl:#2dd4bf"
-
-# Setup fzf previews
-export FZF_CTRL_T_OPTS="--preview 'bat --color=always -n --line-range :500 {}'"
-export FZF_ALT_C_OPTS="--preview 'eza --icons=always --tree --color=always {} | head -200'"
-
-# fzf preview for tmux
-export FZF_TMUX_OPTS=" -p90%,70% "  
-eval "$(fnm env --use-on-cd --shell zsh)"
-eval "$(zoxide init zsh)"
-eval "$(atuin init zsh)"
-eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
-
-# Console Output (if interactive)
-if [[ $- == *i* ]]; then
-  krabby random
+# fzf
+if command -v fzf >/dev/null; then
+  eval "$(fzf --zsh)"
+  export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+  export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+  export FZF_DEFAULT_OPTS="--height 50% --layout=default --border --color=hl:#2dd4bf"
+  export FZF_CTRL_T_OPTS="--preview 'bat --color=always -n --line-range :500 {}'"
+  export FZF_ALT_C_OPTS="--preview 'eza --icons=always --tree --color=always {} | head -200'"
+  export FZF_TMUX_OPTS="-p90%,70%"
 fi
+# ====================================================================
+#  Aliases
+# ====================================================================
 
-# File Management
+# System
+alias mirrors="sudo reflector --verbose --latest 5 --country 'India' --age 6 --sort rate --save /etc/pacman.d/mirrorlist"
+alias grub-update="sudo grub-mkconfig -o /boot/grub/grub.cfg"
+alias pacman-maintenance="sudo pacman -Scc"
+alias paru-maintenance="sudo paru -Scc"
+alias update="paru -Syu --nocombinedupgrade"
+alias pacman-update="sudo pacman -Syu"
+alias yay-update="yay -Syu"
+alias paru-update="paru -Syu"
+
+# Navigation
+alias ..='cd ..' ...='cd ../..' .3='cd ../../..' .4='cd ../../../..' .5='cd ../../../../..'
+
+# Power
+alias power-saver='powerprofilesctl set power-saver'
+alias power-performance='powerprofilesctl set performance'
+alias power-balanced='powerprofilesctl set balanced'
+
+# Tools
 alias ls='eza --icons=always --color=always -a'
-alias ll='command eza --icons=always --color=always -la'
+alias ll='eza --icons=always --color=always -la'
 alias tree='eza --tree --level=2'
-alias cat="bat --theme=base16"
-alias n="nvim"
-alias ds="yazi"
-alias slock="i3lock-fancy"
+alias cat='bat --theme=base16'
+alias music='ncmpcpp'
+alias n='nvim'
+alias ds='yazi'
+alias slock='i3lock-fancy'
 alias fman="compgen -c | fzf | xargs man"
 alias cheat="cheat -e"
 
-function y() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		builtin cd -- "$cwd"
-	fi
-	rm -f -- "$tmp"
-}
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 
-export PATH="/usr/lib/jvm/java-23-openjdk/bin:$PATH"
-export MANPAGER='nvim +Man!'
 
-# # fnm
-# FNM_PATH="/home/prakhar/.local/share/fnm"
-# if [ -d "$FNM_PATH" ]; then
-#   export PATH="/home/prakhar/.local/share/fnm:$PATH"
-#   eval "`fnm env`"
-# fi
+# zoxide
+if command -v zoxide >/dev/null; then
+  eval "$(zoxide init zsh)"
+fi
+
+# atuin
+if command -v atuin >/dev/null; then
+  eval "$(atuin init zsh)"
+fi
+
+# oh-my-posh (optional)
+# eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
+
+# Console output to randomize krabby (if interactive)
+[[ $- == *i* ]] && command -v krabby &>/dev/null && krabby random
+
