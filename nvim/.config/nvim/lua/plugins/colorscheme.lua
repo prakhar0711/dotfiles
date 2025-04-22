@@ -1,11 +1,3 @@
-function ColorMyPencils(color)
-	color = color or "rose-pine"
-	vim.cmd.colorscheme(color)
-
-	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-end
-
 return {
 	{
 		"rose-pine/neovim",
@@ -41,6 +33,35 @@ return {
 		end,
 	},
 
+	-- Lazy
+	{
+		"vague2k/vague.nvim",
+		config = function()
+			-- NOTE: you do not need to call setup if you don't want to.
+			require("vague").setup({
+				-- optional configuration here
+				transparent = true, -- don't set background
+				style = {
+					-- "none" is the same thing as default. But "italic" and "bold" are also valid options
+					comments = "none",
+					strings = "none",
+				},
+			})
+		end,
+	},
+	{
+		"sainnhe/gruvbox-material",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			-- Optionally configure and load the colorscheme
+			-- directly inside the plugin declaration.
+			vim.g.gruvbox_material_enable_italic = false
+			vim.g.gruvbox_material_transparent_background = 2
+			vim.g.gruvbox_material_background = "hard"
+		end,
+	},
+
 	-- {
 	-- 	"tanvirtin/monokai.nvim",
 	-- 	name = "monokai",
@@ -66,16 +87,4 @@ return {
 	-- 	end,
 	-- },
 	--
-	{
-		"sainnhe/gruvbox-material",
-		lazy = false,
-		priority = 1000,
-		config = function()
-			-- Optionally configure and load the colorscheme
-			-- directly inside the plugin declaration.
-			vim.g.gruvbox_material_enable_italic = false
-			vim.g.gruvbox_material_transparent_background = 2
-			vim.g.gruvbox_material_background = "hard"
-		end,
-	},
 }
