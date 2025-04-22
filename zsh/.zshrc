@@ -7,7 +7,7 @@
 # Set theme and plugin list before sourcing Oh My Zsh
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
-plugins=(git sudo zsh-256color zsh-interactive-cd zsh-syntax-highlighting zsh-autosuggestions zsh-completions)
+plugins=(sudo zsh-256color zsh-interactive-cd zsh-syntax-highlighting zsh-autosuggestions zsh-completions)
 
 # ====================================================================
 #  Environment Variables
@@ -119,13 +119,6 @@ add-zsh-hook -Uz precmd rehash_precmd
 bindkey '\e[A' history-substring-search-up
 bindkey '\e[B' history-substring-search-down
 bindkey '\e[3~' delete-char
-
-# zsh-vi-mode cursor behavior
-ZVM_CURSOR_STYLE_ENABLED=false
-ZVM_NORMAL_MODE_CURSOR=ZVM_CURSOR_BLOCK
-ZVM_INSERT_MODE_CURSOR=ZVM_CURSOR_BLOCK
-ZVM_VISUAL_MODE_CURSOR=ZVM_CURSOR_BLOCK
-ZVM_VISUAL_LINE_MODE_CURSOR=ZVM_CURSOR_BLOCK
 
 # ====================================================================
 #  Tooling Initialization (Deferred When Possible)
