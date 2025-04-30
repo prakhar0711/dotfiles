@@ -29,17 +29,17 @@ export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
 #  History Configuration
 # ====================================================================
 
-export HISTFILE="$HOME/.config/zsh/zhistory"
-HISTSIZE=5000
-SAVEHIST=5000
-
-setopt appendhistory
-setopt sharehistory
-setopt hist_ignore_space
-setopt hist_ignore_all_dups
-setopt hist_save_no_dups
-setopt hist_ignore_dups
-setopt hist_find_no_dups
+# export HISTFILE="$HOME/.config/zsh/zhistory"
+# HISTSIZE=5000
+# SAVEHIST=5000
+#
+# setopt appendhistory
+# setopt sharehistory
+# setopt hist_ignore_space
+# setopt hist_ignore_all_dups
+# setopt hist_save_no_dups
+# setopt hist_ignore_dups
+# setopt hist_find_no_dups
 
 # ====================================================================
 #  ZSH Options and Features

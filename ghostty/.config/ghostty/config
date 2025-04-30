@@ -1,28 +1,42 @@
+# COLORS
 # background= #161821
 # background=              #1E1E2E
 # background=             #01121a 
 # background=               #191724
 # background=              #0c0b12 
 # background=              #01121a
-background=              #181818
 # background=#262626
-
 # background=#01121a
-background-opacity=1
 # background-blur=false
 # background-blur-radius=30
+
+background=              #181818
+background-opacity=1
+
+# CURSOR
 cursor-style=block
 cursor-style-blink=false
 # cursor-color=#FF4971
+
+#FONT
 font-size=18
-shell-integration-features = no-cursor
 font-family=JetBrainsMono Nerd Font 
+font-feature=-calt,-liga,-dlig
+
+#TERMINAL SETTINGS
+shell-integration-features = no-cursor
 window-decoration=false
 confirm-close-surface=false
+
+#WINDOW SETTINGS
 window-padding-x=10
 window-padding-y=10
+
+#KEYBINDINGS
 keybind=ctrl+shift+l=next_tab
 keybind=ctrl+shift+h=previous_tab
 keybind=ctrl+shift+p=new_tab
+
+# THEME
 # theme=rose-pine-moon
 
