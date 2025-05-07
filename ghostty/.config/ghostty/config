@@ -9,7 +9,6 @@
 # background=#01121a
 # background-blur=false
 # background-blur-radius=30
-
 background=              #181818
 background-opacity=1
 
@@ -38,5 +37,5 @@ keybind=ctrl+shift+h=previous_tab
 keybind=ctrl+shift+p=new_tab
 
 # THEME
-# theme=rose-pine-moon
+theme=rose-pine-moon
 

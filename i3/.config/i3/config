@@ -181,7 +181,10 @@ assign [class="(?i).*wezterm.*"] $ws1
 assign [class="(?i).*nitrogen.*"] $ws1
 # (W-2)
 # ========== Browsers ==========
-assign [class="Thorium-browser"] 2
+assign [class="Thorium-browser"] $ws2
+assign [class="google-chrome"] $ws2
+assign [class="Google-Chrome"] $ws2
+assign [class="Google-chrome"] $ws2
 assign [class="(?i).*librewolf.*"] $ws2
 assign [class="(?i).*zen.*"] $ws2
 assign [class="(?i).*brave.*"] $ws2

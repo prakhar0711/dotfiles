@@ -80,3 +80,10 @@ vim.keymap.set("i", "jk", "<Esc>", { desc = "Exit Insert mode with jk" })
 vim.keymap.set("n", "lg", function()
 	vim.diagnostic.open_float()
 end, { desc = "Open Diagnostic in Float" })
+
+-- disable arrow keys
+local arrows = { "<Left>", "<Right>", "<Up>", "<Down>" }
+
+for _, key in ipairs(arrows) do
+	vim.keymap.set("n", key, "<Nop>", { noremap = true, silent = true })
+end
