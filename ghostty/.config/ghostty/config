@@ -10,6 +10,7 @@
 # background-blur=false
 # background-blur-radius=30
 background=              #181818
+# background=              #000000
 background-opacity=1
 
 # CURSOR

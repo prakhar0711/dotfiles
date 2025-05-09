@@ -1,38 +1,50 @@
+function ColorMyPencils(color)
+	color = color or "vague"
+	vim.cmd.colorscheme(color)
+
+	-- Main background transparency
+	-- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+	vim.api.nvim_set_hl(0, "NormalNC", { bg = "#313136" })
+	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#313136" }) -- subtle contrast for focused floats
+
+	-- Float window borders and shadows
+	vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#524f67", bg = "#313136" })
+	vim.api.nvim_set_hl(0, "FloatTitle", { fg = "#c4a7e7", bg = "#313136", bold = true })
+	vim.api.nvim_set_hl(0, "FloatShadow", { bg = "#000000", blend = 10 })
+	vim.api.nvim_set_hl(0, "FloatShadowThrough", { bg = "#000000", blend = 10 })
+
+	-- Popup and menu-like UIs (e.g., Pmenu, Telescope)
+	vim.api.nvim_set_hl(0, "Pmenu", { fg = "#e0def4", bg = "#313136" })
+	vim.api.nvim_set_hl(0, "PmenuSel", { fg = "#313136", bg = "#c4a7e7", bold = true })
+	vim.api.nvim_set_hl(0, "PmenuSbar", { bg = "#313136" })
+	vim.api.nvim_set_hl(0, "PmenuThumb", { bg = "#c4a7e7" })
+
+	-- Borders and separator elements
+	vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#403d52", bg = "none" })
+
+	-- Optional: LSP and diagnostic floating windows
+	vim.api.nvim_set_hl(0, "LspFloatWinNormal", { link = "NormalFloat" })
+	vim.api.nvim_set_hl(0, "LspInfoBorder", { link = "FloatBorder" })
+end
+
 return {
+	{
+		"erikbackman/brightburn.vim",
+	},
 	{
 		"rose-pine/neovim",
 		name = "rose-pine",
-		as = "rose-pine",
 		config = function()
 			require("rose-pine").setup({
-				-- variant = "main",
-				-- dark_variant = "main",
-				-- dim_inactive_windows = true,
+				disable_background = true,
 				styles = {
-					bold = false,
 					italic = false,
-					-- transparency = true,
 				},
-				enable = { terminal = true },
-				palette = {
-					main = {
-						-- rose = "#e84d78",
-						-- rose = "#cca19f",
-						-- iris = "#ac77ed",
-						-- base = "#191724",
-						-- surface = "#1f1d2e",
-						-- overlay = "#26233a",
-						-- gold = "#ea9d34",
-						-- text = "#ffffff",
-						-- pine = "#203fbf",
-						-- foam = "#f6c177",
-					},
-				},
-				vim.cmd("colorscheme rose-pine"),
 			})
+
+			ColorMyPencils()
 		end,
 	},
-
 	-- Lazy
 	{
 		"vague2k/vague.nvim",
@@ -40,13 +52,14 @@ return {
 			-- NOTE: you do not need to call setup if you don't want to.
 			require("vague").setup({
 				-- optional configuration here
-				transparent = true, -- don't set background
 				style = {
 					-- "none" is the same thing as default. But "italic" and "bold" are also valid options
 					comments = "none",
 					strings = "none",
 				},
+				transparent = false,
 			})
+			ColorMyPencils()
 		end,
 	},
 	{
@@ -61,30 +74,4 @@ return {
 			vim.g.gruvbox_material_background = "hard"
 		end,
 	},
-
-	-- {
-	-- 	"tanvirtin/monokai.nvim",
-	-- 	name = "monokai",
-	-- },
-	-- {
-	-- 	"craftzdog/solarized-osaka.nvim",
-	-- 	lazy = true,
-	-- 	priority = 1000,
-	-- 	opts = function()
-	-- 		return {
-	-- 			transparent = true,
-	-- 			terminal_colors = true, -- Configure the colors used when opening a `:terminal` in [Neovim](https://github.com/neovim/neovim)
-	-- 			styles = {
-	-- 				-- Style to be applied to different syntax groups
-	-- 				-- Value is any valid attr-list value for `:help nvim_set_hl`
-	-- 				comments = { italic = false },
-	-- 				keywords = { italic = false },
-	-- 				-- Background styles. Can be "dark", "transparent" or "normal"
-	-- 				sidebars = "transparent", -- style for sidebars, see below
-	-- 				floats = "transparent", -- style for
-	-- 			},
-	-- 		}
-	-- 	end,
-	-- },
-	--
 }

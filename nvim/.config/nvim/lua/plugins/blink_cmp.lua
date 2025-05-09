@@ -56,7 +56,7 @@ return {
 			completion = {
 				documentation = { auto_show = true, auto_show_delay_ms = 500 },
 				menu = {
-					-- border = "rounded",
+					border = "single",
 					draw = { treesitter = { "lsp" } },
 				},
 				ghost_text = {
