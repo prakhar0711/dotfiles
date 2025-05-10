@@ -1,17 +1,8 @@
 # COLORS
-# background= #161821
-# background=              #1E1E2E
-# background=             #01121a 
-# background=               #191724
-# background=              #0c0b12 
-# background=              #01121a
-# background=#262626
-# background=#01121a
-# background-blur=false
-# background-blur-radius=30
-background=              #181818
-# background=              #000000
-background-opacity=1
+# background=              #181818
+background=              #000000
+background-opacity = 0.85
+background-blur = false
 
 # CURSOR
 cursor-style=block
@@ -24,13 +15,14 @@ font-family=JetBrainsMono Nerd Font
 font-feature=-calt,-liga,-dlig
 
 #TERMINAL SETTINGS
-shell-integration-features = no-cursor
+shell-integration-features = no-cursor,no-sudo,no-title
+gtk-titlebar = false
 window-decoration=false
 confirm-close-surface=false
 
 #WINDOW SETTINGS
-window-padding-x=10
-window-padding-y=10
+# window-padding-x=10
+# window-padding-y=10
 
 #KEYBINDINGS
 keybind=ctrl+shift+l=next_tab
