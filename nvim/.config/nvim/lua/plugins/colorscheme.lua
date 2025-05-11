@@ -3,28 +3,15 @@ function ColorMyPencils(color)
 	vim.cmd.colorscheme(color)
 	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-	-- Main background transparency
-	-- vim.api.nvim_set_hl(0, "NormalNC", { bg = "#313136" })
-	-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#313136" }) -- subtle contrast for focused floats
-	--
-	-- -- Float window borders and shadows
-	-- vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#524f67", bg = "#313136" })
-	-- vim.api.nvim_set_hl(0, "FloatTitle", { fg = "#c4a7e7", bg = "#313136", bold = true })
-	-- vim.api.nvim_set_hl(0, "FloatShadow", { bg = "#000000", blend = 10 })
-	-- vim.api.nvim_set_hl(0, "FloatShadowThrough", { bg = "#000000", blend = 10 })
-	--
-	-- -- Popup and menu-like UIs (e.g., Pmenu, Telescope)
-	-- vim.api.nvim_set_hl(0, "Pmenu", { fg = "#e0def4", bg = "#313136" })
-	-- vim.api.nvim_set_hl(0, "PmenuSel", { fg = "#313136", bg = "#c4a7e7", bold = true })
-	-- vim.api.nvim_set_hl(0, "PmenuSbar", { bg = "#313136" })
-	-- vim.api.nvim_set_hl(0, "PmenuThumb", { bg = "#c4a7e7" })
-	--
-	-- -- Borders and separator elements
-	-- vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#403d52", bg = "none" })
-	--
-	-- -- Optional: LSP and diagnostic floating windows
-	-- vim.api.nvim_set_hl(0, "LspFloatWinNormal", { link = "NormalFloat" })
-	-- vim.api.nvim_set_hl(0, "LspInfoBorder", { link = "FloatBorder" })
+	-- enable the below only when using vague
+	-- vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
+	-- vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "none" })
+	-- vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = "none" })
+	-- vim.api.nvim_set_hl(0, "LazyNormal", { bg = "none" })
+	-- vim.api.nvim_set_hl(0, "MasonNormal", { bg = "none" })
+
+	-- Optional: dim the background of non-active windows slightly
+	vim.api.nvim_set_hl(0, "NormalNC", { bg = "#1a1a1a" }) -- or some subtle shade
 end
 
 return {
@@ -57,7 +44,7 @@ return {
 					comments = "none",
 					strings = "none",
 				},
-				transparent = false,
+				transparent = true,
 			})
 			ColorMyPencils()
 		end,
