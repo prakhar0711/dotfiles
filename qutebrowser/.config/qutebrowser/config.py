@@ -26,23 +26,23 @@ c.colors.statusbar.url.fg = xresources["*color13"]
 c.colors.statusbar.url.success.https.fg = xresources["*color13"]
 c.colors.statusbar.url.hover.fg = xresources["*color12"]
 c.statusbar.show = "always"
-c.colors.tabs.even.bg = "#00000000" # transparent tabs!!
-c.colors.tabs.odd.bg = "#00000000"
 c.colors.tabs.bar.bg = "#00000000"
+c.colors.tabs.even.bg = "#000000" # transparent tabs!!
+c.colors.tabs.even.fg = xresources["*.foreground"]
 # c.colors.tabs.even.bg = xresources["*.background"]
+c.colors.tabs.selected.even.bg = xresources["*.background"]
+c.colors.tabs.selected.even.fg = xresources["*.foreground"]
+c.colors.tabs.odd.bg = "#000000"
 # c.colors.tabs.odd.bg = xresources["*.background"]
-c.colors.tabs.even.fg = xresources["*color0"]
-c.colors.tabs.odd.fg = xresources["*color0"]
-c.colors.tabs.selected.even.bg = xresources["*.foreground"]
-c.colors.tabs.selected.odd.bg = xresources["*.foreground"]
-c.colors.tabs.selected.even.fg = xresources["*.background"]
-c.colors.tabs.selected.odd.fg = xresources["*.background"]
+c.colors.tabs.odd.fg = xresources["*.foreground"]
+c.colors.tabs.selected.odd.bg = xresources["*.background"]
+c.colors.tabs.selected.odd.fg = xresources["*.foreground"]
 c.colors.hints.bg = xresources["*.background"]
 c.colors.hints.fg = xresources["*.foreground"]
 c.tabs.show = "multiple"
 
-c.colors.completion.item.selected.match.fg = xresources["*color6"]
-c.colors.completion.match.fg = xresources["*color6"]
+c.colors.completion.item.selected.match.fg = xresources["*color16"]
+c.colors.completion.match.fg = xresources["*color16"]
 
 c.colors.tabs.indicator.start = xresources["*color10"]
 c.colors.tabs.indicator.stop = xresources["*color8"]
@@ -113,7 +113,7 @@ config.bind('gm', 'tab-move')
 
 # dark mode setup
 c.colors.webpage.darkmode.enabled = True
-c.colors.webpage.darkmode.algorithm = 'lightness-cielab'
+# c.colors.webpage.darkmode.algorithm = 'lightness-cielab'
 c.colors.webpage.darkmode.policy.images = 'never'
 config.set('colors.webpage.darkmode.enabled', False, 'file://*')
 
@@ -169,6 +169,23 @@ c.content.blocking.method = 'adblock' # uncomment this if you install python-adb
 #         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/badlists.txt",
 #         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/quick-fixes.txt",
 #         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/resource-abuse.txt",
+#         "https://github.com/yokoffing/filterlists/blob/main/privacy_essentials.txt",
 #         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/unbreak.txt"]
-config.bind('<Alt-Shift-u>', 'spawn --userscript qute-keepassxc --key CC9F39A131E29D1C9DF36F2B7A05B0D1887DFC59', mode='insert')
-config.bind('pw', 'spawn --userscript qute-keepassxc --key CC9F39A131E29D1C9DF36F2B7A05B0D1887DFC59', mode='normal')
+config.bind('<Alt-Shift-u>', 'spawn --userscript qute-keepassxc --key 79840569F02E9BF1C1EF6A19D1419B5F6E6C6CA5', mode='insert')
+config.bind('pw', 'spawn --userscript qute-keepassxc --key 79840569F02E9BF1C1EF6A19D1419B5F6E6C6CA5', mode='normal')
+
+config.bind("<Ctrl-h>", "fake-key <Backspace>", "insert")
+config.bind("<Ctrl-a>", "fake-key <Home>", "insert")
+config.bind("<Ctrl-e>", "fake-key <End>", "insert")
+config.bind("<Ctrl-b>", "fake-key <Left>", "insert")
+config.bind("<Mod1-b>", "fake-key <Ctrl-Left>", "insert")
+config.bind("<Ctrl-f>", "fake-key <Right>", "insert")
+config.bind("<Mod1-f>", "fake-key <Ctrl-Right>", "insert")
+config.bind("<Ctrl-p>", "fake-key <Up>", "insert")
+config.bind("<Ctrl-n>", "fake-key <Down>", "insert")
+config.bind("<Mod1-d>", "fake-key <Ctrl-Delete>", "insert")
+config.bind("<Ctrl-d>", "fake-key <Delete>", "insert")
+config.bind("<Ctrl-w>", "fake-key <Ctrl-Backspace>", "insert")
+config.bind("<Ctrl-u>", "fake-key <Shift-Home><Delete>", "insert")
+config.bind("<Ctrl-k>", "fake-key <Shift-End><Delete>", "insert")
+config.bind("<Ctrl-x><Ctrl-e>", "open-editor", "insert")
