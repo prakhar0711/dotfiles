@@ -1,10 +1,20 @@
 source "${HOME}/.local/share/zinit/zinit.git/zinit.zsh"
-
+zinit ice wait lucid
 zinit light chrissicool/zsh-256color
+
+zinit ice wait lucid
 zinit light zsh-users/zsh-syntax-highlighting
+
+zinit ice wait lucid
 zinit light zsh-users/zsh-autosuggestions
+
+zinit ice wait lucid
 zinit light zsh-users/zsh-completions
+
+zinit ice wait lucid
 zinit light jeffreytse/zsh-vi-mode
+
+zinit ice wait lucid
 zinit light Aloxaf/fzf-tab
 
 # Zinit applies as loaded, no explicit "apply" needed.
