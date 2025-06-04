@@ -15,7 +15,7 @@ antigen bundle Aloxaf/fzf-tab
 
 # === Apply bundles and theme ===
 antigen apply
-
+export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 # === Environment Variables ===
 export EDITOR='nvim'
 export VISUAL="$EDITOR"
@@ -138,7 +138,7 @@ alias ds='yazi'
 alias slock='i3lock-fancy'
 alias fman="compgen -c | fzf | xargs man"
 alias cheat="cheat -e"
-
+eval "$(starship init zsh)"
 # === zoxide if installed ===
 if command -v zoxide >/dev/null; then
   eval "$(zoxide init zsh)"

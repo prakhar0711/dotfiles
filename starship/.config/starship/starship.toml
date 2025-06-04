@@ -1,0 +1,33 @@
+format = """
+$directory\
+$git_branch\
+$git_status\
+$fill\
+$lua\
+$nodejs\
+$golang\
+$zig\
+$cpp\
+$c\
+$rust\
+$cmd_duration\
+$line_break\
+$character"""
+
+
+add_newline=true
+
+[directory]
+format = '[$path ]($style)'
+truncation_length = 3
+truncation_symbol = '…/'
+truncate_to_repo = false
+
+[directory.substitutions]
+'Documents' = '󰈙'
+'Downloads' = ' '
+'Music' = ' '
+'Pictures' = ' '
+
+[fill]
+symbol = ' '
