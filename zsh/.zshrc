@@ -123,15 +123,15 @@ alias power-saver='powerprofilesctl set power-saver'
 alias power-performance='powerprofilesctl set performance'
 alias power-balanced='powerprofilesctl set balanced'
 
-alias ls='eza --icons=always --color=always -a'
-alias ll='eza --icons=always --color=always -la'
+alias l='eza --icons=always --color=always -a'
+alias la='eza --icons=always --color=always -la'
 alias tree='eza --tree --level=2'
 alias cat='bat --theme=base16'
 alias music='ncmpcpp'
 alias v='nvim'
 alias ds='yazi'
 alias slock='i3lock-fancy'
-alias fman="compgen -c | fzf | xargs man"
+alias fman="print -l ${(ko)commands} | fzf | xargs man"
 alias cheat="cheat -e"
 
 # === Starship prompt initialization ===
