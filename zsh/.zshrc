@@ -1,22 +1,17 @@
-# Load Antigen
-source "$HOME/.antigen.zsh"
-antigen use oh-my-zsh
-# === Theme ===
-antigen theme robbyrussell
+source "${HOME}/.local/share/zinit/zinit.git/zinit.zsh"
 
-# === Bundles (Plugins) ===
-antigen bundle git
-antigen bundle chrissicool/zsh-256color
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle zsh-users/zsh-completions
-antigen bundle jeffreytse/zsh-vi-mode
-antigen bundle Aloxaf/fzf-tab
+zinit light chrissicool/zsh-256color
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-completions
+zinit light jeffreytse/zsh-vi-mode
+zinit light Aloxaf/fzf-tab
 
-# === Apply bundles and theme ===
-antigen apply
-export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
+# Zinit applies as loaded, no explicit "apply" needed.
+
 # === Environment Variables ===
+export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
+
 export EDITOR='nvim'
 export VISUAL="$EDITOR"
 export BROWSER='thorium'
@@ -138,7 +133,10 @@ alias ds='yazi'
 alias slock='i3lock-fancy'
 alias fman="compgen -c | fzf | xargs man"
 alias cheat="cheat -e"
+
+# === Starship prompt initialization ===
 eval "$(starship init zsh)"
+
 # === zoxide if installed ===
 if command -v zoxide >/dev/null; then
   eval "$(zoxide init zsh)"
@@ -151,6 +149,7 @@ fi
 
 # === Console output to randomize krabby if available ===
 [[ $- == *i* ]] && command -v krabby &>/dev/null && krabby random
+
 
 # # ====================================================================
 # #  Core ZSH Configuration
