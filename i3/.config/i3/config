@@ -296,3 +296,6 @@ focus_wrapping no
 # focus_on_window_activation focus
 workspace_layout default
 # hide_edge_borders both
+
+## disable HDMI port
+exec xrandr --output HDMI-1 --off

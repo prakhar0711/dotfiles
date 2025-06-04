@@ -3,14 +3,14 @@
 # Battery notification script using dunst
 
 # Battery status constants
-BATTERY_LOW=25
-BATTERY_CRITICAL=10
+BATTERY_LOW=20
+BATTERY_CRITICAL=5
 BATTERY_CHARGING=1
 
 # Notification settings
 NOTIFY_EXPIRES=8000
-SOUND_CRITICAL="/usr/share/sounds/freedesktop/stereo/suspend-error.oga"
-SOUND_LOW="/usr/share/sounds/freedesktop/stereo/suspend-error.oga"
+# SOUND_CRITICAL="/usr/share/sounds/freedesktop/stereo/suspend-error.oga"
+# SOUND_LOW="/usr/share/sounds/freedesktop/stereo/suspend-error.oga"
 
 # Path to battery - modify if needed
 BATTERY_PATH="/sys/class/power_supply/BAT1"
