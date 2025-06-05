@@ -7,6 +7,8 @@ $python\
 $lua\
 $nodejs\
 $golang\
+$cpp\
+$c\
 $rust\
 $package\
 $jobs\
@@ -16,6 +18,14 @@ $character"""
 
 add_newline = true
 palette = 'nord'
+
+[character]
+success_symbol = "[λ](bold green)"
+error_symbol = "[λ](bold red)"
+
+[git_branch]
+symbol = ' '
+format = '[on](white) [$symbol$branch ]($style)'
 
 [directory]
 style = 'bold fg:dark_blue'
