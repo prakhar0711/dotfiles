@@ -131,16 +131,14 @@ set $ws10 "10"
 # Assign apps to workspaces (using app_id or class in sway)
 # Note: sway uses `for_window [app_id=""]` or `for_window [class=""]`
 for_window [app_id="kitty"] move to workspace $ws1
-for_window [app_id="alacritty"] move to workspace $ws1
-for_window [app_id="wezterm"] move to workspace $ws1
+for_window [app_id="com.mitchellh.ghostty"] move to workspace $ws1
 for_window [app_id="nitrogen"] move to workspace $ws1
 for_window [app_id="firefox"] move to workspace $ws2
 for_window [class="Brave-browser"] move to workspace $ws2
-for_window [app_id="librewolf"] move to workspace $ws2
 for_window [app_id="thunar"] move to workspace $ws3
 for_window [app_id="mpv"] move to workspace $ws3
-for_window [app_id="feh"] move to workspace $ws3
-for_window [app_id="spotify"] move to workspace $ws3
+for_window [class="Code"] move to workspace $ws4
+for_window [class="Spotify"] move to workspace $ws5
 
 # Workspace switching
 bindsym $mod+1 workspace $ws1
