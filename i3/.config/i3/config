@@ -87,12 +87,11 @@ tiling_drag modifier titlebar
 
 # start a terminal
 # bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec ghostty 
-bindsym $mod+Shift+f exec thorium-browser
+bindsym $mod+Return exec kitty 
+bindsym $mod+Shift+f exec firefox
 bindsym $mod+Shift+i exec code 
 bindsym $mod+Shift+b exec thunar 
-bindsym $mod+Shift+p exec ~/.config/rofi/powermenu.sh
-
+bindsym $mod+Shift+p exec dmenu_run
 # kill focused window
 bindsym $mod+q kill
 

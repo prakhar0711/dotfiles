@@ -37,13 +37,16 @@ background_opacity 1
 
 cursor_blink_interval 0
 
-# cursor_trail 3
-# cursor_trail_decay 0.1 0.4
+cursor_trail 3
+cursor_trail_decay 0.1 0.4
 
 
 disable_ligatures always
 
 font_features none
 
-# THEME
+
+# BEGIN_KITTY_THEME
+# Rosé Pine
 include current-theme.conf
+# END_KITTY_THEME
