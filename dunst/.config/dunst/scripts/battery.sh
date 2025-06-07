@@ -1,5 +1,16 @@
 #!/bin/bash
+LOCKFILE="/tmp/dunst-battery.lock"
 
+# If process is running and PID is valid, do not start a new one
+if [ -f "$LOCKFILE" ] && kill -0 "$(cat "$LOCKFILE")" 2>/dev/null; then
+    exit 0
+fi
+
+# Save current PID
+echo $$ > "$LOCKFILE"
+
+# Clean up on script exit
+trap "rm -f $LOCKFILE" EXIT
 # Battery notification script using dunst
 
 # Battery status constants

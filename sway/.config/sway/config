@@ -12,10 +12,15 @@ output eDP-1 resolution 2560x1600@240Hz position 0,0
 # Start Waybar (status bar)
 exec_always sh -c "pkill waybar; sleep 1; waybar" &
 
+exec_always pkill -x cava
 exec swaybg -i ~/wallpapers/wall-124.png -m fill
 # Autostart applications (use "exec" or "exec_always" for sway)
 exec --no-startup-id dex --autostart --environment sway
 exec --no-startup-id dunst
+
+exec_always pkill -f battery.sh
+exec_always pkill -f ~/.config/dunst/scripts/battery.shh
+
 exec --no-startup-id ~/.config/dunst/scripts/battery.sh
 
 # Screen locker with xss-lock (make sure i3lock-fancy works on Wayland or use swaylock)
