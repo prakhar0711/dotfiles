@@ -31,7 +31,7 @@
     "group/hardware",
     "battery",
     "network",
-    "idle_inhibitor",
+    //"idle_inhibitor",
     "custom/power"
   ],
 

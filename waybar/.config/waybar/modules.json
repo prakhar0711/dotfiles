@@ -138,11 +138,11 @@
   },
   "cpu": {
     "format": " {usage: >3}%",
-    "on-click": "alacritty -e htop"
+    "on-click": "kitty -e htop"
   },
   "memory": {
-    "format": " {: >3}%",
-    "on-click": "alacritty -e htop"
+    "format": "RAM{: >3}%",
+    "on-click": "kitty -e htop"
   },
   "temperature": {
     "thermal-zone": 4,
@@ -156,7 +156,7 @@
     // "interval": 30,
     "format": " {percentage_used}% ",
     "path": "/",
-    //"on-click": "alacritty -e htop"
+    //"on-click": "kitty -e htop"
   }, 
     // Group Hardware
     "group/hardware": {
@@ -167,7 +167,6 @@
             "transition-left-to-right": false
         },        
         "modules": [
-            "custom/system",
             "disk",
             "cpu",
             "memory"
@@ -211,7 +210,7 @@
     "tooltip-format-wifi": "   {essid} ({signalStrength}%)",
     "tooltip-format-ethernet": "  {ifname} ({ipaddr}/{cidr})",
     "tooltip-format-disconnected": "⚠  Disconnected",
-    // "on-click": "alacritty -e nmtui"
+    // "on-click": "kitty -e nmtui"
     "on-click": "nm-connection-editor"
   },
   "pulseaudio": {
@@ -239,7 +238,7 @@
     "interval": 7200, // every two hours
     "exec": "i=$(checkupdates); echo \"$i\" |wc -l; echo \"$i\" |column -t |tr '\n' '\r'", // # of updates and tooltip details
     "exec-if": "exit 0", // always run; consider advanced run conditions
-    "on-click": "alacritty -e sudo pacman -Syu", // update system
+    "on-click": "kitty -e sudo pacman -Syu", // update system
     "signal": 8
   },
   "custom/power": {
@@ -259,7 +258,7 @@
   },
   "custom/launcher": {
     "format": "",
-    "on-click": "rofi -show drun -replace",
+    "on-click": "wofi --show drun",
     "tooltip": false
   },
 "custom/spotify": {

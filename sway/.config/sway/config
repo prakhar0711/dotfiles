@@ -12,7 +12,7 @@ output eDP-1 resolution 2560x1600@240Hz position 0,0
 # Start Waybar (status bar)
 exec_always sh -c "pkill waybar; sleep 1; waybar" &
 
-exec swaybg -i ~/wallpapers/takuya.png -m fill
+exec swaybg -i ~/wallpapers/wall-124.png -m fill
 # Autostart applications (use "exec" or "exec_always" for sway)
 exec --no-startup-id dex --autostart --environment sway
 exec --no-startup-id dunst
