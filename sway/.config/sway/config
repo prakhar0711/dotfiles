@@ -1,0 +1,222 @@
+# ~/.config/sway/config
+
+# Set mod key (Mod1 is Alt, but usually people use Mod4 (Super) in sway)
+set $mod Mod1
+
+# Font for window titles and bar (Sway uses pango fonts too)
+font pango:JetBrainsMono Nerd Font 18
+
+# Set output resolution and refresh rate
+output eDP-1 resolution 2560x1600@240Hz position 0,0 
+
+# Start Waybar (status bar)
+exec_always sh -c "pkill waybar; sleep 1; waybar" &
+
+exec swaybg -i ~/wallpapers/takuya.png -m fill
+# Autostart applications (use "exec" or "exec_always" for sway)
+exec --no-startup-id dex --autostart --environment sway
+exec --no-startup-id dunst
+exec --no-startup-id ~/.config/dunst/scripts/battery.sh
+
+# Screen locker with xss-lock (make sure i3lock-fancy works on Wayland or use swaylock)
+exec --no-startup-id xss-lock --transfer-sleep-lock -- swaylock -f
+
+# Network manager applet (nm-applet) does not work natively on Wayland;
+# use network management tools like wpa_supplicant, or networkmanager-qt based frontends if needed.
+# You can run nm-applet under XWayland but may have quirks:
+exec --no-startup-id nm-applet
+
+# Volume controls via scripts using pactl (PulseAudio)
+bindsym XF86AudioRaiseVolume exec ~/.config/dunst/scripts/volume.sh volume up
+bindsym XF86AudioLowerVolume exec ~/.config/dunst/scripts/volume.sh volume down
+bindsym XF86AudioMute exec ~/.config/dunst/scripts/volume.sh volume mute
+
+# Brightness controls (usually works similarly)
+bindsym XF86MonBrightnessUp exec ~/.config/dunst/scripts/volume.sh brightness up
+bindsym XF86MonBrightnessDown exec ~/.config/dunst/scripts/volume.sh brightness down
+
+# Media keys
+bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+# Screenshots using maim equivalent: For Wayland, use grim/scrot/slurp
+bindsym Print exec grim "/home/$USER/Pictures/$(date +'%Y-%m-%d_%H-%M-%S').png"
+bindsym $mod+Print exec grim -g "$(slurp)" "/home/$USER/Pictures/$(date +'%Y-%m-%d_%H-%M-%S').png"
+bindsym Shift+Print exec grim -g "$(slurp)" "/home/$USER/Pictures/$(date +'%Y-%m-%d_%H-%M-%S').png"
+
+# Floating modifier key (same)
+floating_modifier $mod
+
+# Terminal
+bindsym $mod+Return exec kitty
+bindsym $mod+Shift+f exec firefox
+bindsym $mod+Shift+i exec code
+bindsym $mod+Shift+b exec thunar
+bindsym $mod+Shift+p exec ~/.config/bemenu/run.sh  # dmenu is X11 only; consider rofi or wofi on Wayland
+
+# Kill focused window
+bindsym $mod+q kill
+
+# Program launchers (prefer wofi or rofi with Wayland support)
+bindsym $mod+Shift+d exec wofi --show drun
+bindsym $mod+Shift+v exec wofi --show combi
+bindsym $mod+Tab exec wofi --show window
+# start rofi (a program launcher)
+# bindsym $mod+Shift+d exec --no-startup-id rofi -show drun
+# bindsym $mod+Shift+v exec --no-startup-id rofi -show combi
+# bindsym $mod+Tab exec --no-startup-id rofi -show window
+
+# Focus movement
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move focused container
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Split orientation
+bindsym $mod+semicolon split horizontal
+bindsym $mod+v split vertical
+
+# Fullscreen toggle
+bindsym $mod+f fullscreen toggle
+
+# Container layout
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# Floating toggle
+bindsym $mod+Shift+space floating toggle
+
+# Focus mode toggle (tiling/floating)
+bindsym $mod+space focus mode_toggle
+
+# Focus parent container
+bindsym $mod+a focus parent
+
+# Workspace definitions (same)
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# Assign apps to workspaces (using app_id or class in sway)
+# Note: sway uses `for_window [app_id=""]` or `for_window [class=""]`
+for_window [app_id="kitty"] move to workspace $ws1
+for_window [app_id="alacritty"] move to workspace $ws1
+for_window [app_id="wezterm"] move to workspace $ws1
+for_window [app_id="nitrogen"] move to workspace $ws1
+for_window [app_id="firefox"] move to workspace $ws2
+for_window [class="Brave-browser"] move to workspace $ws2
+for_window [app_id="librewolf"] move to workspace $ws2
+for_window [app_id="thunar"] move to workspace $ws3
+for_window [app_id="mpv"] move to workspace $ws3
+for_window [app_id="feh"] move to workspace $ws3
+for_window [app_id="spotify"] move to workspace $ws3
+
+# Workspace switching
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+# Reload config
+bindsym $mod+Shift+c reload
+
+# Restart sway
+bindsym $mod+Shift+r restart
+
+# Exit sway
+bindsym $mod+Shift+e exit
+
+# Resize mode
+mode "resize" {
+    bindsym j resize shrink width 10 px or 10 ppt
+    bindsym k resize grow height 10 px or 10 ppt
+    bindsym l resize shrink height 10 px or 10 ppt
+    bindsym semicolon resize grow width 10 px or 10 ppt
+
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# Window borders & colors
+# Note: sway config uses different syntax and limited color control via 'client.focused' etc.
+
+# Example Rosé Pine colors:
+set $rose_pine_base     #191724
+set $rose_pine_surface  #1f1d2e
+set $rose_pine_text     #e0def4
+set $rose_pine_subtle   #908caa
+set $rose_pine_overlay  #26233a
+set $rose_pine_primary  #eb6f92
+set $rose_pine_accent   #9ccfd8
+
+# Borders & colors
+client.focused          $rose_pine_subtle $rose_pine_subtle $rose_pine_text $rose_pine_subtle
+client.focused_inactive $rose_pine_overlay $rose_pine_overlay $rose_pine_subtle $rose_pine_overlay
+client.unfocused        $rose_pine_surface $rose_pine_surface $rose_pine_subtle $rose_pine_surface
+client.urgent           $rose_pine_accent $rose_pine_accent $rose_pine_text $rose_pine_accent
+client.placeholder      $rose_pine_base $rose_pine_base $rose_pine_text $rose_pine_base
+
+# Border width
+default_border pixel 1
+
+# Focus options
+focus_follows_mouse no
+focus_wrapping no
+
+# Workspace layout default
+workspace_layout default
+
+# Disable HDMI output
+output HDMI-A-1 disable
+

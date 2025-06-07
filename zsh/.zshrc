@@ -343,8 +343,6 @@ alias slock='i3lock-fancy'
 alias fman="compgen -c | fzf | xargs man"
 alias cheat="cheat -e"
 
-
-
 # zoxide
 if command -v zoxide >/dev/null; then
   eval "$(zoxide init zsh)"
