@@ -3,6 +3,9 @@
 # ====================================================================
 
 [[ $- != *i* ]] && return  # Exit if not running interactively
+# only for bash like prompt
+autoload -U colors && colors
+export PS1="%{$fg[green]%}%n@%m%{$reset_color%}:%{$fg[cyan]%}%~%{$reset_color%}$ "
 
 # Set theme and plugin list before sourcing Oh My Zsh
 export ZSH="$HOME/.oh-my-zsh"
@@ -79,7 +82,7 @@ add-zsh-hook -Uz precmd rehash_precmd
 # ====================================================================
 
 # Oh My Zsh (after plugin/theme setup)
-source "$ZSH/oh-my-zsh.sh"
+# source "$ZSH/oh-my-zsh.sh"
 
 # fnm (Fast Node Manager)
 FNM_PATH="$HOME/.local/share/fnm"
@@ -147,3 +150,5 @@ fi
 [[ $- == *i* ]] && command -v krabby &>/dev/null && krabby random
 
 
+
+. "$HOME/.atuin/bin/env"

@@ -24,7 +24,7 @@ echo "File names swapped successfully!"
 # pkill waybar && waybar &
 
 # Ensure only one Waybar instance runs
-pkill -x waybar && swaymsg reload
+pkill -x waybar && waybar
 
 # reload sway
 # swaymsg reload

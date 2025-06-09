@@ -17,7 +17,7 @@ cleanup() {
     pkill -P $$ cava
 }
 trap cleanup EXIT
-
+#
 # Start cava
 exec cava -p ~/.config/cava/config | \
 while read -r line; do
