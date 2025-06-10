@@ -1,44 +1,119 @@
 {
-  "layer": "top", // Waybar at top layer
-  "position": "top", // Waybar position (top|bottom|left|right)
-  "height": 30,
-  "margin": "0 0 0 0",
-  //"width": 1350, // Waybar width
-  // Choose the order of the modules idle_inhibitor
-  "modules-left": [
-    "custom/launcher",
-    "hyprland/workspaces",
-    "custom/swap",
-    "tray",
-    "hyprland/window",
-    "hyprland/mode",
-    "custom/cava-internal",
-    "custom/spotify"
-    //"mpd#2",
-    //"mpd#3",
-    //"mpd#4",
-    //"mpd"
-  ],
-  "modules-center": ["clock"],
-  "modules-right": [
-    "backlight",
-    "pulseaudio",
-    "custom/keyboard-layout",
-    "temperature",
-    // "cpu",
-    // "memory",
-    // "disk",
-    "group/hardware",
-    "battery",
-    "network",
-    //"idle_inhibitor",
-    "custom/power"
-  ],
-
-
-    // Load Modules
-    "include": ["~/.config/waybar/modules-background.json"],
-
-  // Modules configuration
-
+    "margin-top" : 5,
+        "margin-left": 10,
+        "margin-right": 10,
+        "height" : 30,
+        "modules-left": [
+            "hyprland/workspaces",
+        "custom/spotify",
+        "custom/cava-internal"
+        ],
+        "modules-center": [
+            "hyprland/window"
+        ],
+        "modules-right": [
+            "pulseaudio",
+        "network",
+        "temperature",
+        "battery",
+        "clock",
+        "tray"
+        ],
+        "hyprland/window": {
+            "format": "{}",
+            "max-length": 35,
+            "rewrite": {
+                "": "prakhar@arch"
+            },
+            "separate-outputs": true,
+        },
+        "hyprland/workspaces": {
+            //"format": "{number}",
+            "on-click": "activate",
+           // "format-icons": {
+            //    "active": " ",
+           // },
+            "sort-by-number": true,
+            "persistent-workspaces": {
+                "*": 6, // 5 workspaces by default on every monitor
+            },
+        },
+        "clock": {
+            //"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+            //"format-alt": "{:%Y-%m-%d}"
+            "tooltip-format": "<tt><small>{calendar}</small></tt>",
+            "calendar": {
+                "mode": "month",
+                "mode-mon-col": 3,
+                "weeks-pos": "right",
+                "on-scroll": 1,
+                "on-click-right": "mode",
+                "format": {
+                    "months": "<span color='#bb9af7'><b>{}</b></span>",  // Purple
+                    "days": "<span color='#7aa2f7'><b>{}</b></span>",    // Blue
+                    "weeks": "<span color='#9ece6a'><b>W{}</b></span>",  // Green
+                    "weekdays": "<span color='#e0af68'><b>{}</b></span>",// Yellow
+                    "today": "<span background='#2ac3de' color='#1a1b26'><b><u>{}</u></b></span>" // Cyan background with dark text
+                }
+            },
+            "actions": {
+                "on-click-right": "mode",
+                "on-click-forward": "tz_up",
+                "on-click-backward": "tz_down",
+                "on-scroll-up": "shift_up",
+                "on-scroll-down": "shift_down"
+            },
+            "format": "{:%a %d %b | %I:%M %p}", //12 hour format
+            "format-alt": "  {:%Y-%m-%d  %H:%M:%S}",
+            "interval": 1
+        },
+        "cpu": {
+            "format": "  {usage}%",
+            "tooltip": false
+        },
+        "memory": {
+            "format": "{}%  "
+        },
+        "temperature": {
+            "critical-threshold": 80,
+            "format": "{icon} {temperatureC}°C",
+            "format-icons": ["", "", ""]
+        },
+        "battery": {
+            "states": {
+                "warning": 30,
+                "critical": 15
+            },
+            "format": "{icon}  {capacity}%",
+            "format-full": "{icon}  {capacity}%",
+            "format-charging": "  {capacity}%",
+            "format-plugged": "  {capacity}%",
+            "format-alt": "{time} {icon}",
+            "format-icons": ["", "", "", "", ""]
+        },
+        "network": {
+            "format-wifi": "  {signalStrength}%",
+            "format-ethernet": "{cidr} ",
+            "tooltip-format": "{ifname} via {gwaddr} ",
+            "format-linked": "{ifname} (No IP) ",
+            "format-disconnected": " ⚠ ",
+            "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        },
+        "pulseaudio": {
+            "format": "{icon}  {volume}%",
+            "format-bluetooth": "{volume}% {icon} {format_source}",
+            "format-bluetooth-muted": " {icon} {format_source}",
+            "format-muted": "",
+            "format-icons": {
+                "headphone": "",
+                "hands-free": "",
+                "headset": "",
+                "phone": "",
+                "portable": "",
+                "car": "",
+                "default": ["", "", ""]
+            },
+            "on-click": "blueman-tray"
+        },
+        "include": ["~/.config/waybar/modules.json"],
 }

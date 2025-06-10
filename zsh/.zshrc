@@ -150,5 +150,5 @@ fi
 [[ $- == *i* ]] && command -v krabby &>/dev/null && krabby random
 
 
-
+eval "$(fnm env --use-on-cd --shell zsh)"
 . "$HOME/.atuin/bin/env"
