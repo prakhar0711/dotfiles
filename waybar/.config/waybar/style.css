@@ -99,7 +99,7 @@ button:hover {
 .modules-left,
 .modules-center {
   background-color: @base;
-  border-radius: 15px;
+  border-radius: 5px;
 }
 
 .modules-right {

@@ -122,7 +122,7 @@ alias update="paru -Syu --nocombinedupgrade"
 alias pacman-update="sudo pacman -Syu"
 alias yay-update="yay -Syu"
 alias paru-update="paru -Syu"
-
+alias gs="git status"
 # Navigation
 alias ..='cd ..' ...='cd ../..' .3='cd ../../..' .4='cd ../../../..' .5='cd ../../../../..'
 

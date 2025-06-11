@@ -11,7 +11,7 @@ artist=$(playerctl metadata artist 2>/dev/null)
 title=$(playerctl metadata title 2>/dev/null)
 
 # Trim title to max 40 characters
-max_length=40
+max_length=25
 if [[ ${#title} -gt $max_length ]]; then
     title="${title:0:$max_length}…"
 fi
