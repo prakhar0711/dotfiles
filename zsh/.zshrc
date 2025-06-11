@@ -27,9 +27,9 @@ fi
 source ${zsh_plugins}.zsh
 
 autoload -U colors && colors
-# export PS1="%{$fg[#3eb075]%}%n@%m%{$reset_color%}:%{$fg[cyan]%}%~%{$reset_color%}$ "
+export PS1="%{$fg[green]%}%n@%m%{$reset_color%}:%{$fg[cyan]%}%~%{$reset_color%}$ "
 
-PS1="%F{#57d9a4}%n@%m%f:%F{cyan}%~%f$ "
+# PS1="%F{#57d9a4}%n@%m%f:%F{cyan}%~%f$ "
 ZVM_VI_INSERT_ESCAPE_BINDKEY=jj
 # ====================================================================
 #  Environment Variables
