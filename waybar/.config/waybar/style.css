@@ -2,7 +2,7 @@
 
 * {
   font-family: "JetBrainsMono Nerd Font", Roboto, Helvetica, Arial, sans-serif;
-  font-size: 18px;
+  font-size: 20px;
 }
 
 window#waybar {
@@ -151,3 +151,14 @@ label:focus {
     color:@blue;
 }
 
+#cpu {
+  color: @maroon; /* Matches a rich reddish color, often used for system metrics */
+}
+
+#memory {
+  color: @peach; /* Warm and distinct, often stands out well for memory usage */
+}
+
+#backlight {
+  color: @yellow; /* Reflects brightness/sun, aligns with your `@yellow` definition */
+}

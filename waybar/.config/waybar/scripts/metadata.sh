@@ -23,9 +23,9 @@ escaped_artist=$(echo "$artist" | sed 's/\\/\\\\/g; s/"/\\"/g')
 # Set icon based on status
 icon=""
 if [[ "$status" == "Playing" ]]; then
-    icon=""
-elif [[ "$status" == "Paused" ]]; then
     icon=""
+elif [[ "$status" == "Paused" ]]; then
+    icon=""
 fi
 
 # Output JSON for Waybar
