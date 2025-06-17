@@ -95,9 +95,14 @@ button:hover {
   color: @rosewater;
 }
 
+/* .modules-right, */
+/* .modules-left, */
+/* .modules-center { */
+/*   background-color: @base; */
+/*   border-radius: 5px; */
+/* } */
 .modules-right,
-.modules-left,
-.modules-center {
+.modules-left{
   background-color: @base;
   border-radius: 5px;
 }
@@ -110,9 +115,9 @@ button:hover {
   padding: 0 20px;
 }
 
-.modules-center {
-  padding: 0 10px;
-}
+/* .modules-center { */
+/*   padding: 0 10px; */
+/* } */
 
 #battery.charging,
 #battery.plugged {

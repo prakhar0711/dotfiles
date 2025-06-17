@@ -9,15 +9,16 @@
         "custom/spotify",
         "custom/cava-internal"
         ],
-//        "modules-center": [
-            //"hyprland/window"
- //       ],
+        //        "modules-center": [
+        //"hyprland/window"
+        //       ],
         "modules-right": [
             "backlight",
         "pulseaudio",
-        "network",
-        "cpu",
-        "memory",
+        //"network",
+        "group/hardware",
+        //"cpu",
+       // "memory",
         "battery",
         "clock"
         ],
@@ -65,12 +66,13 @@
             "format-alt": "  {:%Y-%m-%d  %H:%M:%S}",
             "interval": 1
         },
-        "memory": {
-            "format": " {used:0.1f}G/{total:0.1f}G",
-            "tooltip": true,
-            "tooltip-format": "Used: {used:0.1f}G\nFree: {free:0.1f}G\nAvailable: {available:0.1f}G\nCache: {cached:0.1f}G",
-            "interval": 2
-        },
+"memory": {
+        "format": " {used:0.1f}G/{total:0.1f}G ",
+        "tooltip": true,
+        "tooltip-format": "Used: {used:0.1f}GiB\nAvailable: {avail:0.1f}GiB\nTotal: {total:0.1f}Gib\nSwapUsed: {swapUsed:0.1f}GiB\nSwapAvailable: {swapAvail:0.1f}GiB\nSwapTotal: {swapTotal:0.1f}Gib",
+        "interval": 2
+    },
+      
 
         "cpu": {
             "format": " {usage}%",
@@ -128,5 +130,32 @@
             },
             "on-click": "blueman-tray"
         },
+        "network": {
+            // "interface": "wlp2s0", // (Optional) To force the use of this interface
+            "format": "⚠  Disabled",
+            "format-wifi": "  {essid}",
+            // "format-ethernet": " {ifname}: {ipaddr}/{cidr}",
+            "format-ethernet": "  Wired",
+            "format-disconnected": "⚠  Disconnected",
+            "tooltip-format": " {ifname} via {gwaddri}",
+            "tooltip-format-wifi": "   {essid} ({signalStrength}%)",
+            "tooltip-format-ethernet": "  {ifname} ({ipaddr}/{cidr})",
+            "tooltip-format-disconnected": "⚠  Disconnected",
+            // "on-click": "alacritty -e nmtui"
+            "on-click": "nmtui"
+        },
+"group/hardware": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 300,
+            "children-class": "not-memory",
+            "transition-left-to-right": false
+        },        
+        "modules": [
+            "network",
+            "cpu",
+            "memory"
+        ]
+    },
         "include": ["~/.config/waybar/modules.json"],
 }

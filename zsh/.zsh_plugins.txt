@@ -5,3 +5,4 @@ zsh-users/zsh-completions kind:fpath path:src
 jeffreytse/zsh-vi-mode
 chrissicool/zsh-256color
 Aloxaf/fzf-tab
+
