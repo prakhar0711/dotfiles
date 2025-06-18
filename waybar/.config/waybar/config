@@ -31,8 +31,7 @@
             "separate-outputs": true,
         },
         "hyprland/workspaces": {
-            "on-click": "activate",
-            "sort-by-number": true,
+            "on-click": "activate", "sort-by-number": true,
             "persistent-workspaces": {
                 "*": 6, // 5 workspaces by default on every monitor
             },
@@ -142,7 +141,7 @@
             "tooltip-format-ethernet": "  {ifname} ({ipaddr}/{cidr})",
             "tooltip-format-disconnected": "⚠  Disconnected",
             // "on-click": "alacritty -e nmtui"
-            "on-click": "nmtui"
+            "on-click": "kitty -e nmtui"
         },
 "group/hardware": {
         "orientation": "inherit",
