@@ -156,14 +156,14 @@
 # 'mono' outputs left to right lowest to highest frequencies.
 # 'mono_option' set mono to either take input from 'left', 'right' or 'average'.
 # set 'reverse' to 1 to display frequencies the other way around.
-; channels = stereo
+ channels = mono
 ; mono_option = average
 ; reverse = 0
 
 # Raw output target.
 # On Linux, a fifo will be created if target does not exist.
 # On Windows, a named pipe will be created if target does not exist.
- raw_target = /dev/stdout
+ raw_target = /tmp/cava.fifo
 
 # Raw data format. Can be 'binary' or 'ascii'.
  data_format = ascii

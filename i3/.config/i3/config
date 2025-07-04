@@ -33,6 +33,8 @@ exec --no-startup-id dunst
 # exec_always --no-startup-id ~/.config/polybar/i3_bar.sh
 exec_always --no-startup-id xrandr --dpi 192
 exec_always --no-startup-id xrdb -merge ~/.Xresources
+exec_always --no-startup-id polybar 
+
 
 # Start battery notification daemon
 exec --no-startup-id ~/.config/dunst/scripts/battery.sh
