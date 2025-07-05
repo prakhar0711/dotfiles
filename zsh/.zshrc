@@ -87,7 +87,8 @@ alias music='ncmpcpp'
 alias v='nvim'
 alias ds='yazi'
 alias slock='i3lock-fancy'
-alias fman="compgen -c | fzf | xargs man"
+alias fman="print -l ${(k)commands} | fzf | xargs man"
+
 
 # fnm
 if command -v fnm >/dev/null; then

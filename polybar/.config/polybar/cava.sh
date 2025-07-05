@@ -17,6 +17,12 @@ echo "
 [general]
 bars = 10
 
+[color]
+gradient = 1
+gradient_count = 2
+gradient_color_1 = '#33dddd'
+gradient_color_2 = '#cc33cc'
+
 [output]
 method = raw
 raw_target = /dev/stdout
