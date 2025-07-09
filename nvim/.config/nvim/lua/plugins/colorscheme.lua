@@ -11,7 +11,7 @@ function ColorMyPencils(color)
 	-- vim.api.nvim_set_hl(0, "MasonNormal", { bg = "none" })
 
 	-- Optional: dim the background of non-active windows slightly
-	vim.api.nvim_set_hl(0, "NormalNC", { bg = "#1a1a1a" }) -- or some subtle shade
+	-- vim.api.nvim_set_hl(0, "NormalNC", { bg = "#1a1a1a" }) -- or some subtle shade
 end
 
 return {
