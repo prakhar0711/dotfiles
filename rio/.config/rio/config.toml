@@ -160,8 +160,8 @@
 #
 # Example:
  [renderer]
- performance = "high"
- backend = "automatic"
+ performance = "Low"
+ backend = "Vulkan"
 # disable-unfocused-render = false
 # level = 1
 # filters = []
@@ -212,7 +212,7 @@
 #
 # Simple example:
 # [fonts]
- size = 18
+ size = 16
 
  [fonts.regular]
  family = "JetBrainsMono Nerd Font"
