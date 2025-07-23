@@ -73,6 +73,7 @@
         },
         {
             "type": "cpu",
+            "showPeCoreCount": true,
             "key": "│  \u001b[0m\u001b[35m󰻠 CPU\u001b[0m"
         },
         {
