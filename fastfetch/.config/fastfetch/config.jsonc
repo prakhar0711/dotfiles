@@ -61,7 +61,7 @@
         },
         {
             "type": "terminalfont",
-            "key": "│  \u001b[0m\u001b[34m󰛖 Font\u001b[0m"
+            "key": "│  \u001b[0m\u001b[38;2;235;111;146m󰛖 Font\u001b[0m"
         },
         {
             "type": "custom",
