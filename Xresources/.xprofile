@@ -1,0 +1,14 @@
+
+export GTK_THEME="rose-pine-gtk"
+export QT_QPA_PLATFORMTHEME=qt6ct
+export QT_STYLE_OVERRIDE=kvantum
+
+feh --bg-fill --randomize ~/wallpapers/* &
+
+# Environment variables set everywhere
+export EDITOR="nvim"
+export TERMINAL="kitty"
+export BROWSER="firefox"
+
+# zsh config dir
+export ZDOTDIR=$HOME/.config/zsh

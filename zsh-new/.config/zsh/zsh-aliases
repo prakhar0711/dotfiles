@@ -1,0 +1,26 @@
+#!/bin/sh
+# Aliases
+alias mirrors="sudo reflector --verbose --latest 5 --country 'India' --age 6 --sort rate --save /etc/pacman.d/mirrorlist"
+alias grub-update="sudo grub-mkconfig -o /boot/grub/grub.cfg"
+alias pacman-maintenance="sudo pacman -Scc"
+alias pacman-update="sudo pacman -Syu"
+alias yay-update="yay -Syu"
+alias gs="git status"
+alias ga="git add ."
+alias ..='cd ..'
+alias ...='cd ../..'
+alias .3='cd ../../..'
+alias .4='cd ../../../..'
+alias .5='cd ../../../../..'
+alias power-saver='powerprofilesctl set power-saver'
+alias power-performance='powerprofilesctl set performance'
+alias power-balanced='powerprofilesctl set balanced'
+alias ls='eza --icons=always --color=always -a'
+alias ll='eza --icons=always --color=always -la'
+alias tree='eza --tree --level=2'
+alias cat='bat --theme=base16'
+alias music='ncmpcpp'
+alias v='nvim'
+alias ds='yazi'
+alias slock='i3lock-fancy'
+alias fman="print -l ${(k)commands} | fzf | xargs man"
