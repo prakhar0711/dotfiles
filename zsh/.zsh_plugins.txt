@@ -1,8 +1,0 @@
-mrjohannchang/zsh-interactive-cd
-zsh-users/zsh-autosuggestions
-zsh-users/zsh-syntax-highlighting
-zsh-users/zsh-completions kind:fpath path:src
-jeffreytse/zsh-vi-mode
-chrissicool/zsh-256color
-Aloxaf/fzf-tab
-
