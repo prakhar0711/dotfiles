@@ -2,15 +2,13 @@ configuration {
     drun-display-format: "{icon} {name}";
     show-icons: true;
     icon-theme: "Adwaita";
-    font: "JetBrainsMono Nerd Font 14";
+    font: "JetBrainsMono Nerd Font 24";
 }
 
 * {
-    /* Theme settings */
     highlight: bold italic;
     scrollbar: true;
 
-    /* Rose Pine colors */
     rosepine-base:     #191724;
     rosepine-surface:  #1f1d2e;
     rosepine-overlay:  #26233a;
@@ -50,5 +48,4 @@ configuration {
     selected-urgent-foreground:  @urgent-foreground;
 }
 
-// @import "rose-pine-common"
 

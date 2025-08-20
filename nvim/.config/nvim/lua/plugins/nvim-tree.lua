@@ -11,6 +11,7 @@ return {
 				highlight_modified = "all",
 				highlight_diagnostics = "icon",
 				hidden_display = "all",
+				indent_markers = { enable = true },
 			},
 			git = {
 				enable = true,
