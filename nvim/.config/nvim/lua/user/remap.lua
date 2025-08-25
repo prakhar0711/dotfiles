@@ -77,7 +77,7 @@ vim.keymap.set("n", "<M-Left>", ":vertical resize +2<CR>", { desc = "Increase wi
 vim.keymap.set("i", "jj", "<Esc>", { desc = "Exit Insert mode with jj" })
 vim.keymap.set("i", "jk", "<Esc>", { desc = "Exit Insert mode with jk" })
 
-vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { noremap = true })
+vim.keymap.set("t", "jj", [[<C-\><C-n>]], { noremap = true })
 vim.keymap.set("n", "lg", function()
 	vim.diagnostic.open_float()
 end, { desc = "Open Diagnostic in Float" })

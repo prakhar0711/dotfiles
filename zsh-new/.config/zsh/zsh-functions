@@ -32,6 +32,10 @@ function zsh_add_completion() {
 
 
 runr() { rustc "$1" && ./$(basename "$1" .rs); }
+runc() {
+    make "$1" && ./$(basename "$1" .c | sed 's/\.cpp$//')
+}
+
 runj() { javac "$1" && java $(basename "$1" .java); }
 y() {
   local tmp="$(mktemp -t yazi-cwd.XXXXXX)" cwd
