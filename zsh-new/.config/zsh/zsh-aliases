@@ -25,3 +25,7 @@ alias ds='yazi'
 alias slock='i3lock-fancy'
 alias fman="print -l ${(k)commands} | fzf | xargs man"
 alias tube="cd $HOME/GopherTube/ && ./gophertube"
+alias warpc="warp-cli connect"
+alias warpd="warp-cli disconnect"
+alias warps="warp-cli status"
+alias warpstart="sudo systemctl enable warp-svc"

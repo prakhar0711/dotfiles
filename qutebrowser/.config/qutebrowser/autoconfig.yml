@@ -8,7 +8,10 @@ config_version: 2
 settings:
   content.javascript.clipboard:
     https://github.com: access-paste
+    https://pass.proton.me: access-paste
   content.notifications.enabled:
     https://www.youtube.com: true
+  content.register_protocol_handler:
+    https://mail.google.com?extsrc=mailto&url=%25s: true
   content.webgl:
     global: true
