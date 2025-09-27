@@ -143,28 +143,39 @@ config.set("content.cookies.store", True)
 # Yeah it's not ublock origin, but if you want a minimal browser, this is a solution for the tradeoff.
 # You can also watch yt vids directly in mpv, see qutebrowser FAQ for how to do that.
 # If you want additional blocklists, you can get the python-adblock package, or you can uncomment the ublock lists here.
+
+ublock_lists = [
+    # EasyList (ads)
+    "https://easylist.to/easylist/easylist.txt",
+
+    # EasyPrivacy (tracking)
+    "https://easylist.to/easylist/easyprivacy.txt",
+
+    # uBlock filters – Annoyances
+    "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/annoyances.txt",
+
+    # uBlock filters – Badware
+    "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/badware.txt",
+
+    # uBlock filters – Privacy
+    "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/privacy.txt",
+
+    # uBlock filters – Unbreak
+    "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/unbreak.txt",
+
+    # AdGuard Base
+    "https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt",
+
+    # Fanboy's Annoyance List
+    "https://easylist-downloads.adblockplus.org/fanboy-annoyance.txt",
+]
 c.content.blocking.enabled = True
-c.content.blocking.method = 'adblock' # uncomment this if you install python-adblock
-# c.content.blocking.adblock.lists = [
-#         "https://github.com/ewpratten/youtube_ad_blocklist/blob/master/blocklist.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/legacy.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2020.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2021.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2022.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2023.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2024.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/badware.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/privacy.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/badlists.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/annoyances.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/annoyances-cookies.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/annoyances-others.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/badlists.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/quick-fixes.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/resource-abuse.txt",
-#         "https://github.com/yokoffing/filterlists/blob/main/privacy_essentials.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/unbreak.txt"]
+config.set("content.blocking.method", "both")
+config.set("content.blocking.adblock.lists", ublock_lists)
+
+config.set("content.blocking.hosts.lists", [
+    "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts",
+])
 config.bind('<Alt-Shift-u>', 'spawn --userscript qute-keepassxc --key 79840569F02E9BF1C1EF6A19D1419B5F6E6C6CA5', mode='insert')
 config.bind('pw', 'spawn --userscript qute-keepassxc --key 79840569F02E9BF1C1EF6A19D1419B5F6E6C6CA5', mode='normal')
 

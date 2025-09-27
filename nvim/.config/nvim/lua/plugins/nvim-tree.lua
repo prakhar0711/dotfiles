@@ -5,13 +5,22 @@ return {
 		require("nvim-tree").setup({
 			view = {
 				side = "right",
+				signcolumn = "no",
 			},
 			renderer = {
 				highlight_git = "all",
 				highlight_modified = "all",
 				highlight_diagnostics = "icon",
 				hidden_display = "all",
-				indent_markers = { enable = true },
+				indent_markers = {
+					enable = true,
+					icons = {
+						corner = "└",
+						edge = "│",
+						item = "├",
+						none = " ",
+					},
+				},
 			},
 			git = {
 				enable = true,
