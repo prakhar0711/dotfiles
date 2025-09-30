@@ -39,7 +39,17 @@ return {
 			-- C-k: Toggle signature help (if signature.enabled = true)
 			--
 			-- See :h blink-cmp-config-keymap for defining your own keymap
-			cmdline = { completion = { menu = { auto_show = true } } },
+			cmdline = {
+				enabled = true,
+				keymap = { preset = "cmdline" },
+				completion = {
+					list = { selection = { preselect = false } },
+					menu = {
+						auto_show = true,
+					},
+					ghost_text = { enabled = true },
+				},
+			},
 			keymap = {
 				preset = "default",
 				["<C-x>"] = { "accept", "fallback" },
@@ -48,13 +58,13 @@ return {
 			appearance = {
 				-- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
 				-- Adjusts spacing to ensure icons are aligned
-				use_nvim_cmp_as_default = true,
-				nerd_font_variant = "normal",
+				use_nvim_cmp_as_default = false,
+				nerd_font_variant = "mono",
 			},
 
 			-- (Default) Only show the documentation popup when manually triggered
 			completion = {
-				documentation = { auto_show = true, auto_show_delay_ms = 500 },
+				documentation = { auto_show = true, auto_show_delay_ms = 200 },
 				menu = {
 					border = "single",
 					draw = {

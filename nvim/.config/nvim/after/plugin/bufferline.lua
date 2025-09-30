@@ -8,8 +8,8 @@ require("bufferline").setup({
 		show_close_icon = true,
 		always_show_bufferline = true,
 		indicator = {
-			style = 'underline'
-		}
+			style = "underline",
+		},
 	},
 })
 
@@ -17,24 +17,24 @@ require("bufferline").setup({
 local opts = { noremap = true, silent = true }
 
 -- Navigate buffers
-vim.api.nvim_set_keymap('n', '<S-l>', ':BufferLineCycleNext<CR>', opts)
-vim.api.nvim_set_keymap('n', '<S-h>', ':BufferLineCyclePrev<CR>', opts)
+vim.api.nvim_set_keymap("n", "<S-l>", ":BufferLineCycleNext<CR>", opts)
+vim.api.nvim_set_keymap("n", "<S-h>", ":BufferLineCyclePrev<CR>", opts)
 
 -- Move buffers
-vim.api.nvim_set_keymap('n', '<A-l>', ':BufferLineMoveNext<CR>', opts)
-vim.api.nvim_set_keymap('n', '<A-h>', ':BufferLineMovePrev<CR>', opts)
+vim.api.nvim_set_keymap("n", "<A-l>", ":BufferLineMoveNext<CR>", opts)
+vim.api.nvim_set_keymap("n", "<A-h>", ":BufferLineMovePrev<CR>", opts)
 
 -- Pick buffer (helps quickly select a buffer by letter)
-vim.api.nvim_set_keymap('n', '<leader>xp', ':BufferLinePick<CR>', opts)
+vim.api.nvim_set_keymap("n", "<leader>xp", ":BufferLinePick<CR>", opts)
 
 -- Close buffer
-vim.keymap.set('n', '<leader>xc', ':bdelete<CR>', opts, { desc = "Close current buffer" })
+vim.keymap.set("n", "<leader>xc", ":bdelete<CR>", opts, { desc = "Close current buffer" })
 
 -- Close all buffers except current
-vim.api.nvim_set_keymap('n', '<leader>xo', ':BufferLineCloseLeft<CR>:BufferLineCloseRight<CR>', opts)
+vim.api.nvim_set_keymap("n", "<leader>xo", ":BufferLineCloseLeft<CR>:BufferLineCloseRight<CR>", opts)
 
 -- Close buffers to the right
-vim.api.nvim_set_keymap('n', '<leader>xr', ':BufferLineCloseRight<CR>', opts)
+vim.api.nvim_set_keymap("n", "<leader>xr", ":BufferLineCloseRight<CR>", opts)
 
 -- Close buffers to the left
-vim.api.nvim_set_keymap('n', '<leader>xl', ':BufferLineCloseLeft<CR>', opts)
+vim.api.nvim_set_keymap("n", "<leader>xl", ":BufferLineCloseLeft<CR>", opts)
