@@ -78,6 +78,5 @@ vim.opt.visualbell = false
 -- Enable smooth scrolling in Neovim >= 0.10
 vim.opt.smoothscroll = true
 vim.opt.autoread = true
-vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold" }, {
-	command = "checktime",
-})
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold" }, { command = "checktime" })
+vim.o.winborder = "rounded"
