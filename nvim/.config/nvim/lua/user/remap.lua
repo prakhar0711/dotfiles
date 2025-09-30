@@ -16,9 +16,9 @@ vim.keymap.set("v", "<Tab>", ">gv")
 vim.keymap.set("v", "<S-Tab>", "<gv")
 
 -- Move to the end of yanked text after yank and paste
-vim.cmd("vnoremap <silent> y y`]")
-vim.cmd("vnoremap <silent> p p`]")
-vim.cmd("nnoremap <silent> p p`]")
+-- vim.cmd("vnoremap <silent> y y`]")
+-- vim.cmd("vnoremap <silent> p p`]")
+-- vim.cmd("nnoremap <silent> p p`]")
 
 -- Space + Space to clean search highlight
 vim.keymap.set("n", "<Leader>h", ":noh<CR>", { silent = true })
@@ -88,3 +88,10 @@ local arrows = { "<Left>", "<Right>", "<Up>", "<Down>" }
 for _, key in ipairs(arrows) do
 	vim.keymap.set("n", key, "<Nop>", { noremap = true, silent = true })
 end
+
+vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "Yank to system clipboard" })
+
+vim.keymap.set("n", "<leader>Y", '"+yy', { desc = "Yank line to system clipboard" })
+
+vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', { desc = "Paste from system clipboard" })
+vim.keymap.set({ "n", "v" }, "<leader>P", '"+P', { desc = "Paste before from system clipboard" })
