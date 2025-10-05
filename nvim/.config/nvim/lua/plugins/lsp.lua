@@ -13,7 +13,7 @@ return {
 		{ "j-hui/fidget.nvim", opts = {} },
 
 		-- Allows extra capabilities provided by nvim-cmp
-		"hrsh7th/cmp-nvim-lsp",
+		-- "hrsh7th/cmp-nvim-lsp",
 	},
 	config = function()
 		-- Brief aside: **What is LSP?**
@@ -139,7 +139,10 @@ return {
 						group = vim.api.nvim_create_augroup("kickstart-lsp-detach", { clear = true }),
 						callback = function(event2)
 							vim.lsp.buf.clear_references()
-							vim.api.nvim_clear_autocmds({ group = "kickstart-lsp-highlight", buffer = event2.buf })
+							vim.api.nvim_clear_autocmds({
+								group = "kickstart-lsp-highlight",
+								buffer = event2.buf,
+							})
 						end,
 					})
 				end
@@ -153,7 +156,9 @@ return {
 					and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf)
 				then
 					map("<leader>th", function()
-						vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
+						vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({
+							bufnr = event.buf,
+						}))
 					end, "[T]oggle Inlay [H]ints")
 				end
 			end,
@@ -270,20 +275,3 @@ return {
 		})
 	end,
 }
--- return {
--- 	"VonHeikemen/lsp-zero.nvim",
--- 	dependencies = {
--- 		{ "williamboman/mason.nvim" },
--- 		{ "williamboman/mason-lspconfig.nvim" },
--- 		{ "saadparwaiz1/cmp_luasnip" },
--- 		{ "neovim/nvim-lspconfig" },
--- 		{ "hrsh7th/cmp-nvim-lsp" },
--- 		{ "hrsh7th/cmp-buffer" },
--- 		{ "hrsh7th/cmp-path" },
--- 		{ "hrsh7th/cmp-cmdline" },
--- 		{ "j-hui/fidget.nvim" },
--- 		{ "L3MON4D3/LuaSnip" },
--- 		{ "hrsh7th/nvim-cmp" },
--- 		{ "rafamadriz/friendly-snippets" },
--- 	},
--- }
