@@ -79,4 +79,4 @@ vim.opt.visualbell = false
 vim.opt.smoothscroll = true
 vim.opt.autoread = true
 vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold" }, { command = "checktime" })
-vim.o.winborder = "rounded"
+-- vim.o.winborder = "rounded"

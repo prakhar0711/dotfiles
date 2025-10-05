@@ -66,7 +66,7 @@ return {
 			completion = {
 				documentation = { auto_show = true, auto_show_delay_ms = 200 },
 				menu = {
-					border = "single",
+					-- border = "single",
 					draw = {
 						snippet_indicator = "~",
 						treesitter = { "lsp" },
@@ -152,6 +152,7 @@ return {
 				default = { "lsp", "path", "snippets", "buffer" },
 				-- default = { "lsp", "path", "snippets", "buffer", "emoji", "sql" },
 				providers = {
+
 					-- emoji = {
 					-- 	module = "blink-emoji",
 					-- 	name = "Emoji",
