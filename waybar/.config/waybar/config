@@ -176,8 +176,8 @@
             ""
         ],
         "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-        "on-scroll-down": "wpctl set-volume @DEFAULT_SINK@ 1%-",
-        "on-scroll-up": "wpctl set-volume @DEFAULT_SINK@ 1%+"
+        "on-scroll-down": "pamixer --allow-boost --decrease 1",
+        "on-scroll-up": "pamixer --allow-boost --increase 1"
     },
     "backlight": {
         "format": "{icon} {percent}%",

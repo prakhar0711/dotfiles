@@ -9,6 +9,9 @@
 environment{
  ZDOTDIR "/home/prakhar/.config/zsh"
 QT_QPA_PLATFORMTHEME "qt5ct"
+ GTK_THEME "Nordic"
+ QT_STYLE_OVERRIDE "Fusion"   
+ XDG_SESSION_TYPE "wayland"
 }
 
 input {
@@ -376,7 +379,7 @@ binds {
     Mod+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Mod+F hotkey-overlay-title="Open firefox" { spawn "firefox"; }
-    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
+    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "wlogout"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
@@ -386,8 +389,8 @@ binds {
     // Example volume keys mappings for PipeWire & WirePlumber.
     // The allow-when-locked=true property makes them work even when the session is locked.
     // Using spawn-sh allows to pass multiple arguments together with the command.
-    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "pamixer --increase 5"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "pamixer --decrease 5"; }
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "pamixer --allow-boost --increase 5"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "pamixer --allow-boost --decrease 5"; }
     XF86AudioMute        allow-when-locked=true { spawn-sh "pamixer --toggle-mute"; }
     XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
 
