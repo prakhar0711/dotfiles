@@ -21,14 +21,14 @@
         "tray",
     ],
     "niri/workspaces": {
-        "format": "{icon}",
+        "format": "{value}",
         "format-icons": {
             "active": "",
             "default": ""
         }
     },
     "niri/window": {
-    	"format": "<span color='#FFD700'>  {title}</span>",
+    	"format": "<span color='#e0def4'>  {title}</span>",
     	"rewrite": {
     		"(.*) - Mozilla Firefox": "🌎 $1",
     		"(.*) - zsh": "> [$1]"
