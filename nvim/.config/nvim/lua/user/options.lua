@@ -68,11 +68,11 @@ vim.opt.showbreak = "↳"
 vim.opt.breakindent = true
 
 -- " Start scrolling when we'are 8 lines aways from borders
-vim.opt.scrolloff = 3
+vim.opt.scrolloff = 5
 vim.opt.sidescrolloff = 10
 vim.opt.sidescroll = 5
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
-vim.opt.colorcolumn = "90"
+vim.opt.colorcolumn = "80"
 vim.opt.errorbells = false
 vim.opt.visualbell = false
 -- Enable smooth scrolling in Neovim >= 0.10

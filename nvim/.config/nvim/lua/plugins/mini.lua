@@ -11,14 +11,4 @@ return {
 			require("mini.pairs").setup()
 		end,
 	},
-	-- {
-	-- 	"echasnovski/mini.indentscope",
-	-- 	config = function()
-	-- 		require("mini.indentscope").setup({
-	--
-	-- 			symbol = "│",
-	-- 			options = { try_as_border = true, indent_at_cursor = true },
-	-- 		})
-	-- 	end,
-	-- },
 }

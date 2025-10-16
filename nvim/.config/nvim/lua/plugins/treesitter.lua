@@ -26,8 +26,6 @@ return {
 				"java",
 				"lua",
 				"luadoc",
-				"markdown",
-				"markdown_inline",
 				"regex",
 				"tsx",
 				"vim",
