@@ -31,7 +31,7 @@ vim.opt.signcolumn = "yes" -- Always show the sign column (for Git/diagnostics)
 vim.opt.isfname:append("@-@") -- Allow `@` in filenames
 
 -- Decrease update time
-vim.o.updatetime = 50
+vim.o.updatetime = 300
 vim.o.timeoutlen = 300
 
 -- Set completeopt to have a better completion experience

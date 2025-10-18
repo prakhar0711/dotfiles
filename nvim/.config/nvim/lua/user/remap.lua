@@ -95,3 +95,14 @@ vim.keymap.set("n", "<leader>Y", '"+yy', { desc = "Yank line to system clipboard
 
 vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', { desc = "Paste from system clipboard" })
 vim.keymap.set({ "n", "v" }, "<leader>P", '"+P', { desc = "Paste before from system clipboard" })
+
+-- Close the current buffer
+vim.keymap.set("n", "<leader>xc", ":bd<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "H", ":bprevious<CR>", { noremap = true, silent = true }) -- previous buffer
+vim.keymap.set("n", "L", ":bnext<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>r", ":source ~/.config/nvim/init.lua<CR>")
+-- insert mode navigation
+vim.keymap.set("i", "<C-h>", "<left>") -- control+h moves cursor left
+vim.keymap.set("i", "<C-l>", "<right>") -- control+l moves cursor right
+vim.keymap.set("i", "<C-j>", "<down>") -- control+j moves cursor down
+vim.keymap.set("i", "<C-k>", "<up>") -- control+k moves cursor up

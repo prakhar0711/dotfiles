@@ -13,9 +13,6 @@ end
 
 return {
 	{
-		"erikbackman/brightburn.vim",
-	},
-	{
 		"rose-pine/neovim",
 		name = "rose-pine",
 		config = function()
