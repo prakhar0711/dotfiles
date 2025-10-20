@@ -43,29 +43,29 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("x", "<leader>p", '"_dP')
 vim.keymap.set(
-	"n",
-	"<leader>s",
-	[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-	{ desc = "Replace current word" }
+    "n",
+    "<leader>s",
+    [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+    { desc = "Replace current word" }
 )
 
 vim.keymap.set("n", "<leader>sdf", function()
-	-- Get the word under the cursor
-	local current_word = vim.fn.expand("<cword>")
-	-- Prompt for the replacement word
-	local replacement_word = vim.fn.input("Replace with: ", current_word)
-	-- Use the count for line range, default to 1 if no count is provided
-	local count = vim.v.count1
-	-- Construct the substitution command with confirmation
-	local cmd = string.format(".,.+%ds/\\<%s\\>/%s/gcI", count - 1, current_word, replacement_word)
-	-- Execute the command
-	vim.cmd(cmd)
+    -- Get the word under the cursor
+    local current_word = vim.fn.expand("<cword>")
+    -- Prompt for the replacement word
+    local replacement_word = vim.fn.input("Replace with: ", current_word)
+    -- Use the count for line range, default to 1 if no count is provided
+    local count = vim.v.count1
+    -- Construct the substitution command with confirmation
+    local cmd = string.format(".,.+%ds/\\<%s\\>/%s/gcI", count - 1, current_word, replacement_word)
+    -- Execute the command
+    vim.cmd(cmd)
 end, { desc = "Replace current word in specified number of lines" })
 
 vim.keymap.set({ "n", "i", "v" }, "<C-s>", function()
-	vim.lsp.buf.format({ async = false }) -- Format the file
-	vim.cmd("write") -- Save the file
-	vim.cmd("stopinsert") -- Return to Normal mode
+    vim.lsp.buf.format({ async = false }) -- Format the file
+    vim.cmd("write")                      -- Save the file
+    vim.cmd("stopinsert")                 -- Return to Normal mode
 end, { desc = "Save, format, and exit to Normal mode" })
 
 -- Resize with Ctrl + Shift + Arrow keys
@@ -79,14 +79,14 @@ vim.keymap.set("i", "jk", "<Esc>", { desc = "Exit Insert mode with jk" })
 
 vim.keymap.set("t", "jj", [[<C-\><C-n>]], { noremap = true })
 vim.keymap.set("n", "lg", function()
-	vim.diagnostic.open_float()
+    vim.diagnostic.open_float()
 end, { desc = "Open Diagnostic in Float" })
 
 -- disable arrow keys
 local arrows = { "<Left>", "<Right>", "<Up>", "<Down>" }
 
 for _, key in ipairs(arrows) do
-	vim.keymap.set("n", key, "<Nop>", { noremap = true, silent = true })
+    vim.keymap.set("n", key, "<Nop>", { noremap = true, silent = true })
 end
 
 vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "Yank to system clipboard" })
@@ -102,7 +102,7 @@ vim.keymap.set("n", "H", ":bprevious<CR>", { noremap = true, silent = true }) --
 vim.keymap.set("n", "L", ":bnext<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>r", ":source ~/.config/nvim/init.lua<CR>")
 -- insert mode navigation
-vim.keymap.set("i", "<C-h>", "<left>") -- control+h moves cursor left
+vim.keymap.set("i", "<C-h>", "<left>")  -- control+h moves cursor left
 vim.keymap.set("i", "<C-l>", "<right>") -- control+l moves cursor right
-vim.keymap.set("i", "<C-j>", "<down>") -- control+j moves cursor down
-vim.keymap.set("i", "<C-k>", "<up>") -- control+k moves cursor up
+vim.keymap.set("i", "<C-j>", "<down>")  -- control+j moves cursor down
+vim.keymap.set("i", "<C-k>", "<up>")
