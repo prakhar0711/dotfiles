@@ -140,8 +140,8 @@
             "interval":2,
             "states": {
                 "good": 95,
-                "warning": 30,
-                "critical": 15
+                "warning": 15,
+                "critical": 5
             },
             "format": "{icon}  {capacity}%",
             "format-full": "{icon}  {capacity}%",

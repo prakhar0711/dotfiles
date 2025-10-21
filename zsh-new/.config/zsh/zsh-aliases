@@ -5,6 +5,7 @@ alias grub-update="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 alias pacman-maintenance="sudo pacman -Scc"
 alias pacman-update="sudo pacman -Syu"
 alias yay-update="yay -Syu"
+alias paru-update="paru -Syu"
 alias gs="git status"
 alias ga="git add ."
 alias ..='cd ..'
