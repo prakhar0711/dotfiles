@@ -106,3 +106,4 @@ vim.keymap.set("i", "<C-h>", "<left>")  -- control+h moves cursor left
 vim.keymap.set("i", "<C-l>", "<right>") -- control+l moves cursor right
 vim.keymap.set("i", "<C-j>", "<down>")  -- control+j moves cursor down
 vim.keymap.set("i", "<C-k>", "<up>")
+vim.keymap.set("v", "<leader>p", "\"_dP")
