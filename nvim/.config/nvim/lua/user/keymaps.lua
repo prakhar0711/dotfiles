@@ -20,17 +20,11 @@ vim.keymap.set("v", "<S-Tab>", "<gv")
 -- vim.cmd("vnoremap <silent> p p`]")
 -- vim.cmd("nnoremap <silent> p p`]")
 
--- Space + Space to clean search highlight
-vim.keymap.set("n", "<Leader>h", ":noh<CR>", { silent = true })
-
 -- Fixes pasting after visual selection.
 vim.keymap.set("v", "p", '"_dP')
 
 vim.keymap.set("n", "<leader>m", "<cmd>Mason<cr>")
 vim.keymap.set("n", "<leader>l", "<cmd>Lazy<cr>")
-
--- vim.keymap.set("n", "<leader>fw", "<cmd>HopWord<cr>")
--- vim.keymap.set("n", "<leader>fz", "<cmd>HopLine<cr>")
 
 -- move selection up/down
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")

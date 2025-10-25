@@ -13,7 +13,7 @@ vim.opt.incsearch = true
 
 -- Sync clipboard between OS and Neovim.
 if vim.fn.has("clipboard") == 1 then
-	vim.o.clipboard = "unnamedplus"
+    vim.o.clipboard = "unnamedplus"
 end
 
 -- No swap files
@@ -26,8 +26,8 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 
 -- Keep signcolumn on by default
-vim.opt.scrolloff = 8 -- Always keep 8 lines above/below cursor
-vim.opt.signcolumn = "yes" -- Always show the sign column (for Git/diagnostics)
+vim.opt.scrolloff = 8         -- Always keep 8 lines above/below cursor
+vim.opt.signcolumn = "yes"    -- Always show the sign column (for Git/diagnostics)
 vim.opt.isfname:append("@-@") -- Allow `@` in filenames
 
 -- Decrease update time
@@ -68,7 +68,6 @@ vim.opt.showbreak = "↳"
 vim.opt.breakindent = true
 
 -- " Start scrolling when we'are 8 lines aways from borders
-vim.opt.scrolloff = 5
 vim.opt.sidescrolloff = 10
 vim.opt.sidescroll = 5
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
@@ -77,6 +76,5 @@ vim.opt.errorbells = false
 vim.opt.visualbell = false
 -- Enable smooth scrolling in Neovim >= 0.10
 vim.opt.smoothscroll = true
-vim.opt.autoread = true
 vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold" }, { command = "checktime" })
 -- vim.o.winborder = "rounded"

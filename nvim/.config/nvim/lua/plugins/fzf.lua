@@ -238,15 +238,15 @@ return {
             winopts = {
                 -- this section controls the overall layout
                 height = 0.85, -- total window height
-                width = 0.80, -- total window width
+                width = 0.80,  -- total window width
                 row = 0.5,
                 col = 0.5,
                 border = "rounded",
 
                 preview = {
-                    layout = "horizontal", -- telescope-like: list left, preview right
+                    layout = "horizontal",    -- telescope-like: list left, preview right
                     horizontal = "right:45%", -- preview takes 40% width
-                    flip_columns = 120, -- auto flip to vertical if narrow
+                    flip_columns = 120,       -- auto flip to vertical if narrow
                     wrap = true,
                     title = true,
                     scrollbar = false,
