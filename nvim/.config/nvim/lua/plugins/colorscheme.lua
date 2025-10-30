@@ -45,6 +45,7 @@ return {
         lazy = false,
         priority = 1000,
         config = function()
+            ColorMyPencils()
             vim.g.gruvbox_material_enable_italic = false
             vim.g.gruvbox_material_transparent_background = 2
             vim.g.gruvbox_material_background = "hard"
@@ -72,8 +73,8 @@ return {
 
                     NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
 
-                    LazyNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
-                    MasonNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
+                    -- LazyNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
+                    -- MasonNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
                     Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 }, -- add `blend = vim.o.pumblend` to enable transparency
                     PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
                     PmenuSbar = { bg = theme.ui.bg_m1 },
@@ -86,6 +87,7 @@ return {
             end,
         },
         config = function(_, opts)
+            ColorMyPencils()
             require("kanagawa").setup(opts) -- calling setup is optional
         end,
     },
