@@ -3,6 +3,19 @@
 -- ========================================
 vim.g.mapleader = " "
 
+-- Toggle LSP diagnostics (virtual text, signs, underline)
+local diagnostics_active = true
+
+vim.keymap.set("n", "<leader>td", function()
+    diagnostics_active = not diagnostics_active
+    if diagnostics_active then
+        vim.diagnostic.enable()
+        print("LSP diagnostics: ON")
+    else
+        vim.diagnostic.disable()
+        print("LSP diagnostics: OFF")
+    end
+end, { desc = "Toggle LSP diagnostics" })
 -- ========================================
 -- 🗂️ File & Plugin Shortcuts
 -- ========================================
@@ -42,8 +55,8 @@ vim.keymap.set("n", "L", ":bnext<CR>", { desc = "Next buffer", silent = true })
 vim.keymap.set("n", "J", "mzJ`z")       -- keep cursor centered when joining lines
 vim.keymap.set("n", "<C-d>", "<C-d>zz") -- scroll half page down + center
 vim.keymap.set("n", "<C-u>", "<C-u>zz") -- scroll half page up + center
-vim.keymap.set("n", "n", "nzzzv")       -- center next search
-vim.keymap.set("n", "N", "Nzzzv")       -- center previous search
+-- vim.keymap.set("n", "n", "nzzzv")       -- center next search
+-- vim.keymap.set("n", "N", "Nzzzv")       -- center previous search
 
 -- ========================================
 -- ✍️ Editing Utilities
@@ -79,7 +92,7 @@ end, { desc = "Replace current word in N lines" })
 -- ========================================
 -- 🧰 LSP / Diagnostics
 -- ========================================
-vim.keymap.set("n", "lg", function()
+vim.keymap.set("n", "<leader>lg", function()
     vim.diagnostic.open_float()
 end, { desc = "Open diagnostic float" })
 
