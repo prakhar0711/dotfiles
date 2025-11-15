@@ -14,8 +14,8 @@ fi
 echo $$ > "$LOCKFILE"
 trap "rm -f $LOCKFILE" EXIT
 
-BATTERY_LOW=20
-BATTERY_CRITICAL=10
+BATTERY_LOW=10
+BATTERY_CRITICAL=5
 
 NOTIFY_EXPIRES=8000
 SOUND_CRITICAL="/usr/share/sounds/freedesktop/stereo/suspend-error.oga"

@@ -1,6 +1,6 @@
 set $mod Mod1
 
-font pango:JetBrainsMono Nerd Font 8
+font pango:JetBrainsMono Nerd Font 12
 
 exec xrandr -s 2560x1600 -r 60
 exec --no-startup-id dex --autostart --environment i3
@@ -9,9 +9,9 @@ exec --no-startup-id picom --config ~/.config/picom/picom.conf
 exec --no-startup-id dunst
 # exec --no-startup-id polybar 
 # exec_always --no-startup-id ~/.config/polybar/i3_bar.sh
-exec_always --no-startup-id xrandr --dpi 192
+exec_always --no-startup-id xrandr --dpi 120
 exec_always --no-startup-id xrdb -merge ~/.Xresources
-exec_always --no-startup-id polybar 
+# exec_always --no-startup-id polybar 
 
 
 # Start battery notification daemon
@@ -50,7 +50,7 @@ tiling_drag modifier titlebar
 # start a terminal
 # bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Return exec kitty 
-bindsym $mod+Shift+f exec firefox
+bindsym $mod+Shift+f exec thorium-browser
 bindsym $mod+Shift+i exec code 
 bindsym $mod+Shift+b exec thunar 
 bindsym $mod+Shift+p exec dmenu_run
@@ -135,7 +135,7 @@ assign [class="(?i).*nitrogen.*"] $ws1
 assign [class="(?i).*rio.*"] $ws1
 # (W-2)
 # ========== Browsers ==========
-assign [class="Thorium-browser"] $ws3
+assign [class="Thorium-browser"] $ws2
 assign [class="google-chrome"] $ws3
 assign [class="qutebrowser"] $ws3
 assign [class="Google-Chrome"] $ws3
@@ -214,10 +214,10 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # # finds out, if available)
-# bar {
-#         status_command i3status
-#         position top
-# }
+bar {
+        status_command i3status
+        position top
+}
 
 for_window [class="Thorium"] border none
 for_window [class="zen"] border none
