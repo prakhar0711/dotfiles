@@ -7,19 +7,19 @@ vim.g.mapleader = " "
 local diagnostics_active = true
 
 vim.keymap.set("n", "<leader>td", function()
-    diagnostics_active = not diagnostics_active
-    if diagnostics_active then
-        vim.diagnostic.enable()
-        print("LSP diagnostics: ON")
-    else
-        vim.diagnostic.disable()
-        print("LSP diagnostics: OFF")
-    end
+	diagnostics_active = not diagnostics_active
+
+	if diagnostics_active then
+		vim.diagnostic.enable(nil) -- enable for all buffers
+		print("LSP diagnostics: ON")
+	else
+		vim.diagnostic.disable(nil) -- disable for all buffers
+		print("LSP diagnostics: OFF")
+	end
 end, { desc = "Toggle LSP diagnostics" })
 -- ========================================
 -- 🗂️ File & Plugin Shortcuts
 -- ========================================
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "Default Explorer" })
 vim.keymap.set("n", "<leader>m", "<cmd>Mason<cr>", { desc = "Open Mason" })
 vim.keymap.set("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Open Lazy" })
 vim.keymap.set("n", "<leader>r", ":source ~/.config/nvim/init.lua<CR>", { desc = "Reload config" })
@@ -52,11 +52,9 @@ vim.keymap.set("n", "L", ":bnext<CR>", { desc = "Next buffer", silent = true })
 -- ========================================
 -- 🧭 Navigation Enhancements
 -- ========================================
-vim.keymap.set("n", "J", "mzJ`z")       -- keep cursor centered when joining lines
+vim.keymap.set("n", "J", "mzJ`z") -- keep cursor centered when joining lines
 vim.keymap.set("n", "<C-d>", "<C-d>zz") -- scroll half page down + center
 vim.keymap.set("n", "<C-u>", "<C-u>zz") -- scroll half page up + center
--- vim.keymap.set("n", "n", "nzzzv")       -- center next search
--- vim.keymap.set("n", "N", "Nzzzv")       -- center previous search
 
 -- ========================================
 -- ✍️ Editing Utilities
@@ -74,35 +72,35 @@ vim.keymap.set("v", "p", '"_dP')
 
 -- Replace current word globally
 vim.keymap.set(
-    "n",
-    "<leader>s",
-    [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-    { desc = "Replace current word globally" }
+	"n",
+	"<leader>s",
+	[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+	{ desc = "Replace current word globally" }
 )
 
 -- Replace current word in a specific line range (count-based)
 vim.keymap.set("n", "<leader>sdf", function()
-    local current_word = vim.fn.expand("<cword>")
-    local replacement_word = vim.fn.input("Replace with: ", current_word)
-    local count = vim.v.count1
-    local cmd = string.format(".,.+%ds/\\<%s\\>/%s/gcI", count - 1, current_word, replacement_word)
-    vim.cmd(cmd)
+	local current_word = vim.fn.expand("<cword>")
+	local replacement_word = vim.fn.input("Replace with: ", current_word)
+	local count = vim.v.count1
+	local cmd = string.format(".,.+%ds/\\<%s\\>/%s/gcI", count - 1, current_word, replacement_word)
+	vim.cmd(cmd)
 end, { desc = "Replace current word in N lines" })
 
 -- ========================================
 -- 🧰 LSP / Diagnostics
 -- ========================================
 vim.keymap.set("n", "<leader>lg", function()
-    vim.diagnostic.open_float()
+	vim.diagnostic.open_float()
 end, { desc = "Open diagnostic float" })
 
 -- ========================================
 -- 💾 Save & Format
 -- ========================================
 vim.keymap.set({ "n", "i", "v" }, "<C-s>", function()
-    vim.lsp.buf.format({ async = false })
-    vim.cmd("write")
-    vim.cmd("stopinsert")
+	vim.lsp.buf.format({ async = false })
+	vim.cmd("write")
+	vim.cmd("stopinsert")
 end, { desc = "Format + Save" })
 
 -- ========================================
@@ -117,7 +115,7 @@ vim.keymap.set({ "n", "v" }, "<leader>P", '"+P', { desc = "Paste before from sys
 -- 🚫 Disable Arrow Keys
 -- ========================================
 for _, key in ipairs({ "<Left>", "<Right>", "<Up>", "<Down>" }) do
-    vim.keymap.set("n", key, "<Nop>", { noremap = true, silent = true })
+	vim.keymap.set("n", key, "<Nop>", { noremap = true, silent = true })
 end
 
 -- ========================================
