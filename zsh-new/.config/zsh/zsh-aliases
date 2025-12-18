@@ -30,3 +30,10 @@ alias warpc="warp-cli connect"
 alias warpd="warp-cli disconnect"
 alias warps="warp-cli status"
 alias warpstart="sudo systemctl start warp-svc"
+alias install="sudo xbps-install"
+alias remove="sudo xbps-remove"
+alias update="sudo xbps-install -Su"
+alias search="sudo xbps-query -Rs"
+alias installed="xbps-query -l"
+
+
