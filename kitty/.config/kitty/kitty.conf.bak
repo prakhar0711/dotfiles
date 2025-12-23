@@ -15,10 +15,10 @@ symbol_map U+23FB-U+23FE,U+2B58,U+E000-U+E00A none
 # 🖋 Font Configuration
 # ──────────────────────────────
 # font_family      JetBrainsMono Nerd Font
-# bold_font        auto
-# italic_font      auto
-# bold_italic_font auto
-font_size        20
+bold_font        auto
+italic_font      auto
+bold_italic_font auto
+font_size        18
 
 # ──────────────────────────────
 # ⌨️ Cursor & Input Behavior
@@ -73,11 +73,3 @@ shell_integration no-cursor
 # include current-theme.conf
 # END_KITTY_THEME
 
-
-
-# BEGIN_KITTY_FONTS
-font_family      family="Ubuntu Mono"
-bold_font        auto
-italic_font      auto
-bold_italic_font auto
-# END_KITTY_FONTS
