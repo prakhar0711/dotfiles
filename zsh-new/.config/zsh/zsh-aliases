@@ -35,5 +35,6 @@ alias remove="sudo xbps-remove"
 alias update="sudo xbps-install -Su"
 alias search="sudo xbps-query -Rs"
 alias installed="xbps-query -l"
-
+alias vi="vim"
+alias vpm="sudo vpm"
 
