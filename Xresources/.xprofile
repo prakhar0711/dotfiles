@@ -1,10 +1,10 @@
 
-export GTK_THEME="Nordic"
-export QT_QPA_PLATFORMTHEME=qt6ct
-export QT_STYLE_OVERRIDE=kvantum
-
-# random wallpaper at startup
-feh --bg-fill --randomize ~/wallpapers/* &
+#export GTK_THEME="Nordic"
+#export QT_QPA_PLATFORMTHEME=qt6ct
+#export QT_STYLE_OVERRIDE=kvantum
+#
+## random wallpaper at startup
+#feh --bg-fill --randomize ~/wallpapers/* &
 
 # Environment variables set everywhere
 export EDITOR="nvim"
