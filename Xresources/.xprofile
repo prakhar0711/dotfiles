@@ -10,6 +10,7 @@
 export EDITOR="nvim"
 export TERMINAL="kitty"
 export BROWSER="firefox"
+export SSH_AUTH_SOCK
 
 # zsh config dir
 export ZDOTDIR=$HOME/.config/zsh

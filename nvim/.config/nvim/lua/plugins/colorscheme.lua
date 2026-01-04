@@ -90,5 +90,5 @@ return {
             ColorMyPencils()
             require("kanagawa").setup(opts) -- calling setup is optional
         end,
-    },
+    }
 }
