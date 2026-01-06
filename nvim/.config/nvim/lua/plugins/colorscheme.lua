@@ -4,7 +4,7 @@ function ColorMyPencils(color)
     -- color = color or "vague"
     vim.cmd.colorscheme(color)
     vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+    -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 
     -- enable the below only when using vague
     -- Optional: dim the background of non-active windows slightly
@@ -58,7 +58,8 @@ return {
             dimInactive = true,
             functionStyle = { italic = false },
             keywordStyle = { italic = false },
-            colors = { theme = { all = { ui = { bg_gutter = "none" } } } },
+            colors = { theme = { all = { ui = { bg_gutter = "none" } } }, palette = { sumiInk1 = "#000000" },
+            },
             overrides = function(colors)
                 local theme = colors.theme
                 local makeDiagnosticColor = function(color)
@@ -67,10 +68,10 @@ return {
                 end
                 return {
 
-                    NormalFloat = { bg = "none" },
-                    FloatBorder = { bg = "none" },
-                    FloatTitle = { bg = "none" },
-
+                    -- NormalFloat = { bg = "none" },
+                    -- FloatBorder = { bg = "none" },
+                    -- FloatTitle = { bg = "none" },
+                    --
                     NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
 
                     -- LazyNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
@@ -90,5 +91,17 @@ return {
             ColorMyPencils()
             require("kanagawa").setup(opts) -- calling setup is optional
         end,
+    },
+    {
+        'mellow-theme/mellow.nvim',
+        config = function()
+            vim.g.mellow_italic_functions = false
+            vim.g.mellow_italic_keywords = false
+            vim.g.mellow_italic_variables = false
+            vim.g.mellow_italic_comments = false
+            vim.g.mellow_italic_booleans = false
+            vim.g.mellow_bold_functions = false
+        end
     }
+
 }
