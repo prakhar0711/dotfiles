@@ -1,0 +1,24 @@
+ theme="mellow"
+
+ font-family = "Ubuntu Mono"
+ font-size=18
+
+ background = #000000
+ window-decoration="server"
+ window-save-state="always"
+
+ adjust-cell-height=10
+ adjust-cell-width=1
+
+
+ keybind=global:ctrl+r=reload_config
+ keybind=ctrl+shift+up=new_split:up
+ keybind=ctrl+shift+down=new_split:down
+ keybind=ctrl+shift+left=new_split:left
+ keybind=ctrl+shift+right=new_split:right
+
+ keybind=ctrl+k=goto_split:up
+ keybind=ctrl+j=goto_split:down
+ keybind=ctrl+h=goto_split:left
+ keybind=ctrl+l=goto_split:right
+

@@ -67,7 +67,7 @@ tiling_drag modifier titlebar
 
 # Start terminal
 # bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec kitty 
+bindsym $mod+Return exec ghostty 
 
 # Browsers / IDE / File Manager
 bindsym $mod+Shift+f exec firefox
