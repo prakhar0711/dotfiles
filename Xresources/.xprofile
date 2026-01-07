@@ -8,7 +8,7 @@
 
 # Environment variables set everywhere
 export EDITOR="nvim"
-export TERMINAL="kitty"
+export TERMINAL="ghostty"
 export BROWSER="firefox"
 export SSH_AUTH_SOCK
 
