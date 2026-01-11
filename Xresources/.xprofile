@@ -6,11 +6,11 @@
 ## random wallpaper at startup
 #feh --bg-fill --randomize ~/wallpapers/* &
 
-# Environment variables set everywhere
-export EDITOR="nvim"
-export TERMINAL="ghostty"
-export BROWSER="firefox"
-export SSH_AUTH_SOCK
+# # Environment variables set everywhere
+ export EDITOR="nvim"
+ export TERMINAL="kitty"
+ export BROWSER="firefox"
+ export SSH_AUTH_SOCK
 
-# zsh config dir
-export ZDOTDIR=$HOME/.config/zsh
+ # zsh config dir
+ export ZDOTDIR=$HOME/.config/zsh

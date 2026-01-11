@@ -22,7 +22,7 @@ exec_always --no-startup-id xrdb -merge ~/.Xresources
 exec --no-startup-id dex --autostart --environment i3
 # exec --no-startup-id nitrogen --restore
 # exec --no-startup-id picom --config ~/.config/picom/picom.conf
-# exec --no-startup-id dunst
+exec --no-startup-id dunst
 # # exec --no-startup-id polybar 
 # exec_always --no-startup-id ~/.config/polybar/i3_bar.sh
 
@@ -44,13 +44,13 @@ exec --no-startup-id pipewire
 # ==============================
 
 # Backlight keys
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl -d intel_backlight set +5%
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl -d intel_backlight set 5%-
+bindsym XF86MonBrightnessUp exec --no-startup-id ~/.local/bin/brightness-notify +5%
+bindsym XF86MonBrightnessDown exec --no-startup-id ~/.local/bin/brightness-notify 5%-
 
 # Volume keys
-bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer -i 5
-bindsym XF86AudioLowerVolume exec --no-startup-id pamixer -d 5
-bindsym XF86AudioMute exec --no-startup-id pamixer -t
+bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.local/bin/volume-notify up
+bindsym XF86AudioLowerVolume exec --no-startup-id ~/.local/bin/volume-notify down
+bindsym XF86AudioMute exec --no-startup-id ~/.local/bin/volume-notify mute
 
 # ==============================
 # Floating / Tiling Modifiers
@@ -274,6 +274,6 @@ for_window [class="zen"] border none
 
 bar {
     status_command i3status
-    position top
+    position bottom
     tray_output primary
 }

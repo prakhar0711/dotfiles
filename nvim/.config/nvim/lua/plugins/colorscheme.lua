@@ -55,7 +55,7 @@ return {
         "rebelot/kanagawa.nvim",
 
         opts = {
-            dimInactive = true,
+            dimInactive = false,
             functionStyle = { italic = false },
             keywordStyle = { italic = false },
             colors = { theme = { all = { ui = { bg_gutter = "none" } } }, palette = { sumiInk1 = "#000000" },
