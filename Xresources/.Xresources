@@ -33,9 +33,7 @@ xterm*color9: #f7768e
 xterm*color2: #9ece6a
 xterm*color10: #9ece6a
 ! yellow
-xterm*color3: #e0af68
-xterm*color11: #e0af68
-! blue
+xterm*color3: #e0af68 xterm*color11: #e0af68 ! blue
 xterm*color4: #7aa2f7
 xterm*color12: #7aa2f7
 ! magenta

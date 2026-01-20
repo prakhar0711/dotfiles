@@ -22,11 +22,11 @@ vim.opt.synmaxcol = 200
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.wo.cursorline = false
-vim.opt.signcolumn = "yes:1"
+vim.opt.signcolumn = "yes"
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 10
 vim.opt.sidescroll = 5
-vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = "100"
 
 -- Transparency blending (disable if using Picom/WezTerm opacity)
 vim.opt.pumblend = 0
@@ -53,7 +53,7 @@ vim.o.timeoutlen = 300
 -- 📋 Clipboard
 -- ========================================
 if vim.fn.has("clipboard") == 1 then
-	vim.o.clipboard = "unnamedplus"
+    vim.o.clipboard = "unnamedplus"
 end
 
 -- ========================================
@@ -94,29 +94,29 @@ vim.opt.guicursor = ""
 
 -- highlight yank
 vim.api.nvim_create_autocmd("TextYankPost", {
-	group = vim.api.nvim_create_augroup("highlight_yank", { clear = true }),
-	pattern = "*",
-	desc = "highlight selection on yank",
-	callback = function()
-		vim.highlight.on_yank({ timeout = 200, visual = true })
-	end,
+    group = vim.api.nvim_create_augroup("highlight_yank", { clear = true }),
+    pattern = "*",
+    desc = "highlight selection on yank",
+    callback = function()
+        vim.highlight.on_yank({ timeout = 200, visual = true })
+    end,
 })
 
 -- open help in vertical split
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = "help",
-	command = "wincmd L",
+    pattern = "help",
+    command = "wincmd L",
 })
 
 -- auto resize splits when the terminal's window is resized
 vim.api.nvim_create_autocmd("VimResized", {
-	command = "wincmd =",
+    command = "wincmd =",
 })
 
 -- no auto continue comments on new line
 vim.api.nvim_create_autocmd("FileType", {
-	group = vim.api.nvim_create_augroup("no_auto_comment", {}),
-	callback = function()
-		vim.opt_local.formatoptions:remove({ "c", "r", "o" })
-	end,
+    group = vim.api.nvim_create_augroup("no_auto_comment", {}),
+    callback = function()
+        vim.opt_local.formatoptions:remove({ "c", "r", "o" })
+    end,
 })

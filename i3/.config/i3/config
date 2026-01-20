@@ -20,8 +20,8 @@ exec_always --no-startup-id xrdb -merge ~/.Xresources
 
 # Start autostart apps
 exec --no-startup-id dex --autostart --environment i3
-# exec --no-startup-id nitrogen --restore
-# exec --no-startup-id picom --config ~/.config/picom/picom.conf
+exec --no-startup-id nitrogen --restore
+exec --no-startup-id picom --config ~/.config/picom/picom.conf
 exec --no-startup-id dunst
 # # exec --no-startup-id polybar 
 # exec_always --no-startup-id ~/.config/polybar/i3_bar.sh
@@ -68,7 +68,7 @@ tiling_drag modifier titlebar
 
 # Start terminal
 # bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec kitty 
+bindsym $mod+Return exec alacritty 
 
 # Browsers / IDE / File Manager
 bindsym $mod+Shift+f exec firefox
@@ -162,18 +162,18 @@ assign [class="(?i).*kitty.*"] $ws1
 assign [class="(?i).*ghostty.*"] $ws1
 assign [class="(?i).*alacritty.*"] $ws1
 assign [class="(?i).*wezterm.*"] $ws1
-assign [class="(?i).*nitrogen.*"] $ws1
+assign [class="(?i).*nitrogen.*"] $ws4
 assign [class="(?i).*rio.*"] $ws1
 
 # (W-2) Browsers
 assign [class="Thorium-browser"] $ws2
-assign [class="google-chrome"] $ws3
-assign [class="qutebrowser"] $ws3
-assign [class="Google-Chrome"] $ws3
-assign [class="Google-chrome"] $ws3
-assign [class="(?i).*librewolf.*"] $ws3
-assign [class="(?i).*zen.*"] $ws3
-assign [class="(?i).*brave.*"] $ws3
+assign [class="google-chrome"] $ws2
+assign [class="qutebrowser"] $ws2
+assign [class="Google-Chrome"] $ws2
+assign [class="Google-chrome"] $ws2
+assign [class="(?i).*librewolf.*"] $ws2
+assign [class="(?i).*zen.*"] $ws2
+assign [class="(?i).*brave.*"] $ws2
 assign [class="(?i).*firefox.*"] $ws2
 
 # (W-4) File manager / media

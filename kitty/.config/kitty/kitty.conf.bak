@@ -73,7 +73,7 @@ shell_integration no-cursor
 # 🎨 Theme
 # ──────────────────────────────
 # BEGIN_KITTY_THEME
-# Kanagawa
+# Rosé Pine
 include current-theme.conf
 # END_KITTY_THEME
 
