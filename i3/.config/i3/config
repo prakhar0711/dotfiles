@@ -21,7 +21,7 @@ exec_always --no-startup-id xrdb -merge ~/.Xresources
 # Start autostart apps
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id nitrogen --restore
-exec --no-startup-id picom --config ~/.config/picom/picom.conf
+# exec --no-startup-id picom --config ~/.config/picom/picom.conf
 exec --no-startup-id dunst
 # # exec --no-startup-id polybar 
 # exec_always --no-startup-id ~/.config/polybar/i3_bar.sh
@@ -35,7 +35,7 @@ exec --no-startup-id volumeicon
 # exec --no-startup-id exec xfce4-panel --disable-wm-check
 
 # Audio server
-exec --no-startup-id pipewire
+exec --no-startup-id dbus-run-session pipewire
 # exec --no-startup-id wireplumber
 # exec --no-startup-id pipewire-pulse
 #

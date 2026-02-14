@@ -1,13 +1,10 @@
 function ColorMyPencils(color)
     color = color or "kanagawa-wave"
-    -- color = color or "rose-pine-moon"
-    -- color = color or "vague"
     vim.cmd.colorscheme(color)
     vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
     -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 
-    -- enable the below only when using vague
-    -- Optional: dim the background of non-active windows slightly
+    -- enable the below only when using vague Optional: dim the background of non-active windows slightly
     -- vim.api.nvim_set_hl(0, "NormalNC", { bg = "#1a1a1a" }) -- or some subtle shade
 end
 
@@ -33,14 +30,13 @@ return {
                     Search = { fg = "text", bg = "leaf", blend = 20, inherit = false },
                 },
                 palette = {
-                    -- Override the builtin palette per variant
                     moon = {
                         rose = '#eb6f92',
+                        overlay = '#221f33',
+                        surface = '#11101a',
                     },
                 },
             })
-
-            ColorMyPencils()
         end,
     },
     -- Lazy
@@ -114,7 +110,7 @@ return {
         config = function()
             ColorMyPencils()
             vim.g.gruvbox_material_enable_italic = false
-            vim.g.gruvbox_material_transparent_background = 2
+            vim.g.gruvbox_material_transparent_background = 0
             vim.g.gruvbox_material_background = "hard"
         end,
     },
@@ -169,5 +165,5 @@ return {
             vim.g.mellow_italic_booleans = false
             vim.g.mellow_bold_functions = false
         end
-    },
+    }
 }
