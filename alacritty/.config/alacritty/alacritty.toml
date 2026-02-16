@@ -25,7 +25,9 @@ multiplier = 3
 draw_bold_text_with_bright_colors = true
 
 [colors.primary]
-background = "0x070e15"
+background = "0x000000"
+# background = "0x070e15"
+# background = "0x191724"
 foreground = "0xc0caf5"
 
 [colors.normal]

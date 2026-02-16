@@ -36,6 +36,12 @@ return {
                         -- overlay = '#221f33',
                         -- surface = '#11101a',
                     },
+
+                    main = {
+                        rose = '#eb6f92',
+                        -- overlay = '#221f33',
+                        -- surface = '#11101a',
+                    },
                 },
             })
             ColorMyPencils();
@@ -46,7 +52,7 @@ return {
         "vague2k/vague.nvim",
         config = function()
             require("vague").setup({
-                on_highlights = function(highlights, colors) end,
+                -- on_highlights = function(highlights, colors) end,
 
                 -- Override colors
                 colors = {
@@ -157,15 +163,4 @@ return {
             ColorMyPencils()
         end,
     },
-    {
-        'mellow-theme/mellow.nvim',
-        config = function()
-            vim.g.mellow_italic_functions = false
-            vim.g.mellow_italic_keywords = false
-            vim.g.mellow_italic_variables = false
-            vim.g.mellow_italic_comments = false
-            vim.g.mellow_italic_booleans = false
-            vim.g.mellow_bold_functions = false
-        end
-    }
 }
