@@ -1,6 +1,6 @@
-[env]
-TERM = "xterm-256color"
-WINIT_X11_SCALE_FACTOR = "1"
+# [env]
+# TERM = "xterm-256color"
+# WINIT_X11_SCALE_FACTOR = "1"
 
 [window]
 dynamic_padding = true
@@ -50,30 +50,8 @@ magenta = "0xc7a9ff"
 cyan    = "0xa4daff"
 white   = "0xc0caf5"
 
-
-# rose pine palette
-# [colors.normal]
-# black = "0x232136"
-# red = "0xEB6F92"
-# green = "0x3E8FB0"
-# yellow = "0xF6C177"
-# blue = "0x9CCFD8"
-# magenta = "0xC4A7E7"
-# cyan = "0xEA9A97"
-# white = "0xE0DEF4"
-#
-# [colors.bright]
-# black = "0x393552"
-# red = "0xEB6F92"
-# green = "0x3E8FB0"
-# yellow = "0xF6C177"
-# blue = "0x9CCFD8"
-# magenta = "0xC4A7E7"
-# cyan = "0xEBBCBA"
-# white = "0xE0DEF4"
-#
 [font]
-size = 20
+size = 14
 
 [font.normal]
 family = "monospace"

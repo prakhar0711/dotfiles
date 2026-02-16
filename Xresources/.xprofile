@@ -7,10 +7,14 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 #feh --bg-fill --randomize ~/wallpapers/* &
 
 # # Environment variables set everywhere
- export EDITOR="nvim"
- export TERMINAL="kitty"
- export BROWSER="firefox"
- export SSH_AUTH_SOCK
+export EDITOR="nvim"
+export TERMINAL="alacritty"
+export BROWSER="firefox"
+export SSH_AUTH_SOCK
+export TERM=alacritty
+export COLORTERM=truecolor
+xrandr --output eDP-1 --set "Broadcast RGB" "Full"
+
 
  # zsh config dir
  export ZDOTDIR=$HOME/.config/zsh

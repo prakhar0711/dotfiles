@@ -14,6 +14,7 @@ font pango:Ubuntu Mono 18
 # Display setup (resolution + disable HDMI)
 exec_always --no-startup-id xrandr --output eDP-1 --mode 2560x1600 --rate 60
 exec_always --no-startup-id xrandr --output HDMI-1 --off
+exec_always --no-startup-id xrandr --output eDP-1 --set "Broadcast RGB" "Full"
 
 # Load DPI + Xresources AFTER xrandr
 exec_always --no-startup-id xrdb -merge ~/.Xresources

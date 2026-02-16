@@ -38,7 +38,7 @@ vim.opt.smoothscroll = true
 -- ========================================
 -- 🔍 Search
 -- ========================================
-vim.opt.hlsearch = true
+vim.opt.hlsearch = false
 vim.opt.incsearch = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
@@ -53,7 +53,7 @@ vim.o.timeoutlen = 300
 -- 📋 Clipboard
 -- ========================================
 if vim.fn.has("clipboard") == 1 then
-    vim.o.clipboard = "unnamedplus"
+        vim.o.clipboard = "unnamedplus"
 end
 
 -- ========================================
@@ -68,9 +68,9 @@ vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.smarttab = true
 vim.opt.expandtab = true
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.tabstop = 8
+vim.opt.softtabstop = 8
+vim.opt.shiftwidth = 8
 
 -- ========================================
 -- 📄 Text Wrapping
@@ -94,29 +94,29 @@ vim.opt.guicursor = ""
 
 -- highlight yank
 vim.api.nvim_create_autocmd("TextYankPost", {
-    group = vim.api.nvim_create_augroup("highlight_yank", { clear = true }),
-    pattern = "*",
-    desc = "highlight selection on yank",
-    callback = function()
-        vim.highlight.on_yank({ timeout = 200, visual = true })
-    end,
+        group = vim.api.nvim_create_augroup("highlight_yank", { clear = true }),
+        pattern = "*",
+        desc = "highlight selection on yank",
+        callback = function()
+                vim.highlight.on_yank({ timeout = 200, visual = true })
+        end,
 })
 
 -- open help in vertical split
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = "help",
-    command = "wincmd L",
+        pattern = "help",
+        command = "wincmd L",
 })
 
 -- auto resize splits when the terminal's window is resized
 vim.api.nvim_create_autocmd("VimResized", {
-    command = "wincmd =",
+        command = "wincmd =",
 })
 
 -- no auto continue comments on new line
 vim.api.nvim_create_autocmd("FileType", {
-    group = vim.api.nvim_create_augroup("no_auto_comment", {}),
-    callback = function()
-        vim.opt_local.formatoptions:remove({ "c", "r", "o" })
-    end,
+        group = vim.api.nvim_create_augroup("no_auto_comment", {}),
+        callback = function()
+                vim.opt_local.formatoptions:remove({ "c", "r", "o" })
+        end,
 })
