@@ -29,7 +29,7 @@ zstyle ':vcs_info:git:*' actionformats " %{$fg[blue]%}(%{$fg[red]%}%a %b%{$fg[bl
 
 # --- Prompt format ---
 # username@hostname current_directory git_info$
-PROMPT="%{$fg[blue]%}%n%{$reset_color%}@%{$fg[blue]%}%m%{$reset_color%} "
-PROMPT+="%{$fg[cyan]%}%~%{$reset_color%} "
+PROMPT="%{$fg[green]%}%n%{$reset_color%}@%{$fg[green]%}%m%{$reset_color%} "
+PROMPT+="%{$fg[blue]%}%~%{$reset_color%} "
 PROMPT+="\$vcs_info_msg_0_"
 PROMPT+="%{$fg[white]%}$ %{$reset_color%}"

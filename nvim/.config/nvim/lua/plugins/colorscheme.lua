@@ -14,7 +14,7 @@ return {
         name = "rose-pine",
         config = function()
             require("rose-pine").setup({
-                disable_background = true,
+                -- disable_background = true,
                 dim_inactive_windows = true,
                 -- enable = {
                 --     -- terminal = true,
@@ -23,8 +23,8 @@ return {
                 -- },
                 styles = {
                     italic = false,
-                    -- bold = false,
-                    -- transparency = false,
+                    bold = false,
+                    -- transparency = true,
                 },
                 highlight_groups = {
                     CurSearch = { fg = "base", bg = "leaf", inherit = false },
@@ -32,7 +32,7 @@ return {
                 },
                 palette = {
                     moon = {
-                        -- rose = '#eb6f92',
+                        rose = '#eb6f92',
                         -- overlay = '#221f33',
                         -- surface = '#11101a',
                     },
