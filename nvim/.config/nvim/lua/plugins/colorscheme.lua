@@ -2,7 +2,7 @@ function ColorMyPencils(color)
     color = color or "kanagawa-wave"
     vim.cmd.colorscheme(color)
     vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-    -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 
     -- enable the below only when using vague Optional: dim the background of non-active windows slightly
     -- vim.api.nvim_set_hl(0, "NormalNC", { bg = "#1a1a1a" }) -- or some subtle shade
@@ -14,16 +14,17 @@ return {
         name = "rose-pine",
         config = function()
             require("rose-pine").setup({
+                disable_background = true,
                 dim_inactive_windows = true,
-                enable = {
-                    terminal = true,
-                    legacy_highlights = true, -- Improve compatibility for previous versions of Neovim
-                    migrations = true,        -- Handle deprecated options automatically
-                },
+                -- enable = {
+                --     -- terminal = true,
+                --     -- legacy_highlights = true, -- Improve compatibility for previous versions of Neovim
+                --     -- migrations = true,        -- Handle deprecated options automatically
+                -- },
                 styles = {
                     italic = false,
-                    bold = false,
-                    transparency = false,
+                    -- bold = false,
+                    -- transparency = false,
                 },
                 highlight_groups = {
                     CurSearch = { fg = "base", bg = "leaf", inherit = false },
@@ -31,12 +32,13 @@ return {
                 },
                 palette = {
                     moon = {
-                        rose = '#eb6f92',
-                        overlay = '#221f33',
-                        surface = '#11101a',
+                        -- rose = '#eb6f92',
+                        -- overlay = '#221f33',
+                        -- surface = '#11101a',
                     },
                 },
             })
+            ColorMyPencils();
         end,
     },
     -- Lazy
@@ -118,10 +120,10 @@ return {
         "rebelot/kanagawa.nvim",
 
         opts = {
-            dimInactive = false,
+            dimInactive = true,
             functionStyle = { italic = false },
             keywordStyle = { italic = false },
-            colors = { theme = { all = { ui = { bg_gutter = "none" } } }, palette = { sumiInk1 = "#000000" },
+            colors = { theme = { all = { ui = { bg_gutter = "none" } } }, palette = { sumiInk1 = none },
             },
             overrides = function(colors)
                 local theme = colors.theme
@@ -135,7 +137,7 @@ return {
                     -- FloatBorder = { bg = "none" },
                     -- FloatTitle = { bg = "none" },
                     --
-                    NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
+                    -- NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
 
                     -- LazyNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
                     -- MasonNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
@@ -151,8 +153,8 @@ return {
             end,
         },
         config = function(_, opts)
-            ColorMyPencils()
             require("kanagawa").setup(opts) -- calling setup is optional
+            ColorMyPencils()
         end,
     },
     {

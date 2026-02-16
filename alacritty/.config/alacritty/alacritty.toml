@@ -24,30 +24,30 @@ multiplier = 3
 [colors]
 draw_bold_text_with_bright_colors = true
 
-# mellow palette
 [colors.primary]
-background = "0x000000"
-# background = "0x2E3440"
-foreground = "0xD8DEE9"
+background = "0x070e15"
+foreground = "0xc0caf5"
+
 [colors.normal]
-black = "0x3B4252"
-red = "0xBF616A"
-green = "0xA3BE8C"
-yellow = "0xEBCB8B"
-blue = "0x81A1C1"
-magenta = "0xB48EAD"
-cyan = "0x88C0D0"
-white = "0xE5E9F0"
+black   = "0x15161e"
+red     = "0xf7768e"
+green   = "0x9ece6a"
+yellow  = "0xe0af68"
+blue    = "0x7aa2f7"
+magenta = "0xbb9af7"
+cyan    = "0x7dcfff"
+white   = "0xa9b1d6"
 
 [colors.bright]
-black = "0x4C566A"
-red = "0xBF616A"
-green = "0xA3BE8C"
-yellow = "0xEBCB8B"
-blue = "0x81A1C1"
-magenta = "0xB48EAD"
-cyan = "0x8FBCBB"
-white = "0xECEFF4"
+black   = "0x414868"
+red     = "0xff899d"
+green   = "0x9ece6a"
+yellow  = "0xfaba4a"
+blue    = "0x8db0ff"
+magenta = "0xc7a9ff"
+cyan    = "0xa4daff"
+white   = "0xc0caf5"
+
 
 # rose pine palette
 # [colors.normal]

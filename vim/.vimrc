@@ -1,6 +1,14 @@
 " Set leader to comma
 let mapleader = " "
 
+
+" Caps Lock → Escape when Vim starts
+augroup CapsEscToggle
+    autocmd!
+    autocmd VimEnter * silent! call system('caps_on')
+    autocmd VimLeavePre * silent! call system('caps_off')
+augroup END
+
 " Yank to system clipboard with <leader>y (e.g., \y)
 nnoremap <leader>y "+y
 vnoremap <leader>y "+y

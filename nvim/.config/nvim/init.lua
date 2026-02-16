@@ -8,3 +8,20 @@ require("config.lazy")
 require("custom.bufferline")
 -- Remove tilde from end of buffer and replace with whitespace
 -- vim.cmd("let &fillchars='eob: '")
+local group = vim.api.nvim_create_augroup("CapsEscapeToggle", { clear = true })
+
+-- enable Caps → Esc when nvim starts
+vim.api.nvim_create_autocmd("VimEnter", {
+    group = group,
+    callback = function()
+        vim.fn.system("caps_on")
+    end,
+})
+
+-- restore normal Caps when nvim exits
+vim.api.nvim_create_autocmd("VimLeavePre", {
+    group = group,
+    callback = function()
+        vim.fn.system("caps_off")
+    end,
+})
