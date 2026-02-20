@@ -1,16 +1,8 @@
-function ColorMyPencils(color)
-        color = color or "tairiki"
-        vim.cmd.colorscheme(color)
-        vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-        -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-        -- enable the below only when using vague Optional: dim the background of non-active windows slightly
-        -- vim.api.nvim_set_hl(0, "NormalNC", { bg = "#1a1a1a" }) -- or some subtle shade
-end
-
 return {
         {
                 "rose-pine/neovim",
                 name = "rose-pine",
+                lazy = true,
                 config = function()
                         require('rose-pine').setup({
                                 disable_background = true,
@@ -23,11 +15,10 @@ return {
                                         migrations = false,        -- Handle deprecated options automatically
                                 },
                         })
-
-                        ColorMyPencils();
                 end
         }, {
         "vague2k/vague.nvim",
+        lazy = true,
         config = function()
                 require("vague").setup({
                         -- on_highlights = function(highlights, colors) end,
@@ -86,15 +77,12 @@ return {
                         },
                         transparent = false,
                 })
-                ColorMyPencils()
         end,
 },
         {
                 "sainnhe/gruvbox-material",
-                lazy = false,
-                priority = 1000,
+                lazy = true,
                 config = function()
-                        ColorMyPencils()
                         vim.g.gruvbox_material_enable_italic = false
                         vim.g.gruvbox_material_transparent_background = 0
                         vim.g.gruvbox_material_background = "hard"
@@ -103,6 +91,7 @@ return {
         {
                 "rebelot/kanagawa.nvim",
 
+                lazy = true,
                 opts = {
                         dimInactive = true,
                         functionStyle = { italic = false },
@@ -138,14 +127,12 @@ return {
                 },
                 config = function(_, opts)
                         require("kanagawa").setup(opts) -- calling setup is optional
-                        ColorMyPencils()
                 end,
         },
         -- Using lazy.nvim
         {
                 'deparr/tairiki.nvim',
-                lazy = false,
-                priority = 1000, -- recommended if you use tairiki as your default theme
+                lazy = true,
                 config = function()
                         require('tairiki').setup {
                                 palette              = "dark", -- main palette, available options: dark, light, dimmed, tomorrow, light_legacy
