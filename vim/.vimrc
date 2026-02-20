@@ -187,249 +187,32 @@ let s:gold      = "#d7827e"
 let s:surf      = "#908caa"
 let s:highlight = "#56949f"
 
-" Normal text
-execute 'hi Normal guifg=' . s:fg . ' guibg=' . s:bg
-execute 'hi CursorLine guibg=#f2ede9'
-execute 'hi Visual guibg=#e6e1dc'
+"" Normal text
+"execute 'hi Normal guifg=' . s:fg . ' guibg=' . s:bg
+"execute 'hi CursorLine guibg=#f2ede9'
+"execute 'hi Visual guibg=#e6e1dc'
 
 " CoC Completion Menu
 execute 'hi Pmenu guifg=' . s:fg . ' guibg=#f2ede9'
 execute 'hi PmenuSel guifg=#faf4ed guibg=' . s:highlight
 execute 'hi PmenuThumb guibg=' . s:pine
-
+"
 " CoC Floating Windows
 execute 'hi CocFloating guifg=' . s:fg . ' guibg=#f2ede9'
 execute 'hi CocFloatingBorder guifg=' . s:surf . ' guibg=#f2ede9'
-
-" CoC Diagnostics
-execute 'hi CocError guifg=' . s:rose
-execute 'hi CocWarning guifg=' . s:gold
-execute 'hi CocInfo guifg=' . s:pine
-execute 'hi CocHint guifg=' . s:highlight
-
-" Signs in sign column
-execute 'hi CocErrorSign guifg=' . s:rose
-execute 'hi CocWarningSign guifg=' . s:gold
-execute 'hi CocInfoSign guifg=' . s:pine
-execute 'hi CocHintSign guifg=' . s:highlight
-
-" Status messages
-execute 'hi CocStatusLine guifg=' . s:fg . ' guibg=#f2ede9'
-execute 'hi CocStatusLineNC guifg=' . s:surf . ' guibg=#f2ede9'
-
 "
+"" CoC Diagnostics
+"execute 'hi CocError guifg=' . s:rose
+"execute 'hi CocWarning guifg=' . s:gold
+"execute 'hi CocInfo guifg=' . s:pine
+"execute 'hi CocHint guifg=' . s:highlight
 "
-"" =========================================================
-"" Basic Behavior
-"" =========================================================
+"" Signs in sign column
+"execute 'hi CocErrorSign guifg=' . s:rose
+"execute 'hi CocWarningSign guifg=' . s:gold
+"execute 'hi CocInfoSign guifg=' . s:pine
+"execute 'hi CocHintSign guifg=' . s:highlight
 "
-"set nocompatible
-"filetype off
-"syntax off
-"
-"let mapleader=" "
-"
-"set clipboard=unnamedplus
-"set number
-"set relativenumber
-"set autoindent
-"set backspace=indent,eol,start
-"set formatoptions-=t
-"set hlsearch
-"set nostartofline
-"set ruler
-"set showmatch
-"set showmode
-"set showcmd
-"set tabstop=8
-"set textwidth=80
-"set title
-"set spelllang=en
-"set t_Co=256
-""if has('termguicolors')
-""    set termguicolors
-""endif
-"
-"
-"" =========================================================
-"" Clipboard mappings
-"" =========================================================
-"nnoremap <leader>y "+y
-"vnoremap <leader>y "+y
-"nnoremap <leader>p "+p
-"nnoremap <leader>P "+P
-"
-"
-"" =========================================================
-"" Plugins
-"" =========================================================
-"call plug#begin('~/.vim/plugged')
-"
-"Plug 'vim-airline/vim-airline'
-"Plug 'vim-airline/vim-airline-themes'
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"Plug 'godlygeek/tabular'
-"Plug 'preservim/vim-markdown'
-"Plug 'rust-lang/rust.vim'
-"Plug 'dense-analysis/ale'
-"
-"call plug#end()
-"
-"filetype plugin indent on
-"syntax enable
-"
-"
-"" =========================================================
-"" Airline (prevent it from overriding theme)
-"" =========================================================
-"let g:airline_disable_statusline = 0
-"let g:airline_powerline_fonts = 0
-"let g:airline_theme = 'deus'
-"
-"
-"" =========================================================
-"" ALE (linter only — no LSP conflicts with coc)
-"" =========================================================
-"let g:ale_disable_lsp = 1
-"let g:ale_completion_enabled = 0
-"let g:ale_virtualtext_cursor = 0
-"
-"let g:ale_linters = {
-"\  'bash': [],
-"\  'sh': [],
-"\  'c': ['clangd'],
-"\  'cpp': ['clangd'],
-"\  'rust': ['analyzer'],
-"\}
-"
-"
-"" =========================================================
-"" CoC key behavior
-"" =========================================================
-"inoremap <silent><expr> <TAB>
-"      \ coc#pum#visible() ? coc#pum#next(1) :
-"      \ CheckBackspace() ? "\<Tab>" :
-"      \ coc#refresh()
-"
-"inoremap <expr><S-TAB>
-"      \ coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-"
-"inoremap <silent><expr> <CR>
-"      \ coc#pum#visible()
-"      \ ? coc#pum#confirm()
-"      \ : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-"
-"inoremap <silent><expr> <c-@> coc#refresh()
-"
-"
-"" =========================================================
-"" Filetype rules
-"" =========================================================
-"if has("autocmd")
-"
-"    autocmd BufReadPost *
-"        \ if line("'\"") > 1 && line("'\"") <= line("$") |
-"        \ exe "normal! g'\"" |
-"        \ endif
-"
-"    autocmd BufReadPost COMMIT_EDITMSG normal! gg
-"
-"    autocmd FileType ruby setlocal sw=2 sts=2 et
-"    autocmd FileType yaml setlocal sw=2 sts=2 et
-"    autocmd FileType javascript setlocal sw=4 sts=4 et
-"    autocmd FileType json setlocal sw=2 sts=2 et
-"    autocmd FileType objc setlocal sw=4 sts=4 et
-"    autocmd FileType objcpp setlocal sw=4 sts=4 et
-"    autocmd FileType rust setlocal sw=4 sts=4 et textwidth=80
-"    autocmd FileType python setlocal sw=4 sts=4 et
-"    autocmd FileType markdown setlocal sw=4 sts=4 et spell
-"    autocmd FileType text setlocal spell
-"
-"endif
-"
-"
-"" =========================================================
-"" Highlight unwanted whitespace
-"" =========================================================
-"highlight RedundantWhitespace ctermbg=green guibg=green
-"match RedundantWhitespace /\s\+$\| \+\ze\t/
-"
-"
-"" =========================================================
-"" Rose Pine Dawn — PROTECTED THEME LAYER
-"" (cannot be overridden by plugins)
-"" =========================================================
-"function! ApplyMyColors() abort
-"
-"    let s:bg        = "#faf4ed"
-"    let s:fg        = "#575279"
-"    let s:rose      = "#b4637a"
-"    let s:pine      = "#286983"
-"    let s:gold      = "#d7827e"
-"    let s:surf      = "#908caa"
-"    let s:highlight = "#56949f"
-"
-"    set background=light
-"    highlight clear
-"    syntax reset
-"
-"    " UI
-"    exec 'hi Normal guifg='.s:fg.' guibg=NONE ctermbg=NONE'
-"    hi CursorLine guibg=#f2ede9
-"    hi Visual guibg=#e6e1dc
-"    hi LineNr guifg=#908caa guibg=#faf4ed
-"    hi CursorLineNr guifg=#286983 guibg=#f2ede9
-"
-"    " Popup menu
-"    exec 'hi Pmenu guifg='.s:fg.' guibg=#f2ede9'
-"    exec 'hi PmenuSel guifg=#faf4ed guibg='.s:highlight
-"    exec 'hi PmenuThumb guibg='.s:pine
-"
-"    " Coc floating
-"    exec 'hi CocFloating guifg='.s:fg.' guibg=#f2ede9'
-"    exec 'hi CocFloatingBorder guifg='.s:surf.' guibg=#f2ede9'
-"
-"    " Diagnostics
-"    exec 'hi CocError guifg='.s:rose
-"    exec 'hi CocWarning guifg='.s:gold
-"    exec 'hi CocInfo guifg='.s:pine
-"    exec 'hi CocHint guifg='.s:highlight
-"
-"    exec 'hi CocErrorSign guifg='.s:rose
-"    exec 'hi CocWarningSign guifg='.s:gold
-"    exec 'hi CocInfoSign guifg='.s:pine
-"    exec 'hi CocHintSign guifg='.s:highlight
-"
-"    " Statusline
-"    hi StatusLine guifg=#575279 guibg=#e6e1dc
-"    hi StatusLineNC guifg=#908caa guibg=#f2ede9
-"
-"    " Spell
-"    highlight clear SpellBad
-"    highlight SpellBad term=underline ctermfg=red
-"    highlight SpellCap term=underline
-"    highlight SpellRare term=underline
-"    highlight SpellLocal term=underline
-"
-"endfunction
-"
-"
-"augroup MyColors
-"    autocmd!
-"    autocmd VimEnter * call ApplyMyColors()
-"    autocmd ColorScheme * call ApplyMyColors()
-"    autocmd FileType * call ApplyMyColors()
-"augroup END
-"
-"
-"" =========================================================
-"" Local overrides (optional)
-"" =========================================================
-"if filereadable(expand("~/.vimrc.local"))
-"    source ~/.vimrc.local
-"endif
-"
-"if filereadable(expand("~/.vimrc.indent"))
-"    source ~/.vimrc.indent
-"endif
-
+"" Status messages
+"execute 'hi CocStatusLine guifg=' . s:fg . ' guibg=#f2ede9'
+"execute 'hi CocStatusLineNC guifg=' . s:surf . ' guibg=#f2ede9'
