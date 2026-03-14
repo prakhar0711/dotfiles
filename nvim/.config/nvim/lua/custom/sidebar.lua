@@ -49,11 +49,11 @@ vim.api.nvim_create_autocmd("FileType", {
         end,
 })
 
-vim.keymap.set("n", "<leader>e", function()
-        local win = sidebar_window()
-        if win then
-                vim.api.nvim_win_close(win, true)
-        else
-                open_sidebar()
-        end
-end)
+-- vim.keymap.set("n", "<leader>e", function()
+--         local win = sidebar_window()
+--         if win then
+--                 vim.api.nvim_win_close(win, true)
+--         else
+--                 open_sidebar()
+--         end
+-- end)

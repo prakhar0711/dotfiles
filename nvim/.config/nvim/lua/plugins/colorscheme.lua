@@ -138,7 +138,7 @@ return {
                                 palette              = "dark", -- main palette, available options: dark, light, dimmed, tomorrow, light_legacy
                                 default_dark         = "dark",
                                 transparent          = false,  -- don't set background colors
-                                terminal             = false,  -- override nvim terminal colors
+                                terminal             = true,   -- override nvim terminal colors
                                 end_of_buffer        = true,   -- show end of buffer filler lines (tildes)
                                 visual_bold          = true,   -- bolden visual selections
                                 cmp_itemkind_reverse = false,  -- reverse fg/bg on nvim-cmp item kinds
@@ -150,7 +150,7 @@ return {
                                 },
 
                                 code_style           = {
-                                        comments = { italic = true },
+                                        comments = { italic = false },
                                         conditionals = {},
                                         keywords = {},
                                         functions = {},
