@@ -1,0 +1,122 @@
+-- ========================================
+-- 📦 General Settings
+-- ========================================
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.writebackup = false
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+
+vim.opt.autoread = true
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold" }, { command = "checktime" })
+
+vim.opt.errorbells = false
+vim.opt.visualbell = false
+vim.opt.termguicolors = true
+vim.opt.ttyfast = true
+vim.opt.lazyredraw = true
+vim.opt.synmaxcol = 200
+
+-- ========================================
+-- 🪟 UI & Appearance
+-- ========================================
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.wo.cursorline = false
+vim.opt.signcolumn = "yes"
+vim.opt.scrolloff = 8
+vim.opt.sidescrolloff = 10
+vim.opt.sidescroll = 5
+vim.opt.colorcolumn = "100"
+
+-- Transparency blending (disable if using Picom/WezTerm opacity)
+vim.opt.pumblend = 0
+vim.opt.winblend = 0
+
+-- Smooth scrolling (Neovim ≥ 0.10)
+vim.opt.smoothscroll = true
+
+-- ========================================
+-- 🔍 Search
+-- ========================================
+vim.opt.hlsearch = false
+vim.opt.incsearch = true
+vim.o.ignorecase = true
+vim.o.smartcase = true
+
+-- ========================================
+-- 🧠 Behavior & Performance
+-- ========================================
+vim.o.updatetime = 100
+vim.o.timeoutlen = 300
+
+-- ========================================
+-- 📋 Clipboard
+-- ========================================
+if vim.fn.has("clipboard") == 1 then
+        vim.o.clipboard = "unnamedplus"
+end
+
+-- ========================================
+-- 💬 Completion
+-- ========================================
+vim.o.completeopt = "menuone,noselect"
+
+-- ========================================
+-- 🧱 Indentation
+-- ========================================
+vim.opt.autoindent = true
+vim.opt.smartindent = true
+vim.opt.smarttab = true
+vim.opt.expandtab = true
+vim.opt.tabstop = 8
+vim.opt.softtabstop = 8
+vim.opt.shiftwidth = 8
+
+-- ========================================
+-- 📄 Text Wrapping
+-- ========================================
+vim.opt.wrap = true
+vim.opt.linebreak = true
+vim.opt.breakindent = true
+vim.opt.showbreak = "↳"
+
+-- ========================================
+-- 🔲 Window Splits
+-- ========================================
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+
+-- ========================================
+-- 🧭 Misc
+-- ========================================
+vim.opt.isfname:append("@-@")
+vim.opt.guicursor = ""
+
+-- highlight yank
+vim.api.nvim_create_autocmd("TextYankPost", {
+        group = vim.api.nvim_create_augroup("highlight_yank", { clear = true }),
+        pattern = "*",
+        desc = "highlight selection on yank",
+        callback = function()
+                vim.highlight.on_yank({ timeout = 200, visual = true })
+        end,
+})
+
+-- open help in vertical split
+vim.api.nvim_create_autocmd("FileType", {
+        pattern = "help",
+        command = "wincmd L",
+})
+
+-- auto resize splits when the terminal's window is resized
+vim.api.nvim_create_autocmd("VimResized", {
+        command = "wincmd =",
+})
+
+-- no auto continue comments on new line
+vim.api.nvim_create_autocmd("FileType", {
+        group = vim.api.nvim_create_augroup("no_auto_comment", {}),
+        callback = function()
+                vim.opt_local.formatoptions:remove({ "c", "r", "o" })
+        end,
+})
