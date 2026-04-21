@@ -16,10 +16,6 @@
       "rev": "6cd7280adead7f586db6fccbd15d2cac7e2188b9",
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
-    "gitsigns.nvim": {
-      "rev": "8d82c240f190fc33723d48c308ccc1ed8baad69d",
-      "src": "https://github.com/lewis6991/gitsigns.nvim"
-    },
     "mason-lspconfig.nvim": {
       "rev": "0a3b42c3e503df87aef6d6513e13148381495c3a",
       "src": "https://github.com/williamboman/mason-lspconfig.nvim"
@@ -64,17 +60,9 @@
       "rev": "ad9ede6a9cddf16cedbd31b8932d6dcdee9b716e",
       "src": "https://github.com/folke/snacks.nvim"
     },
-    "tairiki": {
-      "rev": "4699c41536fb83e2dadae436e1eba2435fa64b08",
-      "src": "https://github.com/deparr/tairiki.nvim"
-    },
     "tairiki.nvim": {
       "rev": "4699c41536fb83e2dadae436e1eba2435fa64b08",
       "src": "https://github.com/deparr/tairiki.nvim"
-    },
-    "techbase.nvim": {
-      "rev": "fc4e039e370043d7ae7203c9a1dbbda76f683740",
-      "src": "https://github.com/mcauley-penney/techbase.nvim"
     },
     "which-key.nvim": {
       "rev": "3aab2147e74890957785941f0c1ad87d0a44c15a",
