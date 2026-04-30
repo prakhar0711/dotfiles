@@ -1,7 +1,7 @@
 -- if vim.loader then
 --     vim.loader.enable()
 -- end
-
+require('vim._core.ui2').enable()
 require("user.options")
 require("user.keymaps")
 require("config.lazy")
