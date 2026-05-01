@@ -39,23 +39,44 @@ return {
                         },
 
                         completion = {
-                                documentation = { auto_show = true, auto_show_delay_ms = 200 },
+                                documentation = {
+                                        auto_show = true,
+                                        auto_show_delay_ms = 200,
+                                        treesitter_highlighting = true,
+                                        draw = function(opts) opts.default_implementation() end,
+                                },
                                 menu = {
                                         draw = {
                                                 snippet_indicator = "~",
                                                 treesitter = { "lsp" },
-                                                columns = { { "label", "label_description" }, { "kind", gap = 1 } },
+                                                columns = { { "label", "label_description", gap = 1 }, { "kind", "source_name" } },
                                                 components = {
                                                         kind_icon = {
                                                                 ellipsis = false,
                                                                 text = function(ctx)
-                                                                        return ctx.kind_icon .. ctx.icon_gap
+                                                                        local icon = ctx.kind_icon
+                                                                        -- If it's a color, try to get the swatch from nvim-highlight-colors
+                                                                        if ctx.item.kind == vim.lsp.protocol.CompletionItemKind.Color then
+                                                                                local doc = ctx.item.documentation
+                                                                                if type(doc) == 'string' and doc:match('^#%x%x%x%x%x%x$') then
+                                                                                        -- This is where nvim-highlight-colors can insert a square icon
+                                                                                        local color_icon = require(
+                                                                                                    "nvim-highlight-colors")
+                                                                                            .format(
+                                                                                                    doc,
+                                                                                                    { kind = "Color" })
+                                                                                        if color_icon then
+                                                                                                return
+                                                                                                    color_icon
+                                                                                        end
+                                                                                end
+                                                                        end
+                                                                        return icon .. ctx.icon_gap
                                                                 end,
                                                                 highlight = function(ctx)
                                                                         return { { group = ctx.kind_hl, priority = 20000 } }
                                                                 end,
                                                         },
-
                                                         kind = {
                                                                 ellipsis = false,
                                                                 width = { fill = true },
@@ -63,7 +84,7 @@ return {
                                                                         return ctx.kind
                                                                 end,
                                                                 highlight = function(ctx)
-                                                                        return ctx.kind_hl
+                                                                        return { { group = ctx.kind_hl, priority = 20000 } }
                                                                 end,
                                                         },
 

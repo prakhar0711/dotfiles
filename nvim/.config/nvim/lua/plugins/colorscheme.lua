@@ -136,12 +136,12 @@ return {
                 config = function()
                         require('tairiki').setup {
                                 palette              = "dark", -- main palette, available options: dark, light, dimmed, tomorrow, light_legacy
-                                default_dark         = "dark",
-                                transparent          = false,  -- don't set background colors
+                                -- default_dark         = "dark",
+                                transparent          = true,   -- don't set background colors
                                 terminal             = true,   -- override nvim terminal colors
                                 end_of_buffer        = true,   -- show end of buffer filler lines (tildes)
                                 visual_bold          = true,   -- bolden visual selections
-                                cmp_itemkind_reverse = false,  -- reverse fg/bg on nvim-cmp item kinds
+                                cmp_itemkind_reverse = true,   -- reverse fg/bg on nvim-cmp item kinds
 
                                 diagnostics          = {
                                         darker     = true, -- darken diagnostic virtual text
@@ -164,7 +164,7 @@ return {
                                 -- which plugins to enable
                                 plugins = {
                                         treesitter = true,
-                                        semantic_tokens = false,
+                                        semantic_tokens = true,
                                 },
 
                         }
