@@ -96,8 +96,7 @@
             "format-disconnected": "󰤠 ",
             "interval": 5,
             "tooltip-format": "{essid} ({signalStrength}%)",
-            "on-click": "nm-connection-editor"
-
+"on-click": "~/.local/bin/rofi-wifi-menu"
         },
 
         "cpu": {

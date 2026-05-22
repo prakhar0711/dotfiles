@@ -21,7 +21,7 @@ marker_cut = { fg = "#B4637A", bg = "#B4637A" }
 # Tab
 tab_active = { fg = "#e0def4", bg = "#191724" }
 tab_inactive = { fg = "#e0def4", bg = "#2A273F" }
-tab_width = 1
+# tab_width = 1
 
 # Border
 border_symbol = "│"
@@ -138,8 +138,8 @@ rules = [
     { mime = "application/x-rar", fg = "#eb6f92" },
 
     # Fallback
-    { name = "*", fg = "#e0def4" },
-    { name = "*/", fg = "#524f67" },
+    # { name = "*", fg = "#e0def4" },
+    # { name = "*/", fg = "#524f67" },
 ]
 
 # : }}}
