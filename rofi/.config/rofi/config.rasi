@@ -2,12 +2,11 @@ configuration {
     drun-display-format: "{icon} {name}";
     show-icons: true;
     icon-theme: "Adwaita";
-    font: "JetBrainsMono Nerd Font 18";
+    font: "JetBrainsMono Nerd Font 14";
 }
 
 * {
-    highlight: bold italic;
-    scrollbar: true;
+    highlight: bold italic; scrollbar: true;
 
     rosepine-base:     #191724;
     rosepine-surface:  #1f1d2e;
