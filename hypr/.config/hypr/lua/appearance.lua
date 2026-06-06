@@ -1,9 +1,22 @@
 -- Monitors
 hl.monitor({ output = "eDP-1", mode = "2560x1600@240", position = "0x0", scale = "1.25" })
-hl.monitor({ output = "eDP-2", mode = "2560x1600@240", position = "0x0", scale = "1.6" })
+hl.monitor({ output = "eDP-2", mode = "2560x1600@240", position = "0x0", scale = "1.25" })
 
 -- General Look, Decoration & Hardware Configs
 hl.config({
+        animations = {
+                enabled = true,
+                bezier = {
+                        { "smoothResize", 0.25, 1, 0.5, 1 }
+                },
+
+                -- Apply the curve to windows and resizes
+                -- syntax: { event, enable, speed, curve, style }
+                animation = {
+                        { "windows",     true, 4, "smoothResize", "slide" },
+                        { "windowsMove", true, 4, "smoothResize" }
+                }
+        },
         general    = {
                 gaps_in = 2,
                 gaps_out = 0,
@@ -19,7 +32,7 @@ hl.config({
                 active_opacity = 1.0,
                 inactive_opacity = 0.8,
                 shadow = { enabled = false, range = 4, render_power = 3, color = "rgba(1a1a1aee)" },
-                blur = { enabled = true, size = 6, passes = 3, vibrancy = 0.1696 },
+                blur = { enabled = true, size = 15, passes = 2, noise = 0.08, vibrancy = 0.1696, contrast = 1.5 },
         },
         input      = {
                 kb_layout = "us",

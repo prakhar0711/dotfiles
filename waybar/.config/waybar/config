@@ -53,7 +53,7 @@
         },
         "hyprland/window": {
                 "format": "<span color='#e0def4'>  {title}</span>",
-                "max-length":50,
+                "max-length":20,
                 "rewrite": {
                         "(.*) - Mozilla Firefox": "🌎 $1",
                         "(.*) - zsh": "> [$1]"
@@ -108,7 +108,8 @@
                 "format-disconnected": "󰤠 ",
                 "interval": 5,
                 "tooltip-format": "{essid} ({signalStrength}%)",
-                "on-click": "~/.local/bin/rofi-wifi-menu"
+                "on-click": "exec nmrs"
+                // "on-click": "~/.local/bin/rofi-wifi-menu"
         },
 
         "cpu": {
