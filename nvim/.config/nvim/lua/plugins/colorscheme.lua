@@ -170,4 +170,42 @@ return {
                         }
                 end
         },
+        {
+                "folke/tokyonight.nvim",
+                lazy = false,
+                priority = 1000,
+                opts = {
+                        style = "night",
+                        transparent = false,
+                        styles = {
+                                sidebars = "transparent"
+                        },
+                        -- Override highlights to blend the gutters into the background
+                        on_highlights = function(hl, c)
+                                hl.SignColumn = {
+                                        bg = none, -- Sets the signcolumn background to the theme's default background
+                                }
+                        end,
+                },
+        },
+        {
+                'marko-cerovac/material.nvim',
+                config = function()
+                        require('material').setup({
+                                disable = {
+                                        colored_cursor = true,
+                                },
+                                high_visibility = {
+                                        darker = true,
+                                },
+                                custom_highlights = function(colors)
+                                        return {
+                                                TreesitterContext = { bg = "#27343a" },
+                                                BlinkCmpDoc = { bg = "#262b3e" },
+                                        }
+                                end
+
+                        })
+                end
+        }
 }
