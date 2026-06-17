@@ -1,0 +1,75 @@
+@import 'themes/nova-dark/nova-dark.css';
+@import 'themes/nova-dark/notifications.css';
+@import 'themes/nova-dark/central_control.css';
+
+/* --- SwayNC Slider Component Styling --- */
+
+/* Base container wrapper around each slider */
+.widget-volume, .widget-backlight {
+    background-color: @bg1;
+    border: 1px solid @bg0;
+    border-radius: 8px;
+    padding: 8px 16px;
+    margin: 4px 10px;
+}
+
+/* The label icon next to the slider */
+.widget-volume > label, .widget-backlight > label {
+    color: @cyan;
+    font-size: 18px;
+    padding-right: 8px;
+}
+
+/* The actual slider progress bar object (GTK Scale) */
+scale {
+    margin: 4px;
+}
+
+/* The background track of the slider */
+scale trough {
+    background-color: @background;
+    border-radius: 4px;
+    min-height: 8px;
+}
+
+/* The highlighted progress filled section */
+scale highlight {
+    background-color: @cyan; /* Bright Nova teal for progress filling */
+    border-radius: 4px;
+}
+
+/* The circular slider knob handler */
+scale slider {
+    background-color: @foreground;
+    border: 1px solid @bg0;
+    border-radius: 50%;
+    min-height: 14px;
+    min-width: 14px;
+}
+
+/* --- SwayNC Keyboard OSD Popup Window --- */
+#osd {
+    background-color: @bg0;      /* Solid deepest dark background */
+    border: 2px solid @cyan;     /* Soft Nova teal highlight border */
+    border-radius: 12px;
+    padding: 12px 24px;
+}
+
+#osd label {
+    color: @foreground;
+    font-size: 24px;             /* Enlarges the Volume / Brightness icon */
+    padding-bottom: 8px;
+}
+
+/* The OSD slider bar inside the popup box */
+#osd progressbar trough {
+    background-color: @bg1;
+    border-radius: 4px;
+    min-height: 6px;
+    min-width: 180px;
+}
+
+#osd progressbar progress {
+    background-color: @cyan;     /* Progress bar filled color */
+    border-radius: 4px;
+}

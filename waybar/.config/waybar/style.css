@@ -224,4 +224,22 @@ tooltip {
   font-size: 12px;
 }
 
+/* --- Waybar Nova Dark Variables --- */
+@define-color background #1e272c;
+@define-color foreground #c5d4dd;
+@define-color cyan       #7fc1ca;
+@define-color bg1        #2a353d;
 
+#custom-swaync{
+    color: @cyan;               /* Bright Nova teal for the bell icon */
+    background-color: @bg1;     /* Distinct container styling */
+    padding: 0px 12px;
+    margin: 4px;
+    border-radius: 6px;
+    font-size: 16px;            /* Scale icon size up if needed */
+}
+
+#custom-swaync.inhibited,
+#custom-swaync.dnd {
+    color: #899c9e;             /* Dim/Muted color if Do-Not-Disturb is on */
+}

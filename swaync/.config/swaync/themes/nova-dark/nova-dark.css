@@ -1,0 +1,21 @@
+/* ==========================================================================
+   Nova Dark Palette Definitions
+   ========================================================================== */
+
+/* --- Core Structure --- */
+@define-color bg0        #151b1e;  /* Deepest dark (often used for bg0 in themes) */
+@define-color background #1e272c;  /* Main dark background */
+@define-color bg1        #2a353d;  /* Lighter surface for containers/cards */
+@define-color foreground #c5d4dd;  /* Primary light text */
+@define-color muted      #899c9e;  /* Dim text for subtext/timestamps */
+
+/* --- UI Accent Sequence (color1 - color6) --- */
+@define-color color1     #a8ce93;  /* Success / Mellow Green */
+@define-color color2     #f2c38f;  /* Warning / Mellow Orange-Yellow */
+@define-color color3     #9a93e1;  /* Selected State / Soft Purple */
+@define-color color5     #d18ec2;  /* Interactive Hover / Soft Pink */
+@define-color color6     #ff7b72;  /* Error / Urgent Red */
+
+/* --- Additional Nova Accents --- */
+@define-color cyan       #7fc1ca;  /* Info / Primary Nova Teal accent */
+@define-color blue       #83afe5;  /* Secondary accent */

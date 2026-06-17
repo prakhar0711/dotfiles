@@ -8,6 +8,7 @@ alias install="sudo pacman -S"
 alias remove="sudo pacman -Rns"
 alias search="yay"
 alias linutil="curl -fsSL https://christitus.com/linux | sh"
+alias gc="git clone --depth=1"
 alias gs="git status"
 alias ga="git add ."
 alias ..='cd ..'
