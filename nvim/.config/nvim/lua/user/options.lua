@@ -1,122 +1,123 @@
+-- =====================================================================
+-- 📊 MINIMAL CUSTOM STATUSLINE
+-- =====================================================================
 vim.opt.statusline = "%f %m %r %= %y %l:%c"
--- ========================================
--- 📦 General Settings
--- ========================================
+
+-- =====================================================================
+-- 📦 GENERAL & FILE SYSTEM SETTINGS
+-- =====================================================================
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.writebackup = false
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undofile = true -- Enabled persistent undo storage history!
+vim.opt.undodir = vim.fn.expand("~/.vim/undodir")
 
+-- Sync file transformations instantly if modified outside of Neovim
 vim.opt.autoread = true
-vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold" }, { command = "checktime" })
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold" }, {
+        group = vim.api.nvim_create_augroup("auto_checktime", { clear = true }),
+        command = "checktime"
+})
 
-vim.opt.errorbells = false
-vim.opt.visualbell = false
-vim.opt.termguicolors = true
-vim.opt.ttyfast = true
-vim.opt.lazyredraw = true
-vim.opt.synmaxcol = 200
-
--- ========================================
--- 🪟 UI & Appearance
--- ========================================
+-- =====================================================================
+-- 🪟 UI, SCROLLING & APPEARANCE PRESETS
+-- =====================================================================
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.wo.cursorline = false
-vim.opt.signcolumn = "yes"
+vim.opt.cursorline = false -- Keeping cursorline turned off for speed
+vim.opt.signcolumn = "yes" -- Prevents shifting layout layout frames on diagnostics
+vim.opt.termguicolors = true
+vim.opt.synmaxcol = 200    -- Limits syntax rendering on long strings for speed
+
+-- Screen Real Estate Paddings
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 10
 vim.opt.sidescroll = 5
 vim.opt.colorcolumn = "100"
 
--- Transparency blending (disable if using Picom/WezTerm opacity)
+-- Modern Floating Interface Configuration
 vim.opt.pumblend = 0
 vim.opt.winblend = 0
+vim.opt.smoothscroll = true -- Native smooth scrolling container physics
 
--- Smooth scrolling (Neovim ≥ 0.10)
-vim.opt.smoothscroll = true
+-- Cursor State Indicators (Gives an explicit line inside insert layouts)
+vim.opt.guicursor = "a:block"
 
--- ========================================
--- 🔍 Search
--- ========================================
+-- =====================================================================
+-- 🔍 SEARCH & PATTERN LOGIC
+-- =====================================================================
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
-vim.o.ignorecase = true
-vim.o.smartcase = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
--- ========================================
--- 🧠 Behavior & Performance
--- ========================================
-vim.o.updatetime = 100
-vim.o.timeoutlen = 300
+-- =====================================================================
+-- 🧠 BEHAVIOR, PIPES & PERFORMANCE TIMERS
+-- =====================================================================
+vim.opt.updatetime = 100 -- Fast context evaluation (critical for diagnostics)
+vim.opt.timeoutlen = 300 -- Controls multi-key timeout actions speed
 
--- ========================================
--- 📋 Clipboard
--- ========================================
 if vim.fn.has("clipboard") == 1 then
-        vim.o.clipboard = "unnamedplus"
+        vim.opt.clipboard = "unnamedplus"
 end
 
--- ========================================
--- 💬 Completion
--- ========================================
-vim.o.completeopt = "menuone,noselect"
-
--- ========================================
--- 🧱 Indentation
--- ========================================
+-- =====================================================================
+-- 🧱 REFINED INDENTATION DEFINITIONS (Java & DSA Friendly)
+-- =====================================================================
 vim.opt.autoindent = true
 vim.opt.smartindent = true
-vim.opt.smarttab = true
 vim.opt.expandtab = true
-vim.opt.tabstop = 8
-vim.opt.softtabstop = 8
-vim.opt.shiftwidth = 8
 
--- ========================================
--- 📄 Text Wrapping
--- ========================================
+-- Swapped standard structural dimensions to 4 columns (ideal for Java nesting)
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+
+-- =====================================================================
+-- 📄 TEXT WRAPPING & SPLITS DEFINITIONS
+-- =====================================================================
 vim.opt.wrap = true
-vim.opt.linebreak = true
-vim.opt.breakindent = true
-vim.opt.showbreak = "↳"
+vim.opt.linebreak = true   -- Wrap long lines wrap cleanly at word boundaries
+vim.opt.breakindent = true -- Matches indented blocks on continuation lines
+vim.opt.showbreak = "↳ "
 
--- ========================================
--- 🔲 Window Splits
--- ========================================
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 
--- ========================================
--- 🧭 Misc
--- ========================================
+-- File naming match exceptions
 vim.opt.isfname:append("@-@")
-vim.opt.guicursor = ""
 
--- highlight yank
+-- =====================================================================
+-- 🛠️ AUTOMATED EVENT HANDLERS (AUTOCMDS)
+-- =====================================================================
+local custom_events = vim.api.nvim_create_augroup("custom_core_events", { clear = true })
+
+-- Dynamic Yank Highlight
 vim.api.nvim_create_autocmd("TextYankPost", {
-        group = vim.api.nvim_create_augroup("highlight_yank", { clear = true }),
+        group = custom_events,
         pattern = "*",
-        desc = "highlight selection on yank",
+        desc = "Highlight selection on yank",
         callback = function()
-                vim.highlight.on_yank({ timeout = 200, visual = true })
+                vim.highlight.on_yank({ timeout = 150, visual = true })
         end,
 })
 
--- open help in vertical split
+-- Force documentation files to open in far right side splits
 vim.api.nvim_create_autocmd("FileType", {
-        pattern = "help",
+        group = custom_events,
+        pattern = { "help", "man" },
         command = "wincmd L",
 })
 
--- auto resize splits when the terminal's window is resized
+-- Auto-balance splits when the shell window is resized
 vim.api.nvim_create_autocmd("VimResized", {
+        group = custom_events,
         command = "wincmd =",
 })
 
--- no auto continue comments on new line
+-- Discipline line wrapper comment loops (stops automatic comment creation on Enter)
 vim.api.nvim_create_autocmd("FileType", {
-        group = vim.api.nvim_create_augroup("no_auto_comment", {}),
+        group = custom_events,
         callback = function()
                 vim.opt_local.formatoptions:remove({ "c", "r", "o" })
         end,

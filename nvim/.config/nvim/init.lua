@@ -7,7 +7,7 @@ require("user.keymaps")
 require("config.lazy")
 require("core.colors")
 require("custom.bufferline")
-require("custom.sidebar")
+-- require("custom.sidebar")
 -- Remove tilde from end of buffer and replace with whitespace
 -- vim.cmd("let &fillchars='eob: '")
 vim.lsp.log.set_level("ERROR")
