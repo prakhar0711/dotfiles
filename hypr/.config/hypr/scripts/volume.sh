@@ -51,10 +51,10 @@ else
   icon="audio-volume-low-symbolic"
 fi
 
-bar=$(make_bar "$vol")
+# bar=$(make_bar "$vol")
 
 notify-send -e -a "Volume" \
   -h string:x-canonical-private-synchronous:volume_osd \
   -h int:value:"$vol" \
   -i "$icon" \
-  "Volume: ${vol}%" "${bar}"
+  "Volume: ${vol}%" 

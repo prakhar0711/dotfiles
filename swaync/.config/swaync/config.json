@@ -1,34 +1,30 @@
 {
         "$schema": "/etc/xdg/swaync/configSchema.json",
-        "positionX": "right", "positionY": "top", "cssPriority": "user",
+        "positionX": "right",
+        "positionY": "top",
+        "cssPriority": "user",
         "layer-shell-osd": true,
         "control-center-positive-action-icon": true,
-        "control-center-width": 380,
-        "control-center-height": 760,
-        "control-center-margin-top": 2,
-        "control-center-margin-bottom": 2,
-        "control-center-margin-right": 1,
-        "control-center-margin-left": 0,
-        "notification-window-width": 420,
-        "notification-icon-size": 48,
+        "control-center-width": 500,
+        "control-center-height": 1160,
+        "control-center-margin-top": 6,
+        "control-center-margin-bottom": 6,
+        "control-center-margin-right": 6,
+        "control-center-margin-left": 6,
+        "notification-window-width": 400,
+        "notification-icon-size": 28,
         "notification-body-image-height": 160,
         "notification-body-image-width": 200,
         "timeout": 2,
         "timeout-low": 2,
-        "timeout-critical": 6,
+        "timeout-critical": 0,
         "fit-to-screen": false,
         "keyboard-shortcuts": true,
         "image-visibility": "when-available",
         "transition-time": 200,
-        "hide-on-clear": false,
-        "hide-on-action": false,
+        "hide-on-clear": true,
+        "hide-on-action": true,
         "script-fail-notify": true,
-        "scripts": {
-                "example-script": {
-                        "exec": "echo 'Do something...'",
-                        "urgency": "Normal"
-                }
-        },
         "notification-visibility": {
                 "browser-and-music": {
                         "state": "enabled",
@@ -57,10 +53,10 @@
                 "title": {
                         "text": "Notifications",
                         "clear-all-button": true,
-                        "button-text": " 󰎟 "
+                        "button-text": "󰎟"
                 },
                 "dnd": {
-                        "text": "Do not disturb"
+                        "text": "Do Not Disturb"
                 },
                 "label": {
                         "max-lines": 1,
@@ -80,30 +76,12 @@
                 },
                 "buttons-grid": {
                         "actions": [
-                                {
-                                        "label": " ",
-                                        "command": "amixer set Master toggle"
-                                },
-                                {
-                                        "label": "",
-                                        "command": "amixer set Capture toggle"
-                                },
-                                {
-                                        "label": " ",
-                                        "command": "nmrs"
-                                },
-                                {
-                                        "label": "󰂯",
-                                        "command": "blueman-manager"
-                                },
-                                {
-                                        "label": "󰏘",
-                                        "command": "nwg-look"
-                                },
-                                {
-                                        "label": "󰌌",
-                                        "command": "wlogout -b 3 -c 10 -r 10"
-                                }
+                                { "label": "", "command": "pamixer -t" },
+                                { "label": "", "command": "pamixer --default-source -t" },
+                                { "label": "", "command": "nmrs" },
+                                { "label": "󰂯", "command": "blueman-manager" },
+                                { "label": "󰏘", "command": "nwg-look" },
+                                { "label": "󰌌", "command": "wlogout -b 3 -c 10 -r 10" }
                         ]
                 }
         }

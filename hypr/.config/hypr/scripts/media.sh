@@ -12,19 +12,22 @@ while IFS='|' read -r player status title artist art; do
   fi
 
   body="${artist:-Unknown Artist}"
+  
+  # --- Filter State Handling ---
   case "$status" in
-    Playing) header="Playing: ${title}" ;;
-    Paused)  header="Paused: ${title}" ;;
-    *)       continue ;;
+    Playing) 
+      header="Playing: ${title}" 
+      ;;
+    *)       
+      # Skips notify-send completely for 'Paused' or any other state
+      continue 
+      ;;
   esac
 
+  # --- Fire Notification Only on True Playback ---
   if [[ -n "$artfile" && -f "$artfile" ]]; then
-    notify-send -e -a "${player}" \
-      -h string:x-canonical-private-synchronous:media_osd \
-      -i "$artfile" "$header" "$body"
+    notify-send -e -a "${player}" -i "$artfile" "$header" "$body"
   else
-    notify-send -e -a "${player}" \
-      -h string:x-canonical-private-synchronous:media_osd \
-      -i "$icon" "$header" "$body"
+    notify-send -e -a "${player}" -i "$icon" "$header" "$body"
   fi
 done

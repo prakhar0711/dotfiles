@@ -17,10 +17,10 @@ esac
 current=$(brightnessctl get)
 max=$(brightnessctl max)
 pct=$(( current * 100 / max ))
-bar=$(make_bar "$pct")
+# bar=$(make_bar "$pct")
 
 notify-send -e -a "Brightness" \
   -h string:x-canonical-private-synchronous:brightness_osd \
   -h int:value:"$pct" \
   -i "display-brightness-symbolic" \
-  "Brightness: ${pct}%" "${bar}"
+  "Brightness: ${pct}%" 

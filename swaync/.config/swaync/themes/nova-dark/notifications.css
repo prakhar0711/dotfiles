@@ -1,111 +1,151 @@
-@define-color text            @foreground;
-@define-color background-alt  @color1;
-@define-color selected        @color3;
-@define-color hover           @color5;
-@define-color urgent          @color6;
+/* ==========================================================================
+   Hyper-Premium Flat Glassmorphism Floating Notifications (No Shadows)
+   ========================================================================== */
 
-* {
+/* --- Advanced Variable Overrides --- */
+@define-color text           @foreground;
+@define-color background-alt @bg0;
+@define-color selected       @blue;
+@define-color hover          @cyan;
+@define-color urgent         @color6;
+@define-color success        @color1;
 
-  /*background-alt:        @color1;      Buttons background */
-  /*selected:              @color2;      Button selected */
-  /*hover:                 @color5;      Hover button */
-  /*urgent:                @color6;      Urgency critical */
-  /*text-selected:         @background; */
-
-  color: @text;
-
-  all: unset;
-  font-size: 14px;
-  font-family: "JetBrains Mono Nerd Font 10";
-  transition: 200ms;
-
-}
-
+/* --- Core Structure --- */
 .notification-row {
-  outline: none;
-  margin: 0;
-  padding: 0px;
+    outline: none;
+    margin: 0;
+    padding: 0;
 }
 
+/* --- Floating Window Container (Flat Style, No Shadows) --- */
 .floating-notifications.background .notification-row .notification-background {
-  background: @background;
-  box-shadow: 0 0 8px 0 rgba(0,0,0,.6);
-  border: 1px solid @selected;
-  border-radius: 24px;
-  margin: 16px;
-  padding: 0;
+    background: linear-gradient(135deg, rgba(21, 27, 30, 0.90) 0%, rgba(30, 39, 44, 0.85) 100%);
+    border-left: 4px solid @selected;             /* Striking layout priority stripe */
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-right: 1px solid rgba(255, 255, 255, 0.04);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+    border-radius: 14px;
+    box-shadow: none;                            /* Removed all box shadows */
+    margin: 10px 16px;
+    padding: 2px;
+    backdrop-filter: blur(12px);                 /* Deep acrylic blur effect */
 }
 
+/* --- Content Wrapper Area --- */
 .floating-notifications.background .notification-row .notification-background .notification {
-  padding: 6px;
-  border-radius: 24px;
+    border-radius: 12px;
+    padding: 12px;
 }
 
+/* --- Urgent / Critical Priority Alert Strip Override --- */
 .floating-notifications.background .notification-row .notification-background .notification.critical {
-  border: 2px solid @urgent;
+    /* Shifts card background to a dark ruby/wine hue */
+    background: linear-gradient(135deg, rgba(40, 20, 22, 0.96) 0%, rgba(20, 14, 15, 0.92) 100%);
+}
+
+.floating-notifications.background .notification-row .notification-background:has(.critical) {
+    border-left: 4px solid @urgent;              /* Left vertical accent snaps to urgent red */
+    box-shadow: none;                            /* Removed critical glow shadows */
 }
 
 .floating-notifications.background .notification-row .notification-background .notification .notification-content {
-  margin: 14px;
+    margin: 2px 4px;
 }
 
-.floating-notifications.background .notification-row .notification-background .notification > *:last-child > * {
-  min-height: 3.4em;
-}
-
-.floating-notifications.background .notification-row .notification-background .notification > *:last-child > * .notification-action {
-  border-radius: 24px;
-  background-color: @background-alt ;
-  margin: 6px;
-  border: 1px solid transparent;
-}
-
-.floating-notifications.background .notification-row .notification-background .notification > *:last-child > * .notification-action:hover {
-  background-color: @hover;
-  border: 1px solid @selected;
-}
-
-.floating-notifications.background .notification-row .notification-background .notification > *:last-child > * .notification-action:active {
-  background-color: @selected;
-  color: @background;
-}
-
-.image {
-  margin: 10px 20px 10px 0px;
-}
-
+/* --- Fine-Tuned Typography Elements --- */
 .summary {
-  font-weight: 800;
-  font-size: 1rem;
+    font-size: 13.5px;
+    font-weight: 800;
+    color: #ffffff;                              /* Bright white for structural clarity */
+    letter-spacing: 0.3px;
 }
 
 .body {
-  font-size: 0.8rem;
+    font-size: 11.5px;
+    font-weight: 500;
+    color: rgba(197, 212, 221, 0.75);           /* Softly dimmed body text */
+    line-height: 1.5;
 }
 
+/* --- Notification System App-Name Identifier --- */
+.appname {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;                   /* Clean engineering tag look */
+    letter-spacing: 1px;
+    color: @cyan;
+    margin-bottom: 4px;
+}
+
+/* --- Image / Thumbnail Elements --- */
+.image {
+    border-radius: 10px;
+    margin: 4px 14px 4px 2px;
+    box-shadow: none;                            /* Removed image dropshadow */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* --- Native Progress/Timeout Bar (Fades out over alert lifetime) --- */
+.notification-row progressbar {
+    background-color: rgba(255, 255, 255, 0.05);
+    min-height: 3px;                             /* Micro timeline tracker */
+    border-radius: 0px 0px 14px 14px;
+    margin: 0;
+    padding: 0;
+}
+
+.notification-row progressbar progress {
+    background: linear-gradient(90deg, @blue 0%, @cyan 100%);
+    border-radius: 0px 0px 0px 14px;
+}
+
+.notification-row .critical progressbar progress {
+    /* Pure vibrant red charging into a warning orange/coral */
+    background: linear-gradient(90deg, #ff3b30 0%, #ff9500 100%);
+}
+
+/* --- Action Control Modules --- */
+.floating-notifications.background .notification-row .notification-background .notification > *:last-child > * .notification-action {
+    background-color: rgba(255, 255, 255, 0.03);
+    color: @text;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    margin: 6px 3px 2px 3px;
+    padding: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    box-shadow: none;                            /* Enforced flat action elements */
+}
+
+.floating-notifications.background .notification-row .notification-background .notification > *:last-child > * .notification-action:hover {
+    background: linear-gradient(135deg, @cyan 0%, @blue 100%);
+    color: @bg0;
+    border-color: transparent;
+    box-shadow: none;                            /* Removed hover glow shadow */
+}
+
+/* --- Smooth Window Interface Close Button --- */
 .floating-notifications.background .notification-row .notification-background .close-button {
-  margin: 6px;
-  padding: 2px;
-  border-radius: 24px;
-  background-color: transparent;
-  border: 1px solid transparent;
+    background-color: rgba(255, 255, 255, 0.02);
+    color: rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    margin: 4px;
+    padding: 4px;
+    min-width: 22px;
+    min-height: 22px;
+    box-shadow: none;                            /* Ensured flat boundaries */
 }
 
 .floating-notifications.background .notification-row .notification-background .close-button:hover {
-  background-color: @selected;
+    background-color: rgba(255, 123, 114, 0.15);
+    color: @urgent;
+    border: 1px solid rgba(255, 123, 114, 0.2);
+    box-shadow: none;
+}
+.floating-notifications.background .notification-row .notification-background:has(.critical) .appname {
+    color: @urgent; /* Flips app identifier from cyan to bright red */
 }
 
-.floating-notifications.background .notification-row .notification-background .close-button:active {
-  background-color: @selected;
-  color: @background;
+.floating-notifications.background .notification-row .notification-background:has(.critical) .summary {
+    color: #ffcbd0; /* Tinted bright light-red for headings */
 }
-
-.notification.critical progress {
-  background-color: @selected;
-}
-
-.notification.low progress,
-.notification.normal progress {
-  background-color: @selected;
-}
-
