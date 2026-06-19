@@ -1,8 +1,6 @@
 {
         "$schema": "/etc/xdg/swaync/configSchema.json",
-        "positionX": "right",
-        "positionY": "top",
-        "cssPriority": "user",
+        "positionX": "right", "positionY": "top", "cssPriority": "user",
         "layer-shell-osd": true,
         "control-center-positive-action-icon": true,
         "control-center-width": 380,
@@ -42,7 +40,7 @@
                 },
                 "osd-controls": {
                         "state": "enabled",
-                        "app-name": "(?i)(volume|brightness|microphone)"
+                        "app-name": "(?i)(volume|brightness|microphone|battery)"
                 }
         },
         "widgets": [
@@ -83,15 +81,15 @@
                 "buttons-grid": {
                         "actions": [
                                 {
-                                        "label": " ",
+                                        "label": " ",
                                         "command": "amixer set Master toggle"
                                 },
                                 {
-                                        "label": "",
+                                        "label": "",
                                         "command": "amixer set Capture toggle"
                                 },
                                 {
-                                        "label": " ",
+                                        "label": " ",
                                         "command": "nmrs"
                                 },
                                 {
