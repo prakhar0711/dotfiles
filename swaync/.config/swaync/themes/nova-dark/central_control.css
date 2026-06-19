@@ -54,7 +54,7 @@
 }
 
 .control-center .notification-row .notification-background .notification > *:last-child > * .notification-action {
-  background: alpha(@selected, .6);
+  background: @selected;
   color: @text;
   border-radius: 12px;
   margin: 6px;

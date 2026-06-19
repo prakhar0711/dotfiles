@@ -1,0 +1,10 @@
+[Unit]
+Description=MPRIS media change notifications
+After=graphical-session.target
+
+[Service]
+ExecStart=%h/.config/hypr/scripts/media.sh
+Restart=on-failure
+
+[Install]
+WantedBy=graphical-session.target

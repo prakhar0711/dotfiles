@@ -1,6 +1,4 @@
 hl.on("hyprland.start", function()
-        -- Launch our isolated bash script to handle the bar and notifications
-        hl.exec_cmd("swayosd-server &")
         hl.exec_cmd("swaync &")
 
         -- Other Independent System Components
