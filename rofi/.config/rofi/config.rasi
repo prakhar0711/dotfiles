@@ -1,14 +1,18 @@
 configuration {
-    drun-display-format: "{icon} {name}";
-    show-icons: true;
-    icon-theme: "Adwaita";
-    font: "JetBrainsMono Nerd Font 14";
+    modi:                       "drun,run,filebrowser,clipboard:~/.config/hypr/scripts/cliphist.sh";
+    show-icons:                 true;
+    display-drun:               "  Apps";
+    display-run:                "  Run";
+    display-filebrowser:        "  Files";
+    display-clipboard:          "📋 Clipboard";
+    drun-display-format:        "{name}";
+    icon-theme:                 "Papirus";
+    font:                       "JetBrainsMono Nerd Font 11";
 }
 
 * {
-    highlight: bold italic; scrollbar: true;
-
-    rosepine-base:     #191724;
+    /* Rosé Pine Palette */
+    rosepine-base:     #191724cc; /* 80% transparency for a modern glassmorphism vibe */
     rosepine-surface:  #1f1d2e;
     rosepine-overlay:  #26233a;
     rosepine-text:     #e0def4;
@@ -17,34 +21,151 @@ configuration {
     rosepine-gold:     #f6c177;
     rosepine-iris:     #c4a7e7;
 
-    /* Theme colors */
-    background:                  @rosepine-base;
-    background-color:            @background;
-    foreground:                  @rosepine-text;
-    border-color:                @rosepine-subtle;
-    separatorcolor:              @border-color;
-    scrollbar-handle:            @border-color;
-
-    normal-background:           @background;
-    normal-foreground:           @foreground;
-    alternate-normal-background: @rosepine-surface;
-    alternate-normal-foreground: @foreground;
-    selected-normal-background:  @rosepine-iris;
-    selected-normal-foreground:  @rosepine-base;
-
-    active-background:           @rosepine-gold;
-    active-foreground:           @rosepine-base;
-    alternate-active-background: @active-background;
-    alternate-active-foreground: @active-foreground;
-    selected-active-background:  @rosepine-iris;
-    selected-active-foreground:  @active-foreground;
-
-    urgent-background:           @rosepine-love;
-    urgent-foreground:           @rosepine-base;
-    alternate-urgent-background: @urgent-background;
-    alternate-urgent-foreground: @urgent-foreground;
-    selected-urgent-background:  @rosepine-gold;
-    selected-urgent-foreground:  @urgent-foreground;
+    background-color:   transparent;
+    text-color:         @rosepine-text;
+    margin:             0px;
+    padding:            0px;
+    spacing:            0px;
 }
 
+window {
+    transparency:        "real";
+    location:            center;
+    anchor:              center;
+    fullscreen:          false;
+    width:               600px;
+    x-offset:            0px;
+    y-offset:            0px;
 
+    enabled:             true;
+    border:              1px;
+    border-color:        @rosepine-iris; /* Subtle glowing iris border */
+    border-radius:       4px;
+    background-color:    @rosepine-base;
+    cursor:              "default";
+}
+
+mainbox {
+    enabled:             true;
+    spacing:             20px;
+    padding:             30px;
+    background-color:    transparent;
+    children:            [ "inputbar", "listview", "mode-switcher" ]; 
+}
+
+/* --- Input Bar / Search Bar --- */
+inputbar {
+    enabled:             true;
+    spacing:             10px;
+    padding:             12px 16px;
+    border-radius:       10px;
+    background-color:    @rosepine-overlay;
+    text-color:          @rosepine-text;
+    children:            [ "prompt", "entry" ];
+}
+
+prompt {
+    enabled:             true;
+    background-color:    transparent;
+    text-color:          @rosepine-iris;
+}
+
+entry {
+    enabled:             true;
+    background-color:    transparent;
+    text-color:          @rosepine-text;
+    cursor:              "text";
+    placeholder:         "Search...";
+    placeholder-color:   @rosepine-subtle;
+}
+
+/* --- List Items Layout --- */
+listview {
+    enabled:             true;
+    columns:             1;
+    lines:               7;
+    cycle:               true;
+    dynamic:             true;
+    scrollbar:           false; /* Hidden scrollbar for a cleaner layout */
+    layout:              vertical;
+    reverse:             false;
+    fixed-height:        true;
+    fixed-columns:       true;
+    
+    spacing:             6px;
+    background-color:    transparent;
+    text-color:          @rosepine-text;
+    cursor:              "default";
+}
+
+/* --- Individual Elements Layout --- */
+element {
+    enabled:             true;
+    spacing:             12px;
+    margin:              0px;
+    padding:             10px;
+    border-radius:       8px;
+    cursor:              "pointer";
+}
+
+/* FORCES unselected elements to blend into your theme background */
+element normal.normal {
+    background-color:    transparent;
+    text-color:          @rosepine-subtle;
+}
+
+/* Ensures the muted color maps onto alternate list rows as well */
+element alternate.normal {
+    background-color:    transparent;
+    text-color:          @rosepine-subtle;
+}
+
+/* Modern minimal selection block when highlighted */
+element selected.normal {
+    background-color:    @rosepine-iris;
+    text-color:          @rosepine-surface;
+}
+
+element-icon {
+    background-color:    transparent;
+    text-color:          inherit;
+    size:                24px;
+    cursor:              inherit;
+}
+
+element-text {
+    background-color:    transparent;
+    text-color:          inherit;
+    cursor:              inherit;
+    vertical-align:      0.5;
+    horizontal-align:    0.0;
+}
+
+/* Message / Error formatting */
+error-message {
+    padding:             15px;
+    border-radius:       10px;
+    background-color:    @rosepine-surface;
+    text-color:          @rosepine-love;
+}
+
+/* --- Clickable Mode Switcher Navigation --- */
+mode-switcher {
+    enabled:             true;
+    spacing:             15px;
+    background-color:    transparent;
+}
+
+button {
+    padding:             10px;
+    border-radius:       8px;
+    background-color:    @rosepine-overlay;
+    text-color:          @rosepine-subtle;
+    cursor:              "pointer";
+}
+
+/* Style for the mode you are currently looking at */
+button selected {
+    background-color:    @rosepine-iris;
+    text-color:          @rosepine-surface;
+}

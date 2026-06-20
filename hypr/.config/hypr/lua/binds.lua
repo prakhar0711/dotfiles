@@ -2,26 +2,25 @@ local mainMod = "ALT"
 
 -- Optimized array lookup for standard application shortcuts
 local single_key_apps = {
-        { key = "RETURN", action = hl.dsp.exec_cmd(_G.terminal) },
-        { key = "Q",      action = hl.dsp.window.close() },
-        { key = "F",      action = hl.dsp.exec_cmd(_G.browser) },
-        { key = "E",      action = hl.dsp.exec_cmd(_G.fileManager) },
-        { key = "V",      action = hl.dsp.window.float({ action = "toggle" }) },
-        { key = "TAB",    action = hl.dsp.exec_cmd("rofi -show window") },
-        { key = "P",      action = hl.dsp.window.pseudo() },
+    { key = "RETURN", action = hl.dsp.exec_cmd(_G.terminal) },
+    { key = "Q",      action = hl.dsp.window.close() },
+    { key = "F",      action = hl.dsp.exec_cmd(_G.browser) },
+    { key = "E",      action = hl.dsp.exec_cmd(_G.fileManager) },
+    { key = "V",      action = hl.dsp.window.float({ action = "toggle" }) },
+    { key = "TAB",    action = hl.dsp.exec_cmd("rofi -show window") },
+    { key = "P",      action = hl.dsp.window.pseudo() },
 }
 
 for _, bind in ipairs(single_key_apps) do
-        hl.bind(mainMod .. " + " .. bind.key, bind.action)
+    hl.bind(mainMod .. " + " .. bind.key, bind.action)
 end
 
 -- Explicit Custom Modifier Keybindings
 hl.bind(mainMod .. " + SHIFT + L", hl.dsp.exec_cmd("hyprlock"))
 hl.bind(mainMod .. " + SHIFT + D", hl.dsp.exec_cmd(_G.menu))
 hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("hyprctl reload"))
-hl.bind(mainMod .. " + SHIFT+ E", hl.dsp.exec_cmd("wlogout -b 3 -c 10 -r 10")) -- hl.bind(mainMod .. " + SHIFT + E", hl.dsp.exit())
+hl.bind(mainMod .. " + SHIFT+ E", hl.dsp.exec_cmd("wlogout --protocol layer-shell -b 5 -T 400 -B 400")) -- hl.bind(mainMod .. " + SHIFT + E", hl.dsp.exit())
 hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd("waytrogen -e ~/.local/bin/hypr-wall-sync.sh"))
-hl.bind("SHIFT + " .. mainMod .. " + L", hl.dsp.exec_cmd("wlogout --protocol layer-shell -b 5 -T 400 -B 400"))
 hl.bind("SUPER + V", hl.dsp.exec_cmd("cliphist list | rofi -dmenu | cliphist decode | wl-copy"))
 
 -- Directional Focus Movement
@@ -32,9 +31,9 @@ hl.bind(mainMod .. " + j", hl.dsp.focus({ direction = "down" }))
 
 -- Workspace Generator Loop (Keys 1-0)
 for i = 1, 10 do
-        local key = i % 10
-        hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
-        hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
+    local key = i % 10
+    hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
+    hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
 end
 
 -- Special scratchpad allocations
@@ -49,19 +48,19 @@ hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- Hardware Media Controls
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("~/.config/hypr/scripts/volume.sh up"),
-        { locked = true, repeating = true })
+    { locked = true, repeating = true })
 hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("~/.config/hypr/scripts/volume.sh down"),
-        { locked = true, repeating = true })
+    { locked = true, repeating = true })
 hl.bind("XF86AudioMute", hl.dsp.exec_cmd("~/.config/hypr/scripts/volume.sh mute"),
-        { locked = true, repeating = true })
+    { locked = true, repeating = true })
 hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("~/.config/hypr/scripts/volume.sh micmute"),
-        { locked = true, repeating = true })
+    { locked = true, repeating = true })
 
 -- Birghtness control
 hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("~/.config/hypr/scripts/brightness.sh up"),
-        { locked = true, repeating = true })
+    { locked = true, repeating = true })
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("~/.config/hypr/scripts/brightness.sh down"),
-        { locked = true, repeating = true })
+    { locked = true, repeating = true })
 
 -- hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("pamixer --allow-boost --increase 5"),
 --         { locked = true, repeating = true })
