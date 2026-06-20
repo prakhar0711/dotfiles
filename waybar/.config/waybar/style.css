@@ -198,7 +198,7 @@
   color: #cba6f7; /* Lavender/Purple */
   background-color: #1a1b26; /* Changed from @bg1 to match your system theme */
   padding: 0px 12px;
-  margin: 0px 0px 0px 5px; /* Aligned nicely to the right */
+  margin: 0px 7px 0px 0px; /* Aligned nicely to the right */
   border-radius: 6px;
   font-size: 16px;
 }

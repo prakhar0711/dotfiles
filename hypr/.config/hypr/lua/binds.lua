@@ -19,7 +19,7 @@ end
 hl.bind(mainMod .. " + SHIFT + L", hl.dsp.exec_cmd("hyprlock"))
 hl.bind(mainMod .. " + SHIFT + D", hl.dsp.exec_cmd(_G.menu))
 hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("hyprctl reload"))
-hl.bind(mainMod .. " + SHIFT+ E", hl.dsp.exec_cmd("wlogout --protocol layer-shell -b 5 -T 400 -B 400")) -- hl.bind(mainMod .. " + SHIFT + E", hl.dsp.exit())
+hl.bind(mainMod .. " + SHIFT+ E", hl.dsp.exec_cmd("wlogout --protocol layer-shell -b 4 -T 400 -B 400")) -- hl.bind(mainMod .. " + SHIFT + E", hl.dsp.exit())
 hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd("waytrogen -e ~/.local/bin/hypr-wall-sync.sh"))
 hl.bind("SUPER + V", hl.dsp.exec_cmd("cliphist list | rofi -dmenu | cliphist decode | wl-copy"))
 
