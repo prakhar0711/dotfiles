@@ -1,5 +1,6 @@
 hl.on("hyprland.start", function()
     hl.exec_cmd("~/.config/hypr/scripts/battery.sh &")
+    hl.exec_cmd("~/.config/hypr/scripts/network.sh &")
     -- hl.exec_cmd("~/.config/hypr/scripts/media.sh &")
     hl.exec_cmd("swaync &")
 

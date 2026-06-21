@@ -84,7 +84,7 @@ return {
             keywordStyle = { italic = false },
             colors = {
                 theme = { all = { ui = { bg_gutter = "none" } } },
-                palette = { sumiInk1 = "none" },                 -- Wrapped syntax string
+                palette = { sumiInk1 = "none" }, -- Wrapped syntax string
             },
             overrides = function(colors)
                 local theme = colors.theme
@@ -158,7 +158,7 @@ return {
             transparent = false,
             styles = { sidebars = "transparent" },
             on_highlights = function(hl, c)
-                hl.SignColumn = { bg = "none" }                 -- Fixed syntax string
+                hl.SignColumn = { bg = "none" } -- Fixed syntax string
             end,
         },
     },
@@ -185,4 +185,11 @@ return {
             })
         end,
     },
+    -- lua/plugins/rose-pine.lua
+    {
+        "rose-pine/neovim",
+        name = "rose-pine",
+        config = function()
+        end
+    }
 }
