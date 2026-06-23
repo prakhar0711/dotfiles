@@ -29,6 +29,12 @@ hl.bind(mainMod .. " + l", hl.dsp.focus({ direction = "right" }))
 hl.bind(mainMod .. " + k", hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + j", hl.dsp.focus({ direction = "down" }))
 
+-- Move focus window with mainMod + Shift + arrow keys
+hl.bind(mainMod .. " + SHIFT + Left", hl.dsp.window.move({ direction = "left" }))
+hl.bind(mainMod .. " + SHIFT + Right", hl.dsp.window.move({ direction = "right" }))
+hl.bind(mainMod .. " + SHIFT + Up", hl.dsp.window.move({ direction = "up" }))
+hl.bind(mainMod .. " + SHIFT + Down", hl.dsp.window.move({ direction = "down" }))
+
 -- Workspace Generator Loop (Keys 1-0)
 for i = 1, 10 do
     local key = i % 10
