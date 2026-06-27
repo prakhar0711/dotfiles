@@ -7,6 +7,45 @@ return {
         lazy = true,
         config = function()
             require("vague").setup({
+                italic = false,
+                on_highlights = function(hl, colors)
+                    -- =====================================================================
+                    -- INLINE DIAGNOSTICS (VIRTUAL TEXT) STYLING
+                    -- =====================================================================
+                    -- These add a subtle, colored background box behind the inline text
+                    -- at the end of the line so they stand out clearly from your code.
+
+                    -- Error: Bright red text with a very dark reddish background
+                    -- hl.DiagnosticVirtualTextError = { fg = "#ff5370", bg = "#2b181c" }
+
+                    -- Warning: Yellow/Orange text with a dark yellowish/brown background
+                    -- hl.DiagnosticVirtualTextWarn  = { fg = "#ffcb6b", bg = "#2b2318" }
+
+                    -- Info: Blue text with a dark bluish background
+                    -- hl.DiagnosticVirtualTextInfo  = { fg = "#82aaff", bg = "#18212f" }
+
+                    -- Hint: Green text with a dark greenish background
+                    -- hl.DiagnosticVirtualTextHint  = { fg = "#c3e88d", bg = "#1a251f" }
+
+
+                    -- Optional: If you also want to make sure the squiggly underlines
+                    -- under the actual broken code pop out more:
+                    -- hl.DiagnosticUnderlineError = { sp = "#ff5370", undercurl = true }
+                    -- hl.DiagnosticUnderlineWarn  = { sp = "#ffcb6b", undercurl = true }
+                    -- hl.DiagnosticUnderlineInfo  = { sp = "#82aaff", undercurl = true }
+                    -- hl.DiagnosticUnderlineHint  = { sp = "#c3e88d", undercurl = true }
+                    -- =====================================================================
+                    -- CUSTOM TABLINE STYLING FOR VAGUE (Only applies when using Vague)
+                    -- =====================================================================
+                    -- Active, current tab: stands out with stark white text and a clean dark blue highlight
+                    hl.TabLineSel  = { fg = "#000000", bg = "#8AEEF0", bold = false }
+
+                    -- Inactive background tabs: muted text color with a flat dark grey canvas
+                    hl.TabLine     = { fg = "#5c6370", bg = "#0f111a" }
+
+                    -- Empty right-hand spacer area: visually matches the inactive background
+                    hl.TabLineFill = { bg = "#0f111a" }
+                end,
                 colors = {
                     bg = "#141415",
                     inactiveBg = "#1c1c24",
@@ -118,7 +157,7 @@ return {
         config = function()
             require("tairiki").setup({
                 palette = "dark",
-                transparent = true,
+                transparent = false,
                 terminal = true,
                 end_of_buffer = true,
                 visual_bold = true,
@@ -151,7 +190,7 @@ return {
     -- =====================================================================
     {
         "folke/tokyonight.nvim",
-        lazy = false,
+        lazy = true,
         priority = 1000,
         opts = {
             style = "night",
@@ -168,6 +207,7 @@ return {
     -- =====================================================================
     {
         "marko-cerovac/material.nvim",
+        lazy = true,
         config = function()
             require("material").setup({
                 disable = {
@@ -188,6 +228,7 @@ return {
     -- lua/plugins/rose-pine.lua
     {
         "rose-pine/neovim",
+        lazy = true,
         name = "rose-pine",
         config = function()
         end

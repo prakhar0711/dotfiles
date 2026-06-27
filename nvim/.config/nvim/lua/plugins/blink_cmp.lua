@@ -13,27 +13,43 @@ return {
         version = "1.*",
         ---@module 'blink.cmp'
         ---@type blink.cmp.Config
-        init = function()
-            -- =====================================================================
-            -- CUSTOM MATERIAL DEEP OCEAN HIGHLIGHTS FOR BLINK
-            -- =====================================================================
-            local set_hl = vim.api.nvim_set_hl
+        config = function(_, opts)
+            -- 1. Run the default plugin configuration setup
+            require('blink.cmp').setup(opts)
 
-            -- Main Menu Window Styling
-            set_hl(0, "BlinkCmpMenu", { bg = "#0f111a", fg = "#b0bec5" })
-            set_hl(0, "BlinkCmpMenuBorder", { fg = "#1f2233", bg = "#0f111a" })
-            set_hl(0, "BlinkCmpMenuSelection", { bg = "#1f2233", fg = "#80cbc4", bold = true })
+            -- 2. Define a global fallback enforcement handler
+            local function apply_blink_theme()
+                local set_hl = vim.api.nvim_set_hl
 
-            -- Fuzzy Matching & Label Pops
-            set_hl(0, "BlinkCmpLabelMatch", { fg = "#80cbc4", bold = true })
-            set_hl(0, "BlinkCmpLabel", { fg = "#b0bec5" })
-            set_hl(0, "BlinkCmpLabelDescription", { fg = "#464b5d" })
+                -- Main Menu Window Styling
+                set_hl(0, "BlinkCmpMenu", { bg = "#0f111a", fg = "#b0bec5" })
+                set_hl(0, "BlinkCmpMenuBorder", { fg = "#1f2233", bg = "#0f111a" })
+                set_hl(0, "BlinkCmpMenuSelection", { bg = "#1f2233", fg = "#80cbc4", bold = true })
 
-            -- Source Name Tags
-            set_hl(0, "BlinkCmpSourceLsp", { fg = "#00e5ff", italic = true })
-            set_hl(0, "BlinkCmpSourcePath", { fg = "#c3e88d" })
-            set_hl(0, "BlinkCmpSourceSnippets", { fg = "#ff5370" })
-            set_hl(0, "BlinkCmpSourceBuffer", { fg = "#ffcb6b" })
+                -- Fuzzy Matching & Label Pops
+                set_hl(0, "BlinkCmpLabelMatch", { fg = "#80cbc4", bold = true })
+                set_hl(0, "BlinkCmpLabel", { fg = "#b0bec5" })
+                set_hl(0, "BlinkCmpLabelDescription", { fg = "#464b5d" })
+
+                -- Source Name Tags
+                set_hl(0, "BlinkCmpSourceLsp", { fg = "#00e5ff", italic = true })
+                set_hl(0, "BlinkCmpSourcePath", { fg = "#c3e88d" })
+                set_hl(0, "BlinkCmpSourceSnippets", { fg = "#ff5370" })
+                set_hl(0, "BlinkCmpSourceBuffer", { fg = "#ffcb6b" })
+
+                -- Documentation Window Styling
+                set_hl(0, "BlinkCmpDoc", { bg = "#0c0e16", fg = "#b0bec5" })
+                set_hl(0, "BlinkCmpDocBorder", { fg = "#1f2233", bg = "#0c0e16" })
+                set_hl(0, "BlinkCmpDocActiveParameter", { fg = "#80cbc4", bold = true })
+            end
+
+            -- Run them immediately on launch
+            apply_blink_theme()
+
+            -- Intercept ANY future colorscheme shifts and re-enforce the palette
+            vim.api.nvim_create_autocmd("ColorScheme", {
+                callback = apply_blink_theme,
+            })
         end,
         opts = {
             -- =====================================================================
@@ -98,7 +114,6 @@ return {
                         snippet_indicator = "~",
                         treesitter = { "lsp" },
 
-                        -- MAINTAINED YOUR EXACT COLUMNS LAYOUT
                         columns = {
                             { "label",     "label_description", gap = 1 },
                             { "kind_icon", "kind",              "source_name", gap = 1 }
@@ -116,8 +131,7 @@ return {
                                                 "nvim-highlight-colors").format(
                                                 doc, { kind = "Color" })
                                             if color_icon then
-                                                return
-                                                    color_icon
+                                                return color_icon
                                             end
                                         end
                                     end
@@ -140,8 +154,7 @@ return {
                             label = {
                                 width = { fill = true, max = 20 },
                                 text = function(ctx)
-                                    return ctx.label .. ctx
-                                        .label_detail
+                                    return ctx.label .. ctx.label_detail
                                 end,
                                 highlight = function(ctx)
                                     local highlights = {
@@ -165,8 +178,7 @@ return {
                                             {
                                                 idx,
                                                 idx + 1,
-                                                group =
-                                                "BlinkCmpLabelMatch"
+                                                group = "BlinkCmpLabelMatch"
                                             })
                                     end
                                     return highlights
@@ -179,11 +191,9 @@ return {
                                 highlight = "BlinkCmpLabelDescription",
                             },
 
-                            -- Styled source components preserving structural integration
                             source_name = {
                                 text = function(ctx)
-                                    return "[" ..
-                                        ctx.source_name:upper() .. "]"
+                                    return "[" .. ctx.source_name:upper() .. "]"
                                 end,
                                 highlight = function(ctx)
                                     return "BlinkCmpSource" ..
