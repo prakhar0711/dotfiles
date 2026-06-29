@@ -92,13 +92,19 @@
         "sort-by-number": true
     },
 
-    // "hyprland/workspaces": {
-    //     "format": "{name}: {icon}",
-    //     "format-icons": {
-    //         "active": "",
-    //         "default": ""
-    //     }
-    // },
+   "hyprland/workspaces": {
+        "format": "{name}",
+        "format-icons": {
+            "active": "",
+            "default": ""
+        },
+        // "on-click": "activate",
+        "all-outputs": true,
+        "sort-by-number": true,
+        "persistent-workspaces": {
+            "*": 5 
+        }
+    },
 
     "bluetooth": {
         "format": "󰂲",
