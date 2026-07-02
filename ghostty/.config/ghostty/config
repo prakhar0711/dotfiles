@@ -1,19 +1,22 @@
- theme="mellow"
 
- font-family = "Ubuntu Mono"
- font-size=18
+font-family = "JetBrainsMono Nerd Font"
+font-size=16
 
- background = #000000
- window-decoration="server"
- window-save-state="always"
+background = #000000
+# Disable the native tab bar visual entirely
+show-tabs = false
 
- adjust-cell-height=10
- adjust-cell-width=1
+# Optional: If you prefer borderless/minimal windows like your Alacritty setup
+window-decoration = false
+window-save-state="always"
+
+adjust-cell-height=10
+adjust-cell-width=1
 
 
- keybind=global:ctrl+r=reload_config
- keybind=ctrl+shift+up=new_split:up
- keybind=ctrl+shift+down=new_split:down
- keybind=ctrl+shift+left=new_split:left
- keybind=ctrl+shift+right=new_split:right
+keybind=global:ctrl+r=reload_config
+keybind=ctrl+shift+up=new_split:up
+keybind=ctrl+shift+down=new_split:down
+keybind=ctrl+shift+left=new_split:left
+keybind=ctrl+shift+right=new_split:right
 

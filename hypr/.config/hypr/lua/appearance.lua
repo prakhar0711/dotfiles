@@ -29,8 +29,8 @@ hl.config({
     decoration = {
         rounding = 5,
         rounding_power = 10,
-        active_opacity = 1.0,
-        inactive_opacity = 0.8,
+        active_opacity = 1,
+        inactive_opacity = 1,
         shadow = { enabled = false, range = 4, render_power = 3, color = "rgba(1a1a1aee)" },
         blur = { enabled = true, size = 15, passes = 2, noise = 0, contrast = 1.5 },
     },
@@ -69,3 +69,7 @@ hl.animation({ leaf = "layersOut", enabled = true, speed = 1.5, bezier = "linear
 hl.animation({ leaf = "workspaces", enabled = true, speed = 1.94, bezier = "almostLinear", style = "fade" })
 hl.animation({ leaf = "workspacesIn", enabled = true, speed = 1.21, bezier = "almostLinear", style = "fade" })
 hl.animation({ leaf = "workspacesOut", enabled = true, speed = 1.94, bezier = "almostLinear", style = "fade" })
+
+-- Terminal specific opacity rules
+-- Or if you use Alacritty:
+-- hl.windowrulev2({ rule = "opacity 0.9 0.5", class = "^(Alacritty)$" })

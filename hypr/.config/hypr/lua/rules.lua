@@ -19,3 +19,10 @@ hl.window_rule({
     match    = { class = "^$", title = "^$", xwayland = true, float = true },
     no_focus = true,
 })
+
+-- Terminal-specific opacity rules (Active: 0.9, Inactive: 0.5)
+hl.window_rule({
+    name    = "terminal-opacity-rules",
+    match   = { class = "^(kitty|Alacritty|foot|wezterm)$" },
+    opacity = "0.8 0.5"
+})
