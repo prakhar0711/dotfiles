@@ -130,7 +130,7 @@ Singleton {
     // Update timer - optimized interval
     Timer {
         id: updateTimer
-        interval: 2000  // Reduced frequency from 1000ms to 2000ms (brightness changes infrequently)
+        interval: 250  // Reduced frequency from 1000ms to 2000ms (brightness changes infrequently)
         repeat: true
         triggeredOnStart: true  // Get immediate first read
         onTriggered: readBrightness()

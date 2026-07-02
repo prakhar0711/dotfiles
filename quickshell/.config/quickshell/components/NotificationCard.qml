@@ -190,10 +190,12 @@ Item {
             Image {
                 anchors.fill: parent
                 anchors.margins: 1
-                source: root.iconSource(notification?.image ?? "")
+                source: notification?.image ?? ""
                 fillMode: Image.PreserveAspectCrop
-                smooth: true; cache: true; asynchronous: true
-            }
+                smooth: true
+                cache: true
+                asynchronous: true
+            }        
         }
 
         // --- Action buttons ---

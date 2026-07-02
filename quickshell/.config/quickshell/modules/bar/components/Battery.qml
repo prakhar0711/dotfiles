@@ -17,7 +17,7 @@ Item {
     readonly property var pywal: QsServices.Pywal
     readonly property real percentage: battery?.percentage ?? 0
     readonly property int batteryLevel: Math.round(percentage * 100)
-    readonly property bool isCharging: battery?.state === UPowerDevice.Charging
+    readonly property bool isCharging: battery?.state === UPowerDevice.Charging || battery?.state === UPowerDevice.PendingCharge
     readonly property bool isFullyCharged: battery?.state === UPowerDevice.FullyCharged
     readonly property bool isPluggedIn: isCharging || isFullyCharged
     readonly property bool isWarning: batteryLevel <= 25 && batteryLevel > 15

@@ -3,6 +3,7 @@ import QtQuick.Layouts 6.10
 import Quickshell.Bluetooth
 import Quickshell.Io
 import "../../../services" as QsServices
+import "../../../components/effects/Material3Anim.qml" as Material3Anim
 
 FocusScope {
     id: popupPanel
@@ -302,7 +303,7 @@ FocusScope {
                 color: settingsArea.pressed ? Qt.rgba(cOnSurface.r, cOnSurface.g, cOnSurface.b, 0.12) : settingsArea.containsMouse ? Qt.rgba(cOnSurface.r, cOnSurface.g, cOnSurface.b, 0.08) : "transparent"
                 Behavior on color { ColorAnimation { duration: 150 } }
                 scale: settingsArea.pressed ? 0.97 : 1.0
-                Behavior on scale { NumberAnimation { duration: 100; easing.bezierCurve: Material3Anim.springGentle } }
+                Behavior on scale { NumberAnimation { duration: 100;  easing.bezierCurve: [0.22, 1.0, 0.36, 1.0]} }
 
                 RowLayout {
                     anchors.centerIn: parent
