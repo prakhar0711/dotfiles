@@ -1,3 +1,6 @@
 example
 .github/chatmodes
 logs/
+*.mkv/
+*.mkv
+.mkv

@@ -1,6 +1,7 @@
 import Quickshell
 import QtQuick 6.10
 import QtQuick.Layouts 6.10
+import Quickshell.Hyprland
 import "../../../config" as QsConfig
 import "../../../services" as QsServices
 
@@ -41,7 +42,9 @@ Item {
                     item.isOccupied = Qt.binding(() => root.occupied[index + 1] ?? false)
                     item.clicked.connect(function() {
                         if (root.hypr.activeWsId !== item.workspaceId) {
-                            root.hypr.dispatch(`workspace ${item.workspaceId}`)
+                            Hyprland.dispatch(
+                                `hl.dsp.focus({ workspace = ${item.workspaceId} })`
+                            )
                         }
                     })
                 }

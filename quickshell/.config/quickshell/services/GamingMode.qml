@@ -15,7 +15,7 @@ Singleton {
     
     // Performance settings
     readonly property string performanceGovernor: "performance"
-    readonly property string balancedGovernor: "schedutil"
+    readonly property string balancedGovernor: "powersave"
     
     onEnabledChanged: {
         QsServices.Logger.info("GamingMode", `Gaming mode ${enabled ? "ENABLED" : "DISABLED"}`)
