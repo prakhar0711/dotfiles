@@ -1,53 +1,187 @@
 return {
-    -- Core plugin for Java-specific features in Neovim
-    {
-        "mfussenegger/nvim-jdtls",
-        dependencies = { "neovim/nvim-lspconfig" },
-        ft = { "java" },
-        config = function()
-            -- 1. Try to find a project root first
-            local root_file = vim.fs.find({ 'pom.xml', 'build.gradle', 'gradlew' }, { upward = true })[1]
+    "mfussenegger/nvim-jdtls",
+    dependencies = {
+        "neovim/nvim-lspconfig",
+    },
+    ft = { "java" },
 
-            -- 2. If a project root exists, use its directory. Otherwise, fallback to the current file's directory.
-            local root_dir = root_file and vim.fs.dirname(root_file) or
-                vim.fs.dirname(vim.api.nvim_buf_get_name(0))
+    config = function()
+        local jdtls = require("jdtls")
+        local jdtls_setup = require("jdtls.setup")
 
-            -- 3. Isolate workspaces to prevent data collisions between different single files
-            local project_name = vim.fs.basename(root_dir) or "standalone-workspace"
-            local data_dir = vim.fn.expand("~/.cache/jdtls/workspace/") .. project_name
+        ----------------------------------------------------------------------
+        -- Project root detection
+        ----------------------------------------------------------------------
 
-            local config = {
-                cmd = { "jdtls", "-data", data_dir },
-                root_dir = root_dir,
-            }
+        local root_dir = jdtls_setup.find_root({
+            "mvnw",
+            "gradlew",
+            "pom.xml",
+            "build.gradle",
+            "build.gradle.kts",
+            "settings.gradle",
+            "settings.gradle.kts",
+        })
 
-            require('jdtls').start_or_attach(config)
-
-            -- Quick runner map for convenience
-            vim.keymap.set('n', '<leader>rj', function()
-                vim.cmd('w') -- Save your Java file
-
-                -- FIX: Grab the file path right now while the Java file is active!
-                local java_file = vim.fn.expand('%')
-
-                -- 1. Create a hidden, completely unlisted scratch buffer
-                local buf = vim.api.nvim_create_buf(false, true)
-
-                -- 2. Open a clean horizontal split window using that buffer
-                vim.cmd('vsplit')
-                vim.api.nvim_set_current_buf(buf)
-
-                -- 3. Run Java inside this specific scratch terminal using our saved variable
-                vim.fn.termopen('java ' .. java_file)
-
-                -- 4. Clean up: when you type ':q' or 'q', delete this temporary buffer
-                vim.api.nvim_create_autocmd("TermClose", {
-                    buffer = buf,
-                    callback = function()
-                        vim.keymap.set('n', 'q', ':bd!<CR>', { buffer = buf, silent = true })
-                    end,
-                })
-            end, { buffer = true, desc = "Run Java Only in Split" })
+        -- Fallback for standalone Java files
+        if not root_dir then
+            root_dir = vim.fs.dirname(vim.api.nvim_buf_get_name(0))
         end
-    }
+
+        ----------------------------------------------------------------------
+        -- Workspace isolation
+        ----------------------------------------------------------------------
+
+        local project_name = vim.fs.basename(root_dir) or "standalone-workspace"
+
+        local workspace_dir = vim.fn.stdpath("cache")
+            .. "/jdtls/workspace/"
+            .. project_name
+
+        ----------------------------------------------------------------------
+        -- LSP configuration
+        ----------------------------------------------------------------------
+
+        local config = {
+            cmd = {
+                "jdtls",
+                "-data",
+                workspace_dir,
+            },
+
+            root_dir = root_dir,
+
+            settings = {
+                java = {
+                    eclipse = {
+                        downloadSources = true,
+                    },
+
+                    maven = {
+                        downloadSources = true,
+                    },
+
+                    references = {
+                        includeDecompiledSources = true,
+                    },
+
+                    configuration = {
+                        updateBuildConfiguration = "interactive",
+                    },
+
+                    implementationsCodeLens = {
+                        enabled = true,
+                    },
+
+                    referencesCodeLens = {
+                        enabled = true,
+                    },
+
+                    format = {
+                        enabled = true,
+                    },
+
+                    inlayHints = {
+                        parameterNames = {
+                            enabled = "all",
+                        },
+                    },
+                },
+            },
+
+            flags = {
+                allow_incremental_sync = true,
+            },
+        }
+
+        jdtls.start_or_attach(config)
+
+        ----------------------------------------------------------------------
+        -- Refactoring keymaps
+        ----------------------------------------------------------------------
+
+        local opts = { buffer = true, silent = true }
+
+        vim.keymap.set(
+            "n",
+            "<leader>jo",
+            jdtls.organize_imports,
+            vim.tbl_extend("force", opts, { desc = "Java: Organize Imports" })
+        )
+
+        vim.keymap.set(
+            "n",
+            "<leader>jv",
+            jdtls.extract_variable,
+            vim.tbl_extend("force", opts, { desc = "Java: Extract Variable" })
+        )
+
+        vim.keymap.set(
+            "v",
+            "<leader>jv",
+            function()
+                jdtls.extract_variable(true)
+            end,
+            vim.tbl_extend("force", opts, { desc = "Java: Extract Variable" })
+        )
+
+        vim.keymap.set(
+            "v",
+            "<leader>jm",
+            function()
+                jdtls.extract_method(true)
+            end,
+            vim.tbl_extend("force", opts, { desc = "Java: Extract Method" })
+        )
+
+        vim.keymap.set(
+            "n",
+            "<leader>jt",
+            jdtls.test_nearest_method,
+            vim.tbl_extend("force", opts, { desc = "Java: Run Nearest Test" })
+        )
+
+        vim.keymap.set(
+            "n",
+            "<leader>jT",
+            jdtls.test_class,
+            vim.tbl_extend("force", opts, { desc = "Java: Run Test Class" })
+        )
+
+        ----------------------------------------------------------------------
+        -- Run current Java file
+        ----------------------------------------------------------------------
+
+        vim.keymap.set("n", "<leader>rj", function()
+            vim.cmd.write()
+
+            local java_file = vim.fn.expand("%:p")
+
+            vim.cmd("vsplit")
+            vim.cmd("terminal java " .. vim.fn.shellescape(java_file))
+            vim.cmd("startinsert")
+        end, vim.tbl_extend("force", opts, {
+            desc = "Java: Run Current File",
+        }))
+
+        ----------------------------------------------------------------------
+        -- Format on save
+        ----------------------------------------------------------------------
+
+        local group = vim.api.nvim_create_augroup(
+            "java-format-on-save",
+            { clear = false }
+        )
+
+        vim.api.nvim_create_autocmd("BufWritePre", {
+            group = group,
+            buffer = 0,
+            callback = function()
+                vim.lsp.buf.format({
+                    async = false,
+                    timeout_ms = 3000,
+                })
+            end,
+        })
+    end,
 }
