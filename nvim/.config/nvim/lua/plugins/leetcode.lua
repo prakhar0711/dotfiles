@@ -7,7 +7,7 @@ return {
         "MunifTanjim/nui.nvim",
     },
     opts = {
-        lang = "java",
+        lang = "cpp",
         image_support = true,
         picker = { provider = nil },
         description = {
