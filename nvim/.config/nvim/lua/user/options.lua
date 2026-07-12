@@ -15,8 +15,8 @@ vim.opt.undodir = vim.fn.expand("~/.vim/undodir")
 -- Sync file transformations instantly if modified outside of Neovim
 vim.opt.autoread = true
 vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold" }, {
-        group = vim.api.nvim_create_augroup("auto_checktime", { clear = true }),
-        command = "checktime"
+    group = vim.api.nvim_create_augroup("auto_checktime", { clear = true }),
+    command = "checktime"
 })
 
 -- =====================================================================
@@ -54,12 +54,10 @@ vim.opt.smartcase = true
 -- =====================================================================
 -- 🧠 BEHAVIOR, PIPES & PERFORMANCE TIMERS
 -- =====================================================================
-vim.opt.updatetime = 100 -- Fast context evaluation (critical for diagnostics)
+vim.opt.updatetime = 200 -- Fast context evaluation (critical for diagnostics)
 vim.opt.timeoutlen = 300 -- Controls multi-key timeout actions speed
 
-if vim.fn.has("clipboard") == 1 then
-        vim.opt.clipboard = "unnamedplus"
-end
+vim.opt.clipboard = "unnamedplus"
 
 -- =====================================================================
 -- 🧱 REFINED INDENTATION DEFINITIONS (Java & DSA Friendly)
@@ -76,7 +74,7 @@ vim.opt.shiftwidth = 4
 -- =====================================================================
 -- 📄 TEXT WRAPPING & SPLITS DEFINITIONS
 -- =====================================================================
-vim.opt.wrap = true
+vim.opt.wrap = false
 vim.opt.linebreak = true   -- Wrap long lines wrap cleanly at word boundaries
 vim.opt.breakindent = true -- Matches indented blocks on continuation lines
 vim.opt.showbreak = "↳ "
@@ -94,31 +92,31 @@ local custom_events = vim.api.nvim_create_augroup("custom_core_events", { clear 
 
 -- Dynamic Yank Highlight
 vim.api.nvim_create_autocmd("TextYankPost", {
-        group = custom_events,
-        pattern = "*",
-        desc = "Highlight selection on yank",
-        callback = function()
-                vim.highlight.on_yank({ timeout = 150, visual = true })
-        end,
+    group = custom_events,
+    pattern = "*",
+    desc = "Highlight selection on yank",
+    callback = function()
+        vim.highlight.on_yank({ timeout = 150, visual = true })
+    end,
 })
 
 -- Force documentation files to open in far right side splits
 vim.api.nvim_create_autocmd("FileType", {
-        group = custom_events,
-        pattern = { "help", "man" },
-        command = "wincmd L",
+    group = custom_events,
+    pattern = { "help", "man" },
+    command = "wincmd L",
 })
 
 -- Auto-balance splits when the shell window is resized
 vim.api.nvim_create_autocmd("VimResized", {
-        group = custom_events,
-        command = "wincmd =",
+    group = custom_events,
+    command = "wincmd =",
 })
 
 -- Discipline line wrapper comment loops (stops automatic comment creation on Enter)
 vim.api.nvim_create_autocmd("FileType", {
-        group = custom_events,
-        callback = function()
-                vim.opt_local.formatoptions:remove({ "c", "r", "o" })
-        end,
+    group = custom_events,
+    callback = function()
+        vim.opt_local.formatoptions:remove({ "c", "r", "o" })
+    end,
 })

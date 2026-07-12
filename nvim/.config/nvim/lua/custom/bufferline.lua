@@ -1,35 +1,54 @@
--- === Minimal bufferline ===
 local function bufferline()
-    local s = ""
     local current = vim.api.nvim_get_current_buf()
+    local buffers = vim.api.nvim_list_bufs()
+    local parts = {}
 
-    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+    for _, buf in ipairs(buffers) do
         if vim.api.nvim_buf_is_loaded(buf) and vim.fn.buflisted(buf) == 1 then
-            local name = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(buf), ":t")
-            if name == "" then name = "[No Name]" end
+            local name = vim.api.nvim_buf_get_name(buf)
 
-            local mod = vim.bo[buf].modified and " ●" or ""
-            local hl = (buf == current) and "%#TabLineSel#" or "%#TabLine#"
-            s = s .. hl .. " " .. buf .. ":" .. name .. mod .. " "
+            if name == "" then
+                name = "[No Name]"
+            else
+                name = vim.fn.fnamemodify(name, ":t")
+
+                -- prevent a single long filename from consuming the entire tabline
+                if #name > 30 then
+                    name = name:sub(1, 27) .. "..."
+                end
+            end
+
+            local modified = vim.bo[buf].modified and " ●" or ""
+            local hl = buf == current and "%#TabLineSel#" or "%#TabLine#"
+
+            parts[#parts + 1] = string.format(
+                "%s %d:%s%s ",
+                hl,
+                buf,
+                name,
+                modified
+            )
         end
     end
 
-    return s .. "%#TabLineFill#"
+    return table.concat(parts) .. "%#TabLineFill#"
 end
 
-function _G.Bufferline()
-    return bufferline()
-end
+_G.bufferline = bufferline
 
-vim.o.showtabline = 2 -- always show tabline
-vim.o.tabline = "%!v:lua.Bufferline()"
+vim.opt.showtabline = 2 -- always show tabline
+vim.opt.tabline = "%!v:lua.bufferline()"
 
--- refresh when buffers change
-vim.api.nvim_create_autocmd(
-    { "BufAdd", "BufDelete", "BufEnter", "BufWritePost" },
-    { callback = function() vim.cmd("redrawtabline") end }
-)
+local group = vim.api.nvim_create_augroup("CustomBufferline", { clear = true })
 
--- basic navigation bindings
-vim.keymap.set("n", "]b", "<cmd>bnext<CR>", { silent = true })
-vim.keymap.set("n", "[b", "<cmd>bprevious<CR>", { silent = true })
+vim.api.nvim_create_autocmd({
+    "BufAdd",
+    "BufDelete",
+    "BufEnter",
+    "BufModifiedSet",
+}, {
+    group = group,
+    callback = function()
+        vim.cmd.redrawtabline()
+    end,
+})
