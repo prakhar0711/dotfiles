@@ -14,11 +14,6 @@ end
 map("n", "<leader>m", "<cmd>Mason<CR>", opts("Open Mason"))
 map("n", "<leader>l", "<cmd>Lazy<CR>", opts("Open Lazy"))
 
-map("n", "<leader>r", function()
-    vim.cmd.source(vim.env.MYVIMRC)
-    vim.notify("Reloaded init.lua")
-end, opts("Reload Config Workspace"))
-
 -- =====================================================================
 -- 🔎 DIAGNOSTICS
 -- =====================================================================
