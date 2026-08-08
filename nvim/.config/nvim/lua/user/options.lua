@@ -84,6 +84,7 @@ vim.opt.splitright = true
 
 -- File naming match exceptions
 vim.opt.isfname:append("@-@")
+vim.opt.lazyredraw = false
 
 -- =====================================================================
 -- 🛠️ AUTOMATED EVENT HANDLERS (AUTOCMDS)

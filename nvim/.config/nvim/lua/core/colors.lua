@@ -4,7 +4,7 @@ local function ColorMyPencils(color)
     vim.cmd.colorscheme(color)
 
     -- transparency
-    vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+    vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
 
     -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
     -- enable the below only when using vague Optional: dim the background of non-active windows slightly
