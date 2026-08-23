@@ -1,104 +1,113 @@
 return {
-        -- =====================================================================
-        -- 1. NVIM-TREESITTER CORE PARSER
-        -- =====================================================================
-        {
-                "nvim-treesitter/nvim-treesitter",
-                build = ":TSUpdate",
-                branch = "master",
-                lazy = false,
-                cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
-                opts_extend = { "ensure_installed" },
+    -- =====================================================================
+    -- 1. NVIM-TREESITTER (MAIN BRANCH REWRITE)
+    -- =====================================================================
+    {
+        "nvim-treesitter/nvim-treesitter",
+        branch = "main",
+        lazy = false,
+        build = function()
+            -- In 'main', treesitter uses the CLI / native installer API
+            require("nvim-treesitter").install({
+                -- Core & Doc parsers
+                "markdown",
+                "markdown_inline",
+                "comment",
+                "diff",
+                "query",
+                "yaml",
+                "toml",
+                "bash",
 
-                keys = {
-                        { "<C-space>", desc = "Increment Selection" },
-                        { "<BS>",      desc = "Decrement Selection", mode = "x" },
+                -- Code languages
+                "c",
+                "cpp",
+                "html",
+                "java",
+                "javascript",
+                "json",
+                "lua",
+                "luadoc",
+                "regex",
+                "rust",
+                "tsx",
+                "typescript",
+                "vim",
+                "vimdoc",
+            })
+        end,
+        config = function()
+            local ts = require("nvim-treesitter")
+
+            -- Configure parsers to ensure installed
+            ts.setup({
+                install = {
+                    prefer_git = true,
                 },
+            })
 
-                ---@type TSConfig
-                ---@diagnostic disable-next-line: missing-fields
-                opts = {
-                        auto_install = true,
+            -- Automatically enable native Treesitter highlighting on FileType
+            vim.api.nvim_create_autocmd("FileType", {
+                callback = function(args)
+                    pcall(vim.treesitter.start, args.buf)
+                end,
+            })
+        end,
+    },
 
-                        ensure_installed = {
-                                "c",
-                                "cpp",
-                                "html",
-                                "java",
-                                "javascript",
-                                "json",
-                                "lua",
-                                "luadoc",
-                                "regex",
-                                "rust",
-                                "tsx",
-                                "typescript",
-                                "vim",
-                                "vimdoc",
-                        },
+    -- =====================================================================
+    -- 2. NVIM-TREESITTER TEXTOBJECTS (MAIN BRANCH REWRITE)
+    -- =====================================================================
+    {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        branch = "main",
+        event = { "BufReadPost", "BufNewFile" },
+        config = function()
+            local move = require("nvim-treesitter-textobjects.move")
 
-                        highlight = {
-                                enable = true,
-                                additional_vim_regex_highlighting = false,
-                        },
-
-                        indent = {
-                                enable = true,
-                        },
-
-                        incremental_selection = {
-                                enable = true,
-                                keymaps = {
-                                        init_selection = "<C-space>",
-                                        node_incremental = "<C-space>",
-                                        scope_incremental = false,
-                                        node_decremental = "<BS>",
-                                },
-                        },
-
-                        textobjects = {
-                                move = {
-                                        enable = true,
-                                        goto_next_start = {
-                                                ["]f"] = "@function.outer",
-                                                ["]c"] = "@class.outer",
-                                                ["]a"] = "@parameter.inner",
-                                        },
-                                        goto_next_end = {
-                                                ["]F"] = "@function.outer",
-                                                ["]C"] = "@class.outer",
-                                                ["]A"] = "@parameter.inner",
-                                        },
-                                        goto_previous_start = {
-                                                ["[f"] = "@function.outer",
-                                                ["[c"] = "@class.outer",
-                                                ["[a"] = "@parameter.inner",
-                                        },
-                                        goto_previous_end = {
-                                                ["[F"] = "@function.outer",
-                                                ["[C"] = "@class.outer",
-                                                ["[A"] = "@parameter.inner",
-                                        },
-                                },
-                        },
+            local maps = {
+                goto_next_start = {
+                    ["]f"] = "@function.outer",
+                    ["]c"] = "@class.outer",
+                    ["]a"] = "@parameter.inner",
                 },
-                ---@param opts TSConfig
-                config = function(_, opts)
-                        require("nvim-treesitter.configs").setup(opts)
-                end,
-        },
+                goto_next_end = {
+                    ["]F"] = "@function.outer",
+                    ["]C"] = "@class.outer",
+                    ["]A"] = "@parameter.inner",
+                },
+                goto_previous_start = {
+                    ["[f"] = "@function.outer",
+                    ["[c"] = "@class.outer",
+                    ["[a"] = "@parameter.inner",
+                },
+                goto_previous_end = {
+                    ["[F"] = "@function.outer",
+                    ["[C"] = "@class.outer",
+                    ["[A"] = "@parameter.inner",
+                },
+            }
 
-        -- =====================================================================
-        -- 2. NVIM-TREESITTER CONTEXT STICKY HEADERS
-        -- =====================================================================
-        {
-                "nvim-treesitter/nvim-treesitter-context",
-                config = function()
-                        require("treesitter-context").setup({
-                                enable = true,
-                                max_lines = 0, -- No boundary limits on persistent structural views
-                                trim_scope = "inner",
-                        })
-                end,
+            for method, map in pairs(maps) do
+                for key, query in pairs(map) do
+                    vim.keymap.set({ "n", "x", "o" }, key, function()
+                        move[method](query)
+                    end, { desc = "Treesitter Move: " .. query })
+                end
+            end
+        end,
+    },
+
+    -- =====================================================================
+    -- 3. NVIM-TREESITTER CONTEXT STICKY HEADERS
+    -- =====================================================================
+    {
+        "nvim-treesitter/nvim-treesitter-context",
+        event = { "BufReadPost", "BufNewFile" },
+        opts = {
+            enable = true,
+            max_lines = 0,
+            trim_scope = "inner",
         },
+    },
 }
