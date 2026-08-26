@@ -104,19 +104,20 @@ map("n", "<leader>sdf", function()
 end, opts("Replace Current Word Within Line Count Block"))
 
 -- =====================================================================
--- 💾 SAVE + FORMAT
+-- 💾 SAVE + FORMAT (via conform.nvim)
 -- =====================================================================
 
 map({ "n", "i", "v" }, "<C-s>", function()
     vim.cmd.stopinsert()
 
-    pcall(function()
-        vim.lsp.buf.format({ async = false })
-    end)
+    require("conform").format({
+        async = false,
+        timeout_ms = 1000,
+        lsp_format = "fallback",
+    })
 
     vim.cmd.write()
 end, opts("Format And Save"))
-
 -- =====================================================================
 -- 📋 SYSTEM CLIPBOARD
 -- =====================================================================
