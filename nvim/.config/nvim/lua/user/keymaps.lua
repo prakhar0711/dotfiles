@@ -1,10 +1,10 @@
 local map = vim.keymap.set
 
 local function opts(desc)
-    return {
-        desc = desc,
-        silent = true,
-    }
+	return {
+		desc = desc,
+		silent = true,
+	}
 end
 
 -- =====================================================================
@@ -21,15 +21,15 @@ map("n", "<leader>l", "<cmd>Lazy<CR>", opts("Open Lazy"))
 local diagnostics_active = true
 
 map("n", "<leader>td", function()
-    diagnostics_active = not diagnostics_active
+	diagnostics_active = not diagnostics_active
 
-    if diagnostics_active then
-        vim.diagnostic.show()
-        vim.notify("LSP diagnostics enabled")
-    else
-        vim.diagnostic.hide()
-        vim.notify("LSP diagnostics disabled")
-    end
+	if diagnostics_active then
+		vim.diagnostic.show()
+		vim.notify("LSP diagnostics enabled")
+	else
+		vim.diagnostic.hide()
+		vim.notify("LSP diagnostics disabled")
+	end
 end, opts("Toggle Diagnostics Visibility"))
 
 map("n", "<leader>lg", vim.diagnostic.open_float, opts("Open Diagnostic Float Overlay"))
@@ -81,26 +81,16 @@ map("n", "x", '"_x', opts("Delete Character Without Yanking"))
 -- 🔍 SEARCH & REPLACE
 -- =====================================================================
 
-map(
-    "n",
-    "<leader>s",
-    [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-    { desc = "Replace Word Globally" }
-)
+map("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Replace Word Globally" })
 
 map("n", "<leader>sdf", function()
-    local current_word = vim.fn.expand("<cword>")
-    local replacement_word = vim.fn.input("Replace with: ", current_word)
-    local count = vim.v.count1
+	local current_word = vim.fn.expand("<cword>")
+	local replacement_word = vim.fn.input("Replace with: ", current_word)
+	local count = vim.v.count1
 
-    local cmd = string.format(
-        ".,.+%ds/\\<%s\\>/%s/gcI",
-        count - 1,
-        current_word,
-        replacement_word
-    )
+	local cmd = string.format(".,.+%ds/\\<%s\\>/%s/gcI", count - 1, current_word, replacement_word)
 
-    vim.cmd(cmd)
+	vim.cmd(cmd)
 end, opts("Replace Current Word Within Line Count Block"))
 
 -- =====================================================================
@@ -108,16 +98,9 @@ end, opts("Replace Current Word Within Line Count Block"))
 -- =====================================================================
 
 map({ "n", "i", "v" }, "<C-s>", function()
-    vim.cmd.stopinsert()
-
-    require("conform").format({
-        async = false,
-        timeout_ms = 1000,
-        lsp_format = "fallback",
-    })
-
-    vim.cmd.write()
-end, opts("Format And Save"))
+	vim.cmd.stopinsert()
+	vim.cmd.write()
+end, opts("Save Buffer"))
 -- =====================================================================
 -- 📋 SYSTEM CLIPBOARD
 -- =====================================================================
@@ -133,7 +116,7 @@ map({ "n", "v" }, "<leader>P", '"+P', opts("Paste Before From Clipboard"))
 -- =====================================================================
 
 for _, key in ipairs({ "<Left>", "<Right>", "<Up>", "<Down>" }) do
-    map("n", key, "<Nop>", { noremap = true, silent = true })
+	map("n", key, "<Nop>", { noremap = true, silent = true })
 end
 
 -- =====================================================================
@@ -143,12 +126,7 @@ end
 map("i", "jj", "<Esc>", opts("Exit Insert Mode"))
 map("i", "jk", "<Esc>", opts("Exit Insert Mode"))
 
-map(
-    "t",
-    "jj",
-    [[<C-\><C-n>]],
-    opts("Exit Terminal Mode")
-)
+map("t", "jj", [[<C-\><C-n>]], opts("Exit Terminal Mode"))
 
 -- =====================================================================
 -- ✏️ INSERT MODE MOVEMENT
@@ -164,43 +142,37 @@ map("i", "<C-k>", "<Up>", opts("Cursor Up"))
 -- =====================================================================
 
 map("n", "<leader>rc", function()
-    vim.cmd.write()
+	vim.cmd.write()
 
-    local file_path = vim.fn.expand("%:p")
-    local file_dir = vim.fn.expand("%:p:h")
-    local extension = vim.fn.expand("%:e")
+	local file_path = vim.fn.expand("%:p")
+	local file_dir = vim.fn.expand("%:p:h")
+	local extension = vim.fn.expand("%:e")
 
-    local compiler, bin_name
+	local compiler, bin_name
 
-    local is_windows =
-        vim.fn.has("win32") == 1 or vim.fn.has("win64") == 1
+	local is_windows = vim.fn.has("win32") == 1 or vim.fn.has("win64") == 1
 
-    if extension == "cpp" then
-        compiler = "g++ -std=c++17"
-        bin_name = is_windows and "main.exe" or "a.out"
-    elseif extension == "c" then
-        compiler = "gcc"
-        bin_name = is_windows and "c_bin.exe" or "c_bin"
-    else
-        vim.notify("Not a C or C++ file", vim.log.levels.WARN)
-        return
-    end
+	if extension == "cpp" then
+		compiler = "g++ -std=c++17"
+		bin_name = is_windows and "main.exe" or "a.out"
+	elseif extension == "c" then
+		compiler = "gcc"
+		bin_name = is_windows and "c_bin.exe" or "c_bin"
+	else
+		vim.notify("Not a C or C++ file", vim.log.levels.WARN)
+		return
+	end
 
-    local output_bin = file_dir .. "/" .. bin_name
+	local output_bin = file_dir .. "/" .. bin_name
 
-    local compile_cmd =
-        compiler
-        .. " "
-        .. vim.fn.shellescape(file_path)
-        .. " -o "
-        .. vim.fn.shellescape(output_bin)
+	local compile_cmd = compiler .. " " .. vim.fn.shellescape(file_path) .. " -o " .. vim.fn.shellescape(output_bin)
 
-    local run_cmd = vim.fn.shellescape(output_bin)
-    local full_command = compile_cmd .. " && " .. run_cmd
+	local run_cmd = vim.fn.shellescape(output_bin)
+	local full_command = compile_cmd .. " && " .. run_cmd
 
-    vim.cmd.vsplit()
-    vim.cmd("terminal " .. full_command)
-    vim.cmd.startinsert()
+	vim.cmd.vsplit()
+	vim.cmd("terminal " .. full_command)
+	vim.cmd.startinsert()
 end, opts("C/C++: Compile And Run Next To Source"))
 
 -- =====================================================================
@@ -208,27 +180,27 @@ end, opts("C/C++: Compile And Run Next To Source"))
 -- =====================================================================
 
 local function tmux_navigate(direction, vim_cmd)
-    local current_window = vim.api.nvim_get_current_win()
+	local current_window = vim.api.nvim_get_current_win()
 
-    vim.cmd(vim_cmd)
+	vim.cmd(vim_cmd)
 
-    if current_window == vim.api.nvim_get_current_win() then
-        vim.system({ "tmux", "select-pane", "-" .. direction })
-    end
+	if current_window == vim.api.nvim_get_current_win() then
+		vim.system({ "tmux", "select-pane", "-" .. direction })
+	end
 end
 
 map("n", "<C-h>", function()
-    tmux_navigate("L", "wincmd h")
+	tmux_navigate("L", "wincmd h")
 end, opts("Navigate Left"))
 
 map("n", "<C-j>", function()
-    tmux_navigate("D", "wincmd j")
+	tmux_navigate("D", "wincmd j")
 end, opts("Navigate Down"))
 
 map("n", "<C-k>", function()
-    tmux_navigate("U", "wincmd k")
+	tmux_navigate("U", "wincmd k")
 end, opts("Navigate Up"))
 
 map("n", "<C-l>", function()
-    tmux_navigate("R", "wincmd l")
+	tmux_navigate("R", "wincmd l")
 end, opts("Navigate Right"))
