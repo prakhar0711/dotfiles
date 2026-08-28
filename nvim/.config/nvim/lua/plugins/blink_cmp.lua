@@ -1,342 +1,325 @@
 return {
-    "saghen/blink.cmp",
-    version = "1.*",
+	"saghen/blink.cmp",
+	version = "1.*",
 
-    dependencies = {
-        "rafamadriz/friendly-snippets",
-    },
+	dependencies = {
+		"rafamadriz/friendly-snippets",
+	},
 
-    init = function()
-        local group = vim.api.nvim_create_augroup(
-            "BlinkThemeOverrides",
-            { clear = true }
-        )
+	init = function()
+		local group = vim.api.nvim_create_augroup("BlinkThemeOverrides", { clear = true })
 
-        local function apply_blink_theme()
-            local hl = vim.api.nvim_set_hl
+		local function apply_blink_theme()
+			local hl = vim.api.nvim_set_hl
 
-            -- Completion Menu
-            hl(0, "BlinkCmpMenu", {
-                bg = "#0f111a",
-                fg = "#b0bec5",
-            })
+			-- Completion Menu
+			hl(0, "BlinkCmpMenu", {
+				bg = "#0f111a",
+				fg = "#b0bec5",
+			})
 
-            hl(0, "BlinkCmpMenuBorder", {
-                fg = "#1f2233",
-                bg = "#0f111a",
-            })
+			hl(0, "BlinkCmpMenuBorder", {
+				fg = "#1f2233",
+				bg = "#0f111a",
+			})
 
-            hl(0, "BlinkCmpMenuSelection", {
-                bg = "#1f2233",
-                fg = "#80cbc4",
-                bold = true,
-            })
+			hl(0, "BlinkCmpMenuSelection", {
+				bg = "#1f2233",
+				fg = "#80cbc4",
+				bold = true,
+			})
 
-            -- Labels
-            hl(0, "BlinkCmpLabelMatch", {
-                fg = "#80cbc4",
-                bold = true,
-            })
+			-- Labels
+			hl(0, "BlinkCmpLabelMatch", {
+				fg = "#80cbc4",
+				bold = true,
+			})
 
-            hl(0, "BlinkCmpLabel", {
-                fg = "#b0bec5",
-            })
+			hl(0, "BlinkCmpLabel", {
+				fg = "#b0bec5",
+			})
 
-            hl(0, "BlinkCmpLabelDescription", {
-                fg = "#464b5d",
-            })
+			hl(0, "BlinkCmpLabelDescription", {
+				fg = "#464b5d",
+			})
 
-            -- Sources
-            hl(0, "BlinkCmpSourceLsp", {
-                fg = "#00e5ff",
-                italic = true,
-            })
+			-- Sources
+			hl(0, "BlinkCmpSourceLsp", {
+				fg = "#00e5ff",
+				italic = true,
+			})
 
-            hl(0, "BlinkCmpSourcePath", {
-                fg = "#c3e88d",
-            })
+			hl(0, "BlinkCmpSourcePath", {
+				fg = "#c3e88d",
+			})
 
-            hl(0, "BlinkCmpSourceSnippets", {
-                fg = "#ff5370",
-            })
+			hl(0, "BlinkCmpSourceSnippets", {
+				fg = "#ff5370",
+			})
 
-            hl(0, "BlinkCmpSourceBuffer", {
-                fg = "#ffcb6b",
-            })
+			hl(0, "BlinkCmpSourceBuffer", {
+				fg = "#ffcb6b",
+			})
 
-            -- Documentation
-            hl(0, "BlinkCmpDoc", {
-                bg = "#0c0e16",
-                fg = "#b0bec5",
-            })
+			-- Documentation
+			hl(0, "BlinkCmpDoc", {
+				bg = "#0c0e16",
+				fg = "#b0bec5",
+			})
 
-            hl(0, "BlinkCmpDocBorder", {
-                fg = "#1f2233",
-                bg = "#0c0e16",
-            })
+			hl(0, "BlinkCmpDocBorder", {
+				fg = "#1f2233",
+				bg = "#0c0e16",
+			})
 
-            hl(0, "BlinkCmpDocActiveParameter", {
-                fg = "#80cbc4",
-                bold = true,
-            })
-        end
+			hl(0, "BlinkCmpDocActiveParameter", {
+				fg = "#80cbc4",
+				bold = true,
+			})
+		end
 
-        vim.api.nvim_create_autocmd("ColorScheme", {
-            group = group,
-            callback = apply_blink_theme,
-        })
+		vim.api.nvim_create_autocmd("ColorScheme", {
+			group = group,
+			callback = apply_blink_theme,
+		})
 
-        apply_blink_theme()
-    end,
+		apply_blink_theme()
+	end,
 
-    opts = {
-        keymap = {
-            preset = "default",
+	opts = {
+		keymap = {
+			preset = "default",
 
-            ["<C-x>"] = { "accept", "fallback" },
+			["<C-x>"] = { "accept", "fallback" },
 
-            ["<C-k>"] = false,
+			["<C-k>"] = false,
 
-            ["<C-,>"] = {
-                "show_signature",
-                "hide_signature",
-                "fallback",
-            },
+			["<C-,>"] = {
+				"show_signature",
+				"hide_signature",
+				"fallback",
+			},
 
-            ["<C-Space>"] = {
-                function(cmp)
-                    if cmp.is_visible() then
-                        return cmp.hide()
-                    end
+			["<C-Space>"] = {
+				function(cmp)
+					if cmp.is_visible() then
+						return cmp.hide()
+					end
 
-                    return cmp.show()
-                end,
-                "fallback",
-            },
-        },
+					return cmp.show()
+				end,
+				"fallback",
+			},
+		},
 
-        cmdline = {
-            enabled = true,
+		cmdline = {
+			enabled = true,
 
-            keymap = {
-                preset = "cmdline",
-            },
+			keymap = {
+				preset = "cmdline",
+			},
 
-            completion = {
-                list = {
-                    selection = {
-                        preselect = false,
-                    },
-                },
+			completion = {
+				list = {
+					selection = {
+						preselect = false,
+					},
+				},
 
-                menu = {
-                    auto_show = true,
-                },
+				menu = {
+					auto_show = true,
+				},
 
-                ghost_text = {
-                    enabled = true,
-                },
-            },
-        },
+				ghost_text = {
+					enabled = true,
+				},
+			},
+		},
 
-        signature = {
-            enabled = true,
-        },
+		signature = {
+			enabled = true,
+		},
 
-        appearance = {
-            use_nvim_cmp_as_default = false,
-            nerd_font_variant = "mono",
-        },
+		appearance = {
+			use_nvim_cmp_as_default = false,
+			nerd_font_variant = "mono",
+		},
 
-        completion = {
-            ghost_text = {
-                enabled = false,
-            },
+		completion = {
+			ghost_text = {
+				enabled = false,
+			},
 
-            documentation = {
-                auto_show = true,
-                auto_show_delay_ms = 500,
-                treesitter_highlighting = true,
-            },
+			documentation = {
+				auto_show = true,
+				auto_show_delay_ms = 500,
+				treesitter_highlighting = true,
+			},
 
-            menu = {
-                border = "rounded",
+			menu = {
+				border = "rounded",
 
-                winhighlight =
-                    "Normal:BlinkCmpMenu," ..
-                    "FloatBorder:BlinkCmpMenuBorder," ..
-                    "CursorLine:BlinkCmpMenuSelection," ..
-                    "Search:None",
+				winhighlight = "Normal:BlinkCmpMenu,"
+					.. "FloatBorder:BlinkCmpMenuBorder,"
+					.. "CursorLine:BlinkCmpMenuSelection,"
+					.. "Search:None",
 
-                draw = {
-                    snippet_indicator = "~",
+				draw = {
+					snippet_indicator = "~",
 
-                    treesitter = { "lsp" },
+					treesitter = { "lsp" },
 
-                    columns = {
-                        {
-                            "label",
-                            "label_description",
-                            gap = 1,
-                        },
-                        {
-                            "kind_icon",
-                            "kind",
-                            "source_name",
-                            gap = 1,
-                        },
-                    },
+					columns = {
+						{
+							"label",
+							"label_description",
+							gap = 1,
+						},
+						{
+							"kind_icon",
+							"kind",
+							"source_name",
+							gap = 1,
+						},
+					},
 
-                    components = {
-                        kind_icon = {
-                            ellipsis = false,
+					components = {
+						kind_icon = {
+							ellipsis = false,
 
-                            text = function(ctx)
-                                local icon = ctx.kind_icon
+							text = function(ctx)
+								local icon = ctx.kind_icon
 
-                                if ctx.item.kind
-                                    == vim.lsp.protocol.CompletionItemKind.Color
-                                then
-                                    local doc = ctx.item.documentation
+								if ctx.item.kind == vim.lsp.protocol.CompletionItemKind.Color then
+									local doc = ctx.item.documentation
 
-                                    if type(doc) == "string"
-                                        and doc:match("^#%x%x%x%x%x%x$")
-                                    then
-                                        local color_icon = require(
-                                            "nvim-highlight-colors"
-                                        ).format(doc, {
-                                            kind = "Color",
-                                        })
+									if type(doc) == "string" and doc:match("^#%x%x%x%x%x%x$") then
+										local color_icon = require("nvim-highlight-colors").format(doc, {
+											kind = "Color",
+										})
 
-                                        if color_icon then
-                                            return color_icon
-                                        end
-                                    end
-                                end
+										if color_icon then
+											return color_icon
+										end
+									end
+								end
 
-                                return icon .. ctx.icon_gap
-                            end,
+								return icon .. ctx.icon_gap
+							end,
 
-                            highlight = function(ctx)
-                                return {
-                                    {
-                                        group = ctx.kind_hl,
-                                        priority = 20000,
-                                    },
-                                }
-                            end,
-                        },
+							highlight = function(ctx)
+								return {
+									{
+										group = ctx.kind_hl,
+										priority = 20000,
+									},
+								}
+							end,
+						},
 
-                        kind = {
-                            ellipsis = false,
+						kind = {
+							ellipsis = false,
 
-                            width = {
-                                fill = true,
-                            },
+							width = {
+								fill = true,
+							},
 
-                            text = function(ctx)
-                                return ctx.kind
-                            end,
+							text = function(ctx)
+								return ctx.kind
+							end,
 
-                            highlight = function(ctx)
-                                return {
-                                    {
-                                        group = ctx.kind_hl,
-                                        priority = 20000,
-                                    },
-                                }
-                            end,
-                        },
+							highlight = function(ctx)
+								return {
+									{
+										group = ctx.kind_hl,
+										priority = 20000,
+									},
+								}
+							end,
+						},
 
-                        label = {
-                            width = {
-                                fill = true,
-                                max = 20,
-                            },
+						label = {
+							width = {
+								fill = true,
+								max = 20,
+							},
 
-                            text = function(ctx)
-                                return ctx.label
-                                    .. (ctx.label_detail or "")
-                            end,
+							text = function(ctx)
+								return ctx.label .. (ctx.label_detail or "")
+							end,
 
-                            highlight = function(ctx)
-                                local highlights = {
-                                    {
-                                        0,
-                                        #ctx.label,
-                                        group = ctx.deprecated
-                                            and "BlinkCmpLabelDeprecated"
-                                            or "BlinkCmpLabel",
-                                    },
-                                }
+							highlight = function(ctx)
+								local highlights = {
+									{
+										0,
+										#ctx.label,
+										group = ctx.deprecated and "BlinkCmpLabelDeprecated" or "BlinkCmpLabel",
+									},
+								}
 
-                                if ctx.label_detail then
-                                    table.insert(highlights, {
-                                        #ctx.label,
-                                        #ctx.label + #ctx.label_detail,
-                                        group = "BlinkCmpLabelDetail",
-                                    })
-                                end
+								if ctx.label_detail then
+									table.insert(highlights, {
+										#ctx.label,
+										#ctx.label + #ctx.label_detail,
+										group = "BlinkCmpLabelDetail",
+									})
+								end
 
-                                for _, idx in ipairs(
-                                    ctx.label_matched_indices
-                                ) do
-                                    table.insert(highlights, {
-                                        idx,
-                                        idx + 1,
-                                        group = "BlinkCmpLabelMatch",
-                                    })
-                                end
+								for _, idx in ipairs(ctx.label_matched_indices) do
+									table.insert(highlights, {
+										idx,
+										idx + 1,
+										group = "BlinkCmpLabelMatch",
+									})
+								end
 
-                                return highlights
-                            end,
-                        },
+								return highlights
+							end,
+						},
 
-                        label_description = {
-                            width = {
-                                max = 30,
-                            },
+						label_description = {
+							width = {
+								max = 30,
+							},
 
-                            text = function(ctx)
-                                return ctx.label_description
-                            end,
+							text = function(ctx)
+								return ctx.label_description
+							end,
 
-                            highlight = "BlinkCmpLabelDescription",
-                        },
+							highlight = "BlinkCmpLabelDescription",
+						},
 
-                        source_name = {
-                            text = function(ctx)
-                                return "[" .. ctx.source_name:upper() .. "]"
-                            end,
+						source_name = {
+							text = function(ctx)
+								return "[" .. ctx.source_name:upper() .. "]"
+							end,
 
-                            -- Keep original implementation since it
-                            -- correctly resolves your custom source colors.
-                            highlight = function(ctx)
-                                return "BlinkCmpSource"
-                                    .. ctx.source_name:sub(1, 1):upper()
-                                    .. ctx.source_name:sub(2)
-                            end,
-                        },
-                    },
-                },
-            },
-        },
+							-- Keep original implementation since it
+							-- correctly resolves your custom source colors.
+							highlight = function(ctx)
+								return "BlinkCmpSource" .. ctx.source_name:sub(1, 1):upper() .. ctx.source_name:sub(2)
+							end,
+						},
+					},
+				},
+			},
+		},
 
-        sources = {
-            default = {
-                "lsp",
-                "path",
-                "snippets",
-                "buffer",
-            },
-        },
+		sources = {
+			default = {
+				"lsp",
+				"path",
+				"snippets",
+				"buffer",
+			},
+		},
 
-        fuzzy = {
-            implementation = "prefer_rust_with_warning",
-        },
-    },
+		fuzzy = {
+			implementation = "prefer_rust_with_warning",
+		},
+	},
 
-    opts_extend = {
-        "sources.default",
-    },
+	opts_extend = {
+		"sources.default",
+	},
 }
