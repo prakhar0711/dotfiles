@@ -1,42 +1,33 @@
-# Function to source files if they exist
-function zsh_add_file() {
-    [ -f "$ZDOTDIR/$1" ] && source "$ZDOTDIR/$1"
+# Pure Zsh file loading (zero subshells)
+zsh_add_file() {
+  [[ -f "$ZDOTDIR/$1" ]] && source "$ZDOTDIR/$1"
 }
 
-function zsh_add_plugin() {
-    PLUGIN_NAME=$(echo $1 | cut -d "/" -f 2)
-    if [ -d "$ZDOTDIR/plugins/$PLUGIN_NAME" ]; then 
-        # For plugins
-        zsh_add_file "plugins/$PLUGIN_NAME/$PLUGIN_NAME.plugin.zsh" || \
-        zsh_add_file "plugins/$PLUGIN_NAME/$PLUGIN_NAME.zsh"
-    else
-        git clone "https://github.com/$1.git" "$ZDOTDIR/plugins/$PLUGIN_NAME"
-    fi
+# Pure Zsh plugin manager using native string slicing
+zsh_add_plugin() {
+  local plugin_name="${1##*/}"
+  local target_dir="$ZDOTDIR/plugins/$plugin_name"
+
+  if [[ ! -d "$target_dir" ]]; then
+    git clone --depth=1 "https://github.com/$1.git" "$target_dir"
+  fi
+
+  if [[ -f "$target_dir/$plugin_name.plugin.zsh" ]]; then
+    source "$target_dir/$plugin_name.plugin.zsh"
+  elif [[ -f "$target_dir/$plugin_name.zsh" ]]; then
+    source "$target_dir/$plugin_name.zsh"
+  fi
 }
 
-function zsh_add_completion() {
-    PLUGIN_NAME=$(echo $1 | cut -d "/" -f 2)
-    if [ -d "$ZDOTDIR/plugins/$PLUGIN_NAME" ]; then 
-        # For completions
-		completion_file_path=$(ls $ZDOTDIR/plugins/$PLUGIN_NAME/_*)
-		fpath+="$(dirname "${completion_file_path}")"
-        zsh_add_file "plugins/$PLUGIN_NAME/$PLUGIN_NAME.plugin.zsh"
-    else
-        git clone "https://github.com/$1.git" "$ZDOTDIR/plugins/$PLUGIN_NAME"
-		fpath+=$(ls $ZDOTDIR/plugins/$PLUGIN_NAME/_*)
-		rm $ZDOTDIR/.zccompdump
-    fi
-	completion_file="$(basename "${completion_file_path}")"
-	if [ "$2" = true ] && compinit "${completion_file:1}"
-}
-
-
-runr() { rustc "$1" && ./$(basename "$1" .rs); }
+# Quick runners
+runr() { rustc "$1" && "./${1:r}"; }
 runc() {
-    make "$1" && ./$(basename "$1" .c | sed 's/\.cpp$//')
+  local target="${1:r}"
+  make "$target" && "./$target"
 }
+runj() { javac "$1" && java "${1:r}"; }
 
-runj() { javac "$1" && java $(basename "$1" .java); }
+# Yazi working directory sync
 y() {
   local tmp="$(mktemp -t yazi-cwd.XXXXXX)" cwd
   yazi "$@" --cwd-file="$tmp"
@@ -45,6 +36,8 @@ y() {
   fi
   rm -f -- "$tmp"
 }
+
+# Pacman cache hook
 zshcache_time="$(date +%s%N)"
 rehash_precmd() {
   if [[ -a /var/cache/zsh/pacman ]]; then
@@ -55,5 +48,34 @@ rehash_precmd() {
     fi
   fi
 }
-autoload -Uz compinit add-zsh-hook vcs_info
+autoload -Uz add-zsh-hook
 add-zsh-hook -Uz precmd rehash_precmd
+
+# ~/.config/zsh/zsh-functions
+
+zsh_recompile() {
+  echo "Cleaning old cache and dumps..."
+  rm -rf "$ZSH_CACHE_DIR"/*(N) "$ZDOTDIR"/*.zwc(N) "$ZDOTDIR"/plugins/**/*.zwc(N) 2>/dev/null
+  mkdir -p "$ZSH_CACHE_DIR"
+
+  echo "Regenerating static init scripts..."
+  (( $+commands[fzf] ))    && fzf --zsh > "$ZSH_CACHE_DIR/fzf.zsh"
+  (( $+commands[zoxide] )) && zoxide init zsh > "$ZSH_CACHE_DIR/zoxide.zsh"
+  (( $+commands[atuin] ))  && atuin init zsh > "$ZSH_CACHE_DIR/atuin.zsh"
+  (( $+commands[fnm] ))    && fnm env --use-on-cd --shell zsh > "$ZSH_CACHE_DIR/fnm.zsh"
+
+  echo "Compiling configs to .zwc bytecode..."
+  for f in "$ZDOTDIR"/*.zsh(N) "$ZDOTDIR"/zsh*(N) "$ZDOTDIR"/.zshrc(N) "$ZSH_CACHE_DIR"/*.zsh(N); do
+    [[ -f "$f" ]] && zcompile -R "$f" 2>/dev/null
+  done
+
+  echo "Compiling plugins..."
+  # Exclude test files, docs, and test fixtures from zcompile
+  for f in "$ZDOTDIR"/plugins/**/*.zsh(N); do
+    if [[ "$f" != */test*/* && "$f" != */spec/* && -f "$f" ]]; then
+      zcompile -R "$f" 2>/dev/null
+    fi
+  done
+
+  echo "Done! Restart your shell or run: exec zsh"
+}

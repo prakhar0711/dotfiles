@@ -1,51 +1,57 @@
-#!/bin/sh
-
-# some useful options (man zshoptions)
+# Options
 setopt autocd extendedglob nomatch menucomplete
 setopt interactive_comments
-
-stty stop undef		# Disable ctrl-s to freeze terminal.
-zle_highlight=('paste:none')
-
-# beeping is annoying
 unsetopt BEEP
 
-# completions
-autoload -Uz compinit
-zstyle ':completion:*' menu select
-# zstyle ':completion::complete:lsof:*' menu yes select
-zmodload zsh/complist
-compinit
+stty stop undef 2>/dev/null
+zle_highlight=('paste:none')
 
-autoload -U up-line-or-beginning-search
-autoload -U down-line-or-beginning-search
+# Navigation & Search widgets
+autoload -U up-line-or-beginning-search down-line-or-beginning-search colors
+colors
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 
-# Colors
-autoload -Uz colors && colors
-
-# Useful Functions
+# Sourcing helper functions
 source "$ZDOTDIR/zsh-functions"
-
-# Normal files to source
+# Environment variables, PATH, and FPATH (must run before compinit)
 zsh_add_file "zsh-exports"
-zsh_add_file "zsh-aliases"
-zsh_add_file "zsh-prompt"
 
-# Plugins
-zsh_add_plugin "zsh-users/zsh-autosuggestions"
+# Plugins (Loaded before compinit so completion dirs can register)
+# zsh_add_plugin "zsh-users/zsh-completions"
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
-zsh_add_plugin "zsh-users/zsh-completions"
-zsh_add_plugin "chrissicool/zsh-256color"
-zsh_add_plugin "jeffreytse/zsh-vi-mode"
+zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh_add_plugin "Aloxaf/fzf-tab"
-# For more plugins: https://github.com/unixorn/awesome-zsh-plugins
-# More completions https://github.com/zsh-users/zsh-completions
+zsh_add_plugin "jeffreytse/zsh-vi-mode"
 
-# Tools
-if command -v fzf >/dev/null; then
-  eval "$(fzf --zsh)"
+# Cached compinit (Runs once every 24 hours to skip expensive compaudit checks)
+autoload -Uz compinit
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+
+typeset -g ZSH_COMPDUMP="$ZSH_CACHE_DIR/.zcompdump"
+if [[ -n "$ZSH_COMPDUMP"(#qN.m-1) ]]; then
+  compinit -C -d "$ZSH_COMPDUMP"
+else
+  compinit -d "$ZSH_COMPDUMP"
+fi
+
+# Prompt and Aliases
+zsh_add_file "zsh-prompt"
+zsh_add_file "zsh-aliases"
+
+# Tool Integrations
+# ~/.config/zsh/zshrc
+
+# --- FZF ---
+# Ensure cache directory exists before redirecting files
+[[ ! -d "$ZSH_CACHE_DIR" ]] && mkdir -p "$ZSH_CACHE_DIR"
+
+# --- FZF ---
+if (( $+commands[fzf] )); then
+  [[ ! -f "$ZSH_CACHE_DIR/fzf.zsh" ]] && fzf --zsh > "$ZSH_CACHE_DIR/fzf.zsh"
+  [[ -f "$ZSH_CACHE_DIR/fzf.zsh" ]] && source "$ZSH_CACHE_DIR/fzf.zsh"
+
   export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
   export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
@@ -55,8 +61,20 @@ if command -v fzf >/dev/null; then
   export FZF_TMUX_OPTS="-p90%,70%"
 fi
 
-# FZF
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
-# export FZF_DEFAULT_COMMAND='rg --hidden -l ""'
+# --- ZOXIDE ---
+if (( $+commands[zoxide] )); then
+  [[ ! -f "$ZSH_CACHE_DIR/zoxide.zsh" ]] && zoxide init zsh > "$ZSH_CACHE_DIR/zoxide.zsh"
+  [[ -f "$ZSH_CACHE_DIR/zoxide.zsh" ]] && source "$ZSH_CACHE_DIR/zoxide.zsh"
+fi
 
+# --- ATUIN ---
+if (( $+commands[atuin] )); then
+  [[ ! -f "$ZSH_CACHE_DIR/atuin.zsh" ]] && atuin init zsh> "$ZSH_CACHE_DIR/atuin.zsh"
+  [[ -f "$ZSH_CACHE_DIR/atuin.zsh" ]] && source "$ZSH_CACHE_DIR/atuin.zsh"
+fi
+
+# --- FNM ---
+if (( $+commands[fnm] )); then
+  [[ ! -f "$ZSH_CACHE_DIR/fnm.zsh" ]] && fnm env --use-on-cd --shell zsh > "$ZSH_CACHE_DIR/fnm.zsh"
+  [[ -f "$ZSH_CACHE_DIR/fnm.zsh" ]] && source "$ZSH_CACHE_DIR/fnm.zsh"
+fi

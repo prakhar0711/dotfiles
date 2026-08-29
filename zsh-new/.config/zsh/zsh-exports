@@ -1,35 +1,44 @@
-#!/bin/sh
-HISTFILE="$XDG_DATA_HOME"/zsh/history
-HISTSIZE=1000000
-SAVEHIST=1000000
-export PATH="$HOME/.local/bin":$PATH
-export MANPAGER='nvim +Man!'
+# ~/.config/zsh/zsh-exports
+
+# Ensure default system paths and custom bins
+typeset -U path fpath PATH FPATH
+path=(
+  "$HOME/.atuin/bin"
+  "$HOME/.cargo/bin"
+  "$HOME/.local/bin"
+  "$HOME/bin"
+  "$HOME/.local/share/go/bin"
+  "$HOME/.miniconda/bin"
+  "$HOME/.local/share/fnm"
+  /usr/local/bin
+  /usr/bin
+  /bin
+  /usr/sbin
+  /sbin
+  $path
+)
+export PATH
+
+# XDG Base Directory Specification
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
+export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+export XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.local/state}"
+
+# Zsh Cache Directory (uses native zsh module, no external mkdir binary needed)
+export ZSH_CACHE_DIR="$XDG_CACHE_HOME/zsh"
+zmodload -F zsh/stat b:zstat 2>/dev/null
+zmodload zsh/files 2>/dev/null # makes mkdir a shell builtin
+mkdir -p "$ZSH_CACHE_DIR" 2>/dev/null || command mkdir -p "$ZSH_CACHE_DIR"
+
+# Environment variables
 export COLORTERM=truecolor
-export MANWIDTH=999
-export BROWSER='firefox'
 export EDITOR="nvim"
 export VISUAL="$EDITOR"
-export PATH=$HOME/.cargo/bin:$PATH
-export PATH=$HOME/.local/share/go/bin:$PATH
-export GOPATH=$HOME/.local/share/go
-export FPATH="$HOME/eza/completions/zsh:$FPATH"
-export PATH="$HOME/.local/bin:$HOME/bin:/usr/local/bin:$GOPATH/bin:$PATH"
-export PATH=$HOME/.miniconda/bin:$PATH
-export SUDO_PROMPT="Deploying root access for %u. Enter Password : "
-# fnm
-if command -v fnm >/dev/null; then
-  eval "$(fnm env --use-on-cd --shell zsh)"
-fi
-#atuin
-if command -v atuin >/dev/null; then
-  eval "$(atuin init zsh)"
-fi
-# zoxide
-if command -v zoxide >/dev/null; then
-  eval "$(zoxide init zsh)"
-fi
-
-# krabby splash
-[[ $- == *i* ]] && command -v krabby &>/dev/null && krabby random
-
-. "$HOME/.atuin/bin/env"
+export MANPAGER='nvim +Man!'
+export MANWIDTH=999
+export BROWSER='firefox'
+export GOPATH="$HOME/.local/share/go"
+export SUDO_PROMPT="Deploying root access for %u. Enter Password: "
+# Source atuin environment binary if present
+[[ -f "$HOME/.atuin/bin/env" ]] && . "$HOME/.atuin/bin/env"

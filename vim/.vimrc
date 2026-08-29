@@ -40,11 +40,6 @@ set nocompatible		" Disable VI Compatibility
 call plug#begin()
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'godlygeek/tabular'
-Plug 'preservim/vim-markdown'
-Plug 'rust-lang/rust.vim'
-Plug 'dense-analysis/ale'
 call plug#end()
 
 " ---------------------------------------------

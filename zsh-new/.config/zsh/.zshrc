@@ -1,26 +1,7 @@
-source $ZDOTDIR/zshrc
+# Set history parameters early
+HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/zsh/history"
+HISTSIZE=100000
+SAVEHIST=100000
 
-. "$HOME/.atuin/bin/env"
-
-eval "$(atuin init zsh)"
-
-# fnm
-FNM_PATH="/home/prakhar/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="$FNM_PATH:$PATH"
-  eval "`fnm env`"
-fi
-
-# fnm
-FNM_PATH="/home/prakhar/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="$FNM_PATH:$PATH"
-  eval "`fnm env`"
-fi
-
-# fnm
-FNM_PATH="/home/prakhar/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="$FNM_PATH:$PATH"
-  eval "`fnm env`"
-fi
+# Source main configuration
+[[ -f "$ZDOTDIR/zshrc" ]] && source "$ZDOTDIR/zshrc"

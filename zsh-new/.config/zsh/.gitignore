@@ -4,3 +4,18 @@ plugins/
 plugins
 
 .zcompdump
+# Compiled Zsh bytecode
+*.zwc
+*.zwc.old
+
+# Completion dump files (if any land locally)
+.zcompdump*
+.zccompdump*
+
+# Dynamic cache directories
+cache/
+.cache/
+
+# Plugin checkouts (if not using git submodules)
+plugins/*
+!plugins/.gitkeep
