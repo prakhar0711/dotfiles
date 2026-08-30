@@ -32,7 +32,17 @@ hl.config({
 		-- active_opacity = 1,
 		-- inactive_opacity = 1,
 		shadow = { enabled = false, range = 4, render_power = 3, color = "rgba(1a1a1aee)" },
-		blur = { enabled = true, size = 10, passes = 2, noise = 0, vibrancy = 0.1696, contrast = 1.5 },
+		blur = {
+			enabled = true,
+			size = 10,
+			passes = 2,
+			noise = 0,
+			vibrancy = 0.1696,
+			contrast = 1.0,
+			new_optimizations = true,
+			ignore_opacity = true,
+			brightness = 0.9,
+		},
 	},
 	input = {
 		kb_layout = "us",

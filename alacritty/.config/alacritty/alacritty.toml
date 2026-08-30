@@ -24,31 +24,31 @@ multiplier = 3
 [colors]
 draw_bold_text_with_bright_colors = true
 
-[colors.primary]
-background = "0x000000"
-# background = "0x070e15"
-# background = "0x191724"
-foreground = "0xc0caf5"
-
-[colors.normal]
-black   = "0x15161e"
-red     = "0xf7768e"
-green   = "0x518a9c"
-yellow  = "0xe0af68"
-blue    = "0x7aa2f7"
-magenta = "0xbb9af7"
-cyan    = "0x7dcfff"
-white   = "0xa9b1d6"
-
-[colors.bright]
-black   = "0x414868"
-red     = "0xff899d"
-green   = "0x9ece6a"
-yellow  = "0xfaba4a"
-blue    = "0x8db0ff"
-magenta = "0xc7a9ff"
-cyan    = "0xa4daff"
-white   = "0xc0caf5"
+# [colors.primary]
+# background = "0x000000"
+# # background = "0x070e15"
+# # background = "0x191724"
+# foreground = "0xc0caf5"
+#
+# [colors.normal]
+# black   = "0x15161e"
+# red     = "0xf7768e"
+# green   = "0x518a9c"
+# yellow  = "0xe0af68"
+# blue    = "0x7aa2f7"
+# magenta = "0xbb9af7"
+# cyan    = "0x7dcfff"
+# white   = "0xa9b1d6"
+#
+# [colors.bright]
+# black   = "0x414868"
+# red     = "0xff899d"
+# green   = "0x9ece6a"
+# yellow  = "0xfaba4a"
+# blue    = "0x8db0ff"
+# magenta = "0xc7a9ff"
+# cyan    = "0xa4daff"
+# white   = "0xc0caf5"
 
 [font]
 size = 16
@@ -162,6 +162,7 @@ mods = "Control"
 action = "ResetFontSize"
 
 [general]
+import = ["~/.config/alacritty/themes/noctalia.toml"]
 live_config_reload = true
 working_directory = "None"
 

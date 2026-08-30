@@ -9,6 +9,9 @@ return {
 			cpp = { "clang-format" },
 			json = { "prettier" },
 			markdown = { "prettier" },
+			bash = { "shfmt" },
+			sh = { "shfmt" },
+			zsh = { "shfmt" },
 			-- Any filetype not explicitly defined will fall back to its LSP formatter (e.g. rustfmt via rust_analyzer)
 		},
 		default_format_opts = {

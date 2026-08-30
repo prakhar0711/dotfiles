@@ -31,9 +31,9 @@ zmodload zsh/complist
 
 typeset -g ZSH_COMPDUMP="$ZSH_CACHE_DIR/.zcompdump"
 if [[ -n "$ZSH_COMPDUMP"(#qN.m-1) ]]; then
-  compinit -C -d "$ZSH_COMPDUMP"
+    compinit -C -d "$ZSH_COMPDUMP"
 else
-  compinit -d "$ZSH_COMPDUMP"
+    compinit -d "$ZSH_COMPDUMP"
 fi
 
 # Prompt and Aliases
@@ -48,33 +48,33 @@ zsh_add_file "zsh-aliases"
 [[ ! -d "$ZSH_CACHE_DIR" ]] && mkdir -p "$ZSH_CACHE_DIR"
 
 # --- FZF ---
-if (( $+commands[fzf] )); then
-  [[ ! -f "$ZSH_CACHE_DIR/fzf.zsh" ]] && fzf --zsh > "$ZSH_CACHE_DIR/fzf.zsh"
-  [[ -f "$ZSH_CACHE_DIR/fzf.zsh" ]] && source "$ZSH_CACHE_DIR/fzf.zsh"
+if (($+commands[fzf])); then
+    [[ ! -f "$ZSH_CACHE_DIR/fzf.zsh" ]] && fzf --zsh >"$ZSH_CACHE_DIR/fzf.zsh"
+    [[ -f "$ZSH_CACHE_DIR/fzf.zsh" ]] && source "$ZSH_CACHE_DIR/fzf.zsh"
 
-  export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
-  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-  export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
-  export FZF_DEFAULT_OPTS="--height 50% --layout=default --border --color=hl:#2dd4bf"
-  export FZF_CTRL_T_OPTS="--preview 'bat --color=always -n --line-range :500 {}'"
-  export FZF_ALT_C_OPTS="--preview 'eza --icons=always --tree --color=always {} | head -200'"
-  export FZF_TMUX_OPTS="-p90%,70%"
+    export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+    export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+    export FZF_DEFAULT_OPTS="--height 50% --layout=default --border --color=hl:#2dd4bf"
+    export FZF_CTRL_T_OPTS="--preview 'bat --color=always -n --line-range :500 {}'"
+    export FZF_ALT_C_OPTS="--preview 'eza --icons=always --tree --color=always {} | head -200'"
+    export FZF_TMUX_OPTS="-p90%,70%"
 fi
 
 # --- ZOXIDE ---
-if (( $+commands[zoxide] )); then
-  [[ ! -f "$ZSH_CACHE_DIR/zoxide.zsh" ]] && zoxide init zsh > "$ZSH_CACHE_DIR/zoxide.zsh"
-  [[ -f "$ZSH_CACHE_DIR/zoxide.zsh" ]] && source "$ZSH_CACHE_DIR/zoxide.zsh"
+if (($+commands[zoxide])); then
+    [[ ! -f "$ZSH_CACHE_DIR/zoxide.zsh" ]] && zoxide init zsh >"$ZSH_CACHE_DIR/zoxide.zsh"
+    [[ -f "$ZSH_CACHE_DIR/zoxide.zsh" ]] && source "$ZSH_CACHE_DIR/zoxide.zsh"
 fi
 
 # --- ATUIN ---
-if (( $+commands[atuin] )); then
-  [[ ! -f "$ZSH_CACHE_DIR/atuin.zsh" ]] && atuin init zsh> "$ZSH_CACHE_DIR/atuin.zsh"
-  [[ -f "$ZSH_CACHE_DIR/atuin.zsh" ]] && source "$ZSH_CACHE_DIR/atuin.zsh"
+if (($+commands[atuin])); then
+    [[ ! -f "$ZSH_CACHE_DIR/atuin.zsh" ]] && atuin init zsh >"$ZSH_CACHE_DIR/atuin.zsh"
+    [[ -f "$ZSH_CACHE_DIR/atuin.zsh" ]] && source "$ZSH_CACHE_DIR/atuin.zsh"
 fi
 
 # --- FNM ---
-if (( $+commands[fnm] )); then
-  [[ ! -f "$ZSH_CACHE_DIR/fnm.zsh" ]] && fnm env --use-on-cd --shell zsh > "$ZSH_CACHE_DIR/fnm.zsh"
-  [[ -f "$ZSH_CACHE_DIR/fnm.zsh" ]] && source "$ZSH_CACHE_DIR/fnm.zsh"
+if (($+commands[fnm])); then
+    [[ ! -f "$ZSH_CACHE_DIR/fnm.zsh" ]] && fnm env --use-on-cd --shell zsh >"$ZSH_CACHE_DIR/fnm.zsh"
+    [[ -f "$ZSH_CACHE_DIR/fnm.zsh" ]] && source "$ZSH_CACHE_DIR/fnm.zsh"
 fi
