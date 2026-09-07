@@ -157,7 +157,8 @@ return {
 			},
 
 			menu = {
-				border = "rounded",
+				auto_show = false,
+				border = "none",
 
 				winhighlight = "Normal:BlinkCmpMenu,"
 					.. "FloatBorder:BlinkCmpMenuBorder,"
@@ -168,18 +169,19 @@ return {
 					snippet_indicator = "~",
 
 					treesitter = { "lsp" },
+					gap = 2,
 
 					columns = {
 						{
+							"kind_icon",
 							"label",
 							"label_description",
-							gap = 1,
+							gap = 2,
 						},
 						{
-							"kind_icon",
 							"kind",
 							"source_name",
-							gap = 1,
+							gap = 2,
 						},
 					},
 
