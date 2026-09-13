@@ -157,7 +157,7 @@ return {
 			},
 
 			menu = {
-				auto_show = false,
+				auto_show = true,
 				border = "none",
 
 				winhighlight = "Normal:BlinkCmpMenu,"
