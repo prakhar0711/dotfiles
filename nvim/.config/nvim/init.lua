@@ -1,5 +1,7 @@
 vim.loader.enable()
 vim.g.mapleader = " "
+vim.opt.title = true
+vim.opt.titlestring = "nvim %t"
 
 -- require("vim._core.ui2").enable()
 require("user.options")

@@ -202,29 +202,6 @@ return {
 		},
 	},
 
-	-- =====================================================================
-	-- 6. MATERIAL
-	-- =====================================================================
-	{
-		"marko-cerovac/material.nvim",
-		lazy = true,
-		config = function()
-			require("material").setup({
-				disable = {
-					colored_cursor = false,
-				},
-				high_visibility = {
-					darker = true,
-				},
-				custom_highlights = function(colors)
-					return {
-						TreesitterContext = { bg = "#27343a" },
-						-- BlinkCmpDoc = { bg = "#262b3e" },
-					}
-				end,
-			})
-		end,
-	},
 	-- lua/plugins/rose-pine.lua
 	{
 		"rose-pine/neovim",

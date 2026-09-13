@@ -32,6 +32,13 @@ hl.window_rule({
 	opacity = "0.8 0.5",
 })
 
+-- Neovim=specific window rules
+-- hl.window_rule({
+-- 	name = "neovim-opaque",
+-- 	match = { title = "^(nvim.*)$" },
+-- 	opacity = "1.0 1.0",
+-- })
+
 hl.workspace_rule({ workspace = "1", monitor = "eDP-1", persistent = true, default_name = "terminal" })
 hl.workspace_rule({ workspace = "2", monitor = "eDP-1", persistent = true, default_name = "browser" })
 hl.workspace_rule({ workspace = "3", monitor = "eDP-1", persistent = true, default_name = "code" })
