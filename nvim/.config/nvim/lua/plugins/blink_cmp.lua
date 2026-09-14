@@ -78,12 +78,12 @@ return {
 			})
 		end
 
-		vim.api.nvim_create_autocmd("ColorScheme", {
-			group = group,
-			callback = apply_blink_theme,
-		})
-
-		apply_blink_theme()
+		-- vim.api.nvim_create_autocmd("ColorScheme", {
+		-- 	group = group,
+		-- 	callback = apply_blink_theme,
+		-- })
+		--
+		-- apply_blink_theme()
 	end,
 
 	opts = {

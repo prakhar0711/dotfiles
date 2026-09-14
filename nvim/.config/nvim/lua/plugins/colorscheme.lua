@@ -201,7 +201,6 @@ return {
 			end,
 		},
 	},
-
 	-- lua/plugins/rose-pine.lua
 	{
 		"rose-pine/neovim",

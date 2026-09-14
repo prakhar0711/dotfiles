@@ -9,8 +9,8 @@ vim.opt.statusline = "%f %m %r %= %y %l:%c"
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.writebackup = false
-vim.opt.undofile = true -- Enabled persistent undo storage history!
-vim.opt.undodir = vim.fn.expand("~/.vim/undodir")
+vim.opt.undofile = false -- Enabled persistent undo storage history!
+-- vim.opt.undodir = vim.fn.expand("~/.vim/undodir")
 
 -- Sync file transformations instantly if modified outside of Neovim
 vim.opt.autoread = true
