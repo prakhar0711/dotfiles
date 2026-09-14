@@ -1,7 +1,7 @@
 vim.loader.enable()
 vim.g.mapleader = " "
 
-require("vim._core.ui2").enable({})
+-- require("vim._core.ui2").enable({})
 require("user.options")
 require("config.lazy")
 require("user.keymaps")

@@ -1,5 +1,5 @@
 -- Global Variable Definitions (Exported globally for binds/rules)
-_G.terminal = "kitty"
+_G.terminal = "foot"
 _G.fileManager = "nautilus"
 _G.menu = "rofi -show drun"
 _G.browser = "firefox"
