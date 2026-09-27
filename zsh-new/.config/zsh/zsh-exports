@@ -3,19 +3,22 @@
 # Ensure default system paths and custom bins
 typeset -U path fpath PATH FPATH
 path=(
-  "$HOME/.atuin/bin"
-  "$HOME/.cargo/bin"
-  "$HOME/.local/bin"
-  "$HOME/bin"
-  "$HOME/.local/share/go/bin"
-  "$HOME/.miniconda/bin"
-  "$HOME/.local/share/fnm"
-  /usr/local/bin
-  /usr/bin
-  /bin
-  /usr/sbin
-  /sbin
-  $path
+    "$HOME/.atuin/bin"
+    "$HOME/.dotnet"
+    "$HOME/.dotnet/tools"
+    "$HOME/.cargo/bin"
+    "$HOME/.local/bin"
+    "$HOME/bin"
+    "$HOME/.local/share/go/bin"
+    "$HOME/.miniconda/bin"
+    "$HOME/.local/share/fnm"
+    /usr/local/bin
+    /usr/share/dotnet
+    /usr/bin
+    /bin
+    /usr/sbin
+    /sbin
+    $path
 )
 export PATH
 

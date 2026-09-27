@@ -208,4 +208,13 @@ return {
 		name = "rose-pine",
 		config = function() end,
 	},
+	{
+		"shatur/neovim-ayu",
+	},
+	{
+		"Yazeed1s/oh-lucy.nvim",
+	},
+	{
+		"Abstract-IDE/Abstract-cs",
+	},
 }

@@ -2,7 +2,7 @@
 _G.terminal = "foot"
 _G.fileManager = "nautilus"
 _G.menu = "rofi -show drun"
-_G.browser = "firefox"
+_G.browser = "brave-origin"
 
 -- Environment Variables
 

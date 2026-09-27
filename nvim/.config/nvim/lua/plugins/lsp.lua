@@ -26,11 +26,15 @@ return {
 			},
 		})
 
-		-- 2. LSP ATTACH HOOK (Snacks Pickers, Keymaps, Highlighting, Inlay Hints)
+		-- 2. LSP ATTACH HOOK (Snacks Pickers, Keymaps, Highlighting, Inlay Hints, Semantic Tokens)
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("lsp-attach-native", { clear = true }),
 			callback = function(event)
 				local client = vim.lsp.get_client_by_id(event.data.client_id)
+				if not client then
+					return
+				end
+
 				local map = function(mode, lhs, rhs, desc)
 					vim.keymap.set(mode, lhs, rhs, { buffer = event.buf, desc = "LSP: " .. desc })
 				end
@@ -38,6 +42,8 @@ return {
 				-- Enable omnifunc fallback
 				vim.bo[event.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
+				-- Modern way to force/enable semantic tokens on a buffer:
+				vim.lsp.semantic_tokens.enable(true, { bufnr = event.buf, client_id = client.id })
 				-- Snacks.nvim Picker-Powered LSP Navigation
 				map("n", "<leader>gd", function()
 					Snacks.picker.lsp_definitions()
@@ -69,8 +75,10 @@ return {
 					print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 				end, "List Workspace Folders")
 
-				-- Inlay Hints Toggle
-				if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
+				-- Inlay Hints: Enable on attach + toggle keymap
+				if client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
+					vim.lsp.inlay_hint.enable(true, { bufnr = event.buf })
+
 					map("n", "<leader>th", function()
 						vim.lsp.inlay_hint.enable(
 							not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }),
@@ -80,10 +88,7 @@ return {
 				end
 
 				-- Document Highlighting
-				if
-					client
-					and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf)
-				then
+				if client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf) then
 					local highlight_group = vim.api.nvim_create_augroup("lsp-highlight-" .. event.buf, { clear = true })
 					vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
 						buffer = event.buf,
@@ -105,7 +110,6 @@ return {
 				end
 			end,
 		})
-
 		-- 3. GLOBAL CAPABILITIES
 		local og_capabilities = vim.lsp.protocol.make_client_capabilities()
 		local capabilities = require("blink.cmp").get_lsp_capabilities(og_capabilities)
@@ -114,6 +118,12 @@ return {
 			capabilities = capabilities,
 		})
 
+		require("mason").setup({
+			registries = {
+				"github:mason-org/mason-registry",
+				"github:Crashdummyy/mason-registry",
+			},
+		})
 		-- 4. MASON TOOL INSTALLER
 		require("mason-tool-installer").setup({
 			ensure_installed = { -- LSP Language Servers
