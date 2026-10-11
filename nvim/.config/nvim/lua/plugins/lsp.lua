@@ -47,7 +47,7 @@ return {
 					client.supports_method
 					and client:supports_method(vim.lsp.protocol.Methods.textDocument_semanticTokens_full)
 				then
-					vim.lsp.semantic_tokens.enable(false, { bufnr = event.buf, client_id = client.id })
+					vim.lsp.semantic_tokens.enable(true, { bufnr = event.buf, client_id = client.id })
 				end
 				-- Snacks.nvim Picker-Powered LSP Navigation
 				map("n", "<leader>gd", function()

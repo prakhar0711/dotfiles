@@ -24,7 +24,7 @@ hl.window_rule({
 hl.window_rule({
 	name = "terminal-opacity-rules",
 	match = { class = "^(kitty|Alacritty|foot|wezterm)$" },
-	opacity = "0.8 0.5",
+	opacity = "0.8 0.6",
 })
 hl.window_rule({
 	name = "vscode",
