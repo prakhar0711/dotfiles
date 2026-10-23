@@ -1,10 +1,10 @@
-
+theme = Monokai Pro Spectrum
 font-family = "JetBrainsMono Nerd Font"
 font-size=16
 
-background = #000000
+# background = #000000
 # Disable the native tab bar visual entirely
-show-tabs = false
+# show-tabs = false
 
 # Optional: If you prefer borderless/minimal windows like your Alacritty setup
 window-decoration = false
@@ -12,7 +12,6 @@ window-save-state="always"
 
 adjust-cell-height=10
 adjust-cell-width=1
-
 
 keybind=global:ctrl+r=reload_config
 keybind=ctrl+shift+up=new_split:up

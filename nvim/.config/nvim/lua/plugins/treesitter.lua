@@ -7,9 +7,7 @@ return {
 		branch = "main",
 		lazy = false,
 		build = function()
-			-- In 'main', treesitter uses the CLI / native installer API
 			require("nvim-treesitter").install({
-				-- Core & Doc parsers
 				"markdown",
 				"markdown_inline",
 				"comment",
@@ -18,8 +16,6 @@ return {
 				"yaml",
 				"toml",
 				"bash",
-
-				-- Code languages
 				"c",
 				"cpp",
 				"html",
@@ -37,19 +33,24 @@ return {
 			})
 		end,
 		config = function()
-			local ts = require("nvim-treesitter")
-
-			-- Configure parsers to ensure installed
-			ts.setup({
-				install = {
-					prefer_git = true,
-				},
-			})
-
-			-- Automatically enable native Treesitter highlighting on FileType
+			-- Automatically enable native Treesitter highlighting on valid code buffers
 			vim.api.nvim_create_autocmd("FileType", {
 				callback = function(args)
-					pcall(vim.treesitter.start, args.buf)
+					-- Skip special UI/scratch/terminal buffers (Snacks, Telescope, quickfix, etc.)
+					if vim.bo[args.buf].buftype ~= "" then
+						return
+					end
+
+					local lang = vim.treesitter.language.get_lang(vim.bo[args.buf].filetype)
+					if not lang then
+						return
+					end
+
+					-- Safely verify that a parser binary exists before calling start
+					local ok, parser = pcall(vim.treesitter.get_parser, args.buf, lang)
+					if ok and parser then
+						pcall(vim.treesitter.start, args.buf, lang)
+					end
 				end,
 			})
 		end,

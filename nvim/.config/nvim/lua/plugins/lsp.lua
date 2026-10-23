@@ -43,11 +43,16 @@ return {
 				vim.bo[event.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
 				-- Modern way to force/enable semantic tokens on a buffer:
-				if
-					client.supports_method
-					and client:supports_method(vim.lsp.protocol.Methods.textDocument_semanticTokens_full)
-				then
-					vim.lsp.semantic_tokens.enable(true, { bufnr = event.buf, client_id = client.id })
+				-- if
+				-- 	client.supports_method
+				-- 	and client:supports_method(vim.lsp.protocol.Methods.textDocument_semanticTokens_full)
+				-- then
+				-- 	vim.lsp.semantic_tokens.enable(true, { bufnr = event.buf, client_id = client.id })
+				-- end
+
+				-- Disable LSP semantic tokens so Treesitter has full control over colors
+				if client.server_capabilities then
+					client.server_capabilities.semanticTokensProvider = nil
 				end
 				-- Snacks.nvim Picker-Powered LSP Navigation
 				map("n", "<leader>gd", function()
