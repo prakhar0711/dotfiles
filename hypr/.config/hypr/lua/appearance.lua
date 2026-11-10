@@ -33,7 +33,7 @@ hl.config({
 		rounding_power = 2,
 		-- active_opacity = 1,
 		-- inactive_opacity = 1,
-		shadow = { enabled = false, range = 15, render_power = 5, color = "rgba(1a1a1aee)" },
+		shadow = { enabled = false, range = 15, render_power = 4, color = "rgba(1a1a1aee)" },
 		blur = {
 			enabled = true,
 			size = 10,

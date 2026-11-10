@@ -15,6 +15,7 @@ local ipc = "noctalia msg "
 hl.bind(mainMod .. "+SHIFT+D", hl.dsp.exec_cmd(ipc .. "panel-toggle launcher"))
 hl.bind(mainMod .. "+S", hl.dsp.exec_cmd(ipc .. "panel-toggle control-center"))
 hl.bind(mainMod .. "+comma", hl.dsp.exec_cmd(ipc .. "settings-toggle"))
+hl.bind(mainMod .. "+SHIFT+period", hl.dsp.exec_cmd(ipc .. "panel-toggle wallpaper"))
 hl.bind("ALT + Tab", hl.dsp.exec_cmd(ipc .. "window-switcher"))
 
 -- Media keys

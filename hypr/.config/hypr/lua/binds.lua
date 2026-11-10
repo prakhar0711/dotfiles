@@ -2,25 +2,25 @@
 _G.mainMod = "ALT"
 -- Optimized array lookup for standard application shortcuts
 local single_key_apps = {
-    { key = "RETURN", action = hl.dsp.exec_cmd(_G.terminal) },
-    { key = "Q",      action = hl.dsp.window.close() },
-    { key = "F",      action = hl.dsp.exec_cmd(_G.browser) },
-    { key = "E",      action = hl.dsp.exec_cmd(_G.fileManager) },
-    { key = "V",      action = hl.dsp.window.float({ action = "toggle" }) },
-    -- { key = "TAB",    action = hl.dsp.exec_cmd("rofi -show window") },
-    { key = "P",      action = hl.dsp.window.pseudo() },
+	{ key = "RETURN", action = hl.dsp.exec_cmd(_G.terminal) },
+	{ key = "X", action = hl.dsp.window.close() },
+	{ key = "F", action = hl.dsp.exec_cmd(_G.browser) },
+	{ key = "B", action = hl.dsp.exec_cmd(_G.fileManager) },
+	{ key = "V", action = hl.dsp.window.float({ action = "toggle" }) },
+	-- { key = "TAB",    action = hl.dsp.exec_cmd("rofi -show window") },
+	{ key = "P", action = hl.dsp.window.pseudo() },
 }
 
 for _, bind in ipairs(single_key_apps) do
-    hl.bind(mainMod .. " + " .. bind.key, bind.action)
+	hl.bind(mainMod .. " + " .. bind.key, bind.action)
 end
 
 -- Explicit Custom Modifier Keybindings
-hl.bind(mainMod .. " + SHIFT + L", hl.dsp.exec_cmd("hyprlock"))
+hl.bind(mainMod .. " + SHIFT + I", hl.dsp.exec_cmd("hyprlock"))
 -- hl.bind(mainMod .. " + SHIFT + D", hl.dsp.exec_cmd(_G.menu))
-hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("hyprctl reload"))
-hl.bind(mainMod .. " + SHIFT+ E", hl.dsp.exec_cmd("wlogout --protocol layer-shell -b 4 -T 400 -B 400")) -- hl.bind(mainMod .. " + SHIFT + E", hl.dsp.exit())
-hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd("waytrogen -e ~/.local/bin/hypr-wall-sync.sh"))
+hl.bind(mainMod .. " + SHIFT + Y", hl.dsp.exec_cmd("hyprctl reload"))
+hl.bind(mainMod .. " + SHIFT+ U", hl.dsp.exec_cmd("wlogout --protocol layer-shell -b 4 -T 400 -B 400")) -- hl.bind(mainMod .. " + SHIFT + E", hl.dsp.exit())
+-- hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd("waytrogen -e ~/.local/bin/hypr-wall-sync.sh"))
 hl.bind("SUPER + V", hl.dsp.exec_cmd("cliphist list | rofi -dmenu | cliphist decode | wl-copy"))
 
 -- Directional Focus Movement
@@ -35,13 +35,12 @@ hl.bind(mainMod .. " + SHIFT + Right", hl.dsp.window.move({ direction = "right" 
 hl.bind(mainMod .. " + SHIFT + Up", hl.dsp.window.move({ direction = "up" }))
 hl.bind(mainMod .. " + SHIFT + Down", hl.dsp.window.move({ direction = "down" }))
 
--- Workspace Generator Loop (Keys 1-0)
-for i = 1, 10 do
-    local key = i % 10
-    hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
-    hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
-end
+local workspaceKeys = { "q", "w", "e", "r", "t" }
 
+for i, key in ipairs(workspaceKeys) do
+	hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
+	hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
+end
 -- Special scratchpad allocations
 hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
