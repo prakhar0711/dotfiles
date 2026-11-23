@@ -26,7 +26,12 @@ hl.config({
 		hover_icon_on_border = true,
 		extend_border_grab_area = 15,
 		allow_tearing = false,
-		layout = "dwindle",
+		layout = "scrolling",
+	},
+
+	scrolling = {
+		fullscreen_on_one_column = false,
+		column_width = 1,
 	},
 	decoration = {
 		rounding = 25,
