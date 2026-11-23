@@ -37,13 +37,13 @@ return {
 					-- CUSTOM TABLINE STYLING FOR VAGUE (Only applies when using Vague)
 					-- =====================================================================
 					-- Active, current tab: stands out with stark white text and a clean dark blue highlight
-					hl.TabLineSel = { fg = "#000000", bg = "#8AEEF0", bold = false }
+					-- hl.TabLineSel = { fg = "#000000", bg = "#8AEEF0", bold = false }
 
 					-- Inactive background tabs: muted text color with a flat dark grey canvas
-					hl.TabLine = { fg = "#5c6370", bg = "#0f111a" }
+					-- hl.TabLine = { fg = "#5c6370", bg = "#0f111a" }
 
 					-- Empty right-hand spacer area: visually matches the inactive background
-					hl.TabLineFill = { bg = "#0f111a" }
+					-- hl.TabLineFill = { bg = "#0f111a" }
 				end,
 				colors = {
 					bg = "#141415",
@@ -93,7 +93,7 @@ return {
 					builtin_types = "none",
 					builtin_variables = "none",
 				},
-				transparent = false,
+				transparent = true,
 			})
 		end,
 	},
@@ -106,7 +106,7 @@ return {
 		lazy = true,
 		config = function()
 			vim.g.gruvbox_material_enable_italic = false
-			vim.g.gruvbox_material_transparent_background = 0
+			vim.g.gruvbox_material_transparent_background = 1
 			vim.g.gruvbox_material_background = "hard"
 		end,
 	},
@@ -118,9 +118,10 @@ return {
 		"rebelot/kanagawa.nvim",
 		lazy = true,
 		opts = {
-			dimInactive = true,
+			dimInactive = false,
 			functionStyle = { italic = false },
 			keywordStyle = { italic = false },
+			transparent = true,
 			colors = {
 				theme = { all = { ui = { bg_gutter = "none" } } },
 				palette = { sumiInk1 = "none" }, -- Wrapped syntax string
@@ -132,14 +133,16 @@ return {
 					return { fg = color, bg = c(color):blend(theme.ui.bg, 0.95):to_hex() }
 				end
 				return {
-					Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 },
-					PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
-					PmenuSbar = { bg = theme.ui.bg_m1 },
-					PmenuThumb = { bg = theme.ui.bg_p2 },
 					DiagnosticVirtualTextHint = makeDiagnosticColor(theme.diag.hint),
 					DiagnosticVirtualTextInfo = makeDiagnosticColor(theme.diag.info),
 					DiagnosticVirtualTextWarn = makeDiagnosticColor(theme.diag.warning),
 					DiagnosticVirtualTextError = makeDiagnosticColor(theme.diag.error),
+					-- BlinkCmpMenu = { fg = theme.ui.float.fg_border, bg = "NONE" },
+					-- BlinkCmpMenuBorder = { fg = theme.ui.float.fg_border, bg = "NONE" },
+					-- BlinkCmpDoc = { fg = theme.ui.float.fg_border, bg = "NONE" },
+					-- BlinkCmpDocBorder = { fg = theme.ui.float.fg_border, bg = "NONE" },
+					-- BlinkCmpSignatureHelp = { fg = theme.ui.float.fg_border, bg = "NONE" },
+					-- BlinkCmpSignatureHelpBorder = { fg = theme.ui.float.fg_border, bg = "NONE" },
 				}
 			end,
 		},
@@ -194,7 +197,7 @@ return {
 		priority = 1000,
 		opts = {
 			style = "night",
-			transparent = false,
+			transparent = true,
 			styles = { sidebars = "transparent" },
 			on_highlights = function(hl, c)
 				hl.SignColumn = { bg = "none" } -- Fixed syntax string
@@ -206,6 +209,9 @@ return {
 		"rose-pine/neovim",
 		lazy = true,
 		name = "rose-pine",
-		config = function() end,
+		opts = {
+			dim_inactive_windows = true,
+			styles = { transparency = true },
+		},
 	},
 }

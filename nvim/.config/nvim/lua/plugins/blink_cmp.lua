@@ -6,85 +6,85 @@ return {
 		"rafamadriz/friendly-snippets",
 	},
 
-	init = function()
-		local group = vim.api.nvim_create_augroup("BlinkThemeOverrides", { clear = true })
-
-		local function apply_blink_theme()
-			local hl = vim.api.nvim_set_hl
-
-			-- Completion Menu
-			hl(0, "BlinkCmpMenu", {
-				bg = "#0f111a",
-				fg = "#b0bec5",
-			})
-
-			hl(0, "BlinkCmpMenuBorder", {
-				fg = "#1f2233",
-				bg = "#0f111a",
-			})
-
-			hl(0, "BlinkCmpMenuSelection", {
-				bg = "#1f2233",
-				fg = "#80cbc4",
-				bold = true,
-			})
-
-			-- Labels
-			hl(0, "BlinkCmpLabelMatch", {
-				fg = "#80cbc4",
-				bold = true,
-			})
-
-			hl(0, "BlinkCmpLabel", {
-				fg = "#b0bec5",
-			})
-
-			hl(0, "BlinkCmpLabelDescription", {
-				fg = "#464b5d",
-			})
-
-			-- Sources
-			hl(0, "BlinkCmpSourceLsp", {
-				fg = "#00e5ff",
-				italic = true,
-			})
-
-			hl(0, "BlinkCmpSourcePath", {
-				fg = "#c3e88d",
-			})
-
-			hl(0, "BlinkCmpSourceSnippets", {
-				fg = "#ff5370",
-			})
-
-			hl(0, "BlinkCmpSourceBuffer", {
-				fg = "#ffcb6b",
-			})
-
-			-- Documentation
-			hl(0, "BlinkCmpDoc", {
-				bg = "#0c0e16",
-				fg = "#b0bec5",
-			})
-
-			hl(0, "BlinkCmpDocBorder", {
-				fg = "#1f2233",
-				bg = "#0c0e16",
-			})
-
-			hl(0, "BlinkCmpDocActiveParameter", {
-				fg = "#80cbc4",
-				bold = true,
-			})
-		end
-
-		-- vim.api.nvim_create_autocmd("ColorScheme", {
-		-- 	group = group,
-		-- 	callback = apply_blink_theme,
-		-- })
-		--
-		-- apply_blink_theme()
-	end,
+	-- init = function()
+	-- 	local group = vim.api.nvim_create_augroup("BlinkThemeOverrides", { clear = true })
+	--
+	-- 	local function apply_blink_theme()
+	-- 		local hl = vim.api.nvim_set_hl
+	--
+	-- 		-- Completion Menu
+	-- 		hl(0, "BlinkCmpMenu", {
+	-- 			bg = "#0f111a",
+	-- 			fg = "#b0bec5",
+	-- 		})
+	--
+	-- 		hl(0, "BlinkCmpMenuBorder", {
+	-- 			fg = "#1f2233",
+	-- 			bg = "#0f111a",
+	-- 		})
+	--
+	-- 		hl(0, "BlinkCmpMenuSelection", {
+	-- 			bg = "#1f2233",
+	-- 			fg = "#80cbc4",
+	-- 			bold = true,
+	-- 		})
+	--
+	-- 		-- Labels
+	-- 		hl(0, "BlinkCmpLabelMatch", {
+	-- 			fg = "#80cbc4",
+	-- 			bold = true,
+	-- 		})
+	--
+	-- 		hl(0, "BlinkCmpLabel", {
+	-- 			fg = "#b0bec5",
+	-- 		})
+	--
+	-- 		hl(0, "BlinkCmpLabelDescription", {
+	-- 			fg = "#464b5d",
+	-- 		})
+	--
+	-- 		-- Sources
+	-- 		hl(0, "BlinkCmpSourceLsp", {
+	-- 			fg = "#00e5ff",
+	-- 			italic = true,
+	-- 		})
+	--
+	-- 		hl(0, "BlinkCmpSourcePath", {
+	-- 			fg = "#c3e88d",
+	-- 		})
+	--
+	-- 		hl(0, "BlinkCmpSourceSnippets", {
+	-- 			fg = "#ff5370",
+	-- 		})
+	--
+	-- 		hl(0, "BlinkCmpSourceBuffer", {
+	-- 			fg = "#ffcb6b",
+	-- 		})
+	--
+	-- 		-- Documentation
+	-- 		hl(0, "BlinkCmpDoc", {
+	-- 			bg = "#0c0e16",
+	-- 			fg = "#b0bec5",
+	-- 		})
+	--
+	-- 		hl(0, "BlinkCmpDocBorder", {
+	-- 			fg = "#1f2233",
+	-- 			bg = "#0c0e16",
+	-- 		})
+	--
+	-- 		hl(0, "BlinkCmpDocActiveParameter", {
+	-- 			fg = "#80cbc4",
+	-- 			bold = true,
+	-- 		})
+	-- 	end
+	--
+	-- 	-- vim.api.nvim_create_autocmd("ColorScheme", {
+	-- 	-- 	group = group,
+	-- 	-- 	callback = apply_blink_theme,
+	-- 	-- })
+	-- 	--
+	-- 	-- apply_blink_theme()
+	-- end,
 
 	opts = {
 		keymap = {
@@ -94,11 +94,11 @@ return {
 
 			["<C-k>"] = false,
 
-			["<C-,>"] = {
-				"show_signature",
-				"hide_signature",
-				"fallback",
-			},
+			-- ["<C-q>"] = {
+			-- 	"show_signature",
+			-- 	"hide_signature",
+			-- 	"fallback",
+			-- },
 
 			["<C-Space>"] = {
 				function(cmp)
@@ -138,6 +138,7 @@ return {
 
 		signature = {
 			enabled = true,
+			window = { border = "rounded", treesitter_highlighting = true, show_documentation = true },
 		},
 
 		appearance = {
@@ -154,11 +155,14 @@ return {
 				auto_show = true,
 				auto_show_delay_ms = 500,
 				treesitter_highlighting = true,
+				window = {
+					border = "rounded",
+				},
 			},
 
 			menu = {
 				auto_show = true,
-				border = "none",
+				border = "rounded",
 
 				winhighlight = "Normal:BlinkCmpMenu,"
 					.. "FloatBorder:BlinkCmpMenuBorder,"

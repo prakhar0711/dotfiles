@@ -74,7 +74,6 @@ return {
 
 				-- Standard Actions & Docs
 				map("n", "K", vim.lsp.buf.hover, "Hover Documentation")
-				map("n", "<C-q>", vim.lsp.buf.signature_help, "Signature Help")
 				map("n", "<leader>gx", vim.lsp.buf.rename, "Rename Symbol")
 				map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code Action")
 

@@ -204,3 +204,21 @@ end, opts("Navigate Up"))
 map("n", "<C-l>", function()
 	tmux_navigate("R", "wincmd l")
 end, opts("Navigate Right"))
+
+----- blink cmp signature help remap using blink's own api
+map({ "i", "n" }, "<C-q>", function()
+	local blink = require("blink.cmp")
+	if blink.is_signature_visible() then
+		blink.hide_signature()
+		return
+	end
+
+	blink.show_signature()
+
+	-- Wait briefly for the LSP response before checking if the window opened
+	vim.defer_fn(function()
+		if not blink.is_signature_visible() then
+			vim.notify("No signature help available", vim.log.levels.INFO, { title = "blink.cmp" })
+		end
+	end, 150)
+end, { desc = "Toggle Blink Signature Help" })
