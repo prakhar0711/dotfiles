@@ -1,6 +1,6 @@
 -- Monitors
 hl.monitor({ output = "eDP-1", mode = "2560x1600@240", position = "0x0", scale = "1.25" })
--- hl.monitor({ output = "eDP-2", mode = "2560x1600@240", position = "0x0", scale = "1.25" })
+hl.monitor({ output = "eDP-2", mode = "2560x1600@240", position = "0x0", scale = "1.25" })
 
 -- General Look, Decoration & Hardware Configs
 hl.config({
@@ -18,9 +18,9 @@ hl.config({
 		},
 	},
 	general = {
-		gaps_in = 2,
-		gaps_out = 4,
-		border_size = 1,
+		gaps_in = 8,
+		gaps_out = 20,
+		border_size = 0,
 		col = { active_border = "rgba(33ccffee)", inactive_border = "rgba(595959aa)" },
 		resize_on_border = true,
 		hover_icon_on_border = true,
@@ -29,22 +29,24 @@ hl.config({
 		layout = "dwindle",
 	},
 	decoration = {
-		rounding = 6,
+		rounding = 25,
 		rounding_power = 2,
 		-- active_opacity = 1,
-		-- inactive_opacity = 1,
-		shadow = { enabled = false, range = 15, render_power = 4, color = "rgba(1a1a1aee)" },
+		inactive_opacity = 0.8,
+		-- dim_inactive = true,
+		dim_strength = 0.7,
+		shadow = { enabled = true, range = 28, render_power = 4, color = "rgba(00000099)" },
 		blur = {
 			enabled = true,
-			size = 10,
-			passes = 3,
+			size = 8,
+			passes = 4,
 			noise = 0,
 			vibrancy = 0.35,
 			vibrancy_darkness = 0.35,
-			contrast = 1,
+			contrast = 2,
 			new_optimizations = true,
 			ignore_opacity = true,
-			brightness = 0.7,
+			brightness = 0.6,
 			xray = false,
 			popups = true,
 			special = false,

@@ -43,3 +43,8 @@ hl.workspace_rule({ workspace = "1", monitor = "eDP-1", persistent = true, defau
 hl.workspace_rule({ workspace = "2", monitor = "eDP-1", persistent = true, default_name = "browser" })
 hl.workspace_rule({ workspace = "3", monitor = "eDP-1", persistent = true, default_name = "code" })
 hl.workspace_rule({ workspace = "4", monitor = "eDP-1", persistent = true, default_name = "misc" })
+
+hl.workspace_rule({ workspace = "1", monitor = "eDP-2", persistent = true, default_name = "terminal" })
+hl.workspace_rule({ workspace = "2", monitor = "eDP-2", persistent = true, default_name = "browser" })
+hl.workspace_rule({ workspace = "3", monitor = "eDP-2", persistent = true, default_name = "code" })
+hl.workspace_rule({ workspace = "4", monitor = "eDP-2", persistent = true, default_name = "misc" })
