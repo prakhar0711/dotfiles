@@ -1,6 +1,6 @@
 local workspace_assignments = {
 	[1] = "^(kitty|Alacritty|foot|wezterm)$",
-	[2] = "^([Ff]irefox|[Tt]horium)$",
+	[2] = "^([Ff]irefox|[Tt]horium|brave-origin)$",
 	[3] = "^(org.gnome.Nautilus|org.kde.dolphin)$",
 	[4] = "^([Ss]potify)$",
 }
